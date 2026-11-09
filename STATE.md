@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D58 审批待办标题修复**：manual 节点标题改关联字段 `{{$context.data.student.name}}` + revision 三步法 + 存量回填；此前：D57 移动端课程表直出改版、D56b 工作台待办改版 flowPage+jsBlock）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D59 移动端调整**：扫码报名页下线（公开页已接管入口）+ 菜单重排（请假申请为首页、材料提交末位）；此前：D58 审批待办标题修复、D57 移动端课程表直出改版、D56b 工作台待办改版）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,8 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**移动端调整完成（2026-11-10，D59）** — Violet 两项指示。①**扫码报名页下线**：公开报名页（D53 `/signup.html?class=`）上线后，移动端「扫码报名」页（routeId 396774382895104 / uid 3cfhfajaa4x，含 hidden 子页「报名登记」）成为孤页——二维码已指公开页、全库无引用。用官方命令 `nb api flow-surfaces destroy-page` 删除（**要传 flow-surfaces get 返回的 target.uid 即 RootPageModel uid，不是路由 schemaUid**，传错报 popup-child 400）；一次删净路由/子 tab/FlowModel 子树/角色授权/schema，DB 复核全 0；删除前快照留底 `.artifacts/mobile-signup-page-retired/`。旧链接不报 404，回退移动端首页（可接受兜底）。②**菜单重排**：材料提交挪末位、请假申请成为首页——move-node 不支持跨页同级排序（RootPageModel 的 parent 是自身）、update-menu 无排序参数，**菜单顺序只由 `desktopRoutes.sort` 决定**，直接 UPDATE sort 为最大值解决。调整后底栏：请假申请 / 学员录 / 我的作业 / 课程表 / 材料提交。无头浏览器三项实测全过（旧链接无报名表单、菜单无扫码报名、首页直出请假表单）；脚本 `.artifacts/e2e-check/verify_signup_retired.py`；规则沉淀 docs/features/s6-mobile.md 补充三。
 
 **审批待办标题修复完成（2026-11-10 凌晨，D58）** — Violet 反馈「工作台待办列表 4 条请假待办 3 条学员名为空」。根因与 D55 同源：manual 节点 title 模板引用裸字段 `{{$context.data.student_name}}`（学员表单不填此字段），且**标题在待办创建时渲染落库**（workflowManualTasks.title），改模板不影响存量。修复三件套：①请假流/退学流 same-workflow revision（新 id 396816229400576 / 396816562847744，自动 current+enabled，旧版自动停用），manual 节点标题模板改 `{{$context.data.student.name}}`（触发器 appends 已含 student，学员实测新待办标题「请假审批 - 张明远」✓）；②存量 3 条 pending 标题 SQL 回填（join executions.context→nb_dx_leave→nb_dx_student）；③jsBlock（flowModel 72hgyrjlwza，SQL 直改）ENABLED_WF 扩 6 条流 + WF_TITLE/FALLBACK_ACTIONS 补新 id 映射，新旧 id 双兼容。待办池清场后 4 条真实演示待办全部带学员名（吴建军/张明远×2/测试人员），DB+截图双确认。缴费流不动（payer_name 是录入手填，无同款问题）。产物 `.artifacts/e2e-check/verify_todo_titles.py`；规则沉淀 docs/features/s4-workflow.md 补充节。
 

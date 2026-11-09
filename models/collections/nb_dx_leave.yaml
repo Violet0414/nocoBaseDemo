@@ -15,6 +15,7 @@ fields:
     interface: m2o
     target: nb_dx_class
     foreignKey: class_id
+    required: true
   - name: type
     title: 请假类型
     interface: select

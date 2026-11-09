@@ -11,7 +11,7 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 
 | 页面 | routeId | pageSchemaUid | 主块 | 表 |
 |---|---|---|---|---|
-| 扫码报名 | 396774382895104 | 3cfhfajaa4x | createForm | nb_dx_registration |
+| ~~扫码报名~~（已下线 2026-11-10，见补充三） | ~~396774382895104~~ | ~~3cfhfajaa4x~~ | createForm | nb_dx_registration |
 | 请假申请 | 396774621970432 | 80a2tclmlct | createForm + 我的请假 table | nb_dx_leave |
 | 材料提交 | 396774414352384 | xm89i0vlzcq | createForm | nb_dx_material |
 | 学员录 | 396774630359040 | ru5tj20ddta | table（recordActions 仅 view） | nb_dx_student |
@@ -86,7 +86,7 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 
 1. **静态页 `/signup.html`**：放 nginx public 目录（`storage/.nocobase/proxy/nginx/default/public/`，D44 同款），纯原生 HTML/CSS/JS 无 CDN 依赖，窄屏适配。读 URL `?class=<班次id>`，用 API key fetch 班次显示卡片（班名+编号+状态标签），表单字段：姓名/手机号/性别/政治面貌（必填）+ 单位职务/附言（选填），前端必填校验，提交成功显示成功页。提交 body 固定 `status=pending` → 触发报名审批流。源码产物 `.artifacts/public-signup/signup.html`。
 2. **机器人凭证**：`r_signup_bot` 角色（仅 `nb_dx_registration` create 且字段白名单 name/phone/gender/political_status/work_unit/note/class_id/status + `nb_dx_class` view 限班次展示字段）+ `signup_bot` 用户（id 7）+ apiKeys 插件签 10 年期 JWT（`{userId:7, roleName:"r_signup_bot"}`）。**API key 本质是带 roleName 的长期 JWT**，`Authorization: Bearer` 走标准认证链。角色 snippets 带 `pm.api-keys.configuration`（bot 自己签 key 必需）。越权实测：registration list / class destroy 均 403。
-3. **二维码改指公开页**：`main/src/features/qr/class-qr.tsx` 二维码内容由 `/v/mobile/3cfhfajaa4x?class=` 改为 `/signup.html?class=`（**已改未 build+deploy**，部署待 Violet）。改版后扫码即达公开页；登录态学员仍可用移动端报名页（`/v/mobile/3cfhfajaa4x`）。
+3. **二维码改指公开页**：`main/src/features/qr/class-qr.tsx` 二维码内容由 `/v/mobile/3cfhfajaa4x?class=` 改为 `/signup.html?class=`（已改并确认部署上线）。改版后扫码即达公开页；移动端报名页已于 2026-11-10 下线（见补充三）。
 
 **安全边界**：key 硬编码在公开 HTML 中（任何访客可取），但权限面 = 只能 create 报名记录 + view 班次展示字段，最坏后果是刷报名垃圾数据（demo 可接受）；恶意 status=approved 提交只是记录状态、不触发流程不改他人数据，PC 审核员可见可改。真实 key 不入库：提交版为占位符，真 key 在 `backups/public-signup-api-key.txt`。
 
@@ -95,3 +95,15 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 **验证**（无头浏览器未登录态）：班次卡片「E2E链路测试班（E2E2601）报名中」→ 填表提交 → 成功页 → 落库 pending + 报名流 execution 触发 ✓。
 
 **服务器重部署注意**：signup.html 须复制进服务器 nginx public 目录（同 D44 logo.png 一起）；API key 随 HTML 携带，无需服务端配置；r_signup_bot/rolesResources 授权记录随 dump 迁移。
+
+## 补充三：扫码报名页下线 + 菜单顺序调整（2026-11-10，D59）
+
+**为什么下线**：D53 公开报名页 `/signup.html?class=` 上线并部署后，移动端「扫码报名」页（routeId 396774382895104 / uid 3cfhfajaa4x，含 hidden 子页「报名登记」）成为孤页——唯一入口二维码已改指公开页，全库 schema 无其他引用，main 源码无链接。Violet 确认移除。
+
+**怎么删的**：官方命令 `nb api flow-surfaces destroy-page --uid <页面FlowModel uid>`（注意传 flow-surfaces get 返回的 target.uid，即 RootPageModel 的 uid，不是路由 schemaUid；直接传 schemaUid 会报「popup child page」400）。一次删除 = 路由 + 子 tab 路由 + FlowModel 子树 + 角色授权 + uiSchema，DB 复核三项全 0。删除前配置快照留底 `.artifacts/mobile-signup-page-retired/`。
+
+**旧行为兜底**：旧链接 `/v/mobile/3cfhfajaa4x` 不报 404，NocoBase 回退到移动端首页——可接受，历史上若有人下载过旧二维码，扫了也只是落到移动端首页不会报错。
+
+**菜单顺序（同日调整）**：材料提交挪到末位、请假申请成为第一位（即移动端首页）。flow-surfaces 的 move-node 不支持跨页同级排序（报 only-siblings 400，且 RootPageModel 的 parent 是自身，无共同父容器可传），update-menu 也无排序参数——**菜单顺序只由 `desktopRoutes.sort` 决定**（flowModels 表无 sort 列），直接 UPDATE 该页 sort 为最大值解决。调整后底栏顺序：请假申请 / 学员录 / 我的作业 / 课程表 / 材料提交。
+
+**验证**（无头浏览器 390×844，学员 student_test）：①旧链接落到移动端首页且无报名表单 ✓；②菜单无「扫码报名」✓；③进 /v/mobile 直出「提交请假申请」表单，底栏 5 项顺序正确 ✓。脚本 `.artifacts/e2e-check/verify_signup_retired.py`。

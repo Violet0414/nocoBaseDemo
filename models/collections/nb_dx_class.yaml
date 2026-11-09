@@ -72,6 +72,7 @@ fields:
   - name: total_days
     title: 总学习天数
     interface: number
+    required: true
     description: 用于请假占比提醒(累计请假不超过总学习天数的1/7)
   - name: total_hours
     title: 总学时
