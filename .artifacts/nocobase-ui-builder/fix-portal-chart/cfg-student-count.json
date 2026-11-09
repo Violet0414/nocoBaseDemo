@@ -1,0 +1,11 @@
+{
+  "target": {
+    "uid": "arheyvzxnw1"
+  },
+  "changes": {
+    "visual": {
+      "mode": "custom",
+      "raw": "const rows = (ctx.data && ctx.data.objects) || [];\nconst counter = {};\nconst order = [];\nrows.forEach(function (r) {\n  const raw = r['klass.name'];\n  const name = (raw === null || raw === undefined || raw === '') ? '未分班' : String(raw);\n  if (!(name in counter)) { counter[name] = 0; order.push(name); }\n  counter[name] += 1;\n});\norder.sort(function (a, b) { return counter[b] - counter[a]; });\nreturn {\n  tooltip: { trigger: 'axis' },\n  legend: { bottom: 0 },\n  grid: { left: 16, right: 16, top: 32, bottom: 48, containLabel: true },\n  xAxis: { type: 'category', data: order },\n  yAxis: { type: 'value', minInterval: 1 },\n  series: [\n    {\n      type: 'bar',\n      name: '学员数',\n      data: order.map(function (n) { return counter[n]; }),\n      barMaxWidth: 40,\n      label: { show: true, position: 'top' }\n    }\n  ]\n};"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": 396734888738816
+    },
+    "item": {
+      "title": "工作台待办",
+      "icon": "CarryOutOutlined"
+    }
+  },
+  "page": {
+    "title": "工作台待办"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "待办任务",
+      "blocks": [
+        {
+          "key": "todoJsBlock",
+          "type": "jsBlock",
+          "settings": {
+            "code": "\nconst { Card, Typography } = ctx.libs.antd;\nctx.render(<Card size=\"small\"><Typography.Text>审批台模块加载中…（占位）</Typography.Text></Card>);\n"
+          }
+        }
+      ]
+    }
+  ]
+}

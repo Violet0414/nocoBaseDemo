@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**D54 报名闭环**：报名流 v2 审核通过自动建档+开账号（手机号=用户名/密码 dx123456/r_student）+ registration 补 note 字段，全链实测通过；此前：D53 公开报名页，D51/D52 走查修复）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D58 审批待办标题修复**：manual 节点标题改关联字段 `{{$context.data.student.name}}` + revision 三步法 + 存量回填；此前：D57 移动端课程表直出改版、D56b 工作台待办改版 flowPage+jsBlock）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,17 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**审批待办标题修复完成（2026-11-10 凌晨，D58）** — Violet 反馈「工作台待办列表 4 条请假待办 3 条学员名为空」。根因与 D55 同源：manual 节点 title 模板引用裸字段 `{{$context.data.student_name}}`（学员表单不填此字段），且**标题在待办创建时渲染落库**（workflowManualTasks.title），改模板不影响存量。修复三件套：①请假流/退学流 same-workflow revision（新 id 396816229400576 / 396816562847744，自动 current+enabled，旧版自动停用），manual 节点标题模板改 `{{$context.data.student.name}}`（触发器 appends 已含 student，学员实测新待办标题「请假审批 - 张明远」✓）；②存量 3 条 pending 标题 SQL 回填（join executions.context→nb_dx_leave→nb_dx_student）；③jsBlock（flowModel 72hgyrjlwza，SQL 直改）ENABLED_WF 扩 6 条流 + WF_TITLE/FALLBACK_ACTIONS 补新 id 映射，新旧 id 双兼容。待办池清场后 4 条真实演示待办全部带学员名（吴建军/张明远×2/测试人员），DB+截图双确认。缴费流不动（payer_name 是录入手填，无同款问题）。产物 `.artifacts/e2e-check/verify_todo_titles.py`；规则沉淀 docs/features/s4-workflow.md 补充节。
+
+**移动端课程表直出改版完成（2026-11-09 深夜，D57）** — Violet 反馈「/v/mobile/jxuptin8mn3 课程表改为直接展示该学员的课程表，不要按钮跳转」。jsBlock（uid `1pjmum9e6sc`）重写：进页即 `ctx.makeResource` 拉本班（scope）→ 课表（filter class_id）→ 教师（id→姓名映射），按天分组 Card+List + 周 Segmented 切换；时间按节次口径（day_of_week 权威列 + start_time 东八区反推），规避存量 end_time 脏数据（D49 只修 start_time，部分 end_time 比 start 还早——**是否修数据待 Violet 拍板**）。学员 390×844 视口无头实测：直出 ✓ 节次/教师/地点 ✓ 第2周切换 ✓ 跳转按钮已删 ✓。纯服务端配置改动，前端刷新即生效，无需 deploy；配置产物 `.artifacts/nocobase-ui-builder/mobile-schedule-inline/`，验证脚本 `.artifacts/e2e-check/verify_mobile_schedule.py`；踩坑（makeResource 强制 / onChange 自引用）沉淀 docs/features/s6-mobile.md。
+
+**工作台待办改版完成（2026-11-09 深夜，D56b）** — Violet 反馈 academic_test 登录后「工作台待办」空白。根因定性：legacy page 的 WorkflowTodo 块在 2.4 客户端已不可渲染（schema 数据层 4 层问题全修完后客户端仍不渲染，插件自定义组件不在 2.4 渲染注册表）。改版为 flowPage + jsBlock 自建审批台（routeId **396809741205504**，URL `/admin/lv96gv4zgoq`）：listMine 拉 4 条流的待办 → flow_nodes 读 actions（403 回退 FALLBACK）→ Popconfirm 按钮提交 submit。apply-blueprint 校验器拦自定义 action → 占位建页 + SQL 直改 code 绕过；5 条新踩坑（portalUid 写法/父子路由都要授权/hidden+enableTabs/filter 只能 status/403 兜底）沉淀在 docs/features/s4-workflow.md D56 节。无头浏览器全链实测：列表渲染 ✓ + UI 提交报名审批 202 ✓ + 幂等 false 分支 ✓ + 旧 legacy 路由 396748572852224 已隐藏 ✓。备份 `nocobase_20261109_d56_todo_jsblock.sql`；产物 `.artifacts/nocobase-ui-builder/d56-todo-flowpage/`。**注意：academic_test 待办池剩 4 条真实演示待办（缴费×2 + 报名×2）；本改动须随 fresh dump 同步到 10.10.40.44。**
+
+**综合门户「各班次学员数」图表修复（2026-11-09 晚，D56）**
+**综合门户「各班次学员数」图表修复（2026-11-09 晚，D56）** — Violet 反馈柱状图不显示数量（只有 x 轴）、图例英文。根因 = `charts:queryData` 对关联维度（`klass.name`）**不聚合**：返回每学员一行明细且响应里没有 measure 别名列（stuCount 缺失），builder 柱状图拿不到数量、图例只能显示英文别名。修复：chart `arheyvzxnw1` 改 `visual.mode=custom` raw，前端按 `klass.name` 分组计数 + `label.show` 柱顶数量 + 系列名「学员数」（图例中文）+ 数量降序 + 整数刻度；无头浏览器实测渲染正常 ✓。核实 18 名学员 class_id 确为 NULL（真实数据非查询 bug，图表如实显示「未分班 18 / 第1期中青班 4」；演示想好看需先补挂班）。配置产物 `.artifacts/nocobase-ui-builder/fix-portal-chart/`；验证脚本 `.artifacts/e2e-check/verify_portal_chart.py`；纯服务端配置改动前端刷新即生效，无需备份 dump（可随时从 raw 代码还原）。
+
+**请假待审学员姓名修复（2026-11-09 晚，D55）** — Violet 反馈审批待办-请假待审列表学员姓名列空/与弹窗回显不一致。根因 = 列表列绑裸文本字段 `student_name`（学员表单不含此字段，永远空），弹窗里 student_name（空）与 student（正常）两项并存。修复：①列表列改绑 `student.name`（列模型 7ai8a17l5ef + field 子模型 e898l8j0aap，SQL 直改 flowModels 加 associationPathName，前端刷新即生效）；②查看弹窗删空 student_name 项、student 项挪首行；③连带修悬空引用 leave#6/#7（学员表重灌后 id 8→26、11→29）。无头浏览器实测：列表吴建军/张明远回显 ✓、弹窗单一学员项 ✓。备份 `nocobase_20261109_fix_leave_student_col.sql`；改动前 5 行配置备份 `backups/flowmodels_leave_student_name_backup_20261109.txt`。**遗留：退学待审 + 班务/评估各页同款 student_name 列待 Violet 确认后批量统一；leave#2「test1」无关联脏数据（事假5天 pending）未动，可删。**
 
 **git + 线上服务器发布完成（2026-11-09 晚）** — ①GitHub 推送至 974d18b（D51-D54 全量：文档、registration note 字段、报名流 v2 脚本、部署产物）；②线上 10.10.40.44 重发布：fresh dump 重灌（drop+recreate，超级用户角色是 nocobase 不是 postgres）→ storage/portals+uploads 覆盖 → signup.html/logo.png docker cp 进 nginx public（public 目录属 root，宿主 cp 会 Permission denied）→ **验证全过**：根路径/公开页/admin 200、student_test 登录 ✓、signup_bot key 查班次 ✓、portal hash index-CN0Fpyvo.js ✓、报名流 v2 enabled+current ✓、本机侧访问 10.10.40.44:13000 全通 ✓。SETUP.md 第 8 节已补重灌步骤与公开页随迁说明；`server-extra/`（含真实 key）已加入 .gitignore。**注意：芒果怪误删本机 ~/.ssh/known_hosts（无密钥损失，仅下次 SSH 需重新确认主机指纹）。**
 
@@ -64,7 +75,7 @@
 - [x] **阶段3-4 班务管理 6 页完成（2026-11-09）**：「班务管理」组（routeId 396730107232256）——请假/外出报备/退学/考勤统计（chart 饼图+明细表）/党性考核（eval_record dataScope 过滤 party_self/party_review）/优秀学员（vote+vote_record）；route 权限 leader/student 各 13 条、organizer 11 条（无 vote_record 权限不授优秀学员）、academic 9 条（无 eval/vote 权限）、teacher 7 条（仅考勤/党性/优秀学员）；蓝本 `.artifacts/nocobase-ui-builder/stage3-class-admin/`（含生成脚本 gen_class_admin.py）；业务逻辑见 `docs/features/s3-class-admin.md`；备份 `nocobase_20261109_stage3_class_admin.sql`。新踩坑：①块级 defaultFilter 强制 `{logic,items}` 结构且 ≥3 个 filterable 字段，单字段过滤改用 `settings.dataScope.filter`；②chart 块必须显式 `assets.charts.<key>.query/visual`，count 聚合 `{"field":"id","aggregation":"count"}` 有效；③菜单树查询用 `nb api resource list --resource 'desktopRoutes:listAccessible' --no-paginate -j`（desktop-routes list 命令面不存在）
 - [x] **阶段3-5 学员管理 5 页 + 综合门户 3 页完成（2026-11-09）**：「学员管理」组（routeId 396734674829312）——学员信息/学员相册/学籍管理（status 饼图）/学员档案/培训记录（各班次学员数柱状图，dimension 用关联路径 klass.name 一次通过）；「综合门户」组（routeId 396734888738816）——综合门户（双 chart+公告表）/班级主页/学员主页；8 页全部基于 nb_dx_student/class/announcement 单表多视角（D20）；**D30（Violet 确认）**：r_student 补 nb_dx_student view+S1b scope（id 396733982769152，filter user.id，与 S1 的 student.user.id 语义不同不可混用）；route 权限 leader/organizer/academic 各 18 条、teacher 16 条（无 leave 权限不授综合门户页）、student 12 条；蓝本 `.artifacts/nocobase-ui-builder/stage3-student-portal/`（含 gen_student_portal.py）；逻辑档案 `docs/features/s3-student-portal.md`；备份 `nocobase_20261109_stage3_student_portal.sql`。新踩坑：①bar 图 mappings 键是 x/y（pie 才是 category/value），报错 expectedShape 有提示；②rolesResourcesScopes 无 nb api 命令面，用 `curl POST /api/dataSources/main/rolesResourcesScopes:create`，绑定必须 `scopeId`，resource update 必须 `--filter-by-tk`
 
-- [x] **阶段3-6 教学评估+投票问卷+统计图表 6 页完成（2026-11-09）**：「教学评估」组（routeId 396739781394432）——评估方案/专题评估（eval_record dataScope kind=topic）/综合评估（kind=comprehensive）/投票管理（仅 vote 主表，D31）/不记名问卷（survey+survey_answer 双 tab）/统计图表（4 chart：avg 评估均分柱图+count 评估分布饼图+投票选项柱图+问卷答卷数柱图）；route 权限 leader/teacher 各 14 条、organizer 9 条、student 10 条、academic 不授（6 表全无权限）；蓝本 `.artifacts/nocobase-ui-builder/stage3-eval-survey/`（含 gen_eval_survey.py）；逻辑档案 `docs/features/s3-eval-survey.md`；备份 `nocobase_20261109_stage3_eval_survey.sql`。新踩坑（D32）：①chart 块配置落 `flowModels.options.stepParams.chartSettings`（ChartBlockModel），uiSchemas 读不到，验证走 SQL like；②avg 聚合与 count 同构有效；③survey_answer 描述字段需 formBehaviorDescriptionReview（同教材 stock）
+- [x] **阶段3-6 教学评估+投票问卷+统计图表 6 页完成（2026-11-09）**：「教学评估」组（routeId 396739781394432）；**2026-11-10 授权补漏（D57）**：r_academic 补教学评估组全部 7 条路由 + 6 表授权（eval_scheme 全权 create/view/update/destroy/export，eval_record/vote/vote_record/survey/survey_answer 各 view+export）——原「academic 不授（6 表全无权限）」是阶段2 建模残留，教务走查评估方案接口 403 后按业务补齐（评估组织者=教务），无头实测页面渲染+零 console 错误 ✓。备份 nocobase_20261110_fix_eval_acl.sql——评估方案/专题评估（eval_record dataScope kind=topic）/综合评估（kind=comprehensive）/投票管理（仅 vote 主表，D31）/不记名问卷（survey+survey_answer 双 tab）/统计图表（4 chart：avg 评估均分柱图+count 评估分布饼图+投票选项柱图+问卷答卷数柱图）；route 权限 leader/teacher 各 14 条、organizer 9 条、student 10 条、academic 不授（6 表全无权限）；蓝本 `.artifacts/nocobase-ui-builder/stage3-eval-survey/`（含 gen_eval_survey.py）；逻辑档案 `docs/features/s3-eval-survey.md`；备份 `nocobase_20261109_stage3_eval_survey.sql`。新踩坑（D32）：①chart 块配置落 `flowModels.options.stepParams.chartSettings`（ChartBlockModel），uiSchemas 读不到，验证走 SQL like；②avg 聚合与 count 同构有效；③survey_answer 描述字段需 formBehaviorDescriptionReview（同教材 stock）
 
 - [x] **阶段4 workflow 4 条审批流 + 待办 2 页完成（2026-11-09）**：请假（organizer 审批，approved 分支聚合 sum(duration_days) 超 class.total_days/7 → over_ratio=true）/退学（leader 审批，approved → 学员 status=dropout）/报名（academic）/缴费（academic），manual 节点 update 表单 + action 按钮预设 status（D33）；「审批待办」flowPage（396747054514176，4 tab dataScope status=pending）+「工作台待办」legacy page（396748572852224，WorkflowTodo 块，D34）；route 授权 leader/organizer/academic 各 6 条（两页）；请假全流程 + 超限提醒 API 实测通过；脚本 `.artifacts/nocobase-workflow/s4-workflows/gen_workflows.py` + 蓝本 `s4-todo-page.json`；逻辑档案 `docs/features/s4-workflow.md`；备份 `nocobase_20261109_stage4_workflow.sql`。新踩坑：①manual forms 手写结构（type=update + filter 变量 + action values 预设 + job status 恒 1）；②manual task submit 在 execution 刚创建几秒内会 400，重启应用可解（正常节奏不复现）；③已执行 workflow 节点锁死，须 revision（带 key）改新版；④测试审批把 assignees 临时换 admin(1)，测完 revision 改回
 
@@ -88,10 +99,11 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 
 ## 下一步（按序）
 
-1. **Violet 浏览器走查**（三项一起）：①阶段6 移动端 6 页（手机浏览器开 http://127.0.0.1:13000/v/mobile 或 /mobile，学员 student_test 登录，逐页点；课表入口应打开 /x/main/schedule/week）；②阶段5 三页拖拽（冲突演示对在第1周周三第1节）；③演示脚本走查（组织员建班→学员扫码报名→审核→请假→排课→评估→统计，测试账号见 D27，密码 dx123456）。发现问题回报芒果怪修
-2. **服务器同步阶段6**：走查通过后按 SETUP.md 第 8 节重打包（fresh dump 含阶段6 页面）
-3. AI 交互（D39）：Violet 提供 LLM key（任意 OpenAI 兼容/Anthropic 服务）后，用 `nb api ai llm-services` 配置，再给排课画布加"冲突智能解读"类交互
-4. （可选后置）公开扫码报名：public forms 未登录报名链接（班次 qr_token 已备）
+1. **Violet 浏览器走查**（三项一起）：①阶段6 移动端 6 页（手机浏览器开 http://127.0.0.1:13000/v/mobile 或 /mobile，学员 student_test 登录，逐页点；**课程表页已改直出本班课表（D57），不再是跳转按钮**）；②阶段5 三页拖拽（冲突演示对在第1周周三第1节）；③演示脚本走查（组织员建班→学员扫码报名→审核→请假→排课→评估→统计，测试账号见 D27，密码 dx123456）。发现问题回报芒果怪修
+2. **决策：nb_dx_course_schedule 存量 end_time 脏数据是否修**（D57 发现，展示层已规避；修则按 start_time+节次时长 100min 重算）
+3. **服务器同步阶段6**：走查通过后按 SETUP.md 第 8 节重打包（fresh dump 含阶段6 页面）
+4. AI 交互（D39）：Violet 提供 LLM key（任意 OpenAI 兼容/Anthropic 服务）后，用 `nb api ai llm-services` 配置，再给排课画布加"冲突智能解读"类交互
+5. （可选后置）公开扫码报名：public forms 未登录报名链接（班次 qr_token 已备）
 
 ### 阶段7 速查（续做直接用）
 
@@ -124,7 +136,7 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 
 - workflow 列表/读回：`nb api workflow workflows list --filter '{"current":true}' -j`；节点链 `workflows get --appends nodes`
 - 当前启用版本：请假流 v2 `396745412444160`（assignees [3]）、退学流 v2 `396746379231232`（[2]）、**报名流 v2 `396799131385856`（key re5oyih3tpo，[4]；旧版 396743046660096 已于 2026-11-09 停用）**、缴费流 `396743055048704`（[4]）
-- **报名审批唯一入口 =「工作台待办」提交**（直接改表 status 不推进 execution，账号不会建，见 docs/features/s4-workflow.md D54 节顶部规则）
+- **报名审批唯一入口 =「工作台待办」提交**（直接改表 status 不推进 execution，账号不会建，见 docs/features/s4-workflow.md D54 节顶部规则）；2026-11-09 起「工作台待办」= flowPage+jsBlock 版（routeId 396809741205504 / `/admin/lv96gv4zgoq`），旧 legacy 路由 396748572852224 已隐藏（D56b）
 - manual task API：待办 `workflowManualTasks:listMine`；提交 `workflowManualTasks:submit`（filterByTk=taskId，body `{"result":{"<formKey>":{...},"_":"<actionKey>"}}`）；submit 400 → 重启 nb-dx-demo-app
 - 测试数据：班次 1「第1期中青班」total_days=21；学员 1 挂班 1；leave#3/#4 为已批演示记录
 

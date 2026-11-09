@@ -16,13 +16,13 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 | 材料提交 | 396774414352384 | xm89i0vlzcq | createForm | nb_dx_material |
 | 学员录 | 396774630359040 | ru5tj20ddta | table（recordActions 仅 view） | nb_dx_student |
 | 我的作业 | 396774636650496 | owx51rwfogb | 作业列表 table + 提交作业 createForm | nb_dx_assignment / nb_dx_submission |
-| 课程表 | 396774655524864 | jxuptin8mn3 | jsBlock 入口卡（window.open → `/x/main/schedule/week`） | — |
+| 课程表 | 396774655524864 | jxuptin8mn3 | jsBlock 直出本班课表（2026-11-09 二次改版） | nb_dx_class / nb_dx_course_schedule / nb_dx_teacher |
 
 ## 规则与决策
 
 1. **权限粒度**：r_student 新增 12 条 route 授权（6 页 + 6 个 hidden tabs 子 route）；表权限仅补了 `nb_dx_material` create（阶段2 已配齐其余 5 表）。`nb_dx_student` 学员录保持 view-only，recordActions 只留 view。
 2. **数据范围继承阶段2 scope**：学员的"我的请假记录"和作业列表自动被 S1/S2 scope 过滤（实测 assignment count=1 只见本班作业）。
-3. **课表挂 Link 而非重建**：移动端「课程表」页是 jsBlock 渲染的入口卡，点击 `window.open('/x/main/schedule/week')` 打开 AI Portal 周课表。不复制课表数据，单一数据源。
+3. **课表直出而非跳转**（2026-11-09 二次改版，Violet 反馈"直接展示该学员的课程表，去掉按钮跳转"）：移动端「课程表」页 jsBlock（uid `1pjmum9e6sc`）改为进入页面即渲染本班课表——`ctx.makeResource('MultiRecordResource')` 依次拉 `nb_dx_class`（scope 自动限本班，取第一个班）→ `nb_dx_course_schedule`（filter class_id，pageSize 200）→ `nb_dx_teacher`（id→姓名映射，替代 appends）。按周 Segmented 切换（周集合从数据探测），按天分组 Card+List 展示：课名+kind Tag、节次+时间+教师+地点。数据仍单一数据源 `nb_dx_course_schedule`，不复制。旧入口卡（window.open → `/x/main/schedule/week`）已废弃。**时间口径与 main 一致**：`day_of_week` 权威列 + start_time 显式东八区（UTC 钟面 +8h）反推节次，显示固定节次表（第1~5节/晚间），不显示原始 end_time 钟面——存量 end_time 有脏数据（D49 只修了 start_time，部分 end_time 比 start 还早/跨日回跳），按节次口径展示可完全规避。
 4. **审批闭环复用阶段4 workflow**：移动端请假 createForm 提交 status=pending，直接触发请假审批流（组织员待办）；报名记录由教务在 PC 端审核。移动端不配审核界面（审核是教职工场景，PC 响应式兜底）。
 5. **表单字段裁剪**：所有 createForm 只放学员可填字段，状态/审核人/批阅分数等字段一律不放（由流程写回）。
 
@@ -33,13 +33,15 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 3. **m2o 字段 titleField 必须显式对象形式**：`nb_dx_class` 的 YAML titleField=name 在 live 元数据里未生效（落到 id），蓝本报 `relation-titleField-unreadable`。所有 m2o（klass/student/topic/teacher/review_by/assignment）统一写 `{"field":"x","titleField":"name|nickname"}`（users 用 nickname）。
 4. **多块 layout 不许每块独占一行**：`block-layout-single-column` 报错。两块（表单+表格）必须同行（各 span 12）。与阶段3 踩坑④同源。
 5. **applyBlueprint 蓝本不支持 js action 的 `clickSettings`**：configureOptions 仅支持 title/tooltip/icon/iconOnly/type/color/htmlType/position。要放 JS 逻辑用 **jsBlock**（`settings.code`，strict render：必须 `ctx.render(...)` + `ctx.libs.antd` JSX）。
+6. **flow-surfaces 强制资源 API（2026-11-09 补）**：JSBlock 里读集合禁止 `ctx.api.request({url: 'xxx:list'})`，校验器报 `runjs-resource-api-required`；必须用 `ctx.makeResource('MultiRecordResource')`（setResourceName/setPageSize/setFilter/refresh/getData）。appends 未在 resource API 文档中出现，关联名（如教师姓名）用第二次资源查询+前端映射替代。另外 JSX onChange 里函数自引用（drawWeek 递归）报 `runjs-global-unknown`，用局部持有者变量（`const self = { redraw: null }` + `self.redraw = drawWeek`）绕过。
 
 ## 验证记录（2026-11-09）
 
 - 学员账号 student_test API 实测：leave create（id=8，status=pending，进审批流）／material create／assignment list（count=1，本班 scope 生效）／submission create／registration create 全部 200。
 - route 授权读回 12/12 命中（r_student）。
 - `/v/mobile` 与 `/mobile` HTTP 200。
-- 浏览器端手机走查待 Violet（芒果怪无浏览器环境）。
+- 浏览器端手机走查待 Violet（芒果怪无浏览器环境）。**（2026-11-09 起芒果怪已可用 Playwright+Chrome 无头自测，本节后续功能用无头验证）**
+- 课程表直出改版（2026-11-09）：学员登录 390×844 手机视口实测，`/v/mobile/jxuptin8mn3` 进页直出"我的课程表 · 第1期中青班"，按天分组+节次口径（第1节 08:30–10:10 等）+教师/地点齐全，第1周/第2周 Segmented 切换正常，按钮跳转已移除；HTTP4XX 仅登录态注入初期的 401（正常），无 JS 错误。验证脚本 `.artifacts/e2e-check/verify_mobile_schedule.py`。
 
 ## 遗留
 

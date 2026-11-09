@@ -127,3 +127,24 @@
 | D54 | **报名审核流 v2（revision key re5oyih3tpo，id 396799131385856）：manual 审批 → cond[approved] → query(按手机号查学员档案) → cond[无档案] → true 分支（create users(username=手机号, nickname=姓名, password=dx123456, roles=[r_student]) → create nb_dx_student(挂班次+user_id+status=active+enroll_status=yes) → update registration 回写 student_id/user_id）/ false 分支（update registration 只挂已有 student_id）**。同手机号二次报名不重复开号、不重建档案，只把新报名挂到已有档案 | Violet 确认方案 A。新学员登录口径：**用户名=报名手机号，密码统一 dx123456**（与测试账号一致，演示友好）；S2/S1b scope 自动生效（student.user_id 关联是 scope 生效的关键） |
 | D54a | **workflow 节点链三条硬规则**（本次 4 轮实测踩坑）：①f-string 生成 `{{$...}}` 变量须写 `{{\$...`，多一个 `$` 变量解析失败→condition 恒 false；②**分支节点的直接下游才带 branchIndex（true=1 / false=0），分支内后续节点 branchIndex=NULL**，且**分支节点自身 downstreamId 必须为空**（填了会导致分支首节点被重复执行，如 create user 二次执行撞 username 唯一约束）；③**SQL 直改 flow_nodes 配置后必须 `workflows sync`（或重启应用）**，内存节点图不会自动刷新；④query/create 节点结果是 record 本体，引用 `{{$jobsMapByNodeKey.<key>.id}}`（无 .data 前缀）；⑤basic engine 没有 `empty` calculator，判空用 `equal` 与 null 比较 | nodes:create API 创建的节点不自动填 downstreamId（请假流是填的），缺了会断链；补 downstreamId 到分支节点又会重复执行——分支语义靠 upstreamId+branchIndex 表达 |
 | D54b | **registration 集合补 note 字段（报名附言）**：公开页/移动页提交的 note 此前被静默丢弃（集合无此列，API 忽略不报错），dsl-reconciler push 新增，signup_bot 字段白名单本就含 note，落库即通 | Violet 公开报名页有「报名附言」输入框；附言进报名记录供教务审核参考 |
+| D55 | **表格列/详情弹窗绑定学员一律走关联字段 `student.name`，禁用裸文本字段 `student_name`**：审批待办-请假待审列表列（TableColumnModel + DisplayTextFieldModel，fieldPath 改 `student.name` + `associationPathName: "student"`）与查看弹窗（删 student_name 详情项、student 项挪至首行）已改；学员提交的表单不含 student_name，该列永远空导致回显缺失。连带修复悬空引用：leave#6 吴建军 student_id 8→26、leave#7 许文博 11→29（学员表重灌后 id 变段，旧引用悬空） | Violet 走查反馈「列表学员姓名与另一个空学员姓名字段不一致」；裸字段是建模冗余（titleField），显示口径统一走关联 |
+
+## 2026-11-09（综合门户「各班次学员数」图表修复）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D56 | **各班次学员数 chart 改 custom visual raw + 前端分组计数**：`charts:queryData` 对关联维度（`klass.name`）不聚合——返回每学员一行明细且响应里根本没有 measure 别名列（stuCount 缺失），builder 柱状图因此「只有 x 轴没有数量」、图例显示英文别名。改 `visual.mode=custom`，raw 里取 `ctx.data.objects` 按 `klass.name` 分组计数后 return ECharts option：`label.show=true`（柱顶数量）、系列名「学员数」（图例中文）、按数量降序、`minInterval:1` 整数刻度、klass.name 空显示「未分班」。配置产物 `.artifacts/nocobase-ui-builder/fix-portal-chart/` | 与 D43 同一渲染路径，但 D43 是「翻译 select value」，本次是「接口不聚合只能前端数」；直接改接口查询不可控，前端计数对 demo 数据量完全够用。核实：18 名学员 class_id 确为 NULL（真实数据非查询 bug），图表如实反映 |
+| D56b | **「工作台待办」放弃 legacy page（WorkflowTodo 块），改 flowPage + jsBlock 自建审批台**：Violet 反馈空白 → 排查四层根因（uiSchemas 根行错位/inline properties 丢弃/treePath.type NULL）全修完后客户端仍不渲染，定性 **2.4 客户端 legacy 通道已实质废弃**（拿到完整 schema 但 WorkflowTodo 等插件自定义组件不在渲染注册表，不可修复）。新页 routeId 396809741205504（/admin/lv96gv4zgoq），jsBlock 内 `workflowManualTasks:listMine`（filter 只能 status:0，加 type 报 Invalid SQL）+ `flow_nodes:get` 读 actions（403 回退 FALLBACK 映射）+ Popconfirm 提交 submit。**落地路径**：apply-blueprint runjs 校验器拦白名单外自定义 action → 占位代码过校验建页 + SQL 直改 flowModels 的 runJs.code（校验器只拦蓝本通道）；navigation 必须写 `portalUid:"__default_admin__"`（layoutUid 直拒）；**父路由与 tab 子路由是两条独立授权记录**，父缺→404、tab 缺→listAccessible 树 children 空页面只有标题；tab 行须 hidden=false 且父行 enableTabs=true 前端才拉 grid 渲染 | legacy WorkflowTodo 是 1.x 交互范式，2.4 不再投入；jsBlock 版视觉可控（Tag/Popconfirm/danger 红）且权限模型与 4 条流天然对齐。旧路由 396748572852224 hideInMenu+hidden 双置 true 保留可回滚 |
+
+## 2026-11-09（移动端课程表直出改版）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D57 | **移动端「课程表」页（/v/mobile/jxuptin8mn3）jsBlock 直出本班课表，废除入口卡跳转**：进入页面即 `ctx.makeResource` 拉班次（scope 限本班）→ 课表（filter class_id）→ 教师（id→姓名映射替代 appends），按天分组 Card+List 展示，周 Segmented 切换；**时间口径与 main 周课表一致**：day_of_week 权威列 + start_time 东八区反推节次，显示固定节次表，**不显示原始 end_time 钟面**。配置产物 `.artifacts/nocobase-ui-builder/mobile-schedule-inline/` | Violet 反馈"直接展示该学员的课程表，而不是点击按钮跳转"；手机上再跳 PC 周课表体验割裂。**连带发现存量脏数据**：`nb_dx_course_schedule` 部分 end_time 比 start_time 还早/跨日回跳（D49 只重写了 start_time，end_time 未修，main 端只显示节次 label 所以从未暴露）——展示层已规避，是否修数据待 Violet 拍板；另 lesson：flow-surfaces 校验器强制 JSBlock 读集合用 `ctx.makeResource`（禁 `ctx.api.request`），且 JSX onChange 函数自引用报 unknown-global，需局部持有者变量绕过 |
+
+## 2026-11-10（待办标题学员名修复）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D58 | **请假/退学审批流 manual 节点 task 标题改走关联字段**：`{{$context.data.student_name}}` → `{{$context.data.student.name}}`（trigger appends 含 student，实测 `请假审批 - 张明远` ✓）。已执行工作流节点禁止直接 reconfigure（400），必须走 same-workflow revision：请假流新版本 id **396816229400576**、退学流 **396816562847744**（均 enabled+current，旧版自动停用）；jsBlock ENABLED_WF/WF_TITLE/FALLBACK_ACTIONS 同时补新旧 id 兼容（SQL 直改，flowModel `72hgyrjlwza`）；存量 pending 待办标题按 execution.context→leave→student.name SQL 回填 3 条；两条测试垃圾待办（leave13/14，芒果怪造）走 UI 驳回清场，池子回到 4 条真实演示数据 | Violet 反馈待办列表 4 条里 3 条学员名空——同 D55 根因（学员表单不填裸文本 student_name），标题模板在待办创建时渲染落库，改节点后需回填存量；缴费流 payer_name 录入时手填无此问题，不动 |
+| D58a | **已执行工作流改节点配置的三步法**：①`workflows revision --filter-by-tk <id> --filter '{"key":"<key>"}'` 建同工作流新版本（新 id 未执行可改）→ ②`flow-nodes update` 改新版本节点 → ③`workflows update --enabled` 启用（自动置 current、旧版自动停用）。**下游硬编码 workflowId 的（如 jsBlock ENABLED_WF）必须同步补新 id**，否则新版本产生的待办被过滤不显示 | API 对已执行工作流节点直接报 "Nodes in executed workflow could not be reconfigured" |

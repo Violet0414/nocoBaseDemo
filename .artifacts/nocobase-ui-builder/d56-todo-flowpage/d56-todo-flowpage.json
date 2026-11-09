@@ -1,0 +1,32 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "routeId": 396734888738816
+    },
+    "item": {
+      "title": "工作台待办",
+      "icon": "CarryOutOutlined"
+    }
+  },
+  "page": {
+    "title": "工作台待办"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "待办任务",
+      "blocks": [
+        {
+          "key": "todoJsBlock",
+          "type": "jsBlock",
+          "settings": {
+            "code": "\nconst { Card, List, Button, Tag, Empty, Typography, Space, message, Popconfirm } = ctx.libs.antd;\n\nconst ENABLED_WF = [396745412444160, 396743055048704, 396746379231232, 396799131385856];\nconst WF_TITLE = {\n  396745412444160: '请假审批',\n  396743055048704: '缴费审核',\n  396746379231232: '退学审批',\n  396799131385856: '报名审核',\n};\nconst FALLBACK_ACTIONS = {\n  396745412444160: [{key:'approve',title:'通过',values:{status:'approved'}},{key:'reject',title:'驳回',values:{status:'rejected'}}],\n  396743055048704: [{key:'pass',title:'审核通过',values:{status:'approved'}},{key:'deny',title:'拒绝',values:{status:'rejected'}}],\n  396746379231232: [{key:'approve',title:'通过',values:{status:'approved'}},{key:'reject',title:'驳回',values:{status:'rejected'}}],\n  396799131385856: [{key:'pass',title:'审核通过',values:{status:'approved'}},{key:'deny',title:'拒绝',values:{status:'rejected'}}],\n};\n\nasync function getNodeActions(nodeId, workflowId) {\n  try {\n    const n = (await ctx.api.request({ url: 'flow_nodes:get', params: { filterByTk: nodeId } }))?.data?.data;\n    const forms = (n?.config?.forms) || {};\n    const formKey = Object.keys(forms)[0] || 'review';\n    const actions = (forms[formKey]?.actions) || FALLBACK_ACTIONS[workflowId] || [];\n    return { formKey, actions };\n  } catch (e) {\n    return { formKey: 'review', actions: FALLBACK_ACTIONS[workflowId] || [] };\n  }\n}\n\nasync function loadTasks() {\n  const res = await ctx.api.resource('workflowManualTasks').listMine({ pageSize: 100, filter: JSON.stringify({ status: 0 }) });\n  const rows = res?.data?.data || [];\n  const mine = rows.filter(t => ENABLED_WF.includes(t.workflowId));\n  const nodeCache = {};\n  for (const nid of [...new Set(mine.map(t => t.nodeId))]) {\n    const t0 = mine.find(t => t.nodeId === nid);\n    nodeCache[nid] = await getNodeActions(nid, t0.workflowId);\n  }\n  return mine.map(t => ({ ...t, ...nodeCache[t.nodeId] }));\n}\n\nasync function submit(task, action) {\n  try {\n    await ctx.api.resource('workflowManualTasks').submit({ filterByTk: task.id, values: { result: { [task.formKey]: { ...(action.values || {}) }, _: action.key } } });\n    message.success('已提交：' + action.title);\n    await draw();\n  } catch (e) {\n    const msg = e?.response?.data?.errors?.[0]?.message || e.message || String(e);\n    message.error('提交失败：' + msg);\n  }\n}\n\nasync function draw() {\n  ctx.render(<Card size=\"small\"><Typography.Text>待办加载中…</Typography.Text></Card>);\n  let tasks = [];\n  let err = null;\n  try { tasks = await loadTasks(); } catch (e) { err = e?.message || String(e); }\n  if (err) {\n    ctx.render(<Card size=\"small\"><Empty description={'加载失败：' + err} /></Card>);\n    return;\n  }\n  ctx.render(\n    <Card size=\"small\" title={'待办任务（' + tasks.length + '）'}>\n      {tasks.length === 0 ? (\n        <Empty description=\"暂无待办任务\" />\n      ) : (\n        <List\n          dataSource={tasks}\n          renderItem={(t) => (\n            <List.Item\n              actions={(t.actions || []).map(a => (\n                <Popconfirm key={a.key} title={'确认「' + a.title + '」？'} onConfirm={() => submit(t, a)}>\n                  <Button size=\"small\" type={a.values && a.values.status === 'rejected' ? 'default' : 'primary'} danger={a.values && a.values.status === 'rejected'}>\n                    {a.title}\n                  </Button>\n                </Popconfirm>\n              ))}\n            >\n              <List.Item.Meta\n                title={<Space><Tag color=\"blue\">{WF_TITLE[t.workflowId] || ('流程#' + t.workflowId)}</Tag><Typography.Text strong>{t.title}</Typography.Text></Space>}\n                description={'创建于 ' + String(t.createdAt || '').replace('T', ' ').slice(0, 19)}\n              />\n            </List.Item>\n          )}\n        />\n      )}\n    </Card>\n  );\n}\n\nawait draw();\n"
+          }
+        }
+      ]
+    }
+  ]
+}

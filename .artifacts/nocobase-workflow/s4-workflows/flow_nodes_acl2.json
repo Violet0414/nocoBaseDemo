@@ -1,0 +1,6 @@
+{
+  "name": "flow_nodes",
+  "dataSourceKey": "main",
+  "usingActionsConfig": true,
+  "actions": [{ "name": "get", "fields": ["title", "type", "config", "workflowId", "branchIndex"] }]
+}
