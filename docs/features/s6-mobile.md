@@ -73,3 +73,23 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 | 我的作业·提交作业 | n67h5v3zos5 | defaultStatusSubmitted | submitted |
 
 **踩坑**：`set-field-value-rules` 是 slot 全量替换——报名表单已有 `autoKlassFromUrl` 规则，必须先读原文一并回写，否则会被冲掉。静态默认值采用 runjs 形态（`return 'pending';`），项目内已验证。存量 2 条空 status 报名记录已 UPDATE 为 pending。无头浏览器闭环回归：UI 提交 → POST body 带 `status:"pending"` → 落库 → 报名待审页可见 ✓（测试记录已清理）。
+
+## 补充二：公开扫码报名页（2026-11-09，D53）
+
+**为什么**：演示主链路「学员扫码报名」时学员手机无登录态；此前方案 public forms 是商业插件，Violet 拍板自制（方案B）。
+
+**机制取证**：本版本 auth 中间件只放行代码级 public 白名单（`acl.allowManager.isPublic`），anonymous 角色的资源授权**不能**让无 token API 通过（一律 EMPTY_TOKEN 401）——给 anonymous 授权的路走不通。
+
+**方案**（三件套）：
+
+1. **静态页 `/signup.html`**：放 nginx public 目录（`storage/.nocobase/proxy/nginx/default/public/`，D44 同款），纯原生 HTML/CSS/JS 无 CDN 依赖，窄屏适配。读 URL `?class=<班次id>`，用 API key fetch 班次显示卡片（班名+编号+状态标签），表单字段：姓名/手机号/性别/政治面貌（必填）+ 单位职务/附言（选填），前端必填校验，提交成功显示成功页。提交 body 固定 `status=pending` → 触发报名审批流。源码产物 `.artifacts/public-signup/signup.html`。
+2. **机器人凭证**：`r_signup_bot` 角色（仅 `nb_dx_registration` create 且字段白名单 name/phone/gender/political_status/work_unit/note/class_id/status + `nb_dx_class` view 限班次展示字段）+ `signup_bot` 用户（id 7）+ apiKeys 插件签 10 年期 JWT（`{userId:7, roleName:"r_signup_bot"}`）。**API key 本质是带 roleName 的长期 JWT**，`Authorization: Bearer` 走标准认证链。角色 snippets 带 `pm.api-keys.configuration`（bot 自己签 key 必需）。越权实测：registration list / class destroy 均 403。
+3. **二维码改指公开页**：`main/src/features/qr/class-qr.tsx` 二维码内容由 `/v/mobile/3cfhfajaa4x?class=` 改为 `/signup.html?class=`（**已改未 build+deploy**，部署待 Violet）。改版后扫码即达公开页；登录态学员仍可用移动端报名页（`/v/mobile/3cfhfajaa4x`）。
+
+**安全边界**：key 硬编码在公开 HTML 中（任何访客可取），但权限面 = 只能 create 报名记录 + view 班次展示字段，最坏后果是刷报名垃圾数据（demo 可接受）；恶意 status=approved 提交只是记录状态、不触发流程不改他人数据，PC 审核员可见可改。真实 key 不入库：提交版为占位符，真 key 在 `backups/public-signup-api-key.txt`。
+
+**踩坑**：①bot 用户绑角色用 `users.roles` 关联 create 会报「Role UID already exists」（它当新角色建），直接 INSERT `rolesUsers` 表；②apiKeys:create 需要 `pm.api-keys.configuration` snippet（默认 No permissions）；③loadKlass 的 fetch 忘带 API key 时显示「班次不存在」——公开页所有 /api 调用都必须带 Bearer key。
+
+**验证**（无头浏览器未登录态）：班次卡片「E2E链路测试班（E2E2601）报名中」→ 填表提交 → 成功页 → 落库 pending + 报名流 execution 触发 ✓。
+
+**服务器重部署注意**：signup.html 须复制进服务器 nginx public 目录（同 D44 logo.png 一起）；API key 随 HTML 携带，无需服务端配置；r_signup_bot/rolesResources 授权记录随 dump 迁移。

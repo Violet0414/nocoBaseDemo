@@ -113,3 +113,9 @@
 |---|---|---|
 | D51 | **移动端 createForm 状态字段默认值必须用 fieldValue 规则补齐**：扫码报名（status=pending）此前漏配 → UI 提交落库 status 为空，报名待审 tab 按 `status=pending` 过滤查不到（此前测试数据是 API 直接带 status 造的，掩盖了 bug）。同类修复请假（pending）/材料（submitted）/作业提交（submitted）三个表单；存量 2 条空 status 记录已 UPDATE 回 pending。写法：`set-field-value-rules` 是**全量替换** slot，已有规则（如 autoKlassFromUrl）必须先读出原文一并回写；静态默认值用 runjs 形态 `{"code":"return 'pending';","version":"v2"}`（项目内已验证的形态，未采用未知静态 shape） | Violet 报障「提交报名后待审页无数据」；表单级默认值比 DB 列默认值更直观可控，且不动建模 |
 | D52 | **全站表格操作栏（TableActionsColumnModel）统一移到最后一列**：45 处 flow-surfaces 表格块的操作栏原本全在第一列（sort=1），用 `flowSurfaces:moveNode`（source=操作栏列 uid，target=当时行末列 uid，position=after）逐一移至末位。列序存在 `flowModelTreePath.sort`（depth=1 的父子边），SQL 可全量定位；纯服务端配置改动，前端刷新即生效，无构建部署 | Violet 要求「所有板块的操作栏放最后一列」；no-code 页面统一规范，AI Portal（main 源码）三页表格为自绘 React 表格无操作栏列，不在本次范围 |
+
+## 2026-11-09（公开扫码报名：自制静态页 + 机器人 API key）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D53 | **未登录扫码报名 = nginx public 静态页 `/signup.html` + 窄权限机器人 API key**（Violet 拍板方案B）。①机制取证：本版本 auth 中间件只放行代码级 public action 白名单（`acl.allowManager.isPublic`），**anonymous 角色的资源授权不能让无 token 请求通过**（一律 EMPTY_TOKEN 401），public forms 是商业插件不装；②方案：静态页放 nginx public 目录（D44 同款路径），建 `r_signup_bot` 角色（仅 `nb_dx_registration` create 带字段白名单 + `nb_dx_class` view）、`signup_bot` 用户（user id 7），用 apiKeys 插件签 10 年期 JWT 当 `Authorization: Bearer`（API key 本质是带 roleName 的长期 JWT，走标准认证链），页面 fetch 提交 `status=pending` → 触发报名审批流；③越权实测 list/destroy 403；二维码改指公开页（class-qr.tsx 已改**未部署**）；真实 key 留 `backups/` 不入库，提交版为占位符 | Violet 问"扫码时学员未登录怎么办"；公开表单商业插件不值得买。API key 权限面收窄到"只能刷报名垃圾数据"，demo 可接受；机器人角色 snippet 额外带 `pm.api-keys.configuration`（生成 key 必需） |

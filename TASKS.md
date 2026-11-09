@@ -65,7 +65,8 @@
 - [x] 二维码交互改版:弹窗直出+建班即得码(决策 D50) — **⏳ 2026-11-09 代码完成待 Violet 部署自测**:①班次管理行操作改原生 popup(删除 s5w1ecobnf2 window.open 跳转版,新建 PopupCollectionActionModel d84vmbh85ma + 弹窗 JSBlock d6jsr0yfxhv,点击当前页弹 dialog 直接展示二维码 iframe);②/qr 页支持 ?class=<id> 直查班次(保留 ?token 兼容),二维码只依赖班次 id → 新建班次立即可弹码;③二维码内容路径修正 /mobile/... → /v/mobile/3cfhfajaa4x(缺 /v 前缀应用内 404,Violet 实测发现);main 侧 class-qr.tsx 改动需 nb portal deploy main 生效,弹窗行操作已即时生效;配置产物 .artifacts/qr-dialog/
 - [x] 走查修复:报名待审无数据 + 操作栏列序(决策 D51/D52) — **✅ 2026-11-09 已自测**:①移动端 4 个 createForm(报名/请假/材料/作业)补 status 默认值规则(此前漏配,UI 提交落库空 status,待审 tab 按 pending 过滤查不到;API 测试数据带 status 掩盖了 bug),存量 2 条已修;②45 处表格块操作栏 moveNode 移至末列(admin+mobile 实测表头 ✓);纯服务端配置,前端刷新即生效;备份 nocobase_20261109_fix_status_actions.sql
 - [x] AI Portal 走查 bug 修复(决策 D47/D48) — **✅ 2026-11-09**:①api.ts 双 unwrap bug(listResource 等三 helper 取 `.data` 永远 undefined → 页面下拉/课表拿空数组,API 200 有数据),统一修复覆盖 /qr + 排课三页;②5 角色授 main Portal 访问权(rolesMultiPortals,__default_portal__),修学员 403 死链;无头浏览器回归:/qr 4 班次+二维码生成 ✓、学员直达周课表+本班 scope 自动选中 ✓;main 已重新 deploy;验证方式升级:本机 Playwright 无头浏览器,走查先自测
-- 验证:手机浏览器全流程可操作 — **🔄 API 层通过**:student_test 实测 leave create(进审批流)/material/submission/registration/assignment(本班 scope count=1)全 200;/v/mobile HTTP 200;**浏览器端手机走查待 Violet**。遗留:公开扫码报名(未登录)需 public forms,后置
+- 验证:手机浏览器全流程可操作 — **🔄 API 层通过**:student_test 实测 leave create(进审批流)/material/submission/registration/assignment(本班 scope count=1)全 200;/v/mobile HTTP 200;**浏览器端手机走查待 Violet**。遗留:公开扫码报名已做(见下条)
+- [x] 公开扫码报名(未登录态)(决策 D53) — **✅ 2026-11-09**:Violet 拍板方案B 自制公开页(anonymous 授权过不了 auth 中间件,public forms 商业插件不装)→ nginx public 静态页 /signup.html?class=<id> + r_signup_bot 角色(仅报名 create 字段白名单+班次 view,越权 403 实测)+ signup_bot(id 7) 10 年期 API key(apiKeys 插件 JWT);无头浏览器实测未登录:班次卡片→填表→落库 pending→触发报名审批流 ✓;产物 .artifacts/public-signup/(提交版占位符,真实 key backups/);备份 nocobase_20261109_pre_public_signup.sql;**待办:main class-qr.tsx 二维码改指公开页已改未 deploy**
 
 ## 阶段7:造演示数据 + 按角色演示脚本走查 🔄
 
