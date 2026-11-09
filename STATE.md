@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**阶段7 演示数据完成**：41 张业务表全覆盖灌入 + D26 数据级验证关闭 + stage7 备份；待 Violet 走查阶段5 三页拖拽 + 演示脚本走查；AI 交互因无 LLM key 未落地见 D39）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**补做班次报名二维码**（D46）：/x/main/qr 生成页 + 班次行操作 + 报名页 URL 自动带班次；走查问题修复 3 项 D43-D45；阶段6 移动端完成待手机走查；服务器重部署时注意 D44 logo.png 同步 + main 源码已含 qr 页）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -14,7 +14,13 @@
 
 ## 当前位置
 
-**阶段7 演示数据完成（2026-11-09）** — 41 张业务表全覆盖：4 班次 / 21 学员 / 8 师资 / 12 专题 / 29 课节（含 1 对刻意冲突演示） / 48 座位 / 教材全链路 / 请假 6（含超限+待审）/ 评估 30 / 投票问卷 / 报名 6（4 条待审供走审批流）/ 缴费 4 / 作业。生成脚本 `.artifacts/stage7-demo-data/`（幂等保护）；业务约定与踩坑见 `docs/features/s7-demo-data.md`；备份 `nocobase_20261109_stage7_demo_data.sql`。**D26 已关闭**：student_test 登录实测学员只见本人+本班（S1b/S1/S2 scope 全生效）。
+**班次报名二维码补做完成（2026-11-09，D46）** — 回应 Violet「班次的二维码在哪」：①AI Portal 新增 `/x/main/qr` 二维码页（main 源码 `src/features/qr/class-qr.tsx` + routes.tsx 注册 hidden 路由，qrcode npm 包本地生成、origin 自适应、可下载 PNG，依赖已装进 package.json）；②admin 班次管理页新增「报名二维码」行操作（JSRecordActionModel uid s5w1ecobnf2，window.open `/x/main/qr?token=<qr_token>`）；③移动报名页 createForm 加 fieldValue 规则 autoKlassFromUrl（uid mgyr71ht7sj）：URL `?class=<班次id>` 时自动选班次。typecheck/build/deploy 全过，/qr 与报名页均 200。备份 `nocobase_20261109_qr_signup.sql`；链路逻辑见 docs/features/s6-mobile.md 补充节。**服务器重部署时**：main Portal 源码已含 qr 功能，重新 build+deploy 或随 storage/portals 同迁即可。
+
+**走查问题修复完成（2026-11-09，D43-D45）** — Violet 走查反馈 3 项已修：①6 个按 select value 分组的 chart（库存报表/学籍/考勤/请假/评估×2）改 custom visual + raw 中文映射（评估平均分 bar 含坐标轴中文化）；投票选项分布本身中文未动；②库存报表 chart+table 并排块统一 height 380 specifyValue；③logo 破图根因 = 附件匿名 401（nginx auth_request 拦 /storage/uploads），已给 anonymous 授 attachments view + logo 改走公开路径 /logo.png（attachments.id=1.url 已改，文件在 nginx public 目录），admin nickname 改「管理员」。配置改动备份 `nocobase_20261109_fix_charts_logo.sql`；蓝本产物 `.artifacts/nocobase-ui-builder/fix-charts/`。**服务器重部署时**：logo.png 须复制进服务器 nginx public 目录（D44），否则登录页 logo 仍破图。
+
+**阶段6 移动端完成（2026-11-09）** — Portal `mobile`（no-code，/v/mobile，portalUid `__default_mobile__`）配学员核心 6 页：扫码报名（396774382895104）/请假申请（396774621970432）/材料提交（396774414352384）/学员录（396774630359040）/我的作业（396774636650496）/课程表 jsBlock 入口卡（396774655524864，window.open → /x/main/schedule/week）。r_student 补 12 条 route 授权 + nb_dx_material create；学员 API 实测 5 项全过（请假/材料/作业/报名/本班 scope）。蓝本 `.artifacts/nocobase-ui-builder/stage6-mobile/`；逻辑档案 `docs/features/s6-mobile.md`；备份 `nocobase_20261109_stage6_mobile.sql`。遗留：①公开扫码报名（未登录态）需 public forms，后置；②手机浏览器走查待 Violet。
+
+**服务器部署完成（2026-11-09，D42）** — 内网机 `10.10.40.44`（Ubuntu 24.04，ops 用户）整体迁移：compose 双容器（nocobase 2.4.0-alpha.17-full + postgres:16）+ fresh dump + storage（portals/uploads/apps）随迁，`APP_KEY` 原样保留。验证全过：HTTP 200、Portal `/x/main/` hash 一致（index-Bcd5rqc0.js）、leader_test 登录 OK、班次 4/学员 21 数据无损。访问地址 **http://10.10.40.44:13000/**（账号密码与本机完全一致）。部署目录 `/home/ops/dx-demo/pkg`，步骤沉淀 SETUP.md 第 8 节，迁移包 `.artifacts/server-deploy/`。注意：服务器另有他人业务容器（5173/8080/28080），勿动。**阶段6 六页只在本机，服务器尚未同步（重部署时随 fresh dump 一并带走）。**
 
 **并行待走查**：阶段5 三页（周课表 /schedule/week、排课画布 /schedule/board、座位表 /schedule/seats）已部署 http://127.0.0.1:13000/x/main/ ，拖拽走查待 Violet。**AI 交互未落地**：LLM 服务 0 配置，需 Violet 提供 key（D39）。
 
@@ -46,6 +52,8 @@
 
 - [x] **升级至 NocoBase 2.4.0-alpha.17 启用 AI Portal（2026-11-09，D36）**：决策链 2.2.41（无 Portal）→ 2.3.0-beta（也无，Portal 是 3.x 功能）→ Violet 拍板走真 Portal → 实测 2.4.0-alpha.17 即有完整 `nb portal` 命令面 + multiPortal=true，不必跳 3.0。两次升级前 pg_dump（`nocobase_20261109_pre_upgrade_2_3_beta.sql` / `nocobase_20261109_pre_upgrade_3_alpha.sql`）；`nb app upgrade --version X --force` 已知坑：--version 只拉镜像不切容器，须再跑一次 `--skip-download --force` 才切换；**--skip-download 的后遗症**：入口 index.html 嵌入的 publicPath 残留旧版本号（/dist/2.4.0-alpha.17/dist/2.3.0-beta.21/ 全 404），表现为升级后 /admin 所有页面卡 Loading 打不开，`nb app restart` 重新生成入口 HTML 即修复（2026-11-09 实测，无需重装 dist）。升级后 45 表/4 workflow/90 路由无损；`nb portal pull main` 拉源码到 `demo/main/`（pnpm install 约 8 分钟）。undici@8 与 node20 坑：jsdom 30 需 Node 22+，bash 前必 `source ~/.nvm/nvm.sh && nvm use 22`（钉了 pnpm override undici=7.30.2 无害）
 
+- [x] **部署内网服务器（2026-11-09，D42）**：10.10.40.44 compose 双容器整体迁移，全量验证通过；地址 http://10.10.40.44:13000/ ；步骤见 SETUP.md 第 8 节
+
 - [x] **阶段5 课表/排课/排座三页代码完成（2026-11-09）**：Portal main「教学排课」组（/schedule）——周课表（7×5 表格+冲突高亮+冲突提示卡）、排课画布（拖专题排课、拖课调课写 nb_dx_change_log、智能排课贪心版）、座位表（6×8 初始化、拖拽换座/清座、按学号/年龄自动排座 diff 保存）；`registryRoutesEnabled=false` 关模板 demo 路由。纯逻辑（detectConflicts/autoAssignSeats）与 UI 分离，单测 7 用例全过 + typecheck + eslint 通过；API 形态对齐 D37（body 平铺/filterByTk/class_id+class 关联名）。已 deploy（页面 hash 读回确认）；逻辑档案 `docs/features/s5-scheduling.md`；备份 `nocobase_20261109_stage5_scheduling.sql`。遗留：①浏览器拖拽走查待 Violet；②AI 交互未落地（无 LLM key，D39）；③服务端冲突校验 workflow 后置
 
 ## 实际安装方式与原计划的差异（重要）
@@ -62,9 +70,10 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 
 ## 下一步（按序）
 
-1. **Violet 浏览器走查**（两项一起）：①阶段5 三页拖拽（周课表/排课画布/座位表，冲突演示对已预置在第1周周三第1节）；②演示脚本走查（组织员建班→学员扫码报名→审核→请假→排课→评估→统计，测试账号见 D27，密码 dx123456）。发现问题回报芒果怪修
-2. 走查通过 → **阶段6 移动端**（按 Violet 优先级）
+1. **Violet 浏览器走查**（三项一起）：①阶段6 移动端 6 页（手机浏览器开 http://127.0.0.1:13000/v/mobile 或 /mobile，学员 student_test 登录，逐页点；课表入口应打开 /x/main/schedule/week）；②阶段5 三页拖拽（冲突演示对在第1周周三第1节）；③演示脚本走查（组织员建班→学员扫码报名→审核→请假→排课→评估→统计，测试账号见 D27，密码 dx123456）。发现问题回报芒果怪修
+2. **服务器同步阶段6**：走查通过后按 SETUP.md 第 8 节重打包（fresh dump 含阶段6 页面）
 3. AI 交互（D39）：Violet 提供 LLM key（任意 OpenAI 兼容/Anthropic 服务）后，用 `nb api ai llm-services` 配置，再给排课画布加"冲突智能解读"类交互
+4. （可选后置）公开扫码报名：public forms 未登录报名链接（班次 qr_token 已备）
 
 ### 阶段7 速查（续做直接用）
 
@@ -73,6 +82,14 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 - REST API 认证：`Authorization: Bearer <token>` + `X-Authenticator: basic`（仅 X-Token 会 401）
 - 测试账号（D27）：leader_test/organizer_test/academic_test/teacher_test/student_test，密码 dx123456；学员1 张明远绑 student_test
 - 阶段2 遗留 D26 已关闭（2026-11-09 实测）
+
+### 阶段6 速查（续做直接用）
+
+- 移动端入口：http://127.0.0.1:13000/v/mobile（/mobile 也通）；6 页 routeId 见 docs/features/s6-mobile.md 表格
+- mobile Portal 蓝本规则：navigation 只带 `portalUid: "__default_mobile__"` + `item.icon`；omit group/layoutUid
+- 蓝本新踩坑：①关联目标 >10 字段的 fieldGroups 挂**目标表**键下且须覆盖全部生成字段（student 15 字段含 user）；②m2o 字段须对象形式 `{"field","titleField"}`（users 用 nickname）；③多块 layout 不许每块独占一行（同行 span 12）；④蓝本不支持 js action `clickSettings`，JS 逻辑用 jsBlock（settings.code，strict render 必须 ctx.render）
+- 学员验证数据：leave#8（pending，进审批流）、material/submission/registration 各 1 条（2026-11-09 实测产生，可当演示数据用）
+- 公开扫码报名未做（登录态报名页替代，public forms 后置）
 
 ### 阶段5 速查（续做直接用）
 
@@ -139,5 +156,5 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 | 3 PC 管理端 | ✅ 38 页全完成（教学资源 7 + 教材 6 + 教务 5 + 班务 6 + 学员 5 + 门户 3 + 评估问卷统计 6） | nocobase_20261109_stage3_eval_survey.sql |
 | 4 workflow | ✅ 4 条审批流 + 待办 2 页（请假/退学/报名/缴费 + 审批待办 + 工作台待办） | nocobase_20261109_stage4_workflow.sql |
 | 5 AI Portal | 🔄 代码完成待浏览器走查（三页已部署 /x/main/；AI 交互待 LLM key） | nocobase_20261109_stage5_scheduling.sql |
-| 6 移动端 | ⬜ 后置 | — |
+| 6 移动端 | ✅ 学员核心 6 页完成（手机浏览器走查待 Violet；公开扫码后置） | nocobase_20261109_stage6_mobile.sql |
 | 7 收尾 | 🔄 演示数据 ✅（41 表全覆盖 + D26 关闭）；演示脚本走查待 Violet | nocobase_20261109_stage7_demo_data.sql |

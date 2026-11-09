@@ -1,0 +1,294 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_mobile__",
+    "item": {
+      "title": "我的作业",
+      "icon": "BookOutlined"
+    }
+  },
+  "page": {
+    "title": "我的作业"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "我的作业",
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "assignmentTable",
+              "span": 12
+            },
+            {
+              "key": "submitForm",
+              "span": 12
+            }
+          ]
+        ]
+      },
+      "blocks": [
+        {
+          "key": "assignmentTable",
+          "type": "table",
+          "collection": "nb_dx_assignment",
+          "title": "作业列表",
+          "fields": [
+            "name",
+            {
+              "field": "klass",
+              "titleField": "name"
+            },
+            {
+              "field": "topic",
+              "titleField": "name"
+            },
+            {
+              "field": "teacher",
+              "titleField": "nickname"
+            },
+            "due_date",
+            "status"
+          ],
+          "recordActions": [
+            "view"
+          ]
+        },
+        {
+          "key": "submitForm",
+          "type": "createForm",
+          "collection": "nb_dx_submission",
+          "title": "提交作业",
+          "fields": [
+            {
+              "field": "assignment",
+              "titleField": "name"
+            },
+            {
+              "field": "student",
+              "titleField": "name"
+            },
+            "content",
+            "attachment",
+            "submitted_at"
+          ]
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_assignment": {
+        "popups": {
+          "view": {
+            "name": "作业详情",
+            "description": "查看一条作业记录。"
+          },
+          "addNew": {
+            "name": "新增作业",
+            "description": "新增一条作业记录。"
+          },
+          "edit": {
+            "name": "编辑作业",
+            "description": "编辑一条作业记录。"
+          },
+          "associations": {
+            "klass": {
+              "view": {
+                "name": "班次详情",
+                "description": "查看关联班次。"
+              },
+              "addNew": {
+                "name": "新增班次",
+                "description": "新增关联班次。"
+              },
+              "edit": {
+                "name": "编辑班次",
+                "description": "编辑关联班次。"
+              }
+            },
+            "topic": {
+              "view": {
+                "name": "专题详情",
+                "description": "查看关联专题。"
+              },
+              "addNew": {
+                "name": "新增专题",
+                "description": "新增关联专题。"
+              },
+              "edit": {
+                "name": "编辑专题",
+                "description": "编辑关联专题。"
+              }
+            },
+            "teacher": {
+              "view": {
+                "name": "教师详情",
+                "description": "查看布置教师。"
+              },
+              "addNew": {
+                "name": "新增教师",
+                "description": "新增布置教师。"
+              },
+              "edit": {
+                "name": "编辑教师",
+                "description": "编辑布置教师。"
+              }
+            }
+          }
+        }
+      },
+      "nb_dx_submission": {
+        "popups": {
+          "view": {
+            "name": "提交详情",
+            "description": "查看一条作业提交记录。"
+          },
+          "addNew": {
+            "name": "新增提交",
+            "description": "新增一条作业提交记录。"
+          },
+          "edit": {
+            "name": "编辑提交",
+            "description": "编辑一条作业提交记录。"
+          },
+          "associations": {
+            "assignment": {
+              "view": {
+                "name": "作业详情",
+                "description": "查看关联作业。"
+              },
+              "addNew": {
+                "name": "新增作业",
+                "description": "新增关联作业。"
+              },
+              "edit": {
+                "name": "编辑作业",
+                "description": "编辑关联作业。"
+              }
+            },
+            "student": {
+              "view": {
+                "name": "学员详情",
+                "description": "查看关联学员。"
+              },
+              "addNew": {
+                "name": "新增学员",
+                "description": "新增关联学员。"
+              },
+              "edit": {
+                "name": "编辑学员",
+                "description": "编辑关联学员。"
+              }
+            }
+          }
+        }
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "班次详情",
+            "description": "查看一条班次记录。"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录。"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录。"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      },
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "学员详情",
+            "description": "查看一条学员记录。"
+          },
+          "addNew": {
+            "name": "新增学员",
+            "description": "新增一条学员记录。"
+          },
+          "edit": {
+            "name": "编辑学员",
+            "description": "编辑一条学员记录。"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuUnit",
+            "title": "单位与班次",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no",
+              "klass"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "excellent",
+              "remark"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

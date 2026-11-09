@@ -101,7 +101,49 @@ docker exec nb-dx-demo-postgres pg_dump -U nocobase nocobase > "backups/nocobase
 - 备份文件随 demo 文件夹一起拷贝迁移
 - 阶段3（PC 管理端）每个模块完成后再额外 dump 一次
 
-## 8. 常见问题
+## 8. 服务器部署（内网试用，2026-11-09）
+
+部署目标：内网物理机 `10.10.40.44`（Ubuntu 24.04，4C/8G，用户 ops），compose 方式双容器，**不装 nb CLI**。
+
+### 8.1 迁移物构成（打包脚本产物见 `.artifacts/server-deploy/`）
+
+| 内容 | 说明 |
+|---|---|
+| `nocobase_YYYYMMDD_server_deploy.sql` | 部署时点 fresh pg_dump |
+| `docker-compose.yml` | postgres:16 + nocobase:2.4.0-alpha.17-full 双服务 |
+| `storage/apps/` | aes_key.dat + idp_oauth_jwks.json（root 权限，须 `docker cp` 从容器内取出） |
+| `storage/portals/` | Portal main 部署产物（含 dist） |
+| `storage/uploads/` | 上传文件（logo 等） |
+
+**要点**：纯 pg_dump 不够，`storage/portals` 与 `uploads` 必须随迁（两者都不在数据库里）；`APP_KEY` 必须原样保留在 compose 中（否则历史 token/会话失效）。
+
+### 8.2 部署步骤（已在 10.10.40.44 完成，重做时照抄）
+
+```bash
+# 本机：打迁移包并传输
+tar czf dx-demo-deploy.tar.gz -C .artifacts/server-deploy pkg
+scp dx-demo-deploy.tar.gz ops@10.10.40.44:/home/ops/
+ssh ops@10.10.40.44 'mkdir -p /home/ops/dx-demo && tar xzf /home/ops/dx-demo-deploy.tar.gz -C /home/ops/dx-demo'
+
+# 服务器：起 PG → 恢复 → 起应用（顺序不能反）
+cd /home/ops/dx-demo/pkg
+docker compose pull
+docker compose up -d postgres && sleep 8
+docker exec -i nb-dx-demo-postgres psql -U nocobase -d nocobase < nocobase_20261109_server_deploy.sql
+docker compose up -d   # app 约 30s 内就绪
+curl -o /dev/null -w "%{http_code}\n" http://127.0.0.1:13000/   # 预期 200
+```
+
+### 8.3 服务器侧信息
+
+- 部署目录 `/home/ops/dx-demo/pkg`（storage bind mount 同目录下）
+- 访问地址：`http://10.10.40.44:13000/`（管理端）、`http://10.10.40.44:13000/x/main/`（Portal）
+- 服务器上与 nb 托管模式的差异：`DB_HOST=postgres`（compose 服务名，非容器名）；restart 策略 `unless-stopped`（nb 本机托管是无策略）；compose 自带 pg healthcheck
+- 账号密码与本机完全一致（同一份库）：管理员 = Violet 保管那套；测试账号 = D27 四个 `*_test`
+- 服务器另有他人在跑的业务容器（semantic-dev，端口 5173/8080/28080），互不相干，勿动
+- 备份命令（服务器侧）：`docker exec nb-dx-demo-postgres pg_dump -U nocobase nocobase > dx-demo-backup.sql`
+
+## 9. 常见问题
 
 | 症状 | 处理 |
 |---|---|

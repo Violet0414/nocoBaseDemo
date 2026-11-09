@@ -83,3 +83,23 @@
 | D26 | **「学员只见本班」数据级验证通过，决策关闭**（原遗留项）：student_test 登录实测——学员表只见本人（S1b）、请假/考勤只见本人记录（S1）、座位/班次只见本班（S2）、新闻全员可见 | 演示数据入库后 scope 过滤结果集非空，可断言；全部符合预期 |
 | D40 | **演示数据全集以脚本生成、幂等保护、一次灌入**：4 班次（覆盖 ongoing/enrollable/planned/finished 四态）/ 21 学员 / 8 师资 / 12 专题 / 29 课节（预置 1 对冲突演示 + 1 条调课记录）/ 48 座位 / 41 表全覆盖；班1 学员1 张明远绑 student_test 供全流程演示；REST 写入认证头必须 `Authorization: Bearer` + `X-Authenticator: basic`（仅 X-Token 401），destroy 带 filter 须放 query | 脚本可复用于环境重建；6 条踩坑记录在 docs/features/s7-demo-data.md |
 | D41 | **演示数据附刻意冲突演示对**：第1周周三第1节「依法行政」「压力管理」两节同占第一报告厅（不同教师）——单班课表即可触发冲突高亮，无需跨班操作 | Violet 走查阶段5 冲突检测时零准备成本 |
+
+## 2026-11-09（服务器部署）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D42 | **服务器部署走 compose 双容器、不装 nb CLI**：内网机 10.10.40.44（Ubuntu 24.04，ops 用户，Docker 已装）上以 docker-compose 起 `nocobase:2.4.0-alpha.17-full` + `postgres:16`，本机 dump + storage（portals/uploads/apps）随迁，`APP_KEY` 原样保留。纯 pg_dump 不够——Portal 产物与上传文件均落 storage bind mount 不在库内；`apps/main` 下 root 权限文件须 `docker cp` 从容器取出。restart 策略 `unless-stopped`（优于本机 nb 托管的 no 策略） | 内网试用最快路径：复刻本机容器拓扑，避免服务器装 Node/nb CLI/向导交互；compose 文件与迁移包沉淀在 `.artifacts/server-deploy/`，步骤见 SETUP.md 第 8 节 |
+
+## 2026-11-09（走查问题修复：图表中文 / 板块高度 / logo）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D43 | **chart 英文分类改 custom visual + raw 中文映射**：6 个按 select 字段 value 分组的 chart（库存报表 category / 学籍 status / 考勤 status / 请假 status / 评估 kind×2）`visual.mode` 改 `custom`，raw 里用 labelMap 把 value→中文 label 后 return ECharts option（ChartOptionModel：直接 return，数据取 `ctx.data.objects`）。投票选项分布不动（option_selected 本身存中文文本）。localized `configure` 的 chart 合法键：title/description/height/heightMode/query/visual/events（直接放 `changes` 下，不包 settings） | builder basic 模式不翻译 select value；custom 是唯一可控渲染路径。系统 locale 本就是 zh-CN，内置按钮文案无需处理 |
+| D44 | **附件匿名读 + logo 走公开路径**：①给 `anonymous` 角色授 main.attachments view（files 路由 302 通过）；②`/storage/uploads/*` 由 nginx `auth_request`（nb env proxy 的 legacy file auth）拦截，匿名永远 401，因此 logo 不走 uploads：文件放 nginx public 目录 `storage/.nocobase/proxy/nginx/default/public/logo.png`（无鉴权），`attachments.id=1.url` 改为 `/logo.png`。admin 账号 nickname 顺手改「管理员」 | 登录页左上角 logo 破图的根因是匿名 401；不动 nginx 托管配置（会被 `nb env proxy` 重渲染覆盖）。**服务器同步时须：把 logo.png 复制进服务器同路径 public 目录 + dump 里的 url 改动随迁**，否则服务器登录页 logo 仍破图 |
+| D45 | **并排两块高度对齐用 specifyValue**：库存报表页 chart+table（12/12 并排）统一 `height: 380 + heightMode: "specifyValue"`（cardSettings.blockHeight） | 后端读回主标准是 cardSettings.blockHeight；默认高度两块不一致导致错位 |
+
+## 2026-11-09（补做：班次报名二维码）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D46 | **二维码链路：AI Portal `/x/main/qr` 生成页 + admin 班次行操作 + 移动报名页 URL 自动带班次**。①`/x/main/qr`（main 源码 `src/features/qr/class-qr.tsx`，路由 `hidden: true` 不进侧边栏，sidebar 过滤 `meta?.hidden`）用 qrcode npm 包本地生成 PNG（内网无 CDN 依赖），origin 自适应，支持下载；②班次管理页 JSRecordActionModel 行操作 `window.open('/x/main/qr?token='+ctx.record.qr_token)`（JS action ctx 合法 root 是 `ctx.record`，不支持 `ctx.flowCtx`）；③报名表单 fieldValue 规则 `autoKlassFromUrl`：`urlSearchParams.class` 非空时 klass 默认值 = runjs `Number(v)` | Violet 走查反馈"班次的二维码在哪"——qr_token 字段有数据但从未生成展示。**二维码 URL 带班次 id 而非 qr_token**：fieldValue runjs 是同步取值场景查不了 token→id；qr_token 保留作行操作入口参数。公开未登录报名仍需 public forms，后置 |

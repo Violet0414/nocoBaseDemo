@@ -15,6 +15,7 @@ export interface Klass {
   end_date?: string | null;
   total_days?: number | null;
   default_room?: string | null;
+  qr_token?: string | null;
 }
 
 export interface Topic {
@@ -104,22 +105,27 @@ export async function listResource<T>(
   if (query.sort) {
     q.sort = query.sort;
   }
-  const res = await nocobaseClient.action<{ data: T[] }>(resource, "list", { query: q });
-  return res.data ?? [];
+  // nocobaseClient.action 默认 unwrap:"data"，返回的已是 payload.data 本体
+  const res = await nocobaseClient.action<T[] | { data?: T[] }>(resource, "list", { query: q });
+  return Array.isArray(res) ? res : (res?.data ?? []);
 }
 
 export async function createRecord<T>(resource: string, body: Record<string, unknown>): Promise<T> {
-  const res = await nocobaseClient.action<{ data: T }>(resource, "create", { method: "POST", body });
-  return res.data;
+  const res = await nocobaseClient.action<T | { data?: T }>(resource, "create", { method: "POST", body });
+  if (res && typeof res === "object" && "data" in (res as { data?: T })) {
+    return (res as { data: T }).data;
+  }
+  return res as T;
 }
 
 export async function updateRecord<T>(resource: string, id: number, body: Record<string, unknown>): Promise<T> {
-  const res = await nocobaseClient.action<{ data: T[] }>(resource, "update", {
+  const res = await nocobaseClient.action<T[] | { data?: T[] }>(resource, "update", {
     method: "POST",
     query: { filterByTk: id },
     body,
   });
-  return (Array.isArray(res.data) ? res.data[0] : res.data) as T;
+  const row = Array.isArray(res) ? res[0] : (res?.data?.[0] ?? res?.data);
+  return row as T;
 }
 
 export function resolveId(value: { id: number } | number | null | undefined): number | null {

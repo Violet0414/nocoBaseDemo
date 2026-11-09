@@ -1,0 +1,105 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_mobile__",
+    "item": {
+      "title": "材料提交",
+      "icon": "CloudUploadOutlined"
+    }
+  },
+  "page": {
+    "title": "材料提交"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "材料提交",
+      "blocks": [
+        {
+          "key": "materialForm",
+          "type": "createForm",
+          "collection": "nb_dx_material",
+          "fields": [
+            "question",
+            "kind",
+            "content",
+            "attachment",
+            {
+              "field": "student",
+              "titleField": "name"
+            },
+            {
+              "field": "klass",
+              "titleField": "name"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_material": {
+        "popups": {
+          "view": {
+            "name": "材料详情",
+            "description": "查看一条材料记录。"
+          },
+          "addNew": {
+            "name": "新增材料",
+            "description": "新增一条材料记录。"
+          },
+          "edit": {
+            "name": "编辑材料",
+            "description": "编辑一条材料记录。"
+          },
+          "associations": {
+            "student": {
+              "view": {
+                "name": "学员详情",
+                "description": "查看关联学员。"
+              },
+              "addNew": {
+                "name": "新增学员",
+                "description": "新增关联学员。"
+              },
+              "edit": {
+                "name": "编辑学员",
+                "description": "编辑关联学员。"
+              }
+            },
+            "klass": {
+              "view": {
+                "name": "班次详情",
+                "description": "查看关联班次。"
+              },
+              "addNew": {
+                "name": "新增班次",
+                "description": "新增关联班次。"
+              },
+              "edit": {
+                "name": "编辑班次",
+                "description": "编辑关联班次。"
+              }
+            },
+            "reply_by": {
+              "view": {
+                "name": "回复人详情",
+                "description": "查看回复人。"
+              },
+              "addNew": {
+                "name": "新增回复人",
+                "description": "新增回复人。"
+              },
+              "edit": {
+                "name": "编辑回复人",
+                "description": "编辑回复人。"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

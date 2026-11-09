@@ -1,0 +1,163 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_mobile__",
+    "item": {
+      "title": "扫码报名",
+      "icon": "QrcodeOutlined"
+    }
+  },
+  "page": {
+    "title": "扫码报名"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "报名登记",
+      "blocks": [
+        {
+          "key": "regForm",
+          "type": "createForm",
+          "collection": "nb_dx_registration",
+          "fields": [
+            "name",
+            {
+              "field": "klass",
+              "titleField": "name"
+            },
+            "phone",
+            "gender",
+            "political_status",
+            "work_unit",
+            "form_data"
+          ]
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_registration": {
+        "popups": {
+          "view": {
+            "name": "报名详情",
+            "description": "查看一条报名登记记录。"
+          },
+          "addNew": {
+            "name": "新增报名",
+            "description": "新增一条报名登记记录。"
+          },
+          "edit": {
+            "name": "编辑报名",
+            "description": "编辑一条报名登记记录。"
+          },
+          "associations": {
+            "klass": {
+              "view": {
+                "name": "班次详情",
+                "description": "查看关联班次。"
+              },
+              "addNew": {
+                "name": "新增班次",
+                "description": "新增关联班次。"
+              },
+              "edit": {
+                "name": "编辑班次",
+                "description": "编辑关联班次。"
+              }
+            },
+            "student": {
+              "view": {
+                "name": "学员详情",
+                "description": "查看关联学员。"
+              },
+              "addNew": {
+                "name": "新增学员",
+                "description": "新增关联学员。"
+              },
+              "edit": {
+                "name": "编辑学员",
+                "description": "编辑关联学员。"
+              }
+            },
+            "review_by": {
+              "view": {
+                "name": "审核人详情",
+                "description": "查看审核人。"
+              },
+              "addNew": {
+                "name": "新增审核人",
+                "description": "新增审核人。"
+              },
+              "edit": {
+                "name": "编辑审核人",
+                "description": "编辑审核人。"
+              }
+            }
+          }
+        },
+        "formBehaviorDescriptionReview": {
+          "fields": {
+            "form_data": {
+              "decision": "noUiBehavior",
+              "reasonCode": "ambiguous-description"
+            }
+          }
+        }
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "班次详情",
+            "description": "查看一条班次记录。"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录。"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录。"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

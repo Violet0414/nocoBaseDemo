@@ -1,0 +1,11 @@
+{
+  "target": {
+    "uid": "44qm0kp9fzr"
+  },
+  "changes": {
+    "visual": {
+      "mode": "custom",
+      "raw": "const labelMap = {\n  topic: '专题评估',\n  comprehensive: '综合评估',\n  party_self: '党性自评',\n  party_review: '党性复评'\n};\nconst rows = (ctx.data && ctx.data.objects) || [];\nconst data = rows.map(function (r) {\n  return { name: labelMap[r.kind] || r.kind, value: Number(r.evalCount) || 0 };\n});\nreturn {\n  tooltip: { trigger: 'item' },\n  legend: { bottom: 0 },\n  series: [\n    { type: 'pie', radius: '62%', name: '评估记录分布', data: data, label: { formatter: '{b}: {c}' } }\n  ]\n};"
+    }
+  }
+}

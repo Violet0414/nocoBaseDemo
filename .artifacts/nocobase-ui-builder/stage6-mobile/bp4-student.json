@@ -1,0 +1,150 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_mobile__",
+    "item": {
+      "title": "学员录",
+      "icon": "TeamOutlined"
+    }
+  },
+  "page": {
+    "title": "学员录"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "学员录",
+      "blocks": [
+        {
+          "key": "studentTable",
+          "type": "table",
+          "collection": "nb_dx_student",
+          "fields": [
+            "name",
+            "student_no",
+            "gender",
+            {
+              "field": "klass",
+              "titleField": "name"
+            },
+            "work_unit",
+            "duty",
+            "phone"
+          ],
+          "recordActions": [
+            "view"
+          ]
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "学员详情",
+            "description": "查看一条学员记录。"
+          },
+          "addNew": {
+            "name": "新增学员",
+            "description": "新增一条学员记录。"
+          },
+          "edit": {
+            "name": "编辑学员",
+            "description": "编辑一条学员记录。"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuUnit",
+            "title": "单位与班次",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no",
+              "klass",
+              "user"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "excellent",
+              "remark"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "班次详情",
+            "description": "查看一条班次记录。"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录。"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录。"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

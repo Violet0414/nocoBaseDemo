@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    container_name: nb-dx-demo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_PASSWORD: nocobase
+      POSTGRES_DB: nocobase
+    volumes:
+      - ./storage/db/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nocobase"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:2.4.0-alpha.17-full
+    container_name: nb-dx-demo-app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "13000:80"
+    environment:
+      APP_ENV: production
+      NODE_ENV: production
+      APP_KEY: 747ae0a773749da338120289d04be10a850156fc8ed8131dc56a19ca484e5876
+      APP_PUBLIC_PATH: /
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_DATABASE: nocobase
+      DB_USER: nocobase
+      DB_PASSWORD: nocobase
+      DB_DIALECT: postgres
+      DB_UNDERSCORED: "false"
+      NOCOBASE_RUNNING_IN_DOCKER: "true"
+      NOCOBASE_EXTRACT_CLIENT_ASSETS: "true"
+      NB_SKIP_STARTUP_UPDATE: "1"
+      TZ: Asia/Shanghai
+    volumes:
+      - ./storage:/app/nocobase/storage

@@ -66,4 +66,17 @@ export const appRoutes = defineAppRoutes([
       },
     ],
   },
+  {
+    name: "class-qr",
+    path: "/qr",
+    lazy: () => import("@/features/qr/class-qr"),
+    resource: {
+      meta: {
+        label: "班次报名二维码",
+        singularLabel: "班次报名二维码",
+        hidden: true,
+        priority: 9,
+      },
+    },
+  },
 ]);

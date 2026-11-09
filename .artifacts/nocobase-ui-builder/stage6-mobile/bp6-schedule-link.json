@@ -1,0 +1,29 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_mobile__",
+    "item": {
+      "title": "课程表",
+      "icon": "CalendarOutlined"
+    }
+  },
+  "page": {
+    "title": "课程表"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "课程表",
+      "blocks": [
+        {
+          "key": "scheduleEntry",
+          "type": "jsBlock",
+          "settings": {
+            "code": "const { Button, Card, Typography } = ctx.libs.antd;\nconst { CalendarOutlined } = ctx.libs.antdIcons;\nconst openSchedule = () => {\n  window.open('/x/main/schedule/week', '_blank', 'noopener,noreferrer');\n};\nctx.render(\n  <Card>\n    <Typography.Paragraph>查看本周教学安排，点击下方按钮打开课程表（周视图，支持手机浏览）。</Typography.Paragraph>\n    <Button type=\"primary\" size=\"large\" block icon={<CalendarOutlined />} onClick={openSchedule}>\n      打开课程表\n    </Button>\n  </Card>\n);"
+          }
+        }
+      ]
+    }
+  ]
+}

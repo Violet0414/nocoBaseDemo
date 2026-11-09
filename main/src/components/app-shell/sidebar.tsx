@@ -37,12 +37,16 @@ import { getResourceLabel } from "@/components/resources/resource-label";
 export function Sidebar() {
   const { menuItems, selectedKey } = useMenu();
   const acl = useAclState();
+  const visibleItems = React.useMemo(
+    () => menuItems.filter((item) => !item.meta?.hidden),
+    [menuItems]
+  );
   const allowedMenuItems = React.useMemo(
     () =>
       acl.status === "ready"
-        ? filterMenuItemsByAcl(menuItems, acl.permissions)
+        ? filterMenuItemsByAcl(visibleItems, acl.permissions)
         : [],
-    [acl, menuItems]
+    [acl, visibleItems]
   );
 
   return (

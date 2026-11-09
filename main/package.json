@@ -39,6 +39,7 @@
     "@tiptap/react": "^3.29.0",
     "@tiptap/starter-kit": "^3.29.0",
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -129,5 +130,8 @@
     "overrides": {
       "undici": "7.30.2"
     }
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
   }
 }
