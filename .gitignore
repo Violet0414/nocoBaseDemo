@@ -3,6 +3,9 @@
 backups/
 models/.git/
 
+# 无头浏览器登录态（含 token）
+.artifacts/e2e-check/state_*.json
+
 # Office 锁文件与临时
 ~$*
 *.tmp

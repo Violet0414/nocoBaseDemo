@@ -106,3 +106,10 @@
 | D47 | **AI Portal 页面下拉空 = api.ts 双 unwrap bug**：`nocobaseClient.action` 默认 `unwrap:"data"` 返回的已是 `payload.data` 本体，`listResource` 再取 `res.data` 永远 undefined → 返回 `[]`（请求 200 有数据但组件拿空）。三个 helper（listResource/createRecord/updateRecord）统一适配；业务调用全走 helper，一处修复覆盖 /qr + 排课三页。**验证方式升级：本机有 Playwright+Chrome（此前"无浏览器环境"不成立），走查先用无头浏览器自测** | Violet 走查暴露；阶段5 当时只验证了 API 层。无头浏览器复现链：popup 打开但高 0 → fiber 里 classes=ARR(0) → 抓响应体 4 条 → 定位双 unwrap |
 | D48 | **AI Portal 角色授权**：阶段2 create-blank 角色基线带 `!ui.*` snippet，所有非 admin 角色访问 `/x/main/` 被 multi-portal 插件 `roles:check` 拒（PORTAL_ACCESS_DENIED）→ 移动端「课程表」入口对学员是死链。修复 = 5 角色各插一条 `rolesMultiPortals`（multiPortalUid=`__default_portal__`）。学员进 Portal 后 S2 scope 使班次下拉只有本班、自动选中即正确班次 | Violet 走查副发现；无头浏览器实测学员登录直达周课表、课节/冲突正常 |
 | D49 | **排课画布拖拽落点错位**：走查时浏览器加载旧构建（18:07），其拖拽写入 `2026-01-${4+day-1}T…:00.000Z`——日期基准差一天 + 北京钟面当 UTC 存，回读在 UTC+8 浏览器解析成 16:30 等 → 节次反算错位。修复：①代码已用 `slotTimes`（+08:00 语义）且 `slotFromTime`/`dayFromTime` 改显式东八区（beijingClock 固定偏移），不再依赖浏览器时区；②存量 25 条坏数据按 day_of_week（权威列）+钟面还原重写，全表 29 条自洽；③build+deploy 后 **Violet 必须强刷**。教训：时间字段写入统一走 slotTimes，任何"钟面当 UTC"写法都会在回读时错位 | Violet 走查反馈；取证靠 nb_dx_change_log 的调课时间线 + 库存 UTC 值交叉比对 |
+
+## 2026-11-09（走查问题修复：报名待审空数据 / 操作栏列序）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D51 | **移动端 createForm 状态字段默认值必须用 fieldValue 规则补齐**：扫码报名（status=pending）此前漏配 → UI 提交落库 status 为空，报名待审 tab 按 `status=pending` 过滤查不到（此前测试数据是 API 直接带 status 造的，掩盖了 bug）。同类修复请假（pending）/材料（submitted）/作业提交（submitted）三个表单；存量 2 条空 status 记录已 UPDATE 回 pending。写法：`set-field-value-rules` 是**全量替换** slot，已有规则（如 autoKlassFromUrl）必须先读出原文一并回写；静态默认值用 runjs 形态 `{"code":"return 'pending';","version":"v2"}`（项目内已验证的形态，未采用未知静态 shape） | Violet 报障「提交报名后待审页无数据」；表单级默认值比 DB 列默认值更直观可控，且不动建模 |
+| D52 | **全站表格操作栏（TableActionsColumnModel）统一移到最后一列**：45 处 flow-surfaces 表格块的操作栏原本全在第一列（sort=1），用 `flowSurfaces:moveNode`（source=操作栏列 uid，target=当时行末列 uid，position=after）逐一移至末位。列序存在 `flowModelTreePath.sort`（depth=1 的父子边），SQL 可全量定位；纯服务端配置改动，前端刷新即生效，无构建部署 | Violet 要求「所有板块的操作栏放最后一列」；no-code 页面统一规范，AI Portal（main 源码）三页表格为自绘 React 表格无操作栏列，不在本次范围 |

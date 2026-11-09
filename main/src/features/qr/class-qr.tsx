@@ -21,8 +21,13 @@ import { LoadingState } from "@/components/app-shell/loading-state";
 
 import { CLASS_RESOURCE, listResource, type Klass } from "../scheduling/api";
 
-// 学员移动端「扫码报名」页 pageSchemaUid
-const REGISTRATION_PAGE_PATH = "/mobile/3cfhfajaa4x";
+function useClassParam(): number | null {
+  return useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("class"));
+    return Number.isInteger(id) && id > 0 ? id : null;
+  }, []);
+}
 
 function useQueryToken(): string {
   return useMemo(() => {
@@ -32,6 +37,7 @@ function useQueryToken(): string {
 }
 
 function ClassQrInner() {
+  const classParam = useClassParam();
   const tokenFromQuery = useQueryToken();
   const [classes, setClasses] = useState<Klass[]>([]);
   const [token, setToken] = useState(tokenFromQuery);
@@ -41,7 +47,7 @@ function ClassQrInner() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (tokenFromQuery) return;
+    if (tokenFromQuery || classParam) return;
     let cancelled = false;
     listResource<Klass>(CLASS_RESOURCE, { sort: "-id" })
       .then((rows) => !cancelled && setClasses(rows))
@@ -49,7 +55,7 @@ function ClassQrInner() {
     return () => {
       cancelled = true;
     };
-  }, [tokenFromQuery]);
+  }, [tokenFromQuery, classParam]);
 
   const loadKlass = useCallback(async (tk: string) => {
     if (!tk) return;
@@ -70,10 +76,28 @@ function ClassQrInner() {
   }, []);
 
   useEffect(() => {
-    if (tokenFromQuery) return;
+    if (!classParam) return;
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
+    listResource<Klass>(CLASS_RESOURCE, { filter: { id: classParam }, pageSize: 1 })
+      .then((rows) => {
+        if (cancelled) return;
+        setKlass(rows[0] ?? null);
+        if (!rows[0]) setError("未找到对应班次");
+      })
+      .catch(() => !cancelled && setError("班次信息加载失败"))
+      .finally(() => !cancelled && setLoading(false));
+    return () => {
+      cancelled = true;
+    };
+  }, [classParam]);
+
+  useEffect(() => {
+    if (tokenFromQuery || classParam) return;
     const selected = classes.find((c) => String(c.id) === token);
     setKlass(selected ?? null);
-  }, [token, classes, tokenFromQuery]);
+  }, [token, classes, tokenFromQuery, classParam]);
 
   useEffect(() => {
     void loadKlass(tokenFromQuery);
@@ -84,7 +108,7 @@ function ClassQrInner() {
       setDataUrl("");
       return;
     }
-    const url = `${window.location.origin}${REGISTRATION_PAGE_PATH}?class=${klass.id}`;
+    const url = `${window.location.origin}/signup.html?class=${klass.id}`;
     QRCode.toDataURL(url, {
       width: 320,
       margin: 2,
@@ -108,14 +132,15 @@ function ClassQrInner() {
         <CardHeader>
           <CardTitle className="text-base">班次报名二维码</CardTitle>
           <CardDescription>
-            学员扫码进入移动端报名页，自动带上对应班次
+            学员扫码进入公开报名页（免登录），自动带上对应班次
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-4">
-          {!tokenFromQuery && (
+          {!tokenFromQuery && !classParam && (
             <Select
               value={token}
               onValueChange={(v) => v && setToken(v)}
+              items={classes.map((c) => ({ value: String(c.id), label: c.name }))}
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="选择班次" />
@@ -131,7 +156,7 @@ function ClassQrInner() {
           )}
           {loading && <LoadingState />}
           {error && <p className="text-sm text-destructive">{error}</p>}
-          {!token && !loading && !tokenFromQuery && (
+          {!token && !loading && !tokenFromQuery && !classParam && (
             <p className="text-sm text-muted-foreground">
               请选择班次生成报名二维码，或从班次管理页点击「报名二维码」进入
             </p>
@@ -146,7 +171,7 @@ function ClassQrInner() {
               />
               <p className="break-all text-center text-xs text-muted-foreground">
                 报名链接：{window.location.origin}
-                {REGISTRATION_PAGE_PATH}?class={klass.id}
+                /signup.html?class={klass.id}
               </p>
               <Button onClick={download}>下载二维码图片</Button>
             </>

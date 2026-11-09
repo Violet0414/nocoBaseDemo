@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**二维码改版 D50**：班次管理「报名二维码」改页内弹窗直出 + 建班即得码 + 报名页路径修正为 /v/mobile/...，main 待 deploy；此前：D49 排课拖拽落点修复（走查须强刷）；D47/D48 AI Portal 下拉空 + 角色授权；服务器重部署注意 D44 logo.png）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**D51/D52 走查修复**：移动端表单状态默认值 + 全站操作栏移末列，均已自测通过；此前：二维码改版 D50，main 待 deploy；D49 排课拖拽修复走查须强刷）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,8 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**走查 bug 修复：报名待审空数据 + 操作栏列序（2026-11-09，D51/D52）** — Violet 报障两项已修并自测通过：①**报名待审页无新数据**根因 = 移动端 createForm 均未给 status 设默认值（此前测试数据是 API 带 status 造的，掩盖 bug），UI 提交落库 status 为空，待审 tab 按 status=pending 过滤查不到 → 4 个移动表单（报名/请假/材料/作业提交）各加 fieldValue 默认值规则（set-field-value-rules 全量替换，已有规则须一并回写），存量 2 条空 status 已 UPDATE 回 pending，无头浏览器闭环回归：UI 提交 POST 带 status:"pending" → 报名待审页可见 ✓；②**全站操作栏移最后一列**：45 处 flow-surfaces 表格块的 TableActionsColumnModel 原本全在第一列，moveNode 逐一移至末位（列序在 flowModelTreePath.sort，SQL 可全量定位），admin 报名待审页 + mobile 学员录实测表头操作栏已在末列 ✓。纯服务端配置改动，**前端刷新即生效**；备份 `nocobase_20261109_fix_status_actions.sql`；决策 D51/D52，逻辑见 docs/features/s6-mobile.md 补充节。
 
 **阶段5 收口：周课表补拖拽 + 座位表自动排座修复（2026-11-09）** — Violet 修改 TASKS 阶段5 清单（不接入 AI）后逐项核对：排课画布/座位表/冲突检测+智能排课均满足，唯周课表缺拖拽 → 已补（拖课程卡到其他格调课，写 change_log「周课表拖拽调课」，与画布逻辑一致；调课不改 place）；座位表「按学号/年龄自动排座」按钮不生效根因 = applyAutoAssign filter 误用 `klass`（REST 层应为 `class_id`，400 被静默吞），连带把"全部学员往空位排"改为"只排未分配学员"避免一人两座。typecheck+7 单测过，build+deploy 完成（index-DVCDMnva.js，**走查须强刷**）；逻辑见 docs/features/s5-scheduling.md 补充节。**浏览器端走查待 Violet，通过后阶段5 可标 ✅。**
 

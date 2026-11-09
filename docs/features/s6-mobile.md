@@ -50,8 +50,26 @@ dx.xlsx「移动应用」块的学员核心场景。按 PLAN 既定（D4），�
 
 「班次的二维码在哪」走查反馈补做。三段链路：
 
-1. **AI Portal 二维码页 `/x/main/qr`**（main 源码 `src/features/qr/class-qr.tsx`，路由 hidden 不进侧边栏）：`?token=<qr_token>`（来自班次管理页行操作）或页内下拉选班次 → 用 qrcode 库本地生成 PNG（无外网 CDN 依赖）→ 可下载。二维码内容 = `window.location.origin + /mobile/3cfhfajaa4x?class=<班次id>`，origin 自适应，换部署地址无需改配置。
-2. **admin 班次管理页「报名二维码」行操作**（JSRecordActionModel uid `s5w1ecobnf2`）：`window.open('/x/main/qr?token=' + ctx.record.qr_token)`。
-3. **移动报名页自动带班次**：表单 `fieldValue` 规则（uid `mgyr71ht7sj`，key `autoKlassFromUrl`）——`urlSearchParams.class` 非空时 klass 字段默认值 = runjs `Number(参数)`。学员扫码打开报名页，班次字段自动选中对应班次，仍可手改。
+1. **AI Portal 二维码页 `/x/main/qr`**（main 源码 `src/features/qr/class-qr.tsx`，路由 hidden 不进侧边栏）：`?class=<班次id>`（来自班次管理页弹窗行操作）或 `?token=<qr_token>`（兼容旧链接）或页内下拉选班次 → 用 qrcode 库本地生成 PNG（无外网 CDN 依赖）→ 可下载。二维码内容 = `window.location.origin + /v/mobile/3cfhfajaa4x?class=<班次id>`，origin 自适应，换部署地址无需改配置。**注意 mobile Portal 具体页面路径必须带 `/v` 前缀**（`/mobile` 只是根入口，缺 `/v` 会应用内 404「页面不存在」）。
+2. **admin 班次管理页「报名二维码」行操作**（2026-11-09 二次改版）：旧 JSRecordActionModel uid `s5w1ecobnf2`（window.open 跳转）已删除，改为原生 popup 行操作 **PopupCollectionActionModel uid `d84vmbh85ma`** + 弹窗内 **JSBlock uid `d6jsr0yfxhv`**——点击在当前页弹 dialog 直接展示二维码（iframe 加载 `/x/main/qr?class=<班次id>`），不跳转出应用；**建班即得码**（二维码只依赖班次 id，不依赖 qr_token，新建班次保存后立即可弹码）。配置产物 `.artifacts/qr-dialog/`。
+3. **移动报名页自动带班次**：表单 `fieldValue` 规则（uid `mgyr71ht7sj`，key `autoKlassFromUrl`）——`urlSearchParams.class` 非空时 klass 字段默认值 = runjs：先 `fetch /api/nb_dx_class:get?filterByTk=<id>`（带 `ctx.token` 请求头）请求班次记录，成功后返回 id 赋值；请求失败降级为直接返回 id。**这样进入页面时班次数据先就绪，下拉才能正确显示班次名**（Violet 2026-11-09 反馈：同步裸赋 id 会导致班次显示异常）。学员仍可手改。
+4. **AI Portal 访问授权（D48）**：5 个业务角色（r_leader/r_organizer/r_academic/r_teacher/r_student）各插一条 `rolesMultiPortals`（multiPortalUid=`__default_portal__`，即 main Portal）。此前阶段2 create-blank 基线的 `!ui.*` snippet 使所有非 admin 角色进 `/x/main/` 一律 403「无权访问此门户」，移动端「课程表」入口卡对学员是死链；授权后学员登录直接进周课表，且 S2 scope 使学员班次下拉只有本班、自动选中即正确班次。
 
-设计取舍：二维码 URL 直接带班次 id 而非 `qr_token`，因为 fieldValue runjs 是同步取值场景，无法先查 `qr_token→id`；`qr_token` 仍保留在 `nb_dx_class` 作为行操作入口参数。公开（未登录）报名仍需 public forms，后置。
+设计取舍：二维码 URL 直接带班次 id 而非 `qr_token`，因为 fieldValue runjs 是同步取值场景，无法先查 `qr_token→id`；改版后行操作也不再依赖 `qr_token`（`?class=<id>` 直查班次），字段保留在 `nb_dx_class` 仅作旧链接兼容。公开（未登录）报名仍需 public forms，后置。
+
+## 补充（2026-11-09 晚，D51）：状态字段默认值
+
+**问题**：UI 实际提交报名后，报名待审页（admin 审批待办 flowPage 的报名 tab，过滤 `status=pending`）看不到新数据。
+
+**根因**：移动端 createForm 均未给 `status` 设默认值——阶段6 的测试数据是 API 调用直接带 status 造的，掩盖了此缺口。UI 提交落库 status 为空串，待审过滤查不到。
+
+**修复**（4 个表单各加一条 fieldValue 默认值规则，`flowSurfaces:setFieldValueRules`）：
+
+| 表单 | 块 uid | 规则 key | 默认值 |
+|---|---|---|---|
+| 扫码报名 | mgyr71ht7sj | defaultStatusPending | pending |
+| 请假申请 | wzt107tontk | defaultStatusPending | pending |
+| 材料提交 | ux2ncmkqq35 | defaultStatusSubmitted | submitted |
+| 我的作业·提交作业 | n67h5v3zos5 | defaultStatusSubmitted | submitted |
+
+**踩坑**：`set-field-value-rules` 是 slot 全量替换——报名表单已有 `autoKlassFromUrl` 规则，必须先读原文一并回写，否则会被冲掉。静态默认值采用 runjs 形态（`return 'pending';`），项目内已验证。存量 2 条空 status 报名记录已 UPDATE 为 pending。无头浏览器闭环回归：UI 提交 → POST body 带 `status:"pending"` → 落库 → 报名待审页可见 ✓（测试记录已清理）。
