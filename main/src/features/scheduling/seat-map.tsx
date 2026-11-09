@@ -258,7 +258,11 @@ function SeatMapInner() {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex flex-wrap items-center gap-3">
-        <Select value={classId} onValueChange={(v) => setClassId(v ?? "")}>
+        <Select
+          value={classId}
+          onValueChange={(v) => setClassId(v ?? "")}
+          items={classes.map((k) => ({ value: String(k.id), label: k.name }))}
+        >
           <SelectTrigger className="w-[220px]">
             <SelectValue placeholder="选择班次" />
           </SelectTrigger>

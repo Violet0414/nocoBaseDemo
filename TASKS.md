@@ -57,13 +57,14 @@
 - [ ] (后置)三维排课视图 — 未做(PLAN 既定后置项)
 - [ ] (后置)AI 交互(冲突智能解读等) — **未落地,如实报告**:运行时 LLM 服务 0 配置,待 Violet 提供 key(决策 D39)
 - [ ] (后置)服务端冲突校验(workflow pre-action) — 前端已有,服务端兜底后置
-- 验证:拖拽排课无冲突,排座自动分配 — **🔄 自动化层通过**(单测/typecheck/eslint/deploy 读回);**浏览器端拖拽走查待 Violet**(芒果怪无浏览器环境);备份 nocobase_20261109_stage5_scheduling.sql
+- 验证:拖拽排课无冲突,排座自动分配 — **🔄 自动化层通过**(单测/typecheck/eslint/deploy 读回);浏览器端走查待 Violet(**D49 拖拽落点 bug 已修**:旧构建钟面当 UTC 写坏 25 条已重写自洽+反算改显式东八区+已 deploy,走查须强刷);备份 nocobase_20261109_stage5_scheduling.sql + nocobase_20261109_fix_schedule_tz.sql
 
 ## 阶段6:移动端配学员核心页 ✅
 
 - [x] 扫码报名 / 请假申请 / 材料提交 / 学员录 / 作业 — **✅ 2026-11-09**:mobile Portal(/v/mobile,portalUid `__default_mobile__`)6 页全建:扫码报名 396774382895104 / 请假申请 396774621970432(表单+我的请假记录) / 材料提交 396774414352384 / 学员录 396774630359040(只读) / 我的作业 396774636650496(作业列表+提交表单) / 课程表 396774655524864(jsBlock 入口卡);r_student 补 12 条 route 授权 + nb_dx_material create;蓝本 .artifacts/nocobase-ui-builder/stage6-mobile/;逻辑档案 docs/features/s6-mobile.md;备份 nocobase_20261109_stage6_mobile.sql。踩坑:关联目标 >10 字段 fieldGroups 须挂目标表且全覆盖;蓝本不支持 js action clickSettings(改 jsBlock)
 - [x] 课表页挂 Link(指向 AI Portal 课表,组件响应式) — **✅ 2026-11-09**:「课程表」页 jsBlock 渲染入口卡,点击 window.open 打开 /x/main/schedule/week(不复制数据,单一数据源)
 - [x] 班次报名二维码(走查反馈补做,决策 D46) — **✅ 2026-11-09**:AI Portal `/x/main/qr` 生成页(qrcode npm 包本地生成,origin 自适应,可下载)+ admin 班次管理页「报名二维码」行操作(JSRecordActionModel uid s5w1ecobnf2)+ 移动报名页 fieldValue 规则 autoKlassFromUrl(URL ?class=<班次id> 自动选班次);typecheck/build/deploy 全过,/qr 与 /mobile 报名页均 200;备份 nocobase_20261109_qr_signup.sql;详见 docs/features/s6-mobile.md 补充节
+- [x] AI Portal 走查 bug 修复(决策 D47/D48) — **✅ 2026-11-09**:①api.ts 双 unwrap bug(listResource 等三 helper 取 `.data` 永远 undefined → 页面下拉/课表拿空数组,API 200 有数据),统一修复覆盖 /qr + 排课三页;②5 角色授 main Portal 访问权(rolesMultiPortals,__default_portal__),修学员 403 死链;无头浏览器回归:/qr 4 班次+二维码生成 ✓、学员直达周课表+本班 scope 自动选中 ✓;main 已重新 deploy;验证方式升级:本机 Playwright 无头浏览器,走查先自测
 - 验证:手机浏览器全流程可操作 — **🔄 API 层通过**:student_test 实测 leave create(进审批流)/material/submission/registration/assignment(本班 scope count=1)全 200;/v/mobile HTTP 200;**浏览器端手机走查待 Violet**。遗留:公开扫码报名(未登录)需 public forms,后置
 
 ## 阶段7:造演示数据 + 按角色演示脚本走查 🔄

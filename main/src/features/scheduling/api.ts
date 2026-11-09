@@ -133,23 +133,48 @@ export function resolveId(value: { id: number } | number | null | undefined): nu
   return typeof value === "number" ? value : value.id;
 }
 
+// 演示约定：第1周从 2026-01-05（周一）起；时间按北京钟面语义写入（+08:00 偏移），
+// 库中为换算后的 UTC 时刻；读回反算见下方 beijingClock（显式东八区，不依赖浏览器时区）
+export function slotTimes(day: number, slot: number): { start_time: string; end_time: string } {
+  const slotDef = TIME_SLOTS[slot - 1];
+  const d = `2026-01-${String(4 + day).padStart(2, "0")}`;
+  return {
+    start_time: `${d}T${slotDef.start}:00+08:00`,
+    end_time: `${d}T${slotDef.end}:00+08:00`,
+  };
+}
+
 export function slotKey(day: number, slot: number): string {
   return `${day}-${slot}`;
 }
 
-export function dayFromTime(time?: string | null): number {
-  if (!time) return 1;
-  const d = new Date(time).getDay();
-  return d === 0 ? 7 : d;
+// 库中时刻均为"北京钟面换算后的 UTC"，读回时一律按东八区还原钟面，
+// 不依赖浏览器本地时区（演示机时区不同也不会错位）
+const BEIJING_OFFSET_MS = 8 * 60 * 60 * 1000;
+
+function beijingClock(time: string): Date {
+  return new Date(new Date(time).getTime() + BEIJING_OFFSET_MS);
 }
 
-export function slotFromTime(time?: string | null, end?: string | null): number {
+function pad2(n: number): string {
+  return String(n).padStart(2, "0");
+}
+
+export function dayFromTime(time?: string | null): number {
   if (!time) return 1;
-  const hhmm = new Date(time).toTimeString().slice(0, 5);
+  const dow = beijingClock(time).getUTCDay();
+  return dow === 0 ? 7 : dow;
+}
+
+export function slotFromTime(time?: string | null): number {
+  if (!time) return 1;
+  const d = beijingClock(time);
+  const hhmm = `${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`;
   const slot = TIME_SLOTS.find((s) => hhmm >= s.start && hhmm < s.end);
   if (slot) return slot.key;
-  const endHhmm = end ? new Date(end).toTimeString().slice(0, 5) : hhmm;
-  return TIME_SLOTS.find((s) => hhmm >= s.start || endHhmm > s.start)?.key ?? 1;
+  // 落在空档（如午休）时归下一个开始的时段，仍越界则归最后一节
+  const next = TIME_SLOTS.find((s) => hhmm < s.start);
+  return next?.key ?? TIME_SLOTS[TIME_SLOTS.length - 1].key;
 }
 
 export interface Conflict {
@@ -162,8 +187,8 @@ export interface Conflict {
 function overlaps(a: CourseSchedule, b: CourseSchedule): boolean {
   if ((a.week_no ?? 0) !== (b.week_no ?? 0)) return false;
   if ((a.day_of_week ?? dayFromTime(a.start_time)) !== (b.day_of_week ?? dayFromTime(b.start_time))) return false;
-  const aStart = slotFromTime(a.start_time, a.end_time);
-  const bStart = slotFromTime(b.start_time, b.end_time);
+  const aStart = slotFromTime(a.start_time);
+  const bStart = slotFromTime(b.start_time);
   if (aStart !== bStart) return false;
   return true;
 }
@@ -176,7 +201,7 @@ export function detectConflicts(items: CourseSchedule[]): Conflict[] {
       const b = items[j];
       if (!overlaps(a, b)) continue;
       const day = a.day_of_week ?? dayFromTime(a.start_time);
-      const slot = slotFromTime(a.start_time, a.end_time);
+      const slot = slotFromTime(a.start_time);
       const key = `${day}-${slot}`;
       const teacherA = resolveId(a.teacher);
       const teacherB = resolveId(b.teacher);

@@ -30,6 +30,7 @@ import {
   listResource,
   resolveId,
   slotFromTime,
+  slotTimes,
   updateRecord,
 } from "./api";
 
@@ -65,7 +66,9 @@ function ScheduleBoardInner() {
     let cancelled = false;
     Promise.all([
       listResource<Klass>(CLASS_RESOURCE, { sort: "-id" }),
-      listResource<Topic>(TOPIC_RESOURCE, { filter: { status: "published" } }),
+      listResource<Topic>(TOPIC_RESOURCE, {
+        filter: { status: { $in: ["approved", "revised", "excellent", "scheduled"] } },
+      }),
     ])
       .then(([ks, ts]) => {
         if (cancelled) return;
@@ -104,7 +107,7 @@ function ScheduleBoardInner() {
     const map = new Map<string, CourseSchedule[]>();
     for (const item of schedules) {
       const day = item.day_of_week ?? dayFromTime(item.start_time);
-      const slot = slotFromTime(item.start_time, item.end_time);
+      const slot = slotFromTime(item.start_time);
       const key = `${day}-${slot}`;
       const list = map.get(key);
       if (list) list.push(item);
@@ -140,8 +143,7 @@ function ScheduleBoardInner() {
             kind: "lecture",
             eval_enabled: true,
             status: "pending",
-            start_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.start}:00.000Z`,
-            end_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.end}:00.000Z`,
+            ...slotTimes(day, slot),
           });
           setNotice(`已排课：${topic?.name ?? ""} → 周${DAY_LABELS[day - 1]} ${slotDef.label}`);
         }
@@ -149,13 +151,12 @@ function ScheduleBoardInner() {
           const item = schedules.find((s) => s.id === dragging.scheduleId);
           if (item) {
             const oldDay = item.day_of_week ?? dayFromTime(item.start_time);
-            const oldSlot = slotFromTime(item.start_time, item.end_time);
+            const oldSlot = slotFromTime(item.start_time);
             const oldText = `周${DAY_LABELS[oldDay - 1]} ${TIME_SLOTS[oldSlot - 1]?.label}`;
             const newText = `周${DAY_LABELS[day - 1]} ${slotDef.label}`;
             await updateRecord<CourseSchedule>(SCHEDULE_RESOURCE, item.id, {
               ...base,
-              start_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.start}:00.000Z`,
-              end_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.end}:00.000Z`,
+              ...slotTimes(day, slot),
             });
             await createRecord<Record<string, unknown>>(CHANGE_LOG_RESOURCE, {
               summary: `调课：${itemLabel(item).name} ${oldText} → ${newText}`,
@@ -189,7 +190,7 @@ function ScheduleBoardInner() {
     const klass = classes.find((k) => String(k.id) === classId);
     const taken = new Set(
       schedules.map(
-        (s) => `${s.day_of_week ?? dayFromTime(s.start_time)}-${slotFromTime(s.start_time, s.end_time)}`,
+        (s) => `${s.day_of_week ?? dayFromTime(s.start_time)}-${slotFromTime(s.start_time)}`,
       ),
     );
     const unscheduled = topics.filter((t) => !schedules.some((s) => resolveId(s.topic) === t.id));
@@ -212,8 +213,7 @@ function ScheduleBoardInner() {
               eval_enabled: true,
               status: "pending",
               place: klass?.default_room ?? "",
-              start_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.start}:00.000Z`,
-              end_time: `2026-01-${String(4 + day - 1).padStart(2, "0")}T${slotDef.end}:00.000Z`,
+              ...slotTimes(day, slot),
             });
             taken.add(key);
             created.push(`${topic.name}→周${DAY_LABELS[day - 1]}${slotDef.label}`);
@@ -239,7 +239,11 @@ function ScheduleBoardInner() {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex flex-wrap items-center gap-3">
-        <Select value={classId} onValueChange={(v) => setClassId(v ?? "")}>
+        <Select
+          value={classId}
+          onValueChange={(v) => setClassId(v ?? "")}
+          items={classes.map((k) => ({ value: String(k.id), label: k.name }))}
+        >
           <SelectTrigger className="w-[220px]">
             <SelectValue placeholder="选择班次" />
           </SelectTrigger>
@@ -251,7 +255,11 @@ function ScheduleBoardInner() {
             ))}
           </SelectContent>
         </Select>
-        <Select value={week} onValueChange={(v) => setWeek(v ?? "")}>
+        <Select
+          value={week}
+          onValueChange={(v) => setWeek(v ?? "")}
+          items={[1, 2, 3, 4, 5, 6, 7, 8].map((w) => ({ value: String(w), label: `第 ${w} 周` }))}
+        >
           <SelectTrigger className="w-[140px]">
             <SelectValue placeholder="选择周次" />
           </SelectTrigger>

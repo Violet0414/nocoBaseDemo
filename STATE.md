@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**补做班次报名二维码**（D46）：/x/main/qr 生成页 + 班次行操作 + 报名页 URL 自动带班次；走查问题修复 3 项 D43-D45；阶段6 移动端完成待手机走查；服务器重部署时注意 D44 logo.png 同步 + main 源码已含 qr 页）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**排课画布拖拽落点 bug 修复**（D49）：旧构建"钟面当 UTC"写坏 25 条数据已重写自洽 + slotFromTime/dayFromTime 改显式东八区 + build+deploy，**Violet 走查须 Ctrl+Shift+R 强刷**；此前：D47/D48 AI Portal 下拉空 + 角色授权；二维码 D46；服务器重部署注意 D44 logo.png）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,10 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**排课画布拖拽落点 bug 修复完成（2026-11-09，D49）** — Violet 反馈"课程拖拽释放后，新位置不是鼠标所释放的位置"。数据取证定位：走查时浏览器加载的是旧构建（18:07），其拖拽写入 `2026-01-${4+day-1}T08:30:00.000Z`（日期基准差一天 + 北京钟面当 UTC 存）→ 回读解析成 16:30 → 节次/星期反算全错。修复三件套：①存量 25 条坏数据按 day_of_week（权威列）+ UTC 钟面还原节次重写，全表 29 条 start_time 与 day_of_week/节次全部自洽（含 14 条种子数据同源日期错位对齐 + 2 条 TZTEST 测试记录清理）；②api.ts `slotFromTime`/`dayFromTime` 改显式东八区（beijingClock 固定 +8h），不再依赖浏览器时区，演示机时区不同也不会错位；③pnpm build + `nb portal deploy main` 完成（bundle index-DN4vEZiv.js），typecheck + 7 单测过。**Violet 走查前必须 Ctrl+Shift+R 强刷**（浏览器缓存旧 bundle 会复现）。备份 `nocobase_20261109_fix_schedule_tz.sql`；逻辑见 docs/features/s5-scheduling.md 修复记录节。
+
+**AI Portal 走查 bug 修复（2026-11-09，D47/D48）** — Violet 反馈"AI 模式页面无法选择班次"。无头浏览器（本机有 Playwright+Chrome，验证方式升级）复现定位：①**api.ts 双 unwrap bug**（D47）——`nocobaseClient.action` 默认 unwrap:"data" 已返回 data 本体，`listResource` 再取 `.data` 永远 undefined → 页面拿空数组；三个 helper 统一修复，覆盖 /qr + 周课表/排课画布/座位表（此前排课三页浏览器端同样坏，阶段5 只验证过 API 层）。②**AI Portal 角色授权**（D48）——阶段2 create-blank 基线 `!ui.*` 使非 admin 全部 403「无权访问此门户」，移动端课程表入口对学员是死链；5 角色各插 `rolesMultiPortals`（uid `__default_portal__`）打通。回归实测：/qr 下拉 4 班次 + 二维码生成 ✓；学员登录直达周课表、S2 scope 下自动选中本班、课节/冲突正常 ✓。main 已重新 build+deploy；备份 `nocobase_20261109_qr_signup.sql`（含授权记录）。
 
 **班次报名二维码补做完成（2026-11-09，D46）** — 回应 Violet「班次的二维码在哪」：①AI Portal 新增 `/x/main/qr` 二维码页（main 源码 `src/features/qr/class-qr.tsx` + routes.tsx 注册 hidden 路由，qrcode npm 包本地生成、origin 自适应、可下载 PNG，依赖已装进 package.json）；②admin 班次管理页新增「报名二维码」行操作（JSRecordActionModel uid s5w1ecobnf2，window.open `/x/main/qr?token=<qr_token>`）；③移动报名页 createForm 加 fieldValue 规则 autoKlassFromUrl（uid mgyr71ht7sj）：URL `?class=<班次id>` 时自动选班次。typecheck/build/deploy 全过，/qr 与报名页均 200。备份 `nocobase_20261109_qr_signup.sql`；链路逻辑见 docs/features/s6-mobile.md 补充节。**服务器重部署时**：main Portal 源码已含 qr 功能，重新 build+deploy 或随 storage/portals 同迁即可。
 

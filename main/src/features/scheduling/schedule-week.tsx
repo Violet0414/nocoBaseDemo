@@ -107,7 +107,7 @@ function WeekScheduleInner() {
     const map = new Map<string, CourseSchedule[]>();
     for (const item of schedules) {
       const day = item.day_of_week ?? dayFromTime(item.start_time);
-      const slot = slotFromTime(item.start_time, item.end_time);
+      const slot = slotFromTime(item.start_time);
       const key = `${day}-${slot}`;
       const list = map.get(key);
       if (list) list.push(item);
@@ -127,7 +127,11 @@ function WeekScheduleInner() {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex flex-wrap items-center gap-3">
-        <Select value={classId} onValueChange={(v) => setClassId(v ?? "")}>
+        <Select
+          value={classId}
+          onValueChange={(v) => setClassId(v ?? "")}
+          items={classes.map((k) => ({ value: String(k.id), label: k.name }))}
+        >
           <SelectTrigger className="w-[220px]">
             <SelectValue placeholder="选择班次" />
           </SelectTrigger>
@@ -139,7 +143,11 @@ function WeekScheduleInner() {
             ))}
           </SelectContent>
         </Select>
-        <Select value={week} onValueChange={(v) => setWeek(v ?? "")}>
+        <Select
+          value={week}
+          onValueChange={(v) => setWeek(v ?? "")}
+          items={[1, 2, 3, 4, 5, 6, 7, 8].map((w) => ({ value: String(w), label: `第 ${w} 周` }))}
+        >
           <SelectTrigger className="w-[140px]">
             <SelectValue placeholder="选择周次" />
           </SelectTrigger>

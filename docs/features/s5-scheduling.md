@@ -54,3 +54,21 @@
 
 - 自动化：typecheck + eslint + 逻辑单测通过；模板自带 route-overlay-viewport 测试因 portal-sdk 版本上下文不兼容持续失败（与本次改动无关，模板问题）。
 - 浏览器端走查（拖拽手感、冲突高亮、保存反馈）由 Violet 验证——芒果怪无浏览器环境。
+
+## 修复记录：AI Portal 页面班次下拉为空（2026-11-09，D47）
+
+Violet 走查发现 AI Portal 页面（/qr 及排课三页）下拉框选不出班次。无头浏览器（Playwright）复现并定位：
+
+- **根因**：`nocobaseClient.action` 默认 `unwrap: "data"`——返回值已经是 `payload.data` 本体；而 `api.ts` 的 `listResource` 又取了一层 `res.data`，永远是 `undefined`，最终 `return res.data ?? []` 返回空数组。**API 请求本身 200 且有 4 条数据，组件拿到的永远是 `[]`**。`createRecord` / `updateRecord` 同样多包一层。
+- **修复**：三个 helper 统一适配 unwrap 后的返回形态（数组/单对象/含 data 包装三种兼容）。业务代码全部走这三个 helper，一处修复覆盖 /qr + 排课三页（周课表/排课画布/座位表此前在浏览器端同样坏，阶段5 只验证过 API 层）。
+- **验证方式升级**：本机有 Playwright + Chrome（此前"无浏览器环境"不成立），已用无头浏览器回归：/qr 下拉 4 班次、选中生成二维码；周课表选班次后课节与冲突提示正常。后续走查先用无头浏览器自测再交 Violet。
+
+## 修复记录：排课画布拖拽落点错位（2026-11-09，D49）
+
+Violet 反馈"课程拖拽释放后，新位置不是鼠标所释放的位置"。数据取证（调课日志 + 库存值交叉比对）定位根因：
+
+- **根因 = 旧构建的时间写入格式错误**。Violet 走查时浏览器加载的是 18:07 构建（commit 5a45189），其拖拽写入 `2026-01-${4+day-1}T08:30:00.000Z`——两个错：①日期基准 `4+day-1` 把周一写成 1 月 4 日（周日），差一天；②**`.000Z` 后缀把北京钟面值直接当 UTC 存**，UTC+8 浏览器回读解析成 16:30 等 → `slotFromTime` 反算出错误的节次行（08:30Z → 16:30 → "下午第2节"），显示位置与释放格不符。
+- 当前构建已用 `slotTimes`（`4+day` + `+08:00` 语义，服务器正确换算为 UTC），CLI 实测 create/update 均正确转换；但 **`slotFromTime`/`dayFromTime` 此前依赖浏览器本地时区解析**——演示机时区若非东八区仍会错位。本次改为显式东八区（`beijingClock` = UTC+8h 固定偏移 + `getUTC*` 取钟面），任何时区浏览器反算结果一致。
+- **存量数据修复**：被旧构建写坏的 11 条（UTC 钟面恰等于时段起点 08:30/10:30/14:00/16:00/19:00，判据与好行零重合）按 `day_of_week`（权威列）+ UTC 钟面还原节次重写；另对齐 14 条种子数据的日期基准（`4+day-1` 同源错位）。修复后全表 29 条 start_time/end_time 与 day_of_week/节次全部自洽。
+- 部署：pnpm build + `nb portal deploy main`（bundle index-DN4vEZiv.js）。**Violet 需强刷（Ctrl+Shift+R）再走查**，否则浏览器缓存旧 bundle 仍会复现。
+- 备份 `backups/nocobase_20261109_fix_schedule_tz.sql`。
