@@ -49,21 +49,20 @@
 ## 阶段5:AI Portal 写课表/排座 React 页面 🔄(代码完成,待浏览器走查)
 
 > 前置:2026-11-09 为启用 AI Portal 升级至 NocoBase 2.4.0-alpha.17(两次升级前均 pg_dump 备份,数据无损,决策 D36);Portal main 源码 `demo/main/`,部署于 http://127.0.0.1:13000/x/main/
-
-- [x] 周视图课表组件(格子 + 拖拽,响应式) — **✅ 2026-11-09**:`/schedule/week`,7×5 表格 + 冲突格子红色高亮 + 冲突提示卡
-- [x] 排课画布 + 调课(拖拽专题进格子、调课记录历史) — **✅ 2026-11-09**:`/schedule/board`,拖专题=create 课表记录;拖已有课调课=update+写 nb_dx_change_log;智能排课(贪心版)一键填空位
-- [x] 座位表组件(教室布局 + 拖拽排座 + 按学号/年龄自动排座) — **✅ 2026-11-09**:`/schedule/seats`,6×8 初始化、拖拽换座/清座、自动排座本地方案+diff 保存
-- [x] 冲突检测(同教室/同教师同时段)、智能排课简化版 — **✅ 2026-11-09**:纯逻辑 detectConflicts 与 UI 分离,单测 7 用例 + typecheck + eslint 全过;API 形态对齐 2.4 alpha(D37)
-- [ ] (后置)三维排课视图 — 未做(PLAN 既定后置项)
-- [ ] (后置)AI 交互(冲突智能解读等) — **未落地,如实报告**:运行时 LLM 服务 0 配置,待 Violet 提供 key(决策 D39)
-- [ ] (后置)服务端冲突校验(workflow pre-action) — 前端已有,服务端兜底后置
-- 验证:拖拽排课无冲突,排座自动分配 — **🔄 自动化层通过**(单测/typecheck/eslint/deploy 读回);浏览器端走查待 Violet(**D49 拖拽落点 bug 已修**:旧构建钟面当 UTC 写坏 25 条已重写自洽+反算改显式东八区+已 deploy,走查须强刷);备份 nocobase_20261109_stage5_scheduling.sql + nocobase_20261109_fix_schedule_tz.sql
+>
+> - [x] 周视图课表组件(格子 + 拖拽,响应式) — **✅ 2026-11-09**:`/schedule/week`,7×5 表格+冲突高亮+冲突提示卡;拖拽调课补齐(拖课程卡到其他格子=update+写 change_log「周课表拖拽调课」,与排课画布逻辑一致)
+> - [x] 排课画布 + 调课(拖拽专题进格子、调课记录历史) — **✅ 2026-11-09**:`/schedule/board`,拖专题=create;拖课调课=update+nb_dx_change_log;拖拽落点错位已修(D49:旧构建钟面当 UTC 存,存量数据已重写+反算改显式东八区)
+> - [x] 座位表组件(教室布局 + 拖拽排座 + 按学号/年龄自动排座) — **✅ 2026-11-09**:`/schedule/seats`,6×8 初始化、拖拽换座/清座;自动排座按钮不生效已修(filter 误用 klass→class_id + 只排未分配学员避免一人两座)
+> - [x] 冲突检测(同教室/同教师同时段)、智能排课简化版 — **✅ 2026-11-09**:detectConflicts(周课表+画布均有高亮+提示卡)、smartSchedule 贪心版一键填空位
+> - [ ] (后置)三维排课视图
+> - 验证:拖拽排课无冲突,排座自动分配 — **🔄 代码层全满足**(typecheck/7 单测/build/deploy 过),**浏览器端待 Violet 走查**(须强刷)
 
 ## 阶段6:移动端配学员核心页 ✅
 
 - [x] 扫码报名 / 请假申请 / 材料提交 / 学员录 / 作业 — **✅ 2026-11-09**:mobile Portal(/v/mobile,portalUid `__default_mobile__`)6 页全建:扫码报名 396774382895104 / 请假申请 396774621970432(表单+我的请假记录) / 材料提交 396774414352384 / 学员录 396774630359040(只读) / 我的作业 396774636650496(作业列表+提交表单) / 课程表 396774655524864(jsBlock 入口卡);r_student 补 12 条 route 授权 + nb_dx_material create;蓝本 .artifacts/nocobase-ui-builder/stage6-mobile/;逻辑档案 docs/features/s6-mobile.md;备份 nocobase_20261109_stage6_mobile.sql。踩坑:关联目标 >10 字段 fieldGroups 须挂目标表且全覆盖;蓝本不支持 js action clickSettings(改 jsBlock)
 - [x] 课表页挂 Link(指向 AI Portal 课表,组件响应式) — **✅ 2026-11-09**:「课程表」页 jsBlock 渲染入口卡,点击 window.open 打开 /x/main/schedule/week(不复制数据,单一数据源)
 - [x] 班次报名二维码(走查反馈补做,决策 D46) — **✅ 2026-11-09**:AI Portal `/x/main/qr` 生成页(qrcode npm 包本地生成,origin 自适应,可下载)+ admin 班次管理页「报名二维码」行操作(JSRecordActionModel uid s5w1ecobnf2)+ 移动报名页 fieldValue 规则 autoKlassFromUrl(URL ?class=<班次id> 自动选班次);typecheck/build/deploy 全过,/qr 与 /mobile 报名页均 200;备份 nocobase_20261109_qr_signup.sql;详见 docs/features/s6-mobile.md 补充节
+- [x] 二维码交互改版:弹窗直出+建班即得码(决策 D50) — **⏳ 2026-11-09 代码完成待 Violet 部署自测**:①班次管理行操作改原生 popup(删除 s5w1ecobnf2 window.open 跳转版,新建 PopupCollectionActionModel d84vmbh85ma + 弹窗 JSBlock d6jsr0yfxhv,点击当前页弹 dialog 直接展示二维码 iframe);②/qr 页支持 ?class=<id> 直查班次(保留 ?token 兼容),二维码只依赖班次 id → 新建班次立即可弹码;③二维码内容路径修正 /mobile/... → /v/mobile/3cfhfajaa4x(缺 /v 前缀应用内 404,Violet 实测发现);main 侧 class-qr.tsx 改动需 nb portal deploy main 生效,弹窗行操作已即时生效;配置产物 .artifacts/qr-dialog/
 - [x] AI Portal 走查 bug 修复(决策 D47/D48) — **✅ 2026-11-09**:①api.ts 双 unwrap bug(listResource 等三 helper 取 `.data` 永远 undefined → 页面下拉/课表拿空数组,API 200 有数据),统一修复覆盖 /qr + 排课三页;②5 角色授 main Portal 访问权(rolesMultiPortals,__default_portal__),修学员 403 死链;无头浏览器回归:/qr 4 班次+二维码生成 ✓、学员直达周课表+本班 scope 自动选中 ✓;main 已重新 deploy;验证方式升级:本机 Playwright 无头浏览器,走查先自测
 - 验证:手机浏览器全流程可操作 — **🔄 API 层通过**:student_test 实测 leave create(进审批流)/material/submission/registration/assignment(本班 scope count=1)全 200;/v/mobile HTTP 200;**浏览器端手机走查待 Violet**。遗留:公开扫码报名(未登录)需 public forms,后置
 

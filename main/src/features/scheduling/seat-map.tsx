@@ -197,29 +197,34 @@ function SeatMapInner() {
   }, [classId, seats, load]);
 
   const applyAutoAssign = async (order: SeatOrder) => {
-    const current = await listResource<Seat>(SEAT_RESOURCE, {
-      filter: { klass: Number(classId) },
-      appends: ["student"],
-    });
-    const emptySeats = current.filter(
-      (s) => !(typeof s.student === "object" && s.student),
-    );
-    const plan = autoAssignSeats(students, emptySeats, order);
-    if (plan.size === 0) {
-      setNotice("没有空位可自动排座");
-      return;
+    setError(null);
+    try {
+      const current = await listResource<Seat>(SEAT_RESOURCE, {
+        filter: { class_id: Number(classId) },
+        appends: ["student"],
+      });
+      const emptySeats = current.filter(
+        (s) => !(typeof s.student === "object" && s.student),
+      );
+      const plan = autoAssignSeats(unassigned, emptySeats, order);
+      if (plan.size === 0) {
+        setNotice(unassigned.length === 0 ? "全部学员已排座" : "没有空位可自动排座");
+        return;
+      }
+      setSeats((prev) =>
+        prev.map((s) =>
+          plan.has(s.id)
+            ? { ...s, student: students.find((st) => st.id === plan.get(s.id)) ?? null }
+            : s,
+        ),
+      );
+      setDirty(true);
+      setNotice(
+        `已生成自动排座方案（按${order === "student_no" ? "学号" : "年龄"}顺序 ${plan.size} 人），点击保存生效`,
+      );
+    } catch {
+      setError("自动排座失败，请重试");
     }
-    setSeats((prev) =>
-      prev.map((s) =>
-        plan.has(s.id)
-          ? { ...s, student: students.find((st) => st.id === plan.get(s.id)) ?? null }
-          : s,
-      ),
-    );
-    setDirty(true);
-    setNotice(
-      `已生成自动排座方案（按${order === "student_no" ? "学号" : "年龄"}顺序 ${plan.size} 人），点击保存生效`,
-    );
   };
 
   const assignedCount = students.length - unassigned.length;

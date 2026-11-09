@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**排课画布拖拽落点 bug 修复**（D49）：旧构建"钟面当 UTC"写坏 25 条数据已重写自洽 + slotFromTime/dayFromTime 改显式东八区 + build+deploy，**Violet 走查须 Ctrl+Shift+R 强刷**；此前：D47/D48 AI Portal 下拉空 + 角色授权；二维码 D46；服务器重部署注意 D44 logo.png）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**二维码改版 D50**：班次管理「报名二维码」改页内弹窗直出 + 建班即得码 + 报名页路径修正为 /v/mobile/...，main 待 deploy；此前：D49 排课拖拽落点修复（走查须强刷）；D47/D48 AI Portal 下拉空 + 角色授权；服务器重部署注意 D44 logo.png）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,10 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**阶段5 收口：周课表补拖拽 + 座位表自动排座修复（2026-11-09）** — Violet 修改 TASKS 阶段5 清单（不接入 AI）后逐项核对：排课画布/座位表/冲突检测+智能排课均满足，唯周课表缺拖拽 → 已补（拖课程卡到其他格调课，写 change_log「周课表拖拽调课」，与画布逻辑一致；调课不改 place）；座位表「按学号/年龄自动排座」按钮不生效根因 = applyAutoAssign filter 误用 `klass`（REST 层应为 `class_id`，400 被静默吞），连带把"全部学员往空位排"改为"只排未分配学员"避免一人两座。typecheck+7 单测过，build+deploy 完成（index-DVCDMnva.js，**走查须强刷**）；逻辑见 docs/features/s5-scheduling.md 补充节。**浏览器端走查待 Violet，通过后阶段5 可标 ✅。**
+
+**二维码交互改版：弹窗直出 + 建班即得码（2026-11-09，D50）** — Violet 需求「点报名二维码直接展示、不跳转；创建班次时二维码一同创建好」。①admin 班次管理行操作改版：删旧 JSRecordActionModel（s5w1ecobnf2 window.open），建原生 popup 行操作 PopupCollectionActionModel（uid `d84vmbh85ma`，dialog 模式）+ 弹窗内 JSBlock（uid `d6jsr0yfxhv`，iframe 加载 `/x/main/qr?class=<id>`），点击当前页直接弹码（flow-system 禁止 runjs 直接 DOM 造弹窗，必须走 popup host + ctx.render，正规路径）；②/qr 页支持 `?class=<id>` 直查班次出码（保留 ?token 兼容），二维码只依赖班次 id → 新建班次保存后立即可弹码，不再依赖 qr_token；③修正报名页路径 bug：二维码内容改 `/v/mobile/3cfhfajaa4x?class=<id>`（mobile Portal 具体页面必须带 /v 前缀，此前拼 /mobile/... 会应用内 404「页面不存在」，Violet 实测发现）。配置产物 `.artifacts/qr-dialog/`。**待办：main Portal 改动（class-qr.tsx）需 `cd main && nb portal deploy main` 后生效（Violet 自测前部署）；弹窗行操作为服务端配置已即时生效。**
 
 **排课画布拖拽落点 bug 修复完成（2026-11-09，D49）** — Violet 反馈"课程拖拽释放后，新位置不是鼠标所释放的位置"。数据取证定位：走查时浏览器加载的是旧构建（18:07），其拖拽写入 `2026-01-${4+day-1}T08:30:00.000Z`（日期基准差一天 + 北京钟面当 UTC 存）→ 回读解析成 16:30 → 节次/星期反算全错。修复三件套：①存量 25 条坏数据按 day_of_week（权威列）+ UTC 钟面还原节次重写，全表 29 条 start_time 与 day_of_week/节次全部自洽（含 14 条种子数据同源日期错位对齐 + 2 条 TZTEST 测试记录清理）；②api.ts `slotFromTime`/`dayFromTime` 改显式东八区（beijingClock 固定 +8h），不再依赖浏览器时区，演示机时区不同也不会错位；③pnpm build + `nb portal deploy main` 完成（bundle index-DN4vEZiv.js），typecheck + 7 单测过。**Violet 走查前必须 Ctrl+Shift+R 强刷**（浏览器缓存旧 bundle 会复现）。备份 `nocobase_20261109_fix_schedule_tz.sql`；逻辑见 docs/features/s5-scheduling.md 修复记录节。
 

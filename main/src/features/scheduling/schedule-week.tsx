@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type DragEvent } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,16 +28,20 @@ import { PageErrorBoundary } from "@/components/app-shell/page-error-boundary";
 import { LoadingState } from "@/components/app-shell/loading-state";
 
 import {
+  CHANGE_LOG_RESOURCE,
   CLASS_RESOURCE,
   DAY_LABELS,
   SCHEDULE_RESOURCE,
   TIME_SLOTS,
   type CourseSchedule,
   type Klass,
+  createRecord,
   dayFromTime,
   detectConflicts,
   listResource,
   slotFromTime,
+  slotTimes,
+  updateRecord,
 } from "./api";
 
 const KIND_LABELS: Record<string, string> = {
@@ -67,6 +71,8 @@ function WeekScheduleInner() {
   const [schedules, setSchedules] = useState<CourseSchedule[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [dragging, setDragging] = useState<CourseSchedule | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -122,6 +128,50 @@ function WeekScheduleInner() {
     [conflicts],
   );
 
+  const dropCell = useCallback(
+    async (day: number, slot: number) => {
+      const item = dragging;
+      if (!item) return;
+      const oldDay = item.day_of_week ?? dayFromTime(item.start_time);
+      const oldSlot = slotFromTime(item.start_time);
+      const oldText = `周${DAY_LABELS[oldDay - 1]} ${TIME_SLOTS[oldSlot - 1]?.label}`;
+      const newText = `周${DAY_LABELS[day - 1]} ${TIME_SLOTS[slot - 1]?.label}`;
+      setError(null);
+      try {
+        await updateRecord<CourseSchedule>(SCHEDULE_RESOURCE, item.id, {
+          day_of_week: day,
+          ...slotTimes(day, slot),
+        });
+        await createRecord<Record<string, unknown>>(CHANGE_LOG_RESOURCE, {
+          summary: `调课：${oldText} → ${newText}（${item.topic_name ?? "课程"}）`,
+          schedule: item.id,
+          old_values: JSON.stringify({ day_of_week: oldDay, start_time: item.start_time, end_time: item.end_time }),
+          new_values: JSON.stringify({ day_of_week: day, ...slotTimes(day, slot) }),
+          reason: "周课表拖拽调课",
+          notified: false,
+        });
+        setNotice(`已调课：${item.topic_name ?? "课程"} ${oldText} → ${newText}（已记录调课历史）`);
+        setDragging(null);
+        await load();
+      } catch {
+        setError("保存失败，请重试");
+        setDragging(null);
+      }
+    },
+    [dragging, load],
+  );
+
+  const onDragStartItem = (item: CourseSchedule) => (event: DragEvent) => {
+    setDragging(item);
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", String(item.id));
+  };
+
+  const onDropCell = (day: number, slot: number) => (event: DragEvent) => {
+    event.preventDefault();
+    void dropCell(day, slot);
+  };
+
   const totalHours = schedules.length;
 
   return (
@@ -168,6 +218,7 @@ function WeekScheduleInner() {
         </Button>
       </div>
 
+      {notice && <p className="text-sm text-primary">{notice}</p>}
       {error && <p className="text-sm text-destructive">{error}</p>}
       {loading ? (
         <LoadingState />
@@ -201,17 +252,24 @@ function WeekScheduleInner() {
                     return (
                       <TableCell
                         key={key}
-                        className={`h-[64px] align-top p-1 ${
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          e.dataTransfer.dropEffect = "move";
+                        }}
+                        onDrop={onDropCell(day, slot.key)}
+                        className={`h-[64px] align-top p-1 transition-colors ${
                           hasConflict ? "bg-destructive/10" : ""
-                        }`}
+                        } ${dragging ? "border-dashed" : ""}`}
                       >
                         {items.map((item) => {
                           const { topic, detail } = scheduleCellText(item);
                           return (
                             <div
                               key={item.id}
-                              className="mb-1 rounded-md border bg-muted/60 px-2 py-1 text-xs"
-                              title={detail}
+                              draggable
+                              onDragStart={onDragStartItem(item)}
+                              className="mb-1 cursor-grab rounded-md border bg-muted/60 px-2 py-1 text-xs"
+                              title={`${detail}（拖动可调课）`}
                             >
                               <div className="truncate font-medium">{topic}</div>
                               <div className="truncate text-muted-foreground">
