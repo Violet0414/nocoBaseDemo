@@ -1,0 +1,120 @@
+name: nb_dx_class
+title: 班次
+titleField: name
+fields:
+  - name: name
+    title: 班级名称
+    interface: input
+    required: true
+  - name: code
+    title: 班级编码
+    interface: input
+  - name: category
+    title: 班级类别
+    interface: select
+    options:
+      - value: main
+        label: 主体班
+        color: blue
+      - value: special
+        label: 专题培训班
+        color: cyan
+      - value: improve
+        label: 进修班
+        color: green
+      - value: youth
+        label: 中青班
+        color: gold
+      - value: other
+        label: 其他
+        color: default
+  - name: train_type
+    title: 培训类型
+    interface: select
+    options:
+      - value: fulltime
+        label: 脱产培训
+        color: blue
+      - value: onjob
+        label: 在职培训
+        color: cyan
+      - value: online
+        label: 网络培训
+        color: green
+  - name: status
+    title: 班次状态
+    interface: select
+    options:
+      - value: planned
+        label: 计划班次
+        color: default
+      - value: enrollable
+        label: 未开始(可报名)
+        color: blue
+      - value: ongoing
+        label: 当前班次
+        color: green
+      - value: finished
+        label: 历史班次
+        color: gray
+  - name: enroll_start
+    title: 报名开始日期
+    interface: date
+  - name: enroll_end
+    title: 报名截止日期
+    interface: date
+  - name: start_date
+    title: 培训开始日期
+    interface: date
+  - name: end_date
+    title: 培训结束日期
+    interface: date
+  - name: total_days
+    title: 总学习天数
+    interface: number
+    description: 用于请假占比提醒(累计请假不超过总学习天数的1/7)
+  - name: total_hours
+    title: 总学时
+    interface: number
+  - name: organizer
+    title: 组织员
+    interface: m2o
+    target: users
+    foreignKey: organizer_id
+  - name: default_room
+    title: 默认教室
+    interface: input
+  - name: room_locked
+    title: 教室锁定
+    interface: boolean
+  - name: qr_token
+    title: 报名二维码标识
+    interface: input
+  - name: description
+    title: 班次说明
+    interface: textarea
+  - name: students
+    title: 学员
+    interface: o2m
+    target: nb_dx_student
+    foreignKey: class_id
+  - name: teaching_plans
+    title: 教学计划
+    interface: o2m
+    target: nb_dx_teaching_plan
+    foreignKey: class_id
+  - name: course_schedules
+    title: 排课记录
+    interface: o2m
+    target: nb_dx_course_schedule
+    foreignKey: class_id
+  - name: elective_plans
+    title: 选修计划
+    interface: o2m
+    target: nb_dx_elective_plan
+    foreignKey: class_id
+  - name: seats
+    title: 座位
+    interface: o2m
+    target: nb_dx_seat
+    foreignKey: class_id

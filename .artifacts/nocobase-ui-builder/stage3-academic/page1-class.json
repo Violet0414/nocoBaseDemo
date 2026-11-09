@@ -1,0 +1,120 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_class": {
+        "popups": {
+          "view": { "name": "查看班次", "description": "查看一条班次记录详情" },
+          "addNew": { "name": "新增班次", "description": "新增一条班次记录" },
+          "edit": { "name": "编辑班次", "description": "编辑一条班次记录" },
+          "associations": {
+            "organizer": {
+              "view": { "name": "查看组织员", "description": "查看组织员详情" },
+              "addNew": { "name": "新增组织员", "description": "新增一条组织员记录" },
+              "edit": { "name": "编辑组织员", "description": "编辑组织员记录" }
+            },
+            "students": {
+              "view": { "name": "查看学员", "description": "查看班次下学员记录" },
+              "addNew": { "name": "新增学员", "description": "新增一条学员记录" },
+              "edit": { "name": "编辑学员", "description": "编辑学员记录" }
+            },
+            "teaching_plans": {
+              "view": { "name": "查看教学计划", "description": "查看班次下教学计划" },
+              "addNew": { "name": "新增教学计划", "description": "新增一条教学计划" },
+              "edit": { "name": "编辑教学计划", "description": "编辑教学计划" }
+            },
+            "course_schedules": {
+              "view": { "name": "查看排课", "description": "查看班次下排课记录" },
+              "addNew": { "name": "新增排课", "description": "新增一条排课记录" },
+              "edit": { "name": "编辑排课", "description": "编辑排课记录" }
+            },
+            "elective_plans": {
+              "view": { "name": "查看选修计划", "description": "查看班次下选修计划" },
+              "addNew": { "name": "新增选修计划", "description": "新增一条选修计划" },
+              "edit": { "name": "编辑选修计划", "description": "编辑选修计划" }
+            },
+            "seats": {
+              "view": { "name": "查看座位", "description": "查看班次下座位记录" },
+              "addNew": { "name": "新增座位", "description": "新增一条座位记录" },
+              "edit": { "name": "编辑座位", "description": "编辑座位记录" }
+            }
+          }
+        },
+        "fieldGroups": [
+          { "key": "classBasic", "title": "基本信息", "fields": ["name", "code", "category", "train_type", "status", "organizer"] },
+          { "key": "classPeriod", "title": "报名与学习周期", "fields": ["enroll_start", "enroll_end", "start_date", "end_date", "total_days", "total_hours"] },
+          { "key": "classOther", "title": "教室与其他", "fields": ["default_room", "room_locked", "qr_token", "description"] }
+        ]
+      },
+      "nb_dx_student": {
+        "popups": {
+          "view": { "name": "查看学员", "description": "查看一条学员记录详情" },
+          "addNew": { "name": "新增学员", "description": "新增一条学员记录" },
+          "edit": { "name": "编辑学员", "description": "编辑一条学员记录" }
+        },
+        "fieldGroups": [
+          { "key": "stuBasic", "title": "基本信息", "fields": ["name", "student_no", "gender", "birth_date", "political_status", "phone", "photo"] },
+          { "key": "stuWork", "title": "单位与分工", "fields": ["work_unit", "duty", "group_no"] },
+          { "key": "stuStatus", "title": "学籍与状态", "fields": ["status", "enroll_status", "remark", "klass", "user"] }
+        ]
+      },
+      "users": {
+        "popups": {
+          "view": { "name": "查看用户", "description": "查看一条用户记录详情" },
+          "addNew": { "name": "新增用户", "description": "新增一条用户记录" },
+          "edit": { "name": "编辑用户", "description": "编辑一条用户记录" }
+        }
+      },
+      "nb_dx_teaching_plan": {
+        "popups": {
+          "view": { "name": "查看教学计划", "description": "查看一条教学计划详情" },
+          "addNew": { "name": "新增教学计划", "description": "新增一条教学计划" },
+          "edit": { "name": "编辑教学计划", "description": "编辑一条教学计划" }
+        }
+      },
+      "nb_dx_course_schedule": {
+        "popups": {
+          "view": { "name": "查看排课", "description": "查看一条排课记录详情" },
+          "addNew": { "name": "新增排课", "description": "新增一条排课记录" },
+          "edit": { "name": "编辑排课", "description": "编辑一条排课记录" }
+        }
+      },
+      "nb_dx_elective_plan": {
+        "popups": {
+          "view": { "name": "查看选修计划", "description": "查看一条选修计划详情" },
+          "addNew": { "name": "新增选修计划", "description": "新增一条选修计划" },
+          "edit": { "name": "编辑选修计划", "description": "编辑一条选修计划" }
+        }
+      },
+      "nb_dx_seat": {
+        "popups": {
+          "view": { "name": "查看座位", "description": "查看一条座位记录详情" },
+          "addNew": { "name": "新增座位", "description": "新增一条座位记录" },
+          "edit": { "name": "编辑座位", "description": "编辑一条座位记录" }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "title": "教务管理", "icon": "ScheduleOutlined" },
+    "item": { "title": "班次管理", "icon": "TeamOutlined" }
+  },
+  "page": { "title": "班次管理" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "班次管理",
+      "blocks": [
+        {
+          "key": "classTable",
+          "type": "table",
+          "collection": "nb_dx_class",
+          "fields": ["name", "code", "category", "train_type", "status", "start_date", "end_date", "total_days", "organizer.nickname"],
+          "recordActions": ["view", "edit", "delete"]
+        }
+      ]
+    }
+  ]
+}

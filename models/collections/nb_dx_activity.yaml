@@ -1,0 +1,36 @@
+name: nb_dx_activity
+title: 教学活动库
+titleField: name
+fields:
+  - name: name
+    title: 活动名称
+    interface: input
+    required: true
+  - name: category
+    title: 活动形式
+    interface: select
+    options:
+      - value: practice
+        label: 社会实践
+        color: green
+      - value: partyday
+        label: 主题党日
+        color: red
+      - value: military
+        label: 军训
+        color: blue
+      - value: culture
+        label: 文体活动
+        color: cyan
+      - value: other
+        label: 其他
+        color: default
+  - name: hours
+    title: 活动课时
+    interface: number
+  - name: place
+    title: 活动地点
+    interface: input
+  - name: description
+    title: 活动说明
+    interface: textarea

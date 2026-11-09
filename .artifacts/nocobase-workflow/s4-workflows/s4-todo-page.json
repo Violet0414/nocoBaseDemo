@@ -1,0 +1,296 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "routeId": 396734888738816
+    },
+    "item": {
+      "title": "审批待办",
+      "icon": "AuditOutlined"
+    }
+  },
+  "page": {
+    "title": "审批待办"
+  },
+  "tabs": [
+    {
+      "key": "leave",
+      "title": "请假待审",
+      "blocks": [
+        {
+          "key": "leaveTodoTable",
+          "type": "table",
+          "collection": "nb_dx_leave",
+          "fields": [
+            "student_name",
+            "klass.name",
+            "type",
+            "start_time",
+            "end_time",
+            "duration_days",
+            "over_ratio"
+          ],
+          "recordActions": [
+            "view"
+          ],
+          "settings": {
+            "dataScope": {
+              "filter": {
+                "logic": "$and",
+                "items": [
+                  {
+                    "path": "status",
+                    "operator": "$eq",
+                    "value": "pending"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "dropout",
+      "title": "退学待审",
+      "blocks": [
+        {
+          "key": "dropoutTodoTable",
+          "type": "table",
+          "collection": "nb_dx_dropout",
+          "fields": [
+            "student_name",
+            "klass.name",
+            "reason",
+            "status"
+          ],
+          "recordActions": [
+            "view"
+          ],
+          "settings": {
+            "dataScope": {
+              "filter": {
+                "logic": "$and",
+                "items": [
+                  {
+                    "path": "status",
+                    "operator": "$eq",
+                    "value": "pending"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "registration",
+      "title": "报名待审",
+      "blocks": [
+        {
+          "key": "regTodoTable",
+          "type": "table",
+          "collection": "nb_dx_registration",
+          "fields": [
+            "name",
+            "klass.name",
+            "phone",
+            "gender",
+            "work_unit",
+            "status"
+          ],
+          "recordActions": [
+            "view"
+          ],
+          "settings": {
+            "dataScope": {
+              "filter": {
+                "logic": "$and",
+                "items": [
+                  {
+                    "path": "status",
+                    "operator": "$eq",
+                    "value": "pending"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "payment",
+      "title": "缴费待审",
+      "blocks": [
+        {
+          "key": "payTodoTable",
+          "type": "table",
+          "collection": "nb_dx_payment",
+          "fields": [
+            "payer_name",
+            "klass.name",
+            "amount",
+            "method",
+            "channel",
+            "status"
+          ],
+          "recordActions": [
+            "view"
+          ],
+          "settings": {
+            "dataScope": {
+              "filter": {
+                "logic": "$and",
+                "items": [
+                  {
+                    "path": "status",
+                    "operator": "$eq",
+                    "value": "pending"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_registration": {
+        "formBehaviorDescriptionReview": {
+          "fields": {
+            "form_data": {
+              "decision": "unsupported",
+              "reasonCode": "ambiguous-description"
+            }
+          }
+        }
+      },
+      "nb_dx_payment": {
+        "popups": {
+          "view": {
+            "name": "查看缴费凭证",
+            "description": "查看一条缴费凭证详情"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "payBasic",
+            "title": "缴费信息",
+            "fields": [
+              "payer_name",
+              "student",
+              "klass",
+              "amount",
+              "method",
+              "channel",
+              "date"
+            ]
+          },
+          {
+            "key": "payReview",
+            "title": "凭证与审核",
+            "fields": [
+              "voucher",
+              "status",
+              "review_by",
+              "review_remark"
+            ]
+          }
+        ]
+      },
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "查看学员",
+            "description": "查看一条学员详情"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuWork",
+            "title": "单位与分工",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍与状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "remark",
+              "klass",
+              "user"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班次",
+            "description": "查看一条班次详情"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

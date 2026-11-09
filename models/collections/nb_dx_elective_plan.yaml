@@ -1,0 +1,60 @@
+name: nb_dx_elective_plan
+title: 选修计划
+titleField: name
+fields:
+  - name: name
+    title: 计划名称
+    interface: input
+    required: true
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: mode
+    title: 选修模式
+    interface: select
+    options:
+      - value: own
+        label: 本班选修
+        color: blue
+      - value: joined
+        label: 合班选修
+        color: cyan
+  - name: round
+    title: 当前轮次
+    interface: select
+    options:
+      - value: first
+        label: 第一轮
+        color: blue
+      - value: second
+        label: 第二轮
+        color: orange
+      - value: done
+        label: 已结束
+        color: gray
+  - name: status
+    title: 计划状态
+    interface: select
+    options:
+      - value: selecting
+        label: 选课中
+        color: green
+      - value: closed
+        label: 已截止
+        color: orange
+      - value: confirmed
+        label: 已定开课
+        color: blue
+  - name: start_time
+    title: 选课开始时间
+    interface: datetime
+  - name: end_time
+    title: 选课截止时间
+    interface: datetime
+  - name: choices
+    title: 选课记录
+    interface: o2m
+    target: nb_dx_elective_choice
+    foreignKey: plan_id

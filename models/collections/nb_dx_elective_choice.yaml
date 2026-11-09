@@ -1,0 +1,46 @@
+name: nb_dx_elective_choice
+title: 选课记录
+titleField: topic_name
+fields:
+  - name: topic_name
+    title: 选课专题名
+    interface: input
+    description: 冗余专题名称，便于列表展示
+  - name: plan
+    title: 选修计划
+    interface: m2o
+    target: nb_dx_elective_plan
+    foreignKey: plan_id
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: topic
+    title: 选修专题
+    interface: m2o
+    target: nb_dx_topic
+    foreignKey: topic_id
+  - name: round
+    title: 选课轮次
+    interface: select
+    options:
+      - value: first
+        label: 第一轮
+        color: blue
+      - value: second
+        label: 第二轮
+        color: orange
+  - name: status
+    title: 选课状态
+    interface: select
+    options:
+      - value: chosen
+        label: 已选
+        color: blue
+      - value: opened
+        label: 已开课
+        color: green
+      - value: dropped
+        label: 未开课
+        color: gray

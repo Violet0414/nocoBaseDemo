@@ -1,0 +1,71 @@
+name: nb_dx_attendance
+title: 考勤记录
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: schedule
+    title: 关联课程
+    interface: m2o
+    target: nb_dx_course_schedule
+    foreignKey: schedule_id
+  - name: topic
+    title: 关联专题
+    interface: m2o
+    target: nb_dx_topic
+    foreignKey: topic_id
+  - name: date
+    title: 考勤日期
+    interface: date
+  - name: status
+    title: 考勤状态
+    interface: select
+    options:
+      - value: normal
+        label: 正常考勤
+        color: green
+      - value: late
+        label: 迟到
+        color: orange
+      - value: absent
+        label: 缺勤
+        color: red
+      - value: leave
+        label: 请假
+        color: blue
+      - value: goout
+        label: 外出报备
+        color: cyan
+  - name: checkin_time
+    title: 打卡时间
+    interface: datetime
+  - name: location
+    title: 打卡位置
+    interface: input
+  - name: method
+    title: 考勤方式
+    interface: select
+    options:
+      - value: mobile
+        label: 手机打卡
+        color: blue
+      - value: field
+        label: 现场考勤
+        color: cyan
+      - value: rollcall
+        label: 老师点名
+        color: orange
+      - value: manual
+        label: 人工修改
+        color: gray

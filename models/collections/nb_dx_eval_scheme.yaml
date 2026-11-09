@@ -1,0 +1,51 @@
+name: nb_dx_eval_scheme
+title: 评估方案
+titleField: name
+fields:
+  - name: name
+    title: 方案名称
+    interface: input
+    required: true
+  - name: kind
+    title: 方案类型
+    interface: select
+    options:
+      - value: topic
+        label: 专题评估
+        color: blue
+      - value: comprehensive
+        label: 综合评估
+        color: green
+      - value: party
+        label: 党性考核
+        color: red
+  - name: method
+    title: 评估方式
+    interface: select
+    options:
+      - value: score
+        label: 分值
+        color: blue
+      - value: grade
+        label: 等级
+        color: cyan
+      - value: mixed
+        label: 等级+分值
+        color: green
+  - name: items_text
+    title: 评估项目
+    interface: textarea
+    description: 每行一个评估项，如"党性意识(20分)"
+  - name: min_score
+    title: 最低分
+    interface: number
+  - name: max_score
+    title: 最高分
+    interface: number
+  - name: merged_eval
+    title: 合并评估
+    interface: boolean
+    description: 专题评估与综合评估合并进行
+  - name: remark
+    title: 备注
+    interface: textarea

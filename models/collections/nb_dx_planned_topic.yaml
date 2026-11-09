@@ -1,0 +1,38 @@
+name: nb_dx_planned_topic
+title: 拟开发专题库
+titleField: name
+fields:
+  - name: name
+    title: 拟开发专题名称
+    interface: input
+    required: true
+  - name: department
+    title: 录入教研室/部门
+    interface: input
+  - name: proposer
+    title: 提出人
+    interface: m2o
+    target: users
+    foreignKey: proposer_id
+  - name: target_date
+    title: 计划完成时间
+    interface: date
+  - name: status
+    title: 开发状态
+    interface: select
+    options:
+      - value: developing
+        label: 开发中
+        color: blue
+      - value: done
+        label: 已完成
+        color: green
+      - value: paused
+        label: 暂停
+        color: orange
+      - value: dropped
+        label: 已放弃
+        color: gray
+  - name: description
+    title: 内容说明
+    interface: textarea

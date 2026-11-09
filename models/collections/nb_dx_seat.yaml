@@ -1,0 +1,48 @@
+name: nb_dx_seat
+title: 座位
+titleField: label
+fields:
+  - name: label
+    title: 座位标识
+    interface: input
+    description: 如 A-3-2(区-排-号)，自动排座时生成
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: schedule
+    title: 关联课程(空为默认教室排座)
+    interface: m2o
+    target: nb_dx_course_schedule
+    foreignKey: schedule_id
+  - name: student
+    title: 就座学员(空为空座位)
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: room
+    title: 教室
+    interface: input
+  - name: area
+    title: 区域
+    interface: input
+  - name: row_no
+    title: 排号
+    interface: number
+  - name: col_no
+    title: 列号
+    interface: number
+  - name: kind
+    title: 元素类型
+    interface: select
+    options:
+      - value: seat
+        label: 座位
+        color: blue
+      - value: aisle
+        label: 过道
+        color: gray
+      - value: podium
+        label: 讲台
+        color: orange

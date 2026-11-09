@@ -1,0 +1,37 @@
+name: nb_dx_news
+title: 校园新闻
+titleField: title
+fields:
+  - name: title
+    title: 标题
+    interface: input
+    required: true
+  - name: content
+    title: 正文内容
+    interface: textarea
+  - name: cover
+    title: 封面图
+    interface: attachment
+  - name: publisher
+    title: 发布人
+    interface: m2o
+    target: users
+    foreignKey: publisher_id
+  - name: published_at
+    title: 发布时间
+    interface: datetime
+  - name: top
+    title: 置顶
+    interface: boolean
+  - name: readers
+    title: 已读人员
+    interface: m2m
+    target: users
+    through: nb_dx_news_readers
+    foreignKey: news_id
+    otherKey: user_id
+  - name: comments
+    title: 评论
+    interface: o2m
+    target: nb_dx_comment
+    foreignKey: news_id

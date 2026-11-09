@@ -1,0 +1,40 @@
+name: nb_dx_dropout
+title: 退学申请
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: reason
+    title: 退学原因
+    interface: textarea
+    required: true
+  - name: attachment
+    title: 附件材料
+    interface: attachment
+  - name: status
+    title: 审批状态
+    interface: select
+    options:
+      - value: pending
+        label: 待审批
+        color: orange
+      - value: approved
+        label: 已批准
+        color: green
+      - value: rejected
+        label: 已驳回
+        color: red
+  - name: approved_remark
+    title: 审批意见
+    interface: textarea

@@ -1,0 +1,812 @@
+{
+  "data": {
+    "version": "1",
+    "mode": "create",
+    "target": {
+      "pageSchemaUid": "f23e9m55ht3",
+      "pageUid": "ooi4h4mdtzo"
+    },
+    "surface": {
+      "target": {
+        "locator": {
+          "pageSchemaUid": "f23e9m55ht3"
+        },
+        "uid": "ooi4h4mdtzo",
+        "kind": "page"
+      },
+      "tree": {
+        "parentId": "f23e9m55ht3",
+        "subKey": "page",
+        "subType": "object",
+        "use": "RootPageModel",
+        "props": {
+          "routeId": 396739821240320,
+          "title": "统计图表",
+          "enableTabs": false,
+          "displayTitle": true,
+          "icon": "PieChartOutlined",
+          "enableHeader": null
+        },
+        "stepParams": {
+          "pageSettings": {
+            "general": {
+              "title": "统计图表",
+              "displayTitle": true,
+              "enableTabs": false,
+              "icon": "PieChartOutlined",
+              "enableHeader": null
+            }
+          }
+        },
+        "parent": "f23e9m55ht3",
+        "uid": "ooi4h4mdtzo",
+        "subModels": {
+          "tabs": [
+            {
+              "uid": "2l9ez1lompy",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-09T06:04:48.893Z",
+                  "updatedAt": "2026-11-09T06:04:48.926Z",
+                  "id": 396739821240321,
+                  "parentId": 396739821240320,
+                  "title": "统计图表",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "2l9ez1lompy",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "bzxojoiit5y",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794204288881558,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": true,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "统计图表",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "统计图表",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "2l9ez1lompy",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "upiab1cmy6k"
+                        ],
+                        [
+                          "44qm0kp9fzr"
+                        ]
+                      ],
+                      "row2": [
+                        [
+                          "gsunigj6u9n"
+                        ],
+                        [
+                          "vdx0vcdwurk"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        12,
+                        12
+                      ],
+                      "row2": [
+                        12,
+                        12
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1",
+                      "row2"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "upiab1cmy6k"
+                            ],
+                            [
+                              "44qm0kp9fzr"
+                            ]
+                          ],
+                          "row2": [
+                            [
+                              "gsunigj6u9n"
+                            ],
+                            [
+                              "vdx0vcdwurk"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            12,
+                            12
+                          ],
+                          "row2": [
+                            12,
+                            12
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1",
+                          "row2"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "p0x9cikoekw",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "p0x9cikoekw",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "ChartBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "chartSettings": {
+                            "configure": {
+                              "query": {
+                                "mode": "builder",
+                                "collectionPath": [
+                                  "main",
+                                  "nb_dx_eval_record"
+                                ],
+                                "measures": [
+                                  {
+                                    "field": "score",
+                                    "aggregation": "avg",
+                                    "alias": "avgScore"
+                                  }
+                                ],
+                                "dimensions": [
+                                  {
+                                    "field": "kind"
+                                  }
+                                ]
+                              },
+                              "chart": {
+                                "option": {
+                                  "mode": "basic",
+                                  "builder": {
+                                    "type": "bar",
+                                    "xField": "kind",
+                                    "yField": "avgScore"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "cardSettings": {
+                            "titleDescription": {
+                              "title": "评估类型平均分"
+                            }
+                          }
+                        },
+                        "uid": "upiab1cmy6k",
+                        "parent": "p0x9cikoekw",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      },
+                      {
+                        "parentId": "p0x9cikoekw",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "ChartBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "chartSettings": {
+                            "configure": {
+                              "query": {
+                                "mode": "builder",
+                                "collectionPath": [
+                                  "main",
+                                  "nb_dx_eval_record"
+                                ],
+                                "measures": [
+                                  {
+                                    "field": "kind",
+                                    "aggregation": "count",
+                                    "alias": "evalCount"
+                                  }
+                                ],
+                                "dimensions": [
+                                  {
+                                    "field": "kind"
+                                  }
+                                ]
+                              },
+                              "chart": {
+                                "option": {
+                                  "mode": "basic",
+                                  "builder": {
+                                    "type": "pie",
+                                    "pieCategory": "kind",
+                                    "pieValue": "evalCount"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "cardSettings": {
+                            "titleDescription": {
+                              "title": "评估记录分布"
+                            }
+                          }
+                        },
+                        "uid": "44qm0kp9fzr",
+                        "parent": "p0x9cikoekw",
+                        "sortIndex": 2,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      },
+                      {
+                        "parentId": "p0x9cikoekw",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "ChartBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "chartSettings": {
+                            "configure": {
+                              "query": {
+                                "mode": "builder",
+                                "collectionPath": [
+                                  "main",
+                                  "nb_dx_vote_record"
+                                ],
+                                "measures": [
+                                  {
+                                    "field": "option_selected",
+                                    "aggregation": "count",
+                                    "alias": "voteCount"
+                                  }
+                                ],
+                                "dimensions": [
+                                  {
+                                    "field": "option_selected"
+                                  }
+                                ]
+                              },
+                              "chart": {
+                                "option": {
+                                  "mode": "basic",
+                                  "builder": {
+                                    "type": "bar",
+                                    "xField": "option_selected",
+                                    "yField": "voteCount"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "cardSettings": {
+                            "titleDescription": {
+                              "title": "投票选项分布"
+                            }
+                          }
+                        },
+                        "uid": "gsunigj6u9n",
+                        "parent": "p0x9cikoekw",
+                        "sortIndex": 3,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      },
+                      {
+                        "parentId": "p0x9cikoekw",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "ChartBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "chartSettings": {
+                            "configure": {
+                              "query": {
+                                "mode": "builder",
+                                "collectionPath": [
+                                  "main",
+                                  "nb_dx_survey_answer"
+                                ],
+                                "measures": [
+                                  {
+                                    "field": "id",
+                                    "aggregation": "count",
+                                    "alias": "answerCount"
+                                  }
+                                ],
+                                "dimensions": [
+                                  {
+                                    "field": [
+                                      "survey",
+                                      "name"
+                                    ],
+                                    "alias": "survey.name"
+                                  }
+                                ]
+                              },
+                              "chart": {
+                                "option": {
+                                  "mode": "basic",
+                                  "builder": {
+                                    "type": "bar",
+                                    "xField": "survey.name",
+                                    "yField": "answerCount"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "cardSettings": {
+                            "titleDescription": {
+                              "title": "各问卷答卷数"
+                            }
+                          }
+                        },
+                        "uid": "vdx0vcdwurk",
+                        "parent": "p0x9cikoekw",
+                        "sortIndex": 4,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "2l9ez1lompy",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            }
+          ]
+        },
+        "popup": {
+          "mode": "local"
+        }
+      },
+      "nodeMap": {
+        "ooi4h4mdtzo": {
+          "uid": "ooi4h4mdtzo",
+          "use": "RootPageModel",
+          "props": {
+            "routeId": 396739821240320,
+            "title": "统计图表",
+            "enableTabs": false,
+            "displayTitle": true,
+            "icon": "PieChartOutlined",
+            "enableHeader": null
+          },
+          "stepParams": {
+            "pageSettings": {
+              "general": {
+                "title": "统计图表",
+                "displayTitle": true,
+                "enableTabs": false,
+                "icon": "PieChartOutlined",
+                "enableHeader": null
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "2l9ez1lompy": {
+          "uid": "2l9ez1lompy",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-09T06:04:48.893Z",
+              "updatedAt": "2026-11-09T06:04:48.926Z",
+              "id": 396739821240321,
+              "parentId": 396739821240320,
+              "title": "统计图表",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "2l9ez1lompy",
+              "menuSchemaUid": null,
+              "tabSchemaName": "bzxojoiit5y",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794204288881558,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": true,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "统计图表",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "统计图表",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "p0x9cikoekw": {
+          "uid": "p0x9cikoekw",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "upiab1cmy6k"
+                ],
+                [
+                  "44qm0kp9fzr"
+                ]
+              ],
+              "row2": [
+                [
+                  "gsunigj6u9n"
+                ],
+                [
+                  "vdx0vcdwurk"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                12,
+                12
+              ],
+              "row2": [
+                12,
+                12
+              ]
+            },
+            "rowOrder": [
+              "row1",
+              "row2"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "upiab1cmy6k"
+                    ],
+                    [
+                      "44qm0kp9fzr"
+                    ]
+                  ],
+                  "row2": [
+                    [
+                      "gsunigj6u9n"
+                    ],
+                    [
+                      "vdx0vcdwurk"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    12,
+                    12
+                  ],
+                  "row2": [
+                    12,
+                    12
+                  ]
+                },
+                "rowOrder": [
+                  "row1",
+                  "row2"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "upiab1cmy6k": {
+          "uid": "upiab1cmy6k",
+          "use": "ChartBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "chartSettings": {
+              "configure": {
+                "query": {
+                  "mode": "builder",
+                  "collectionPath": [
+                    "main",
+                    "nb_dx_eval_record"
+                  ],
+                  "measures": [
+                    {
+                      "field": "score",
+                      "aggregation": "avg",
+                      "alias": "avgScore"
+                    }
+                  ],
+                  "dimensions": [
+                    {
+                      "field": "kind"
+                    }
+                  ]
+                },
+                "chart": {
+                  "option": {
+                    "mode": "basic",
+                    "builder": {
+                      "type": "bar",
+                      "xField": "kind",
+                      "yField": "avgScore"
+                    }
+                  }
+                }
+              }
+            },
+            "cardSettings": {
+              "titleDescription": {
+                "title": "评估类型平均分"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "44qm0kp9fzr": {
+          "uid": "44qm0kp9fzr",
+          "use": "ChartBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "chartSettings": {
+              "configure": {
+                "query": {
+                  "mode": "builder",
+                  "collectionPath": [
+                    "main",
+                    "nb_dx_eval_record"
+                  ],
+                  "measures": [
+                    {
+                      "field": "kind",
+                      "aggregation": "count",
+                      "alias": "evalCount"
+                    }
+                  ],
+                  "dimensions": [
+                    {
+                      "field": "kind"
+                    }
+                  ]
+                },
+                "chart": {
+                  "option": {
+                    "mode": "basic",
+                    "builder": {
+                      "type": "pie",
+                      "pieCategory": "kind",
+                      "pieValue": "evalCount"
+                    }
+                  }
+                }
+              }
+            },
+            "cardSettings": {
+              "titleDescription": {
+                "title": "评估记录分布"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "gsunigj6u9n": {
+          "uid": "gsunigj6u9n",
+          "use": "ChartBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "chartSettings": {
+              "configure": {
+                "query": {
+                  "mode": "builder",
+                  "collectionPath": [
+                    "main",
+                    "nb_dx_vote_record"
+                  ],
+                  "measures": [
+                    {
+                      "field": "option_selected",
+                      "aggregation": "count",
+                      "alias": "voteCount"
+                    }
+                  ],
+                  "dimensions": [
+                    {
+                      "field": "option_selected"
+                    }
+                  ]
+                },
+                "chart": {
+                  "option": {
+                    "mode": "basic",
+                    "builder": {
+                      "type": "bar",
+                      "xField": "option_selected",
+                      "yField": "voteCount"
+                    }
+                  }
+                }
+              }
+            },
+            "cardSettings": {
+              "titleDescription": {
+                "title": "投票选项分布"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "vdx0vcdwurk": {
+          "uid": "vdx0vcdwurk",
+          "use": "ChartBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "chartSettings": {
+              "configure": {
+                "query": {
+                  "mode": "builder",
+                  "collectionPath": [
+                    "main",
+                    "nb_dx_survey_answer"
+                  ],
+                  "measures": [
+                    {
+                      "field": "id",
+                      "aggregation": "count",
+                      "alias": "answerCount"
+                    }
+                  ],
+                  "dimensions": [
+                    {
+                      "field": [
+                        "survey",
+                        "name"
+                      ],
+                      "alias": "survey.name"
+                    }
+                  ]
+                },
+                "chart": {
+                  "option": {
+                    "mode": "basic",
+                    "builder": {
+                      "type": "bar",
+                      "xField": "survey.name",
+                      "yField": "answerCount"
+                    }
+                  }
+                }
+              }
+            },
+            "cardSettings": {
+              "titleDescription": {
+                "title": "各问卷答卷数"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        }
+      },
+      "pageRoute": {
+        "createdAt": "2026-11-09T06:04:48.881Z",
+        "updatedAt": "2026-11-09T06:04:48.881Z",
+        "id": 396739821240320,
+        "parentId": 396739781394432,
+        "title": "统计图表",
+        "tooltip": null,
+        "icon": "PieChartOutlined",
+        "schemaUid": "f23e9m55ht3",
+        "menuSchemaUid": "263hly3qjcc",
+        "tabSchemaName": null,
+        "type": "flowPage",
+        "options": {
+          "flowSurfaceMenuBindable": true
+        },
+        "sort": 1794204288881049,
+        "hideInMenu": false,
+        "enableTabs": false,
+        "enableHeader": null,
+        "displayTitle": true,
+        "hidden": null,
+        "createdById": null,
+        "updatedById": null,
+        "children": [
+          {
+            "createdAt": "2026-11-09T06:04:48.893Z",
+            "updatedAt": "2026-11-09T06:04:48.926Z",
+            "id": 396739821240321,
+            "parentId": 396739821240320,
+            "title": "统计图表",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "2l9ez1lompy",
+            "menuSchemaUid": null,
+            "tabSchemaName": "bzxojoiit5y",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794204288881558,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": true,
+            "createdById": null,
+            "updatedById": null
+          }
+        ]
+      }
+    }
+  }
+}

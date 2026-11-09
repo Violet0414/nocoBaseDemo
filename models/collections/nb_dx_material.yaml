@@ -1,0 +1,52 @@
+name: nb_dx_material
+title: 带来留下材料
+titleField: question
+fields:
+  - name: question
+    title: 材料标题
+    interface: input
+    required: true
+  - name: student
+    title: 提交学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: kind
+    title: 材料类型
+    interface: select
+    options:
+      - value: bring
+        label: 带来材料
+        color: blue
+      - value: leave
+        label: 留下材料
+        color: green
+  - name: content
+    title: 材料内容
+    interface: textarea
+  - name: attachment
+    title: 附件
+    interface: attachment
+  - name: reply
+    title: 组织员回复
+    interface: textarea
+  - name: reply_by
+    title: 回复人
+    interface: m2o
+    target: users
+    foreignKey: reply_by_id
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: submitted
+        label: 已提交
+        color: blue
+      - value: replied
+        label: 已回复
+        color: green

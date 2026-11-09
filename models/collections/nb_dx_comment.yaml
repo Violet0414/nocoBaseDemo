@@ -1,0 +1,52 @@
+name: nb_dx_comment
+title: 学员社区帖子
+titleField: title
+fields:
+  - name: title
+    title: 帖子标题
+    interface: input
+  - name: content
+    title: 内容
+    interface: textarea
+    required: true
+  - name: author
+    title: 发帖人
+    interface: m2o
+    target: users
+    foreignKey: author_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: parent
+    title: 回复目标
+    interface: m2o
+    target: nb_dx_comment
+    foreignKey: parent_id
+  - name: kind
+    title: 类型
+    interface: select
+    options:
+      - value: post
+        label: 发帖
+        color: blue
+      - value: reply
+        label: 回帖
+        color: cyan
+  - name: hot
+    title: 精华
+    interface: boolean
+  - name: news
+    title: 关联新闻
+    interface: m2o
+    target: nb_dx_news
+    foreignKey: news_id
+  - name: announcement
+    title: 关联通知
+    interface: m2o
+    target: nb_dx_announcement
+    foreignKey: announcement_id
+  - name: attachments
+    title: 附件
+    interface: attachment

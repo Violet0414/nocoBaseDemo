@@ -1,0 +1,116 @@
+name: nb_dx_student
+title: 学员
+titleField: name
+fields:
+  - name: name
+    title: 姓名
+    interface: input
+    required: true
+  - name: student_no
+    title: 学号
+    interface: input
+  - name: gender
+    title: 性别
+    interface: select
+    options:
+      - value: male
+        label: 男
+        color: blue
+      - value: female
+        label: 女
+        color: magenta
+  - name: birth_date
+    title: 出生日期
+    interface: date
+  - name: political_status
+    title: 政治面貌
+    interface: select
+    options:
+      - value: cpc
+        label: 中共党员
+        color: red
+      - value: league
+        label: 共青团员
+        color: blue
+      - value: masses
+        label: 群众
+        color: default
+      - value: other
+        label: 其他党派
+        color: gray
+  - name: phone
+    title: 手机号
+    interface: input
+  - name: photo
+    title: 照片
+    interface: attachment
+  - name: work_unit
+    title: 单位及职务
+    interface: input
+  - name: duty
+    title: 班级职务
+    interface: select
+    options:
+      - value: none
+        label: 无
+        color: default
+      - value: leader
+        label: 班长
+        color: gold
+      - value: deputy
+        label: 副班长
+        color: orange
+      - value: study
+        label: 学习委员
+        color: cyan
+      - value: life
+        label: 生活委员
+        color: green
+      - value: group
+        label: 党小组长
+        color: red
+  - name: group_no
+    title: 分组编号
+    interface: number
+  - name: klass
+    title: 所属班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: user
+    title: 平台账号
+    interface: m2o
+    target: users
+    foreignKey: user_id
+  - name: status
+    title: 学籍状态
+    interface: select
+    options:
+      - value: pending
+        label: 待审核
+        color: orange
+      - value: active
+        label: 在读
+        color: green
+      - value: dropout
+        label: 已退学
+        color: red
+      - value: finished
+        label: 已结业
+        color: gray
+  - name: enroll_status
+    title: 报到状态
+    interface: select
+    options:
+      - value: no
+        label: 未报到
+        color: orange
+      - value: yes
+        label: 已报到
+        color: green
+  - name: excellent
+    title: 优秀学员
+    interface: boolean
+  - name: remark
+    title: 备注
+    interface: textarea

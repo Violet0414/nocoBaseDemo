@@ -1,0 +1,30 @@
+name: nb_dx_recommendation
+title: 学员荐书
+titleField: book_name
+fields:
+  - name: book_name
+    title: 书名
+    interface: input
+    required: true
+  - name: authors
+    title: 作者
+    interface: input
+  - name: publisher
+    title: 出版社
+    interface: input
+  - name: reason
+    title: 推荐理由
+    interface: textarea
+  - name: student
+    title: 推荐学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 所属班级
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: date
+    title: 推荐日期
+    interface: date

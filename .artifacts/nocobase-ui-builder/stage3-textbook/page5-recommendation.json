@@ -1,0 +1,166 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_recommendation": {
+        "popups": {
+          "view": {
+            "name": "查看荐书",
+            "description": "查看一条学员荐书记录详情"
+          },
+          "addNew": {
+            "name": "新增荐书",
+            "description": "新增一条学员荐书记录"
+          },
+          "edit": {
+            "name": "编辑荐书",
+            "description": "编辑一条学员荐书记录"
+          },
+          "associations": {}
+        }
+      },
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "查看学员",
+            "description": "查看一条学员记录详情"
+          },
+          "addNew": {
+            "name": "新增学员",
+            "description": "新增一条学员记录"
+          },
+          "edit": {
+            "name": "编辑学员",
+            "description": "编辑一条学员记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuWork",
+            "title": "单位与分工",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍与状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "remark",
+              "klass",
+              "user"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班级",
+            "description": "查看一条班次记录详情"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "routeId": "396714401660928"
+    },
+    "item": {
+      "title": "学员荐书",
+      "icon": "LikeOutlined"
+    }
+  },
+  "page": {
+    "title": "学员荐书"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "学员荐书",
+      "blocks": [
+        {
+          "key": "recommendationTable",
+          "type": "table",
+          "collection": "nb_dx_recommendation",
+          "fields": [
+            "book_name",
+            "authors",
+            "publisher",
+            "reason",
+            "student.name",
+            "klass.name",
+            "date"
+          ],
+          "recordActions": [
+            "view",
+            "edit"
+          ]
+        }
+      ]
+    }
+  ]
+}

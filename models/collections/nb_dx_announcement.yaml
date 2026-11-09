@@ -1,0 +1,53 @@
+name: nb_dx_announcement
+title: 通知公告
+titleField: title
+fields:
+  - name: title
+    title: 标题
+    interface: input
+    required: true
+  - name: kind
+    title: 通知类型
+    interface: select
+    options:
+      - value: campus
+        label: 校园通知
+        color: blue
+      - value: teaching
+        label: 教学通知
+        color: green
+      - value: student
+        label: 学员须知
+        color: cyan
+      - value: guide
+        label: 服务指南
+        color: purple
+  - name: content
+    title: 正文内容
+    interface: textarea
+  - name: klass
+    title: 指定班级(空为全校)
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: attachment
+    title: 附件
+    interface: attachment
+  - name: publisher
+    title: 发布人
+    interface: m2o
+    target: users
+    foreignKey: publisher_id
+  - name: published_at
+    title: 发布时间
+    interface: datetime
+  - name: top
+    title: 置顶
+    interface: boolean
+  - name: readers
+    title: 已读人员
+    interface: m2m
+    target: users
+    through: nb_dx_announcement_readers
+    foreignKey: announcement_id
+    otherKey: user_id

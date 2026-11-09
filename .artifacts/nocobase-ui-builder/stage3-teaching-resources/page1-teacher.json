@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_teacher": {
+        "popups": {
+          "view": { "name": "查看师资", "description": "查看一条师资记录详情" },
+          "addNew": { "name": "新增师资", "description": "新增一条师资记录" },
+          "edit": { "name": "编辑师资", "description": "编辑一条师资记录" }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "title": "教学资源", "icon": "BookOutlined" },
+    "item": { "title": "师资库", "icon": "TeamOutlined" }
+  },
+  "page": { "title": "师资库" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "师资库",
+      "blocks": [
+        {
+          "key": "teacherTable",
+          "type": "table",
+          "collection": "nb_dx_teacher",
+          "fields": ["name", "gender", "unit", "title", "research_area", "is_leader", "is_external", "phone"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

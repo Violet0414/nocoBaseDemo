@@ -1,0 +1,48 @@
+name: nb_dx_declaration
+title: 信息申报
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: type
+    title: 申报类型
+    interface: select
+    options:
+      - value: daily
+        label: 每日报告
+        color: blue
+      - value: trip
+        label: 来校行程
+        color: cyan
+      - value: interest
+        label: 兴趣调查
+        color: green
+      - value: health
+        label: 健康申报
+        color: orange
+  - name: content
+    title: 申报内容
+    interface: textarea
+  - name: health_code
+    title: 健康码
+    interface: attachment
+  - name: trip_code
+    title: 行程码
+    interface: attachment
+  - name: test_report
+    title: 核酸报告
+    interface: attachment
+  - name: date
+    title: 申报日期
+    interface: date

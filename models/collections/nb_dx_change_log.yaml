@@ -1,0 +1,30 @@
+name: nb_dx_change_log
+title: 调课记录
+titleField: summary
+fields:
+  - name: summary
+    title: 调课摘要
+    interface: input
+    required: true
+  - name: schedule
+    title: 关联课程
+    interface: m2o
+    target: nb_dx_course_schedule
+    foreignKey: schedule_id
+  - name: old_values
+    title: 调课前信息
+    interface: textarea
+  - name: new_values
+    title: 调课后信息
+    interface: textarea
+  - name: reason
+    title: 调课原因
+    interface: input
+  - name: operator
+    title: 操作人
+    interface: m2o
+    target: users
+    foreignKey: operator_id
+  - name: notified
+    title: 已通知教师
+    interface: boolean

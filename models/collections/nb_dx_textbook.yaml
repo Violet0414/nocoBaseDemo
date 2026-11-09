@@ -1,0 +1,46 @@
+name: nb_dx_textbook
+title: 教材信息
+titleField: name
+fields:
+  - name: name
+    title: 教材名称
+    interface: input
+    required: true
+  - name: publisher
+    title: 出版机构
+    interface: input
+  - name: authors
+    title: 主编
+    interface: input
+  - name: pub_year
+    title: 出版年份
+    interface: number
+  - name: price
+    title: 定价(元)
+    interface: number
+  - name: isbn
+    title: ISBN
+    interface: input
+  - name: category
+    title: 教材分类
+    interface: select
+    options:
+      - value: theory
+        label: 政治理论
+        color: red
+      - value: party
+        label: 党的建设
+        color: gold
+      - value: manage
+        label: 经济管理
+        color: blue
+      - value: law
+        label: 法律法规
+        color: cyan
+      - value: other
+        label: 其他
+        color: default
+  - name: stock
+    title: 当前库存
+    interface: number
+    description: 由采购/领用/退库流水维护

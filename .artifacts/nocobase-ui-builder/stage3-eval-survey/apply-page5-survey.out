@@ -1,0 +1,3001 @@
+{
+  "data": {
+    "version": "1",
+    "mode": "create",
+    "target": {
+      "pageSchemaUid": "xrtxgbhzq70",
+      "pageUid": "h27iclbzscf"
+    },
+    "surface": {
+      "target": {
+        "locator": {
+          "pageSchemaUid": "xrtxgbhzq70"
+        },
+        "uid": "h27iclbzscf",
+        "kind": "page"
+      },
+      "tree": {
+        "parentId": "xrtxgbhzq70",
+        "subKey": "page",
+        "subType": "object",
+        "use": "RootPageModel",
+        "props": {
+          "routeId": 396739944972288,
+          "title": "不记名问卷",
+          "enableTabs": true,
+          "displayTitle": true,
+          "icon": "FormOutlined",
+          "enableHeader": null
+        },
+        "stepParams": {
+          "pageSettings": {
+            "general": {
+              "title": "不记名问卷",
+              "displayTitle": true,
+              "enableTabs": true,
+              "icon": "FormOutlined",
+              "enableHeader": null
+            }
+          }
+        },
+        "parent": "xrtxgbhzq70",
+        "uid": "h27iclbzscf",
+        "subModels": {
+          "tabs": [
+            {
+              "uid": "aq8dmqj8def",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-09T06:05:47.973Z",
+                  "updatedAt": "2026-11-09T06:05:48.013Z",
+                  "id": 396739944972289,
+                  "parentId": 396739944972288,
+                  "title": "问卷列表",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "aq8dmqj8def",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "d93ikvl8rlh",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794204347958425,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": false,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "问卷列表",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "问卷列表",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "aq8dmqj8def",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "b8c7iglw2ue"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        24
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "b8c7iglw2ue"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            24
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "1zux10x41iq",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "1zux10x41iq",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "TableBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "resourceSettings": {
+                            "init": {
+                              "dataSourceKey": "main",
+                              "collectionName": "nb_dx_survey"
+                            }
+                          }
+                        },
+                        "uid": "b8c7iglw2ue",
+                        "subModels": {
+                          "columns": [
+                            {
+                              "use": "TableActionsColumnModel",
+                              "props": {},
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "tableColumnSettings": {
+                                  "title": {
+                                    "title": "{{t(\"Actions\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "subKey": "columns",
+                              "subType": "array",
+                              "uid": "x5fky89eamu",
+                              "subModels": {
+                                "actions": [
+                                  {
+                                    "parentId": "x5fky89eamu",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "ViewActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"View\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"View\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_survey",
+                                          "title": "查看问卷"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "bnpjutcxd5k",
+                                    "parent": "x5fky89eamu",
+                                    "sortIndex": 1,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "3f2t4thpurd",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "x5fky89eamu",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "EditActionModel",
+                                    "props": {
+                                      "title": "{{t(\"Edit\")}}",
+                                      "icon": null,
+                                      "type": "link"
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Edit\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_survey",
+                                          "title": "{{t(\"Edit\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "9myi3rxjig0",
+                                    "parent": "x5fky89eamu",
+                                    "sortIndex": 2,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "nje6vvafkki",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "x5fky89eamu",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "DeleteActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"Delete\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Delete\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "deleteSettings": {
+                                        "confirm": {
+                                          "enable": true,
+                                          "title": "{{t(\"Delete record\")}}",
+                                          "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "mw7wj25wuyi",
+                                    "parent": "x5fky89eamu",
+                                    "sortIndex": 3,
+                                    "popup": {
+                                      "mode": "local"
+                                    }
+                                  }
+                                ]
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "parentId": "b8c7iglw2ue",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "name"
+                                  }
+                                }
+                              },
+                              "uid": "yorx60bdj43",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "name"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "h0o5z8222rc",
+                                  "parent": "yorx60bdj43",
+                                  "parentId": "yorx60bdj43",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "klass.name",
+                                    "associationPathName": "klass"
+                                  }
+                                }
+                              },
+                              "uid": "iu5uarfqty8",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "klass.name",
+                                        "associationPathName": "klass"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_class",
+                                        "associationName": "nb_dx_survey.klass",
+                                        "filterByTk": "{{ctx.record.id}}"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "4tb8mtdexiy",
+                                  "parent": "iu5uarfqty8",
+                                  "parentId": "iu5uarfqty8",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "uxw2cjyq0mm",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "kind"
+                                  }
+                                }
+                              },
+                              "uid": "adpx3kq77mz",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayEnumFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "kind"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "peq1820w3j8",
+                                  "parent": "adpx3kq77mz",
+                                  "parentId": "adpx3kq77mz",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 4,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "status"
+                                  }
+                                }
+                              },
+                              "uid": "7w3dlwblxtk",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayEnumFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "status"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "i2fkrcyme28",
+                                  "parent": "7w3dlwblxtk",
+                                  "parentId": "7w3dlwblxtk",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 5,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "end_time"
+                                  }
+                                }
+                              },
+                              "uid": "lrcsvfrb8gt",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayDateTimeFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "end_time"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "q15i03v3i0f",
+                                  "parent": "lrcsvfrb8gt",
+                                  "parentId": "lrcsvfrb8gt",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 6,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "limit_per_day"
+                                  }
+                                }
+                              },
+                              "uid": "p6vc57fgnd3",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayNumberFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "limit_per_day"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "finspwz8zfl",
+                                  "parent": "p6vc57fgnd3",
+                                  "parentId": "p6vc57fgnd3",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 7,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "fieldPath": "creator.nickname",
+                                    "associationPathName": "creator"
+                                  }
+                                }
+                              },
+                              "uid": "ng69oy70qdu",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "fieldPath": "creator.nickname",
+                                        "associationPathName": "creator"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "users",
+                                        "mode": "drawer",
+                                        "size": "medium",
+                                        "pageModelClass": "ChildPageModel",
+                                        "associationName": "nb_dx_survey.creator",
+                                        "title": "查看用户"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "aw9sxmx831f",
+                                  "parent": "ng69oy70qdu",
+                                  "parentId": "ng69oy70qdu",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "dqdxnw8i9r2",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 8,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "FilterActionModel",
+                              "props": {
+                                "title": "{{t(\"Filter\")}}",
+                                "icon": "FilterOutlined",
+                                "defaultFilterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "name",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "status",
+                                      "operator": "$eq"
+                                    },
+                                    {
+                                      "path": "description",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "kind",
+                                      "operator": "$eq"
+                                    }
+                                  ]
+                                },
+                                "filterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "name",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "status",
+                                      "operator": "$eq"
+                                    },
+                                    {
+                                      "path": "description",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "kind",
+                                      "operator": "$eq"
+                                    }
+                                  ]
+                                }
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Filter\")}}",
+                                    "icon": "FilterOutlined"
+                                  }
+                                },
+                                "filterSettings": {
+                                  "defaultFilter": {
+                                    "defaultFilter": {
+                                      "logic": "$and",
+                                      "items": [
+                                        {
+                                          "path": "name",
+                                          "operator": "$includes"
+                                        },
+                                        {
+                                          "path": "status",
+                                          "operator": "$eq"
+                                        },
+                                        {
+                                          "path": "description",
+                                          "operator": "$includes"
+                                        },
+                                        {
+                                          "path": "kind",
+                                          "operator": "$eq"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "96yaklwj6h6",
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "RefreshActionModel",
+                              "props": {
+                                "title": "{{t(\"Refresh\")}}",
+                                "icon": "ReloadOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Refresh\")}}",
+                                    "icon": "ReloadOutlined"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "q81jbqaawax",
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "BulkDeleteActionModel",
+                              "props": {
+                                "title": "",
+                                "tooltip": "{{t(\"Delete\")}}",
+                                "icon": "DeleteOutlined",
+                                "iconOnly": true,
+                                "position": "right"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "",
+                                    "tooltip": "{{t(\"Delete\")}}",
+                                    "icon": "DeleteOutlined",
+                                    "iconOnly": true
+                                  }
+                                },
+                                "deleteSettings": {
+                                  "confirm": {
+                                    "enable": true,
+                                    "title": "{{t(\"Delete record\")}}",
+                                    "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "2nabtttf1zy",
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "b8c7iglw2ue",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "AddNewActionModel",
+                              "props": {
+                                "type": "primary",
+                                "title": "{{t(\"Add new\")}}",
+                                "icon": "PlusOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Add new\")}}",
+                                    "icon": "PlusOutlined",
+                                    "type": "primary"
+                                  }
+                                },
+                                "popupSettings": {
+                                  "openView": {
+                                    "mode": "drawer",
+                                    "size": "medium",
+                                    "pageModelClass": "ChildPageModel",
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey",
+                                    "title": "新增问卷"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "te3iptkhasn",
+                              "parent": "b8c7iglw2ue",
+                              "sortIndex": 4,
+                              "popup": {
+                                "template": {
+                                  "uid": "stf6t2a154t",
+                                  "mode": "reference"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "parent": "1zux10x41iq",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "aq8dmqj8def",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            },
+            {
+              "uid": "f4w07i5jk07",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-09T06:05:56.582Z",
+                  "updatedAt": "2026-11-09T06:05:56.582Z",
+                  "id": 396739963846656,
+                  "parentId": 396739944972288,
+                  "title": "答卷明细",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "f4w07i5jk07",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "answers",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794204356582567,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": false,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "答卷明细",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "答卷明细",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "f4w07i5jk07",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "npy0h5u23gn"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        24
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "npy0h5u23gn"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            24
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "y8vt0dtrg51",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "y8vt0dtrg51",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "TableBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "resourceSettings": {
+                            "init": {
+                              "dataSourceKey": "main",
+                              "collectionName": "nb_dx_survey_answer"
+                            }
+                          },
+                          "tableSettings": {
+                            "defaultSorting": {
+                              "sort": [
+                                {
+                                  "field": "createdAt",
+                                  "direction": "desc"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "uid": "npy0h5u23gn",
+                        "subModels": {
+                          "columns": [
+                            {
+                              "use": "TableActionsColumnModel",
+                              "props": {},
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "tableColumnSettings": {
+                                  "title": {
+                                    "title": "{{t(\"Actions\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "subKey": "columns",
+                              "subType": "array",
+                              "uid": "besktak2rm0",
+                              "subModels": {
+                                "actions": [
+                                  {
+                                    "parentId": "besktak2rm0",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "ViewActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"View\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"View\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_survey_answer",
+                                          "title": "查看答卷"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "5w1trzscd5k",
+                                    "parent": "besktak2rm0",
+                                    "sortIndex": 1,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "pqhwjv6cfub",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "besktak2rm0",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "EditActionModel",
+                                    "props": {
+                                      "title": "{{t(\"Edit\")}}",
+                                      "icon": null,
+                                      "type": "link"
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Edit\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_survey_answer",
+                                          "title": "{{t(\"Edit\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "i1x2fdnxbvo",
+                                    "parent": "besktak2rm0",
+                                    "sortIndex": 2,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "5xwcfdypczk",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "besktak2rm0",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "DeleteActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"Delete\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Delete\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "deleteSettings": {
+                                        "confirm": {
+                                          "enable": true,
+                                          "title": "{{t(\"Delete record\")}}",
+                                          "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "uw97bgxqlvz",
+                                    "parent": "besktak2rm0",
+                                    "sortIndex": 3,
+                                    "popup": {
+                                      "mode": "local"
+                                    }
+                                  }
+                                ]
+                              },
+                              "parent": "npy0h5u23gn",
+                              "parentId": "npy0h5u23gn",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "fieldPath": "survey.name",
+                                    "associationPathName": "survey"
+                                  }
+                                }
+                              },
+                              "uid": "ql4mnnkp5ce",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey_answer",
+                                        "fieldPath": "survey.name",
+                                        "associationPathName": "survey"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey",
+                                        "associationName": "nb_dx_survey_answer.survey",
+                                        "filterByTk": "{{ctx.record.id}}"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "orj5aicmsgk",
+                                  "parent": "ql4mnnkp5ce",
+                                  "parentId": "ql4mnnkp5ce",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "3f2t4thpurd",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "fieldPath": "answers_text"
+                                  }
+                                }
+                              },
+                              "uid": "lx6q7zdcesv",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey_answer",
+                                        "fieldPath": "answers_text"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "9uqnutuc5dt",
+                                  "parent": "lx6q7zdcesv",
+                                  "parentId": "lx6q7zdcesv",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "fieldPath": "answers_json"
+                                  }
+                                }
+                              },
+                              "uid": "ogv0zaqru1i",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey_answer",
+                                        "fieldPath": "answers_json"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "uvps2mei6p2",
+                                  "parent": "ogv0zaqru1i",
+                                  "parentId": "ogv0zaqru1i",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 4,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "fieldPath": "device_tag"
+                                  }
+                                }
+                              },
+                              "uid": "93vn3x162a4",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey_answer",
+                                        "fieldPath": "device_tag"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "ty8b2qnv7vy",
+                                  "parent": "93vn3x162a4",
+                                  "parentId": "93vn3x162a4",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 5,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "fieldPath": "submitted_at"
+                                  }
+                                }
+                              },
+                              "uid": "xx6zdjgnw8j",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayDateTimeFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_survey_answer",
+                                        "fieldPath": "submitted_at"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "9xfoicu4ofo",
+                                  "parent": "xx6zdjgnw8j",
+                                  "parentId": "xx6zdjgnw8j",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 6,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "FilterActionModel",
+                              "props": {
+                                "title": "{{t(\"Filter\")}}",
+                                "icon": "FilterOutlined",
+                                "defaultFilterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "answers_text",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "answers_json",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "device_tag",
+                                      "operator": "$includes"
+                                    }
+                                  ]
+                                },
+                                "filterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "answers_text",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "answers_json",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "device_tag",
+                                      "operator": "$includes"
+                                    }
+                                  ]
+                                }
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Filter\")}}",
+                                    "icon": "FilterOutlined"
+                                  }
+                                },
+                                "filterSettings": {
+                                  "defaultFilter": {
+                                    "defaultFilter": {
+                                      "logic": "$and",
+                                      "items": [
+                                        {
+                                          "path": "answers_text",
+                                          "operator": "$includes"
+                                        },
+                                        {
+                                          "path": "answers_json",
+                                          "operator": "$includes"
+                                        },
+                                        {
+                                          "path": "device_tag",
+                                          "operator": "$includes"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "a3nbitldul3",
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "RefreshActionModel",
+                              "props": {
+                                "title": "{{t(\"Refresh\")}}",
+                                "icon": "ReloadOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Refresh\")}}",
+                                    "icon": "ReloadOutlined"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "o6emvwsv1ze",
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "BulkDeleteActionModel",
+                              "props": {
+                                "title": "",
+                                "tooltip": "{{t(\"Delete\")}}",
+                                "icon": "DeleteOutlined",
+                                "iconOnly": true,
+                                "position": "right"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "",
+                                    "tooltip": "{{t(\"Delete\")}}",
+                                    "icon": "DeleteOutlined",
+                                    "iconOnly": true
+                                  }
+                                },
+                                "deleteSettings": {
+                                  "confirm": {
+                                    "enable": true,
+                                    "title": "{{t(\"Delete record\")}}",
+                                    "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "6xzohk76xu6",
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "npy0h5u23gn",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "AddNewActionModel",
+                              "props": {
+                                "type": "primary",
+                                "title": "{{t(\"Add new\")}}",
+                                "icon": "PlusOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Add new\")}}",
+                                    "icon": "PlusOutlined",
+                                    "type": "primary"
+                                  }
+                                },
+                                "popupSettings": {
+                                  "openView": {
+                                    "mode": "drawer",
+                                    "size": "medium",
+                                    "pageModelClass": "ChildPageModel",
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_survey_answer",
+                                    "title": "新增答卷"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "tyy2ingmq3v",
+                              "parent": "npy0h5u23gn",
+                              "sortIndex": 4,
+                              "popup": {
+                                "template": {
+                                  "uid": "kvvypkh72j2",
+                                  "mode": "reference"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "parent": "y8vt0dtrg51",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "f4w07i5jk07",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            }
+          ]
+        },
+        "popup": {
+          "mode": "local"
+        }
+      },
+      "nodeMap": {
+        "h27iclbzscf": {
+          "uid": "h27iclbzscf",
+          "use": "RootPageModel",
+          "props": {
+            "routeId": 396739944972288,
+            "title": "不记名问卷",
+            "enableTabs": true,
+            "displayTitle": true,
+            "icon": "FormOutlined",
+            "enableHeader": null
+          },
+          "stepParams": {
+            "pageSettings": {
+              "general": {
+                "title": "不记名问卷",
+                "displayTitle": true,
+                "enableTabs": true,
+                "icon": "FormOutlined",
+                "enableHeader": null
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "aq8dmqj8def": {
+          "uid": "aq8dmqj8def",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-09T06:05:47.973Z",
+              "updatedAt": "2026-11-09T06:05:48.013Z",
+              "id": 396739944972289,
+              "parentId": 396739944972288,
+              "title": "问卷列表",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "aq8dmqj8def",
+              "menuSchemaUid": null,
+              "tabSchemaName": "d93ikvl8rlh",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794204347958425,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": false,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "问卷列表",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "问卷列表",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "1zux10x41iq": {
+          "uid": "1zux10x41iq",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "b8c7iglw2ue"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                24
+              ]
+            },
+            "rowOrder": [
+              "row1"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "b8c7iglw2ue"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    24
+                  ]
+                },
+                "rowOrder": [
+                  "row1"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "b8c7iglw2ue": {
+          "uid": "b8c7iglw2ue",
+          "use": "TableBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "resourceSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "x5fky89eamu": {
+          "uid": "x5fky89eamu",
+          "use": "TableActionsColumnModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "tableColumnSettings": {
+              "title": {
+                "title": "{{t(\"Actions\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "bnpjutcxd5k": {
+          "uid": "bnpjutcxd5k",
+          "use": "ViewActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"View\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"View\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "title": "查看问卷"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "3f2t4thpurd",
+              "mode": "reference"
+            }
+          }
+        },
+        "9myi3rxjig0": {
+          "uid": "9myi3rxjig0",
+          "use": "EditActionModel",
+          "props": {
+            "title": "{{t(\"Edit\")}}",
+            "icon": null,
+            "type": "link"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Edit\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "title": "{{t(\"Edit\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "nje6vvafkki",
+              "mode": "reference"
+            }
+          }
+        },
+        "mw7wj25wuyi": {
+          "uid": "mw7wj25wuyi",
+          "use": "DeleteActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"Delete\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Delete\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "yorx60bdj43": {
+          "uid": "yorx60bdj43",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "name"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "h0o5z8222rc": {
+          "uid": "h0o5z8222rc",
+          "use": "DisplayTextFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "name"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "iu5uarfqty8": {
+          "uid": "iu5uarfqty8",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "klass.name",
+                "associationPathName": "klass"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "4tb8mtdexiy": {
+          "uid": "4tb8mtdexiy",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "klass.name",
+                "associationPathName": "klass"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_class",
+                "associationName": "nb_dx_survey.klass",
+                "filterByTk": "{{ctx.record.id}}"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "uxw2cjyq0mm",
+              "mode": "reference"
+            }
+          }
+        },
+        "adpx3kq77mz": {
+          "uid": "adpx3kq77mz",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "kind"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "peq1820w3j8": {
+          "uid": "peq1820w3j8",
+          "use": "DisplayEnumFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "kind"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "7w3dlwblxtk": {
+          "uid": "7w3dlwblxtk",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "status"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "i2fkrcyme28": {
+          "uid": "i2fkrcyme28",
+          "use": "DisplayEnumFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "status"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "lrcsvfrb8gt": {
+          "uid": "lrcsvfrb8gt",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "end_time"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "q15i03v3i0f": {
+          "uid": "q15i03v3i0f",
+          "use": "DisplayDateTimeFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "end_time"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "p6vc57fgnd3": {
+          "uid": "p6vc57fgnd3",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "limit_per_day"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "finspwz8zfl": {
+          "uid": "finspwz8zfl",
+          "use": "DisplayNumberFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "limit_per_day"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ng69oy70qdu": {
+          "uid": "ng69oy70qdu",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "creator.nickname",
+                "associationPathName": "creator"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "aw9sxmx831f": {
+          "uid": "aw9sxmx831f",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "fieldPath": "creator.nickname",
+                "associationPathName": "creator"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "users",
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "associationName": "nb_dx_survey.creator",
+                "title": "查看用户"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "dqdxnw8i9r2",
+              "mode": "reference"
+            }
+          }
+        },
+        "96yaklwj6h6": {
+          "uid": "96yaklwj6h6",
+          "use": "FilterActionModel",
+          "props": {
+            "title": "{{t(\"Filter\")}}",
+            "icon": "FilterOutlined",
+            "defaultFilterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "name",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "status",
+                  "operator": "$eq"
+                },
+                {
+                  "path": "description",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "kind",
+                  "operator": "$eq"
+                }
+              ]
+            },
+            "filterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "name",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "status",
+                  "operator": "$eq"
+                },
+                {
+                  "path": "description",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "kind",
+                  "operator": "$eq"
+                }
+              ]
+            }
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Filter\")}}",
+                "icon": "FilterOutlined"
+              }
+            },
+            "filterSettings": {
+              "defaultFilter": {
+                "defaultFilter": {
+                  "logic": "$and",
+                  "items": [
+                    {
+                      "path": "name",
+                      "operator": "$includes"
+                    },
+                    {
+                      "path": "status",
+                      "operator": "$eq"
+                    },
+                    {
+                      "path": "description",
+                      "operator": "$includes"
+                    },
+                    {
+                      "path": "kind",
+                      "operator": "$eq"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "q81jbqaawax": {
+          "uid": "q81jbqaawax",
+          "use": "RefreshActionModel",
+          "props": {
+            "title": "{{t(\"Refresh\")}}",
+            "icon": "ReloadOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Refresh\")}}",
+                "icon": "ReloadOutlined"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "2nabtttf1zy": {
+          "uid": "2nabtttf1zy",
+          "use": "BulkDeleteActionModel",
+          "props": {
+            "title": "",
+            "tooltip": "{{t(\"Delete\")}}",
+            "icon": "DeleteOutlined",
+            "iconOnly": true,
+            "position": "right"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "",
+                "tooltip": "{{t(\"Delete\")}}",
+                "icon": "DeleteOutlined",
+                "iconOnly": true
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "te3iptkhasn": {
+          "uid": "te3iptkhasn",
+          "use": "AddNewActionModel",
+          "props": {
+            "type": "primary",
+            "title": "{{t(\"Add new\")}}",
+            "icon": "PlusOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Add new\")}}",
+                "icon": "PlusOutlined",
+                "type": "primary"
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "title": "新增问卷"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "stf6t2a154t",
+              "mode": "reference"
+            }
+          }
+        },
+        "f4w07i5jk07": {
+          "uid": "f4w07i5jk07",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-09T06:05:56.582Z",
+              "updatedAt": "2026-11-09T06:05:56.582Z",
+              "id": 396739963846656,
+              "parentId": 396739944972288,
+              "title": "答卷明细",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "f4w07i5jk07",
+              "menuSchemaUid": null,
+              "tabSchemaName": "answers",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794204356582567,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": false,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "答卷明细",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "答卷明细",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "y8vt0dtrg51": {
+          "uid": "y8vt0dtrg51",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "npy0h5u23gn"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                24
+              ]
+            },
+            "rowOrder": [
+              "row1"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "npy0h5u23gn"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    24
+                  ]
+                },
+                "rowOrder": [
+                  "row1"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "npy0h5u23gn": {
+          "uid": "npy0h5u23gn",
+          "use": "TableBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "resourceSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer"
+              }
+            },
+            "tableSettings": {
+              "defaultSorting": {
+                "sort": [
+                  {
+                    "field": "createdAt",
+                    "direction": "desc"
+                  }
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "besktak2rm0": {
+          "uid": "besktak2rm0",
+          "use": "TableActionsColumnModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "tableColumnSettings": {
+              "title": {
+                "title": "{{t(\"Actions\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "5w1trzscd5k": {
+          "uid": "5w1trzscd5k",
+          "use": "ViewActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"View\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"View\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "title": "查看答卷"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "pqhwjv6cfub",
+              "mode": "reference"
+            }
+          }
+        },
+        "i1x2fdnxbvo": {
+          "uid": "i1x2fdnxbvo",
+          "use": "EditActionModel",
+          "props": {
+            "title": "{{t(\"Edit\")}}",
+            "icon": null,
+            "type": "link"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Edit\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "title": "{{t(\"Edit\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "5xwcfdypczk",
+              "mode": "reference"
+            }
+          }
+        },
+        "uw97bgxqlvz": {
+          "uid": "uw97bgxqlvz",
+          "use": "DeleteActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"Delete\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Delete\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ql4mnnkp5ce": {
+          "uid": "ql4mnnkp5ce",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "survey.name",
+                "associationPathName": "survey"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "orj5aicmsgk": {
+          "uid": "orj5aicmsgk",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "survey.name",
+                "associationPathName": "survey"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey",
+                "associationName": "nb_dx_survey_answer.survey",
+                "filterByTk": "{{ctx.record.id}}"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "3f2t4thpurd",
+              "mode": "reference"
+            }
+          }
+        },
+        "lx6q7zdcesv": {
+          "uid": "lx6q7zdcesv",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "answers_text"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "9uqnutuc5dt": {
+          "uid": "9uqnutuc5dt",
+          "use": "DisplayTextFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "answers_text"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ogv0zaqru1i": {
+          "uid": "ogv0zaqru1i",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "answers_json"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "uvps2mei6p2": {
+          "uid": "uvps2mei6p2",
+          "use": "DisplayTextFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "answers_json"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "93vn3x162a4": {
+          "uid": "93vn3x162a4",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "device_tag"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ty8b2qnv7vy": {
+          "uid": "ty8b2qnv7vy",
+          "use": "DisplayTextFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "device_tag"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "xx6zdjgnw8j": {
+          "uid": "xx6zdjgnw8j",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "submitted_at"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "9xfoicu4ofo": {
+          "uid": "9xfoicu4ofo",
+          "use": "DisplayDateTimeFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "fieldPath": "submitted_at"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "a3nbitldul3": {
+          "uid": "a3nbitldul3",
+          "use": "FilterActionModel",
+          "props": {
+            "title": "{{t(\"Filter\")}}",
+            "icon": "FilterOutlined",
+            "defaultFilterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "answers_text",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "answers_json",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "device_tag",
+                  "operator": "$includes"
+                }
+              ]
+            },
+            "filterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "answers_text",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "answers_json",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "device_tag",
+                  "operator": "$includes"
+                }
+              ]
+            }
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Filter\")}}",
+                "icon": "FilterOutlined"
+              }
+            },
+            "filterSettings": {
+              "defaultFilter": {
+                "defaultFilter": {
+                  "logic": "$and",
+                  "items": [
+                    {
+                      "path": "answers_text",
+                      "operator": "$includes"
+                    },
+                    {
+                      "path": "answers_json",
+                      "operator": "$includes"
+                    },
+                    {
+                      "path": "device_tag",
+                      "operator": "$includes"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "o6emvwsv1ze": {
+          "uid": "o6emvwsv1ze",
+          "use": "RefreshActionModel",
+          "props": {
+            "title": "{{t(\"Refresh\")}}",
+            "icon": "ReloadOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Refresh\")}}",
+                "icon": "ReloadOutlined"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "6xzohk76xu6": {
+          "uid": "6xzohk76xu6",
+          "use": "BulkDeleteActionModel",
+          "props": {
+            "title": "",
+            "tooltip": "{{t(\"Delete\")}}",
+            "icon": "DeleteOutlined",
+            "iconOnly": true,
+            "position": "right"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "",
+                "tooltip": "{{t(\"Delete\")}}",
+                "icon": "DeleteOutlined",
+                "iconOnly": true
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "tyy2ingmq3v": {
+          "uid": "tyy2ingmq3v",
+          "use": "AddNewActionModel",
+          "props": {
+            "type": "primary",
+            "title": "{{t(\"Add new\")}}",
+            "icon": "PlusOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Add new\")}}",
+                "icon": "PlusOutlined",
+                "type": "primary"
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_survey_answer",
+                "title": "新增答卷"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "kvvypkh72j2",
+              "mode": "reference"
+            }
+          }
+        }
+      },
+      "pageRoute": {
+        "createdAt": "2026-11-09T06:05:47.958Z",
+        "updatedAt": "2026-11-09T06:05:48.019Z",
+        "id": 396739944972288,
+        "parentId": 396739781394432,
+        "title": "不记名问卷",
+        "tooltip": null,
+        "icon": "FormOutlined",
+        "schemaUid": "xrtxgbhzq70",
+        "menuSchemaUid": "2o4dpdpbg1k",
+        "tabSchemaName": null,
+        "type": "flowPage",
+        "options": {
+          "flowSurfaceMenuBindable": true
+        },
+        "sort": 1794204347958287,
+        "hideInMenu": false,
+        "enableTabs": true,
+        "enableHeader": null,
+        "displayTitle": true,
+        "hidden": null,
+        "createdById": null,
+        "updatedById": null,
+        "children": [
+          {
+            "createdAt": "2026-11-09T06:05:47.973Z",
+            "updatedAt": "2026-11-09T06:05:48.013Z",
+            "id": 396739944972289,
+            "parentId": 396739944972288,
+            "title": "问卷列表",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "aq8dmqj8def",
+            "menuSchemaUid": null,
+            "tabSchemaName": "d93ikvl8rlh",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794204347958425,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": false,
+            "createdById": null,
+            "updatedById": null
+          },
+          {
+            "createdAt": "2026-11-09T06:05:56.582Z",
+            "updatedAt": "2026-11-09T06:05:56.582Z",
+            "id": 396739963846656,
+            "parentId": 396739944972288,
+            "title": "答卷明细",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "f4w07i5jk07",
+            "menuSchemaUid": null,
+            "tabSchemaName": "answers",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794204356582567,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": false,
+            "createdById": null,
+            "updatedById": null
+          }
+        ]
+      }
+    }
+  }
+}

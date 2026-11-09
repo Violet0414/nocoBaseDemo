@@ -1,0 +1,53 @@
+name: nb_dx_go_out
+title: 外出报备
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: type
+    title: 报备类型
+    interface: select
+    options:
+      - value: leave_campus
+        label: 离校外出
+        color: orange
+      - value: half_day
+        label: 半日外出
+        color: blue
+      - value: go_home
+        label: 返家
+        color: cyan
+      - value: other
+        label: 其他
+        color: default
+  - name: reason_place
+    title: 事由及地点
+    interface: textarea
+    required: true
+  - name: start_time
+    title: 外出开始时间
+    interface: datetime
+  - name: end_time
+    title: 外出结束时间
+    interface: datetime
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: submitted
+        label: 已报备
+        color: blue
+      - value: acked
+        label: 组织员已阅
+        color: green

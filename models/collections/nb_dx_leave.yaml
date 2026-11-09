@@ -1,0 +1,72 @@
+name: nb_dx_leave
+title: 请假申请
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: type
+    title: 请假类型
+    interface: select
+    options:
+      - value: personal
+        label: 事假
+        color: blue
+      - value: sick
+        label: 病假
+        color: cyan
+      - value: duty
+        label: 公假(公务)
+        color: green
+      - value: other
+        label: 其他
+        color: default
+  - name: reason
+    title: 请假事由
+    interface: textarea
+    required: true
+  - name: start_time
+    title: 请假开始时间
+    interface: datetime
+    required: true
+  - name: end_time
+    title: 请假结束时间
+    interface: datetime
+    required: true
+  - name: duration_days
+    title: 请假天数
+    interface: number
+    description: 支持小数(如 0.5 天)；用于累计请假占比(≤总学习天数1/7)
+  - name: status
+    title: 审批状态
+    interface: select
+    options:
+      - value: pending
+        label: 待审批
+        color: orange
+      - value: approved
+        label: 已批准
+        color: green
+      - value: rejected
+        label: 已驳回
+        color: red
+      - value: withdrawn
+        label: 已撤回
+        color: gray
+  - name: over_ratio
+    title: 超1/7提醒
+    interface: boolean
+    description: 累计已批请假天数超过总学习天数1/7时置真
+  - name: approved_remark
+    title: 审批意见
+    interface: textarea

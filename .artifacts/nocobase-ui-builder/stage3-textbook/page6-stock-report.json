@@ -1,0 +1,123 @@
+{
+  "version": "1",
+  "mode": "create",
+  "assets": {
+    "charts": {
+      "stockByCategory": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_textbook"
+          },
+          "measures": [
+            {
+              "field": "stock",
+              "aggregation": "sum",
+              "alias": "totalStock"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "category"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "pie",
+          "mappings": {
+            "category": "category",
+            "value": "totalStock"
+          }
+        }
+      }
+    }
+  },
+  "defaults": {
+    "collections": {
+      "nb_dx_textbook": {
+        "popups": {
+          "view": {
+            "name": "查看教材",
+            "description": "查看一条教材信息详情"
+          },
+          "addNew": {
+            "name": "新增教材",
+            "description": "新增一条教材信息"
+          },
+          "edit": {
+            "name": "编辑教材",
+            "description": "编辑一条教材信息"
+          }
+        },
+        "formBehaviorDescriptionReview": {
+          "fields": {
+            "stock": {
+              "decision": "unsupported",
+              "reasonCode": "ambiguous-description"
+            }
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "routeId": "396714401660928"
+    },
+    "item": {
+      "title": "库存报表",
+      "icon": "BarChartOutlined"
+    }
+  },
+  "page": {
+    "title": "库存报表"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "库存报表",
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "stockPie",
+              "span": 24
+            },
+            {
+              "key": "stockTable",
+              "span": 24
+            }
+          ]
+        ]
+      },
+      "blocks": [
+        {
+          "key": "stockPie",
+          "type": "chart",
+          "title": "各分类教材库存占比",
+          "chart": "stockByCategory"
+        },
+        {
+          "key": "stockTable",
+          "type": "table",
+          "title": "库存明细",
+          "collection": "nb_dx_textbook",
+          "fields": [
+            "name",
+            "category",
+            "publisher",
+            "price",
+            "stock"
+          ],
+          "recordActions": [
+            "view",
+            "edit"
+          ]
+        }
+      ]
+    }
+  ]
+}

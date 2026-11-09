@@ -1,0 +1,36 @@
+name: nb_dx_teaching_case
+title: 教学案例库
+titleField: name
+fields:
+  - name: name
+    title: 案例名称
+    interface: input
+    required: true
+  - name: category
+    title: 案例分类
+    interface: select
+    options:
+      - value: governance
+        label: 治理案例
+        color: blue
+      - value: reform
+        label: 改革案例
+        color: cyan
+      - value: party
+        label: 党建案例
+        color: red
+      - value: other
+        label: 其他
+        color: default
+  - name: source
+    title: 案例来源
+    interface: input
+  - name: year
+    title: 年份
+    interface: number
+  - name: content
+    title: 案例内容
+    interface: textarea
+  - name: attachment
+    title: 附件
+    interface: attachment

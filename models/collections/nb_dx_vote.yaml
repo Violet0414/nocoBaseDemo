@@ -1,0 +1,66 @@
+name: nb_dx_vote
+title: 投票
+titleField: name
+fields:
+  - name: name
+    title: 投票标题
+    interface: input
+    required: true
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: question
+    title: 投票问题
+    interface: textarea
+  - name: options_text
+    title: 选项
+    interface: textarea
+    description: 每行一个选项
+  - name: kind
+    title: 投票方式
+    interface: select
+    options:
+      - value: single
+        label: 单选
+        color: blue
+      - value: multi
+        label: 多选
+        color: cyan
+      - value: score
+        label: 打分
+        color: green
+  - name: scope
+    title: 投票范围
+    interface: select
+    options:
+      - value: class
+        label: 本班学员
+        color: blue
+      - value: all
+        label: 全体学员
+        color: green
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: open
+        label: 进行中
+        color: green
+      - value: closed
+        label: 已结束
+        color: gray
+  - name: end_time
+    title: 截止时间
+    interface: datetime
+  - name: creator
+    title: 发起人
+    interface: m2o
+    target: users
+    foreignKey: creator_id
+  - name: records
+    title: 投票明细
+    interface: o2m
+    target: nb_dx_vote_record
+    foreignKey: vote_id

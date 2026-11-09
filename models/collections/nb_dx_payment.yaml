@@ -1,0 +1,73 @@
+name: nb_dx_payment
+title: 缴费凭证
+titleField: payer_name
+fields:
+  - name: payer_name
+    title: 缴费人
+    interface: input
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: amount
+    title: 缴费金额
+    interface: number
+  - name: method
+    title: 缴费渠道
+    interface: select
+    options:
+      - value: unit
+        label: 单位缴费
+        color: blue
+      - value: personal
+        label: 个人缴费
+        color: cyan
+  - name: channel
+    title: 缴费方式
+    interface: select
+    options:
+      - value: qrcode
+        label: 扫码转账
+        color: blue
+      - value: voucher
+        label: 上传凭证
+        color: cyan
+      - value: offline
+        label: 线下缴费
+        color: green
+  - name: voucher
+    title: 缴费凭证
+    interface: attachment
+  - name: status
+    title: 审核状态
+    interface: select
+    options:
+      - value: pending
+        label: 待审核
+        color: orange
+      - value: approved
+        label: 已通过
+        color: green
+      - value: rejected
+        label: 已拒绝
+        color: red
+      - value: refunded
+        label: 已退费
+        color: gray
+  - name: review_by
+    title: 审核人
+    interface: m2o
+    target: users
+    foreignKey: review_by_id
+  - name: review_remark
+    title: 审核备注
+    interface: textarea
+  - name: date
+    title: 缴费日期
+    interface: date

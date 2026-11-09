@@ -1,0 +1,78 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_teaching_plan": {
+        "popups": {
+          "view": { "name": "查看教学计划", "description": "查看一条教学计划详情" },
+          "addNew": { "name": "新增教学计划", "description": "新增一条教学计划" },
+          "edit": { "name": "编辑教学计划", "description": "编辑一条教学计划" },
+          "associations": {
+            "klass": {
+              "view": { "name": "查看班次", "description": "查看所属班次详情" },
+              "addNew": { "name": "新增班次", "description": "新增一条班次记录" },
+              "edit": { "name": "编辑班次", "description": "编辑班次记录" }
+            },
+            "topics": {
+              "view": { "name": "查看专题", "description": "查看关联专题详情" },
+              "addNew": { "name": "新增专题", "description": "新增一条专题记录" },
+              "edit": { "name": "编辑专题", "description": "编辑关联专题记录" }
+            }
+          }
+        }
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": { "name": "查看班次", "description": "查看一条班次记录详情" },
+          "addNew": { "name": "新增班次", "description": "新增一条班次记录" },
+          "edit": { "name": "编辑班次", "description": "编辑一条班次记录" }
+        },
+        "fieldGroups": [
+          { "key": "classBasic", "title": "基本信息", "fields": ["name", "code", "category", "train_type", "status", "organizer"] },
+          { "key": "classPeriod", "title": "报名与学习周期", "fields": ["enroll_start", "enroll_end", "start_date", "end_date", "total_days", "total_hours"] },
+          { "key": "classOther", "title": "教室与其他", "fields": ["default_room", "room_locked", "qr_token", "description"] }
+        ]
+      },
+      "nb_dx_topic": {
+        "popups": {
+          "view": { "name": "查看专题", "description": "查看一条教学专题详情" },
+          "addNew": { "name": "新增专题", "description": "新增一条教学专题" },
+          "edit": { "name": "编辑专题", "description": "编辑一条教学专题" }
+        },
+        "fieldGroups": [
+          { "key": "topicBasic", "title": "专题信息", "fields": ["name", "category", "attribute", "teach_form", "hours", "status"] },
+          { "key": "topicOther", "title": "主讲与说明", "fields": ["teacher", "eval_scheme", "description", "remark"] }
+        ]
+      },
+      "nb_dx_teacher": {
+        "popups": {
+          "view": { "name": "查看教师", "description": "查看一条教师详情" },
+          "addNew": { "name": "新增教师", "description": "新增一条教师记录" },
+          "edit": { "name": "编辑教师", "description": "编辑教师记录" }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "routeId": "396723346014208" },
+    "item": { "title": "教学计划", "icon": "FileTextOutlined" }
+  },
+  "page": { "title": "教学计划" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "教学计划",
+      "blocks": [
+        {
+          "key": "planTable",
+          "type": "table",
+          "collection": "nb_dx_teaching_plan",
+          "fields": ["name", "klass.name", "status"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

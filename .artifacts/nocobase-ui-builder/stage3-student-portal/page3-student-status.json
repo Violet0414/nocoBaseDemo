@@ -1,0 +1,210 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "title": "学员管理",
+      "icon": "TeamOutlined"
+    },
+    "item": {
+      "title": "学籍管理",
+      "icon": "IdcardOutlined"
+    }
+  },
+  "page": {
+    "title": "学籍管理"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "学籍管理",
+      "blocks": [
+        {
+          "key": "statusPie",
+          "type": "chart",
+          "title": "学籍状态分布",
+          "chart": "stuByStatus"
+        },
+        {
+          "key": "statusTable",
+          "type": "table",
+          "title": "学籍明细",
+          "collection": "nb_dx_student",
+          "fields": [
+            "name",
+            "student_no",
+            "klass.name",
+            "status",
+            "enroll_status",
+            "remark"
+          ],
+          "recordActions": [
+            "view",
+            "edit"
+          ]
+        }
+      ],
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "statusPie",
+              "span": 24
+            },
+            {
+              "key": "statusTable",
+              "span": 24
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "查看学员",
+            "description": "查看一条学员详情"
+          },
+          "addNew": {
+            "name": "新增学员",
+            "description": "新增一条学员记录"
+          },
+          "edit": {
+            "name": "编辑学员",
+            "description": "编辑一条学员记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuWork",
+            "title": "单位与分工",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no",
+              "excellent"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍与状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "remark",
+              "klass",
+              "user"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班次",
+            "description": "查看一条班次详情"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description",
+              "students",
+              "teaching_plans",
+              "course_schedules",
+              "elective_plans",
+              "seats"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "assets": {
+    "charts": {
+      "stuByStatus": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_student"
+          },
+          "measures": [
+            {
+              "field": "id",
+              "aggregation": "count",
+              "alias": "stuCount"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "status"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "pie",
+          "mappings": {
+            "category": "status",
+            "value": "stuCount"
+          }
+        }
+      }
+    }
+  }
+}

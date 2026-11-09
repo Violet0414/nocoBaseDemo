@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_purchase": {
+        "popups": {
+          "view": { "name": "查看采购单", "description": "查看一条教材采购记录详情" },
+          "addNew": { "name": "新增采购单", "description": "新增一条教材采购记录" },
+          "edit": { "name": "编辑采购单", "description": "编辑一条教材采购记录" },
+          "associations": {
+            "textbook": {
+              "view": { "name": "查看教材", "description": "查看关联教材详情" },
+              "addNew": { "name": "新增教材", "description": "新增一条教材记录" },
+              "edit": { "name": "编辑教材", "description": "编辑关联教材记录" }
+            },
+            "operator": {
+              "view": { "name": "查看经办人", "description": "查看经办人详情" },
+              "addNew": { "name": "新增经办人", "description": "新增一条经办人记录" },
+              "edit": { "name": "编辑经办人", "description": "编辑经办人记录" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "routeId": "396714401660928" },
+    "item": { "title": "教材采购", "icon": "ShoppingCartOutlined" }
+  },
+  "page": { "title": "教材采购" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "教材采购",
+      "blocks": [
+        {
+          "key": "purchaseTable",
+          "type": "table",
+          "collection": "nb_dx_purchase",
+          "fields": ["textbook_name", "textbook.name", "quantity", "unit_price", "amount", "supplier", "date", "status", "operator.nickname"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

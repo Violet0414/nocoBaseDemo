@@ -1,0 +1,55 @@
+name: nb_dx_submission
+title: 作业提交
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: assignment
+    title: 作业
+    interface: m2o
+    target: nb_dx_assignment
+    foreignKey: assignment_id
+  - name: student
+    title: 学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: content
+    title: 提交说明
+    interface: textarea
+  - name: attachment
+    title: 作业附件
+    interface: attachment
+  - name: submitted_at
+    title: 提交时间
+    interface: datetime
+  - name: score
+    title: 批阅分数
+    interface: number
+  - name: review
+    title: 批阅意见
+    interface: textarea
+  - name: reviewer
+    title: 批阅人
+    interface: m2o
+    target: users
+    foreignKey: reviewer_id
+  - name: transferred_to
+    title: 转批给
+    interface: m2o
+    target: users
+    foreignKey: transferred_to_id
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: submitted
+        label: 已提交
+        color: blue
+      - value: reviewed
+        label: 已批阅
+        color: green
+      - value: transferred
+        label: 已转批
+        color: orange

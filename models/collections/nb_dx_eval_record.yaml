@@ -1,0 +1,61 @@
+name: nb_dx_eval_record
+title: 评估记录
+titleField: student_name
+fields:
+  - name: student_name
+    title: 学员姓名
+    interface: input
+  - name: scheme
+    title: 评估方案
+    interface: m2o
+    target: nb_dx_eval_scheme
+    foreignKey: scheme_id
+  - name: student
+    title: 评估学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: schedule
+    title: 关联课程(专题评估)
+    interface: m2o
+    target: nb_dx_course_schedule
+    foreignKey: schedule_id
+  - name: topic
+    title: 关联专题
+    interface: m2o
+    target: nb_dx_topic
+    foreignKey: topic_id
+  - name: kind
+    title: 评估类型
+    interface: select
+    options:
+      - value: topic
+        label: 专题评估
+        color: blue
+      - value: comprehensive
+        label: 综合评估
+        color: green
+      - value: party_self
+        label: 党性自评
+        color: red
+      - value: party_review
+        label: 党性复评
+        color: orange
+  - name: score
+    title: 总分
+    interface: number
+  - name: items_json
+    title: 各评估项得分
+    interface: textarea
+    description: 简化存储，如"党性意识:18;学习态度:19"
+  - name: opinion
+    title: 意见和建议
+    interface: textarea
+  - name: anonymous
+    title: 匿名
+    interface: boolean

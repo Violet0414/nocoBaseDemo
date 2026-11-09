@@ -1,0 +1,55 @@
+name: nb_dx_survey
+title: 不记名问卷
+titleField: name
+fields:
+  - name: name
+    title: 问卷名称
+    interface: input
+    required: true
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: description
+    title: 问卷内容
+    interface: textarea
+  - name: kind
+    title: 评估方式
+    interface: select
+    options:
+      - value: grade
+        label: 等级
+        color: cyan
+      - value: score
+        label: 分值
+        color: blue
+      - value: mixed
+        label: 等级+分值
+        color: green
+  - name: limit_per_day
+    title: 每设备每日限填次数
+    interface: number
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: open
+        label: 收集中
+        color: green
+      - value: closed
+        label: 已结束
+        color: gray
+  - name: end_time
+    title: 截止时间
+    interface: datetime
+  - name: creator
+    title: 发起人
+    interface: m2o
+    target: users
+    foreignKey: creator_id
+  - name: answers
+    title: 问卷答卷
+    interface: o2m
+    target: nb_dx_survey_answer
+    foreignKey: survey_id

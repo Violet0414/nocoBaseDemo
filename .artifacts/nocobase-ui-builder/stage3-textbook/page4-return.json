@@ -1,0 +1,209 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_textbook_return": {
+        "popups": {
+          "view": {
+            "name": "查看退库单",
+            "description": "查看一条教材退库记录详情"
+          },
+          "addNew": {
+            "name": "新增退库单",
+            "description": "新增一条教材退库记录"
+          },
+          "edit": {
+            "name": "编辑退库单",
+            "description": "编辑一条教材退库记录"
+          },
+          "associations": {
+            "textbook": {
+              "view": {
+                "name": "查看教材",
+                "description": "查看关联教材详情"
+              },
+              "addNew": {
+                "name": "新增教材",
+                "description": "新增一条教材记录"
+              },
+              "edit": {
+                "name": "编辑教材",
+                "description": "编辑关联教材记录"
+              }
+            },
+            "operator": {
+              "view": {
+                "name": "查看经办人",
+                "description": "查看经办人详情"
+              },
+              "addNew": {
+                "name": "新增经办人",
+                "description": "新增一条经办人记录"
+              },
+              "edit": {
+                "name": "编辑经办人",
+                "description": "编辑经办人记录"
+              }
+            }
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "retBasic",
+            "title": "退库信息",
+            "fields": [
+              "textbook_name",
+              "textbook",
+              "quantity",
+              "date"
+            ]
+          },
+          {
+            "key": "retRelation",
+            "title": "关联信息",
+            "fields": [
+              "klass",
+              "requisition",
+              "operator"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班级",
+            "description": "查看一条班次记录详情"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "routeId": "396714401660928"
+    },
+    "item": {
+      "title": "教材退库",
+      "icon": "ImportOutlined"
+    }
+  },
+  "page": {
+    "title": "教材退库"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "教材退库",
+      "blocks": [
+        {
+          "key": "returnTable",
+          "type": "table",
+          "collection": "nb_dx_textbook_return",
+          "fields": [
+            "textbook_name",
+            "textbook.name",
+            "klass.name",
+            "quantity",
+            "date",
+            "operator.nickname"
+          ],
+          "recordActions": [
+            {
+              "key": "viewAction",
+              "type": "view",
+              "popup": {
+                "title": "查看退库单",
+                "blocks": [
+                  {
+                    "key": "returnDetails",
+                    "type": "details",
+                    "resource": {
+                      "binding": "currentRecord",
+                      "collectionName": "nb_dx_textbook_return"
+                    },
+                    "fieldGroups": [
+                      {
+                        "key": "retD1",
+                        "title": "退库信息",
+                        "fields": [
+                          "textbook_name",
+                          {
+                            "field": "textbook",
+                            "titleField": "name"
+                          },
+                          "quantity",
+                          "date"
+                        ]
+                      },
+                      {
+                        "key": "retD2",
+                        "title": "关联信息",
+                        "fields": [
+                          {
+                            "field": "klass",
+                            "titleField": "name"
+                          },
+                          {
+                            "field": "operator",
+                            "titleField": "nickname"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "edit"
+          ]
+        }
+      ]
+    }
+  ]
+}

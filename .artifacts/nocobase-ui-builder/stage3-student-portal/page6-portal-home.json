@@ -1,0 +1,263 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": {
+      "title": "综合门户",
+      "icon": "AppstoreOutlined"
+    },
+    "item": {
+      "title": "综合门户",
+      "icon": "HomeOutlined"
+    }
+  },
+  "page": {
+    "title": "综合门户"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "综合门户",
+      "blocks": [
+        {
+          "key": "portalBar",
+          "type": "chart",
+          "title": "各班次学员数",
+          "chart": "stuByClassHome"
+        },
+        {
+          "key": "portalPie",
+          "type": "chart",
+          "title": "请假状态分布",
+          "chart": "leaveByStatus"
+        },
+        {
+          "key": "annTable",
+          "type": "table",
+          "title": "通知公告",
+          "collection": "nb_dx_announcement",
+          "fields": [
+            "title",
+            "kind",
+            "publisher.nickname",
+            "published_at",
+            "top"
+          ],
+          "recordActions": [
+            "view"
+          ]
+        }
+      ],
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "portalBar",
+              "span": 24
+            },
+            {
+              "key": "portalPie",
+              "span": 24
+            },
+            {
+              "key": "annTable",
+              "span": 24
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "defaults": {
+    "collections": {
+      "nb_dx_student": {
+        "popups": {
+          "view": {
+            "name": "查看学员",
+            "description": "查看一条学员详情"
+          },
+          "addNew": {
+            "name": "新增学员",
+            "description": "新增一条学员记录"
+          },
+          "edit": {
+            "name": "编辑学员",
+            "description": "编辑一条学员记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "stuBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "student_no",
+              "gender",
+              "birth_date",
+              "political_status",
+              "phone",
+              "photo"
+            ]
+          },
+          {
+            "key": "stuWork",
+            "title": "单位与分工",
+            "fields": [
+              "work_unit",
+              "duty",
+              "group_no",
+              "excellent"
+            ]
+          },
+          {
+            "key": "stuStatus",
+            "title": "学籍与状态",
+            "fields": [
+              "status",
+              "enroll_status",
+              "remark",
+              "klass",
+              "user"
+            ]
+          }
+        ]
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班次",
+            "description": "查看一条班次详情"
+          },
+          "addNew": {
+            "name": "新增班次",
+            "description": "新增一条班次记录"
+          },
+          "edit": {
+            "name": "编辑班次",
+            "description": "编辑一条班次记录"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "教室与其他",
+            "fields": [
+              "default_room",
+              "room_locked",
+              "qr_token",
+              "description",
+              "students",
+              "teaching_plans",
+              "course_schedules",
+              "elective_plans",
+              "seats"
+            ]
+          }
+        ]
+      },
+      "nb_dx_announcement": {
+        "popups": {
+          "view": {
+            "name": "查看通知",
+            "description": "查看一条通知公告详情"
+          },
+          "addNew": {
+            "name": "新增通知",
+            "description": "新增一条通知公告"
+          },
+          "edit": {
+            "name": "编辑通知",
+            "description": "编辑一条通知公告"
+          }
+        }
+      }
+    }
+  },
+  "assets": {
+    "charts": {
+      "stuByClassHome": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_student"
+          },
+          "measures": [
+            {
+              "field": "id",
+              "aggregation": "count",
+              "alias": "stuCount"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "klass.name"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "bar",
+          "mappings": {
+            "x": "klass.name",
+            "y": "stuCount"
+          }
+        }
+      },
+      "leaveByStatus": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_leave"
+          },
+          "measures": [
+            {
+              "field": "id",
+              "aggregation": "count",
+              "alias": "leaveCount"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "status"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "pie",
+          "mappings": {
+            "category": "status",
+            "value": "leaveCount"
+          }
+        }
+      }
+    }
+  }
+}

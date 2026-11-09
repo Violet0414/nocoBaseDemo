@@ -1,0 +1,58 @@
+name: nb_dx_teacher
+title: 师资库
+titleField: name
+fields:
+  - name: name
+    title: 姓名
+    interface: input
+    required: true
+  - name: gender
+    title: 性别
+    interface: select
+    options:
+      - value: male
+        label: 男
+        color: blue
+      - value: female
+        label: 女
+        color: magenta
+  - name: unit
+    title: 所在单位/部门
+    interface: input
+  - name: title
+    title: 职称/职务
+    interface: input
+  - name: political_status
+    title: 政治面貌
+    interface: select
+    options:
+      - value: cpc
+        label: 中共党员
+        color: red
+      - value: league
+        label: 共青团员
+        color: blue
+      - value: masses
+        label: 群众
+        color: default
+  - name: research_area
+    title: 研究方向
+    interface: input
+  - name: is_leader
+    title: 领导干部上讲台
+    interface: boolean
+  - name: is_external
+    title: 外请教师
+    interface: boolean
+  - name: phone
+    title: 联系电话
+    interface: input
+  - name: email
+    title: 电子邮箱
+    interface: input
+  - name: photo
+    title: 照片
+    interface: attachment
+  - name: remark
+    title: 备注
+    interface: textarea

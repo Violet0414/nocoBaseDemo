@@ -1,0 +1,85 @@
+name: nb_dx_course_schedule
+title: 课程排课
+titleField: topic_name
+fields:
+  - name: topic_name
+    title: 课程名称
+    interface: input
+    description: 冗余课程名，便于课表展示
+  - name: klass
+    title: 班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: topic
+    title: 教学专题
+    interface: m2o
+    target: nb_dx_topic
+    foreignKey: topic_id
+  - name: activity
+    title: 教学活动
+    interface: m2o
+    target: nb_dx_activity
+    foreignKey: activity_id
+  - name: kind
+    title: 课程类型
+    interface: select
+    options:
+      - value: topic
+        label: 专题课
+        color: blue
+      - value: activity
+        label: 教学活动
+        color: green
+      - value: elective
+        label: 选修课
+        color: cyan
+      - value: video
+        label: 视频课
+        color: purple
+      - value: live
+        label: 直播课
+        color: orange
+  - name: week_no
+    title: 周次
+    interface: number
+  - name: day_of_week
+    title: 星期
+    interface: number
+    description: 1=周一 … 7=周日
+  - name: start_time
+    title: 开始时间
+    interface: datetime
+  - name: end_time
+    title: 结束时间
+    interface: datetime
+  - name: place
+    title: 场所
+    interface: input
+  - name: teacher
+    title: 授课教师
+    interface: m2o
+    target: nb_dx_teacher
+    foreignKey: teacher_id
+  - name: merged
+    title: 合班课
+    interface: boolean
+  - name: unit_name
+    title: 单元名称
+    interface: input
+  - name: eval_enabled
+    title: 需评估
+    interface: boolean
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: scheduled
+        label: 已排课
+        color: blue
+      - value: changed
+        label: 已调课
+        color: orange
+      - value: finished
+        label: 已上课
+        color: gray

@@ -1,0 +1,31 @@
+name: nb_dx_teaching_material
+title: 教学资料
+titleField: name
+fields:
+  - name: name
+    title: 资料名称
+    interface: input
+    required: true
+  - name: category
+    title: 资料分类
+    interface: select
+    options:
+      - value: class
+        label: 本班资料
+        color: blue
+      - value: school
+        label: 全校资料
+        color: green
+  - name: klass
+    title: 所属班次(本班资料必填)
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: uploader
+    title: 上传人
+    interface: m2o
+    target: users
+    foreignKey: uploader_id
+  - name: attachment
+    title: 附件
+    interface: attachment

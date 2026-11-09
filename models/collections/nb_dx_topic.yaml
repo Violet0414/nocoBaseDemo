@@ -1,0 +1,97 @@
+name: nb_dx_topic
+title: 教学专题
+titleField: name
+fields:
+  - name: name
+    title: 专题名称
+    interface: input
+    required: true
+  - name: category
+    title: 专题分类
+    interface: select
+    options:
+      - value: theory
+        label: 政治理论
+        color: red
+      - value: spirit
+        label: 党性教育
+        color: gold
+      - value: ability
+        label: 能力素养
+        color: cyan
+      - value: field
+        label: 现场教学
+        color: green
+      - value: other
+        label: 其他
+        color: default
+  - name: attribute
+    title: 专题属性
+    interface: select
+    options:
+      - value: required
+        label: 必修
+        color: blue
+      - value: elective
+        label: 选修
+        color: cyan
+  - name: teach_form
+    title: 讲授形式
+    interface: select
+    options:
+      - value: lecture
+        label: 专题讲授
+        color: blue
+      - value: seminar
+        label: 研讨交流
+        color: cyan
+      - value: field
+        label: 现场教学
+        color: green
+      - value: video
+        label: 视频课
+        color: purple
+      - value: live
+        label: 直播课
+        color: orange
+  - name: hours
+    title: 课程学时
+    interface: number
+  - name: teacher
+    title: 主讲教师
+    interface: m2o
+    target: nb_dx_teacher
+    foreignKey: teacher_id
+  - name: eval_scheme
+    title: 评估方案
+    interface: m2o
+    target: nb_dx_eval_scheme
+    foreignKey: eval_scheme_id
+  - name: status
+    title: 专题状态
+    interface: select
+    options:
+      - value: declaring
+        label: 申报中
+        color: orange
+      - value: approved
+        label: 已通过
+        color: blue
+      - value: scheduled
+        label: 已排课
+        color: cyan
+      - value: revised
+        label: 已修订
+        color: purple
+      - value: excellent
+        label: 优秀课题
+        color: gold
+      - value: deprecated
+        label: 已废止
+        color: gray
+  - name: description
+    title: 专题简介
+    interface: textarea
+  - name: remark
+    title: 备注
+    interface: textarea

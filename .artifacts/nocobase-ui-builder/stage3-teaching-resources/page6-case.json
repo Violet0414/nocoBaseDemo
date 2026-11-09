@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_teaching_case": {
+        "popups": {
+          "view": { "name": "查看教学案例", "description": "查看一条教学案例记录详情" },
+          "addNew": { "name": "新增教学案例", "description": "新增一条教学案例记录" },
+          "edit": { "name": "编辑教学案例", "description": "编辑一条教学案例记录" }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "routeId": "396710905708544" },
+    "item": { "title": "教学案例", "icon": "FileTextOutlined" }
+  },
+  "page": { "title": "教学案例" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "教学案例",
+      "blocks": [
+        {
+          "key": "caseTable",
+          "type": "table",
+          "collection": "nb_dx_teaching_case",
+          "fields": ["name", "category", "source", "year"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

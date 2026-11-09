@@ -1,0 +1,23 @@
+name: nb_dx_survey_answer
+title: 问卷答卷
+titleField: answers_text
+fields:
+  - name: answers_text
+    title: 答卷摘要
+    interface: input
+  - name: survey
+    title: 所属问卷
+    interface: m2o
+    target: nb_dx_survey
+    foreignKey: survey_id
+  - name: answers_json
+    title: 答卷明细
+    interface: textarea
+    description: 简化存储，如"问题1:等级A;问题2:85"
+  - name: device_tag
+    title: 设备标识
+    interface: input
+    description: 匿名限次用的设备指纹/随机码
+  - name: submitted_at
+    title: 提交时间
+    interface: datetime

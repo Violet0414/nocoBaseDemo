@@ -1,0 +1,48 @@
+name: nb_dx_inventory_log
+title: 库存流水
+titleField: textbook_name
+fields:
+  - name: textbook_name
+    title: 教材名称
+    interface: input
+  - name: textbook
+    title: 教材
+    interface: m2o
+    target: nb_dx_textbook
+    foreignKey: textbook_id
+  - name: type
+    title: 业务类型
+    interface: select
+    options:
+      - value: purchase
+        label: 采购入库
+        color: green
+      - value: requisition
+        label: 班级领用
+        color: blue
+      - value: return
+        label: 退库入库
+        color: cyan
+      - value: check
+        label: 盘点调整
+        color: orange
+  - name: qty_change
+    title: 库存变化量
+    interface: number
+  - name: before_qty
+    title: 变化前库存
+    interface: number
+  - name: after_qty
+    title: 变化后库存
+    interface: number
+  - name: ref_no
+    title: 关联单据号
+    interface: input
+  - name: operator
+    title: 操作人
+    interface: m2o
+    target: users
+    foreignKey: operator_id
+  - name: happened_at
+    title: 操作时间
+    interface: datetime

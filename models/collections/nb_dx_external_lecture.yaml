@@ -1,0 +1,34 @@
+name: nb_dx_external_lecture
+title: 校外宣讲库
+titleField: name
+fields:
+  - name: name
+    title: 宣讲题目
+    interface: input
+    required: true
+  - name: lecturer_name
+    title: 宣讲人
+    interface: input
+  - name: teacher
+    title: 关联师资
+    interface: m2o
+    target: nb_dx_teacher
+    foreignKey: teacher_id
+  - name: date
+    title: 宣讲日期
+    interface: date
+  - name: place
+    title: 宣讲地点
+    interface: input
+  - name: audience
+    title: 宣讲对象
+    interface: input
+  - name: audience_count
+    title: 参加人数
+    interface: number
+  - name: description
+    title: 宣讲内容摘要
+    interface: textarea
+  - name: attachment
+    title: 附件
+    interface: attachment

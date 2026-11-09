@@ -1,0 +1,43 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_topic": {
+        "popups": {
+          "view": { "name": "查看专题", "description": "查看一条专题记录详情" },
+          "addNew": { "name": "新增专题", "description": "新增一条专题记录" },
+          "edit": { "name": "编辑专题", "description": "编辑一条专题记录" },
+          "associations": {
+            "teacher": {
+              "view": { "name": "查看授课教师", "description": "查看关联教师详情" },
+              "addNew": { "name": "新增教师", "description": "新增一条教师记录" },
+              "edit": { "name": "编辑教师", "description": "编辑关联教师记录" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "routeId": "396710905708544" },
+    "item": { "title": "专题库", "icon": "ProfileOutlined" }
+  },
+  "page": { "title": "专题库" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "专题库",
+      "blocks": [
+        {
+          "key": "topicTable",
+          "type": "table",
+          "collection": "nb_dx_topic",
+          "fields": ["name", "category", "attribute", "teach_form", "hours", "teacher.name", "status"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

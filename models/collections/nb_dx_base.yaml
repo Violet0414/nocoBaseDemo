@@ -1,0 +1,42 @@
+name: nb_dx_base
+title: 教学基地库
+titleField: name
+fields:
+  - name: name
+    title: 基地名称
+    interface: input
+    required: true
+  - name: category
+    title: 基地类型
+    interface: select
+    options:
+      - value: red
+        label: 红色教育
+        color: red
+      - value: economy
+        label: 经济发展
+        color: blue
+      - value: rural
+        label: 乡村振兴
+        color: green
+      - value: culture
+        label: 文化传承
+        color: gold
+      - value: other
+        label: 其他
+        color: default
+  - name: address
+    title: 地址
+    interface: input
+  - name: contact
+    title: 联系人
+    interface: input
+  - name: phone
+    title: 联系电话
+    interface: input
+  - name: description
+    title: 现场教学简介
+    interface: textarea
+  - name: photos
+    title: 图片视频
+    interface: attachment

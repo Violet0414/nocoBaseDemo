@@ -1,0 +1,41 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_textbook": {
+        "popups": {
+          "view": { "name": "查看教材", "description": "查看一条教材信息详情" },
+          "addNew": { "name": "新增教材", "description": "新增一条教材信息" },
+          "edit": { "name": "编辑教材", "description": "编辑一条教材信息" }
+        },
+        "formBehaviorDescriptionReview": {
+          "fields": {
+            "stock": { "decision": "unsupported", "reasonCode": "ambiguous-description" }
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "title": "教材管理", "icon": "ReadOutlined" },
+    "item": { "title": "教材信息", "icon": "BookOutlined" }
+  },
+  "page": { "title": "教材信息" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "教材信息",
+      "blocks": [
+        {
+          "key": "textbookTable",
+          "type": "table",
+          "collection": "nb_dx_textbook",
+          "fields": ["name", "category", "publisher", "authors", "pub_year", "price", "isbn", "stock"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

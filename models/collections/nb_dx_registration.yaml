@@ -1,0 +1,72 @@
+name: nb_dx_registration
+title: 报名登记
+titleField: name
+fields:
+  - name: name
+    title: 姓名
+    interface: input
+    required: true
+  - name: klass
+    title: 报名班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: phone
+    title: 手机号
+    interface: input
+  - name: gender
+    title: 性别
+    interface: select
+    options:
+      - value: male
+        label: 男
+        color: blue
+      - value: female
+        label: 女
+        color: magenta
+  - name: political_status
+    title: 政治面貌
+    interface: select
+    options:
+      - value: cpc
+        label: 中共党员
+        color: red
+      - value: league
+        label: 共青团员
+        color: blue
+      - value: masses
+        label: 群众
+        color: default
+  - name: work_unit
+    title: 单位及职务
+    interface: input
+  - name: form_data
+    title: 报名表附加信息
+    interface: textarea
+    description: 班级自定义报名表单的填写内容
+  - name: status
+    title: 审核状态
+    interface: select
+    options:
+      - value: pending
+        label: 待审核
+        color: orange
+      - value: approved
+        label: 已通过
+        color: green
+      - value: rejected
+        label: 已拒绝
+        color: red
+  - name: review_by
+    title: 审核人
+    interface: m2o
+    target: users
+    foreignKey: review_by_id
+  - name: review_remark
+    title: 审核备注
+    interface: textarea
+  - name: student
+    title: 生成的学员记录
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: student_id

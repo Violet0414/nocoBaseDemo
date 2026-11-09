@@ -1,0 +1,45 @@
+name: nb_dx_teaching_plan
+title: 教学计划
+titleField: name
+fields:
+  - name: name
+    title: 计划名称
+    interface: input
+    required: true
+  - name: klass
+    title: 所属班次
+    interface: m2o
+    target: nb_dx_class
+    foreignKey: class_id
+  - name: purpose
+    title: 教学目的和要求
+    interface: textarea
+  - name: assessment
+    title: 考核方式
+    interface: textarea
+  - name: books
+    title: 推荐书目
+    interface: textarea
+  - name: arrangement
+    title: 教学安排日程表
+    interface: textarea
+  - name: topics
+    title: 关联专题
+    interface: m2m
+    target: nb_dx_topic
+    through: nb_dx_plan_topics
+    foreignKey: plan_id
+    otherKey: topic_id
+  - name: attachment
+    title: 附件
+    interface: attachment
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: draft
+        label: 草稿
+        color: default
+      - value: published
+        label: 已发布
+        color: green

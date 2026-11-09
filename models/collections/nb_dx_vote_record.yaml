@@ -1,0 +1,24 @@
+name: nb_dx_vote_record
+title: 投票明细
+titleField: option_selected
+fields:
+  - name: option_selected
+    title: 所选选项
+    interface: input
+    description: 多选时用分号分隔；打分时填"打分"
+  - name: vote
+    title: 所属投票
+    interface: m2o
+    target: nb_dx_vote
+    foreignKey: vote_id
+  - name: voter
+    title: 投票学员
+    interface: m2o
+    target: nb_dx_student
+    foreignKey: voter_id
+  - name: score_value
+    title: 打分值
+    interface: number
+  - name: voted_at
+    title: 投票时间
+    interface: datetime

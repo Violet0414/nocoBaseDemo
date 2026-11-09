@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "mode": "create",
+  "defaults": {
+    "collections": {
+      "nb_dx_base": {
+        "popups": {
+          "view": { "name": "查看基地", "description": "查看一条基地记录详情" },
+          "addNew": { "name": "新增基地", "description": "新增一条基地记录" },
+          "edit": { "name": "编辑基地", "description": "编辑一条基地记录" }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "layoutUid": "admin-layout-model",
+    "group": { "routeId": "396710905708544" },
+    "item": { "title": "基地库", "icon": "EnvironmentOutlined" }
+  },
+  "page": { "title": "基地库" },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "基地库",
+      "blocks": [
+        {
+          "key": "baseTable",
+          "type": "table",
+          "collection": "nb_dx_base",
+          "fields": ["name", "category", "address", "contact", "phone"],
+          "recordActions": ["view", "edit"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+name: nb_dx_purchase
+title: 教材采购
+titleField: textbook_name
+fields:
+  - name: textbook_name
+    title: 教材名称
+    interface: input
+  - name: textbook
+    title: 教材
+    interface: m2o
+    target: nb_dx_textbook
+    foreignKey: textbook_id
+  - name: quantity
+    title: 采购数量
+    interface: number
+    required: true
+  - name: unit_price
+    title: 采购单价
+    interface: number
+  - name: amount
+    title: 采购金额
+    interface: number
+  - name: supplier
+    title: 供应商
+    interface: input
+  - name: date
+    title: 采购日期
+    interface: date
+  - name: status
+    title: 状态
+    interface: select
+    options:
+      - value: draft
+        label: 草稿
+        color: default
+      - value: ordered
+        label: 已下单
+        color: blue
+      - value: received
+        label: 已入库
+        color: green
+  - name: operator
+    title: 经办人
+    interface: m2o
+    target: users
+    foreignKey: operator_id
