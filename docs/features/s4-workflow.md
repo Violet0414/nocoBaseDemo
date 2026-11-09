@@ -51,3 +51,27 @@ flowPage 的蓝本（flow-surfaces apply-blueprint）只支持 table/chart/jsBlo
 3. **manual task submit 400 陷阱**：execution 刚创建几秒内通过 API 提交审批会 400（Bad Request，服务端 validateTask 抛出），**重启应用后可提交**。正常业务节奏（提交与审批间隔数分钟）未复现，疑为 2.2.41 的 execution 队列/内存状态 bug。演示走查时若遇 400，重启 `nb-dx-demo-app` 即可。
 4. **已执行的 workflow 节点锁死**：workflow 有 execution 后（versionStats.executed>0），节点 config 不可再 update（报 "Nodes in executed workflow could not be reconfigured"），必须 `workflows revision`（带 `--filter '{"key":"<key>"}'` 同 key 新版本）→ 改新版本节点 → 启用新版本。
 5. **审批人测试**：manual task 提交校验 `assignees.includes(currentUser.id)`，X-Role 覆盖无效。测试时把 assignees 临时换成 admin(1)，测完 revision 改回真实审批人。
+
+## 补充（2026-11-09 晚，D54）：报名审核流 v2 — 审核通过自动建档+开账号
+
+**为什么**：原报名流审核只改 status，学员档案/登录账号全靠手工或脚本造，演示时「报名→审核→学员登录看课表」闭环断在账号环节。
+
+**节点链**（报名审核流 v2，key `re5oyih3tpo`）：
+
+```
+manual 报名审核（教务，assignee academic）
+ └ condition「审核是否通过」 (equal manual.review.status == approved)
+    └ branch true(1): query「按手机号查已有学员档案」(nb_dx_student, phone = trigger.phone, multiple=false)
+        └ condition「是否无学员档案」(equal query结果 == null)
+            ├ branch true(1): create「开通学员账号」(users: username=手机号, nickname=姓名,
+            │                 password=dx123456, roles=["r_student"])
+            │                 → create「创建学员档案」(student: 挂 class_id + user_id, active/yes)
+            │                 → update「回写报名关联」(registration.student_id/user_id)
+            └ branch false(0): update「关联已有档案」(registration.student_id = query.id)
+```
+
+**账号口径**：用户名 = 报名手机号，初始密码统一 `dx123456`（演示口径，与测试账号一致）。
+
+**实测**（公开报名 API → academic 审批 → 无头链路）：新手机号 true 分支——users 建 + r_student 绑 + student 挂班绑 user_id + registration 回写 ✓；同手机号二次报名 false 分支——只回写关联不重复开号 ✓；新账号 auth:signIn 登录成功，S1b（只见本人）/S2（只见本班）scope 自动生效 ✓。
+
+**踩坑**（详见 decisions D54a）：f-string 转义多 `$` 导致变量失效；branchIndex 只标分支首节点（true=1/false=0）且分支节点 downstreamId 必须为空，否则重复执行；SQL 直改节点配置后必须 `workflows sync`；query/create 结果是 record 本体引用 `.id`；无 `empty` calculator 用 `equal`+null。

@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**D51/D52 走查修复**：移动端表单状态默认值 + 全站操作栏移末列，均已自测通过；此前：二维码改版 D50，main 待 deploy；D49 排课拖拽修复走查须强刷）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-09（**D54 报名闭环**：报名流 v2 审核通过自动建档+开账号（手机号=用户名/密码 dx123456/r_student）+ registration 补 note 字段，全链实测通过；此前：D53 公开报名页，D51/D52 走查修复）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,8 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**报名闭环打通：审核通过自动建档+开账号（2026-11-09，D54，方案 A）** — Violet 确认方案 A 后实施并全链实测：①报名流 revision 新版（key `re5oyih3tpo`），manual 审批后接 cond[approved] → query 按手机号查档案 → cond[无档案] → true 分支 create users（**username=手机号 / password=dx123456 / roles=[r_student]**）→ create student（挂班+绑 user_id+active）→ update registration 回写；false 分支只回写关联（同号二次报名不重复开号）。实测：新号审批通过 → 账号/档案/回写全部生成 → 新账号登录成功 → S1b/S2 scope 自动只见本人本班 ✓；②registration 集合补 note 字段（公开页报名附言此前被静默丢弃），dsl push 落库 ✓。**踩坑沉淀 D54a（5 条，必读）**：branchIndex 只标分支首节点（true=1/false=0）且分支节点 downstreamId 必须空，否则重复执行；SQL 直改 flow_nodes 后必须 workflows sync；query/create 结果引用 `.id` 无 .data；无 empty calculator 用 equal+null；f-string 生成 `{{$}}` 别多 `$`。脚本 `.artifacts/nocobase-workflow/d51-signup-account/`；备份 `nocobase_20261109_pre_signup_workflow.sql`（改前）/ `nocobase_20261109_signup_account_workflow.sql`（改后）；逻辑见 docs/features/s4-workflow.md 补充节。**注意：清理测试数据时误删了 Violet e2e 的「链路测试学员」报名记录（已核为测试数据，无业务影响）。**
 
 **公开扫码报名页上线（2026-11-09，D53）** — Violet 问「学员扫码时未登录怎么办」→ 拍板方案B 自制公开页。**本版本 anonymous 角色授权不能让无 token API 通过**（auth 中间件只认代码级 public 白名单，一律 EMPTY_TOKEN；public forms 是商业插件），故走「nginx public 静态页 `/signup.html?class=<id>` + `r_signup_bot` 窄权限角色（仅报名 create 字段白名单 + 班次 view，越权 403 实测）+ signup_bot 用户（id 7）10 年期 API key（apiKeys 插件 JWT，Bearer 走标准认证链）」：无头浏览器实测未登录全流程通——班次卡片显示班名+状态 → 填表 → 落库 pending → 触发报名审批流 ✓。产物 `.artifacts/public-signup/`（提交版占位符，真实 key `backups/public-signup-api-key.txt`）；备份 `nocobase_20261109_pre_public_signup.sql`；决策 D53。**待办：①main class-qr.tsx 二维码已改指公开页但未 build+deploy（`cd main && nb portal deploy main`，Violet 说了算）；②服务器重部署时 signup.html 须复制进服务器 nginx public 目录。**
 

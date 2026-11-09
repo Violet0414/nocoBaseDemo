@@ -72,4 +72,5 @@
 
 - [x] 造演示数据(班次/学员/专题/课表/教材)
 - 验证:41 张业务表全覆盖灌入(4 班次/21 学员/8 师资/12 专题/29 课节含冲突演示对/48 座位/教材链路/请假 6/评估 30/投票问卷/报名 6/缴费 4/作业);学员账号实测 scope 过滤全部生效(**D26 已关闭**);脚本 gen_demo_data.py 幂等保护;备份 nocobase_20261109_stage7_demo_data.sql;逻辑档案 docs/features/s7-demo-data.md
+- [x] 报名闭环:审核通过自动建档+开账号(决策 D54,方案 A) — **✅ 2026-11-09 全链实测**:报名流 revision v2(key re5oyih3tpo),manual 审批后 cond[approved]→query 按手机号查档案→cond[无档案]→true 分支(建 users 账号 username=手机号/密码 dx123456/r_student → 建 student 挂班绑 user_id → 回写 registration)/false 分支(只挂已有档案);实测新号审批→账号/档案/回写生成→登录→S1b/S2 scope 生效✓,同号二次报名不重复开号✓;registration 补 note 字段(公开页附言此前被静默丢弃);workflow 踩坑 5 条沉淀 D54a;备份 nocobase_20261109_signup_account_workflow.sql
 - [ ] 演示脚本走查:组织员建班 → 学员扫码报名 → 审核通过 → 学员请假(1/7 提醒)→ 排课拖拽 → 学员手机看课表 → 评估打分 → 统计出图(待 Violet 浏览器端走查,数据已就绪)

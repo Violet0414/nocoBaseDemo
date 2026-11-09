@@ -119,3 +119,11 @@
 | 编号 | 决策 | 理由 |
 |---|---|---|
 | D53 | **未登录扫码报名 = nginx public 静态页 `/signup.html` + 窄权限机器人 API key**（Violet 拍板方案B）。①机制取证：本版本 auth 中间件只放行代码级 public action 白名单（`acl.allowManager.isPublic`），**anonymous 角色的资源授权不能让无 token 请求通过**（一律 EMPTY_TOKEN 401），public forms 是商业插件不装；②方案：静态页放 nginx public 目录（D44 同款路径），建 `r_signup_bot` 角色（仅 `nb_dx_registration` create 带字段白名单 + `nb_dx_class` view）、`signup_bot` 用户（user id 7），用 apiKeys 插件签 10 年期 JWT 当 `Authorization: Bearer`（API key 本质是带 roleName 的长期 JWT，走标准认证链），页面 fetch 提交 `status=pending` → 触发报名审批流；③越权实测 list/destroy 403；二维码改指公开页（class-qr.tsx 已改**未部署**）；真实 key 留 `backups/` 不入库，提交版为占位符 | Violet 问"扫码时学员未登录怎么办"；公开表单商业插件不值得买。API key 权限面收窄到"只能刷报名垃圾数据"，demo 可接受；机器人角色 snippet 额外带 `pm.api-keys.configuration`（生成 key 必需） |
+
+## 2026-11-09（报名闭环：审核通过自动建档+开账号，方案 A）
+
+| 编号 | 决策 | 理由 |
+|---|---|---|
+| D54 | **报名审核流 v2（revision key re5oyih3tpo，id 396799131385856）：manual 审批 → cond[approved] → query(按手机号查学员档案) → cond[无档案] → true 分支（create users(username=手机号, nickname=姓名, password=dx123456, roles=[r_student]) → create nb_dx_student(挂班次+user_id+status=active+enroll_status=yes) → update registration 回写 student_id/user_id）/ false 分支（update registration 只挂已有 student_id）**。同手机号二次报名不重复开号、不重建档案，只把新报名挂到已有档案 | Violet 确认方案 A。新学员登录口径：**用户名=报名手机号，密码统一 dx123456**（与测试账号一致，演示友好）；S2/S1b scope 自动生效（student.user_id 关联是 scope 生效的关键） |
+| D54a | **workflow 节点链三条硬规则**（本次 4 轮实测踩坑）：①f-string 生成 `{{$...}}` 变量须写 `{{\$...`，多一个 `$` 变量解析失败→condition 恒 false；②**分支节点的直接下游才带 branchIndex（true=1 / false=0），分支内后续节点 branchIndex=NULL**，且**分支节点自身 downstreamId 必须为空**（填了会导致分支首节点被重复执行，如 create user 二次执行撞 username 唯一约束）；③**SQL 直改 flow_nodes 配置后必须 `workflows sync`（或重启应用）**，内存节点图不会自动刷新；④query/create 节点结果是 record 本体，引用 `{{$jobsMapByNodeKey.<key>.id}}`（无 .data 前缀）；⑤basic engine 没有 `empty` calculator，判空用 `equal` 与 null 比较 | nodes:create API 创建的节点不自动填 downstreamId（请假流是填的），缺了会断链；补 downstreamId 到分支节点又会重复执行——分支语义靠 upstreamId+branchIndex 表达 |
+| D54b | **registration 集合补 note 字段（报名附言）**：公开页/移动页提交的 note 此前被静默丢弃（集合无此列，API 忽略不报错），dsl-reconciler push 新增，signup_bot 字段白名单本就含 note，落库即通 | Violet 公开报名页有「报名附言」输入框；附言进报名记录供教务审核参考 |
