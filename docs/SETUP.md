@@ -130,8 +130,17 @@ cd /home/ops/dx-demo/pkg
 docker compose pull
 docker compose up -d postgres && sleep 8
 docker exec -i nb-dx-demo-postgres psql -U nocobase -d nocobase < nocobase_20261109_server_deploy.sql
-docker compose up -d   # app 约 30s 内就绪
+docker compose up -d   # app 首次启动约 60-90s（要跑迁移/加载插件），期间 502 属正常
 curl -o /dev/null -w "%{http_code}\n" http://127.0.0.1:13000/   # 预期 200
+```
+
+**重灌已有服务器库时**（非全新部署）：先 `docker compose stop app`，再连 template1 库执行 `DROP DATABASE nocobase;` + `CREATE DATABASE nocobase OWNER nocobase;`（超级用户角色名是 `nocobase`，不是 postgres），然后灌 dump，最后 `docker compose up -d`。
+
+**公开报名页随迁**（D53）：`pkg/server-extra/` 内含部署版 `signup.html`（内嵌真实 API key，**不入库**，.gitignore 已排除）与 `logo.png`，部署后须复制进服务器 nginx public 目录——该目录文件属 root，宿主 `cp` 会 Permission denied，用 docker cp：
+
+```bash
+docker cp pkg/server-extra/signup.html nb-dx-demo-app:/app/nocobase/storage/.nocobase/proxy/nginx/default/public/signup.html
+docker cp pkg/server-extra/logo.png  nb-dx-demo-app:/app/nocobase/storage/.nocobase/proxy/nginx/default/public/logo.png
 ```
 
 ### 8.3 服务器侧信息

@@ -1,0 +1,1 @@
+import{j as o}from"./index-CN0Fpyvo.js";import{P as p}from"./prompt-output-oG9aqAve.js";function x({title:r,description:t,prompt:m}){return o.jsx(p,{title:r,description:t,prompt:m,promptClassName:"max-h-[620px]"})}export{x as P};

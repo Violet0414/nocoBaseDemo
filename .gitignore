@@ -14,3 +14,6 @@ models/.git/
 # Python
 __pycache__/
 *.pyc
+
+# 服务器部署包内嵌真实 API key 的公开页（与 backups/ 同口径不入库）
+.artifacts/server-deploy/pkg/server-extra/

@@ -1,0 +1,1 @@
+import{r as o,dV as t}from"./index-CN0Fpyvo.js";function u(){const e=o.useContext(t);if(!e)throw new Error("useRouteSurfaceClose must be used inside a RouteDrawer, RouteDialog, or RoutePage.");return e}export{u};

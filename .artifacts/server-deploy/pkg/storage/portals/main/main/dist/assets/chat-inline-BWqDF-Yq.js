@@ -1,0 +1,1 @@
+import{j as e,am as o}from"./index-CN0Fpyvo.js";function s({className:r,children:n}){return e.jsx("div",{className:o("min-h-96 overflow-hidden rounded-xl border bg-card",r),children:n})}export{s as C};

@@ -1,0 +1,1 @@
+import{j as e}from"./index-CN0Fpyvo.js";import{A as t}from"./auto-redirect-provider-Dj18LkzA.js";function c({children:r}){return e.jsx(t,{resource:"saml",action:"checkRedirect",children:r})}export{c as default};

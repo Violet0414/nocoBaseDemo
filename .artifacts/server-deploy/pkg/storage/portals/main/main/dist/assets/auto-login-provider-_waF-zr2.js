@@ -1,0 +1,1 @@
+import{j as r}from"./index-CN0Fpyvo.js";import{A as i}from"./auto-redirect-provider-Dj18LkzA.js";import{i as t}from"./use-wecom-sign-in-mqXtvfbP.js";function n({children:e}){const o=t();return r.jsx(i,{resource:"wecom",action:"checkLogin",enabled:o,query:{isWeComBrowser:o},children:e})}export{n as default};
