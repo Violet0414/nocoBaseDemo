@@ -1,6 +1,6 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D59 移动端调整**：扫码报名页下线（公开页已接管入口）+ 菜单重排（请假申请为首页、材料提交末位）；此前：D58 审批待办标题修复、D57 移动端课程表直出改版、D56b 工作台待办改版）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D62 评估表单修复 + 服务器重发布**：三页新增弹窗拆模板副本+kind 默认值+学员必填；fresh dump 20261110 重灌 10.10.40.44；此前：D60/D61 超限提醒断链+姓名列统一，D59 移动端调整，D58 待办标题）
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -13,6 +13,10 @@
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
 ## 当前位置
+
+**评估新增表单修复 + 服务器重发布完成（2026-11-10，D62）** — Violet 线上报障「/api/nb_dx_eval_record:create 提交了但数据没新增」。取证（服务器日志 status=200 + 落库 6 条 kind 空）：党性考核/专题评估/综合评估三页「新增」弹窗**共用表单模板** tfqylic8j8y，kind 等上下文字段无默认值非必填 → 落库 kind 空被列表过滤吞掉。修复：三处 `convert-template-to-copy` 拆副本（sb2ygwyh4fh/iq01y38zu9h/w9zp48k1cti）+ 各副本 set-field-value-rules kind 静态默认（topic/party_self/comprehensive，runjs 形态）+ 学员字段 SQL 直改 editItemSettings.required（configure 不支持 settings，400 实证）。**服务器已重灌**：fresh dump `nocobase_20261110_server_deploy.sql`（含 D55-D62 全量）→ 10.10.40.44 drop+recreate+restore+signup.html/logo docker cp，验证 HTTP 200 + 新工作流启用 + 移动端新菜单 + 扫码报名页已删。服务器上 6 条 kind 空垃圾记录（Violet 测试，id 33-38）随重灌清除。备份 `backups/flowmodels_eval_student_required_backup_20261110.txt`；决策 D62。**遗留：待办池 1 条 D58 验证残留「请假审批 - 」（leave 13）待 UI 驳回；本地 admin 密码不在手上，评估表单 UI 闭环由 Violet 线上复验。**
+
+**超1/7提醒断链修复 + 学员姓名列批量统一（2026-11-10，D60/D61）** — Violet 问「total_days 不填是不是就不触发提醒」→ 实证比预想更糟：calculation 节点 math.js 对 null 除法直接 TypeError，**整条审批流 execution -2 中断**（leave 12 卡死实证）。修复三件套：①total_days/leave.klass YAML 补 required + 存量空值补数；②22 处表单项 configure `settings.required`（请假表单 klass/事由/起止/天数 + 班次表单 total_days）。**关键坑：表单校验只认 flowModel 层 settings.required**——集合元数据 options.required / uiSchema.required 都不驱动 Formily 校验，YAML required 对已存在字段 reconciler push 也会跳过。移动端请假表单空提交 6 项必填红框拦截已无头实测 ✓。②连带：Violet 走查请假管理页姓名列空（D55 同款）→ 8 个 TableColumnModel 批量改 `student.name`（请假/外出/退学×2/考勤/评估×3），遗留销账；超1/7 提醒链路 Violet UI 实测 over_ratio=true ✓（leave 10）。备份 `backups/flowmodels_student_name_cols_backup_20261110.txt`；验证脚本 `.artifacts/e2e-check/verify_required_b2.py`、`verify_leave_mgmt_names.py`。
 
 **移动端调整完成（2026-11-10，D59）** — Violet 两项指示。①**扫码报名页下线**：公开报名页（D53 `/signup.html?class=`）上线后，移动端「扫码报名」页（routeId 396774382895104 / uid 3cfhfajaa4x，含 hidden 子页「报名登记」）成为孤页——二维码已指公开页、全库无引用。用官方命令 `nb api flow-surfaces destroy-page` 删除（**要传 flow-surfaces get 返回的 target.uid 即 RootPageModel uid，不是路由 schemaUid**，传错报 popup-child 400）；一次删净路由/子 tab/FlowModel 子树/角色授权/schema，DB 复核全 0；删除前快照留底 `.artifacts/mobile-signup-page-retired/`。旧链接不报 404，回退移动端首页（可接受兜底）。②**菜单重排**：材料提交挪末位、请假申请成为首页——move-node 不支持跨页同级排序（RootPageModel 的 parent 是自身）、update-menu 无排序参数，**菜单顺序只由 `desktopRoutes.sort` 决定**，直接 UPDATE sort 为最大值解决。调整后底栏：请假申请 / 学员录 / 我的作业 / 课程表 / 材料提交。无头浏览器三项实测全过（旧链接无报名表单、菜单无扫码报名、首页直出请假表单）；脚本 `.artifacts/e2e-check/verify_signup_retired.py`；规则沉淀 docs/features/s6-mobile.md 补充三。
 

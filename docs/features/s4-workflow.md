@@ -90,7 +90,7 @@ manual 报名审核（教务，assignee academic）
 
 **通用规则**：凡表格列/详情项显示学员，一律绑 `student.name` 关联路径；`student_name` 是建模冗余文本字段（titleField），只在学员无关联的脏数据场景有值。
 
-**遗留**：退学待审（dropoutTodoTable）、班务管理请假/外出/考勤/党性/评估各页仍有同款 `student_name` 列，待 Violet 确认后批量统一。
+**遗留**：~~退学待审（dropoutTodoTable）、班务管理请假/外出/考勤/党性/评估各页仍有同款 `student_name` 列，待 Violet 确认后批量统一。~~ **2026-11-10 已销账（D61）**：请假管理/外出报备/退学/考勤/评估共 8 个 TableColumnModel 批量改 `student.name` + `associationPathName`（SQL 直改，备份 `backups/flowmodels_student_name_cols_backup_20261110.txt`），无关联脏数据显示空属正常。
 
 ## 补充（2026-11-09 深夜，D56）：工作台待办改版 — flowPage + jsBlock 自建审批台（替代 legacy WorkflowTodo）
 

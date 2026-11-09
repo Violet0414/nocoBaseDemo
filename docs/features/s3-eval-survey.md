@@ -75,3 +75,11 @@
 | 投票管理 | 396739812851712（tab ...713） |
 | 不记名问卷 | 396739944972288（tab 问卷列表 ...289 / 答卷明细 396739963846656） |
 | 统计图表 | 396739821240320（tab ...321） |
+
+## 补充（2026-11-10，D62）：三页新增弹窗拆模板副本 + kind 默认值
+
+**问题**：Violet 线上「专题评估新增提交了但没数据」。取证：党性考核/专题评估/综合评估三页「新增」弹窗此前**共用模板** tfqylic8j8y（新增党性考核记录，usageCount=3），kind/班级/课程字段无默认值且非必填——只填学员提交时记录落库 kind 为空，被各页 kind 过滤（topic/comprehensive/party_*）吞掉（status=200 但列表不可见，日志取证）。
+
+**规则**：①同表多视角（kind 区分）的新增弹窗**必须每页独立模板副本**（`convert-template-to-copy`），不允许跨 kind 页共用一个新增表单；②副本各自配 `set-field-value-rules` kind 静态默认值（runjs 形态 `return 'topic';`），学员选择器 `editItemSettings.required={required:true}`（configure 不支持 settings，SQL 直改，D60 同款）。
+
+**坑**：弹窗挂模板时 props/props 均看不到 kind 字段绑定，取证要走 `flow-surfaces get --uid <按钮uid>` 看 `popup.template.uid` → `get-template` 看 targetUid 再展开表单树；`flowModelTreePath` 对 popup 子树不展开（ancestor 查无 descendant），须按模板链路查。

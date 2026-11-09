@@ -39,7 +39,7 @@
 
 ## 阶段4:workflow DIY 4 条审批流 + 待办页 ✅
 
-- [x] 请假申请(累计请假 ≤ 总学时 1/7:聚合已批时长,超限标提醒) — **✅ 2026-11-09**:请假审批流(collection 触发 status=pending→manual 组织员审批→approved 分支聚合 sum(duration_days) 与 class.total_days/7 比较→超限 update over_ratio=true);实测 0.5+2.6=3.1 > 21/7=3 → over_ratio=true ✓
+- [x] 请假申请(累计请假 ≤ 总学时 1/7:聚合已批时长,超限标提醒) — **✅ 2026-11-09**:请假审批流(collection 触发 status=pending→manual 组织员审批→approved 分支聚合 sum(duration_days) 与 class.total_days/7 比较→超限 update over_ratio=true);实测 0.5+2.6=3.1 > 21/7=3 → over_ratio=true ✓;**2026-11-10 D60 防呆**:total_days 空值会致计算节点 TypeError 整流中断——total_days/leave.klass 设必填(YAML+22 处表单 settings.required,校验只认 flowModel 层)+存量补数;**D61**:请假管理等 8 处 student_name 列批量改 student.name
 - [x] 退学申请(通过后改学员状态 + 账号禁用简化) — **✅ 2026-11-09**:退学审批流(manual 校领导审批→approved 分支 update 学员 status=dropout);实测学员状态联动 ✓(测试数据学员已改回 active)
 - [x] 报名审核(public forms 扫码报名 → 审核;"自动开账号"简化为状态流转) — **✅ 2026-11-09**:报名审核流(manual 教务审核,结果由按钮预设值写回 registration.status,无自动开账号)
 - [x] 缴费审核(凭证上传 + 审核状态) — **✅ 2026-11-09**:缴费审核流(manual 教务审核,同上写回 payment.status)
