@@ -44,6 +44,10 @@ fields:
     title: 报名表附加信息
     interface: textarea
     description: 班级自定义报名表单的填写内容
+  - name: note
+    title: 报名附言
+    interface: textarea
+    description: 公开报名页/移动报名页提交的补充说明（选填）
   - name: status
     title: 审核状态
     interface: select
