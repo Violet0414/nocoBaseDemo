@@ -25,7 +25,7 @@
 ## 环境约定
 
 - 本项目工作目录 = 本文件夹（Windows 路径 `E:\贵州顺拓\demo`，WSL 路径 `/mnt/e/贵州顺拓/demo`）
-- 版本管理：**不用 git，纯文件夹拷贝**（U盘/网盘同步）——所有产物必须落在本文件夹内，不要写到 `~` 或其他位置
+- 版本管理：**git + GitHub 远端**（2026-11-09 Violet 启用，origin = https://github.com/Violet0414/nocoBaseDemo.git ）。`.gitignore` 排除：`backups/`（数据库 dump 留本地，走 U盘/网盘拷贝）、`.claude/`（含 API token，严禁入库）、`main/node_modules`、`main/dist`。所有产物必须落在本文件夹内，不要写到 `~` 或其他位置
 - Docker 只跑 PostgreSQL，NocoBase 应用本地跑（nb CLI 管理）
 - 环境重建步骤见 `docs/SETUP.md`
 
