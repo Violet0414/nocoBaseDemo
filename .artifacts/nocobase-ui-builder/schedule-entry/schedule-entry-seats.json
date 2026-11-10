@@ -1,0 +1,32 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": "396730107232256"
+    },
+    "item": {
+      "title": "排座管理",
+      "icon": "AppstoreOutlined"
+    }
+  },
+  "page": {
+    "title": "排座管理"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "排座管理",
+      "blocks": [
+        {
+          "key": "entryIframe",
+          "type": "jsBlock",
+          "settings": {
+            "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/seats\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"排座管理\"\n    />\n  </div>\n);\n"
+          }
+        }
+      ]
+    }
+  ]
+}

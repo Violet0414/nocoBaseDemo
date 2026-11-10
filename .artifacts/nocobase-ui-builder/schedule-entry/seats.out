@@ -1,0 +1,363 @@
+{
+  "data": {
+    "version": "1",
+    "mode": "create",
+    "target": {
+      "pageSchemaUid": "hsp9fs7nrzq",
+      "pageUid": "4ipz6m3m4fd"
+    },
+    "surface": {
+      "target": {
+        "locator": {
+          "pageSchemaUid": "hsp9fs7nrzq"
+        },
+        "uid": "4ipz6m3m4fd",
+        "kind": "page"
+      },
+      "tree": {
+        "parentId": "hsp9fs7nrzq",
+        "subKey": "page",
+        "subType": "object",
+        "use": "RootPageModel",
+        "props": {
+          "routeId": 396915917717504,
+          "title": "排座管理",
+          "enableTabs": false,
+          "displayTitle": true,
+          "icon": "AppstoreOutlined",
+          "enableHeader": null
+        },
+        "stepParams": {
+          "pageSettings": {
+            "general": {
+              "title": "排座管理",
+              "displayTitle": true,
+              "enableTabs": false,
+              "icon": "AppstoreOutlined",
+              "enableHeader": null
+            }
+          }
+        },
+        "parent": "hsp9fs7nrzq",
+        "uid": "4ipz6m3m4fd",
+        "subModels": {
+          "tabs": [
+            {
+              "uid": "qxvwjds864w",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-10T05:24:18.083Z",
+                  "updatedAt": "2026-11-10T05:24:18.120Z",
+                  "id": 396915917717505,
+                  "parentId": 396915917717504,
+                  "title": "排座管理",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "qxvwjds864w",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "hboumn3fxcs",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794288258070523,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": true,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "排座管理",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "排座管理",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "qxvwjds864w",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "6nia4y84u97"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        24
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "6nia4y84u97"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            24
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "6t337e8h25i",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "6t337e8h25i",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "JSBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "jsSettings": {
+                            "runJs": {
+                              "version": "v2",
+                              "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/seats\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"排座管理\"\n    />\n  </div>\n);\n"
+                            }
+                          }
+                        },
+                        "uid": "6nia4y84u97",
+                        "parent": "6t337e8h25i",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "qxvwjds864w",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            }
+          ]
+        },
+        "popup": {
+          "mode": "local"
+        }
+      },
+      "nodeMap": {
+        "4ipz6m3m4fd": {
+          "uid": "4ipz6m3m4fd",
+          "use": "RootPageModel",
+          "props": {
+            "routeId": 396915917717504,
+            "title": "排座管理",
+            "enableTabs": false,
+            "displayTitle": true,
+            "icon": "AppstoreOutlined",
+            "enableHeader": null
+          },
+          "stepParams": {
+            "pageSettings": {
+              "general": {
+                "title": "排座管理",
+                "displayTitle": true,
+                "enableTabs": false,
+                "icon": "AppstoreOutlined",
+                "enableHeader": null
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "qxvwjds864w": {
+          "uid": "qxvwjds864w",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-10T05:24:18.083Z",
+              "updatedAt": "2026-11-10T05:24:18.120Z",
+              "id": 396915917717505,
+              "parentId": 396915917717504,
+              "title": "排座管理",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "qxvwjds864w",
+              "menuSchemaUid": null,
+              "tabSchemaName": "hboumn3fxcs",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794288258070523,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": true,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "排座管理",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "排座管理",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "6t337e8h25i": {
+          "uid": "6t337e8h25i",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "6nia4y84u97"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                24
+              ]
+            },
+            "rowOrder": [
+              "row1"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "6nia4y84u97"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    24
+                  ]
+                },
+                "rowOrder": [
+                  "row1"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "6nia4y84u97": {
+          "uid": "6nia4y84u97",
+          "use": "JSBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "jsSettings": {
+              "runJs": {
+                "version": "v2",
+                "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/seats\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"排座管理\"\n    />\n  </div>\n);\n"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        }
+      },
+      "pageRoute": {
+        "createdAt": "2026-11-10T05:24:18.070Z",
+        "updatedAt": "2026-11-10T05:24:18.070Z",
+        "id": 396915917717504,
+        "parentId": 396730107232256,
+        "title": "排座管理",
+        "tooltip": null,
+        "icon": "AppstoreOutlined",
+        "schemaUid": "hsp9fs7nrzq",
+        "menuSchemaUid": "jbn2ay7j3sl",
+        "tabSchemaName": null,
+        "type": "flowPage",
+        "options": {
+          "flowSurfaceMenuBindable": true
+        },
+        "sort": 1794288258070721,
+        "hideInMenu": false,
+        "enableTabs": false,
+        "enableHeader": null,
+        "displayTitle": true,
+        "hidden": null,
+        "createdById": null,
+        "updatedById": null,
+        "children": [
+          {
+            "createdAt": "2026-11-10T05:24:18.083Z",
+            "updatedAt": "2026-11-10T05:24:18.120Z",
+            "id": 396915917717505,
+            "parentId": 396915917717504,
+            "title": "排座管理",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "qxvwjds864w",
+            "menuSchemaUid": null,
+            "tabSchemaName": "hboumn3fxcs",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794288258070523,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": true,
+            "createdById": null,
+            "updatedById": null
+          }
+        ]
+      }
+    }
+  }
+}

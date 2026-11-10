@@ -1,0 +1,363 @@
+{
+  "data": {
+    "version": "1",
+    "mode": "create",
+    "target": {
+      "pageSchemaUid": "e3enf6pad6r",
+      "pageUid": "wevljr2rtxy"
+    },
+    "surface": {
+      "target": {
+        "locator": {
+          "pageSchemaUid": "e3enf6pad6r"
+        },
+        "uid": "wevljr2rtxy",
+        "kind": "page"
+      },
+      "tree": {
+        "parentId": "e3enf6pad6r",
+        "subKey": "page",
+        "subType": "object",
+        "use": "RootPageModel",
+        "props": {
+          "routeId": 396915913523200,
+          "title": "课表查询",
+          "enableTabs": false,
+          "displayTitle": true,
+          "icon": "ClockCircleOutlined",
+          "enableHeader": null
+        },
+        "stepParams": {
+          "pageSettings": {
+            "general": {
+              "title": "课表查询",
+              "displayTitle": true,
+              "enableTabs": false,
+              "icon": "ClockCircleOutlined",
+              "enableHeader": null
+            }
+          }
+        },
+        "parent": "e3enf6pad6r",
+        "uid": "wevljr2rtxy",
+        "subModels": {
+          "tabs": [
+            {
+              "uid": "sbz1zza9hc4",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-10T05:24:16.227Z",
+                  "updatedAt": "2026-11-10T05:24:16.268Z",
+                  "id": 396915913523201,
+                  "parentId": 396915913523200,
+                  "title": "课表查询",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "sbz1zza9hc4",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "lu4xpl078n0",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794288256214529,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": true,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "课表查询",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "课表查询",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "sbz1zza9hc4",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "ykhawbr91vm"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        24
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "ykhawbr91vm"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            24
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "eq2ixv5o1gq",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "eq2ixv5o1gq",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "JSBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "jsSettings": {
+                            "runJs": {
+                              "version": "v2",
+                              "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/week\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"课表查询\"\n    />\n  </div>\n);\n"
+                            }
+                          }
+                        },
+                        "uid": "ykhawbr91vm",
+                        "parent": "eq2ixv5o1gq",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "sbz1zza9hc4",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            }
+          ]
+        },
+        "popup": {
+          "mode": "local"
+        }
+      },
+      "nodeMap": {
+        "wevljr2rtxy": {
+          "uid": "wevljr2rtxy",
+          "use": "RootPageModel",
+          "props": {
+            "routeId": 396915913523200,
+            "title": "课表查询",
+            "enableTabs": false,
+            "displayTitle": true,
+            "icon": "ClockCircleOutlined",
+            "enableHeader": null
+          },
+          "stepParams": {
+            "pageSettings": {
+              "general": {
+                "title": "课表查询",
+                "displayTitle": true,
+                "enableTabs": false,
+                "icon": "ClockCircleOutlined",
+                "enableHeader": null
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "sbz1zza9hc4": {
+          "uid": "sbz1zza9hc4",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-10T05:24:16.227Z",
+              "updatedAt": "2026-11-10T05:24:16.268Z",
+              "id": 396915913523201,
+              "parentId": 396915913523200,
+              "title": "课表查询",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "sbz1zza9hc4",
+              "menuSchemaUid": null,
+              "tabSchemaName": "lu4xpl078n0",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794288256214529,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": true,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "课表查询",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "课表查询",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "eq2ixv5o1gq": {
+          "uid": "eq2ixv5o1gq",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "ykhawbr91vm"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                24
+              ]
+            },
+            "rowOrder": [
+              "row1"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "ykhawbr91vm"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    24
+                  ]
+                },
+                "rowOrder": [
+                  "row1"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ykhawbr91vm": {
+          "uid": "ykhawbr91vm",
+          "use": "JSBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "jsSettings": {
+              "runJs": {
+                "version": "v2",
+                "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/week\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"课表查询\"\n    />\n  </div>\n);\n"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        }
+      },
+      "pageRoute": {
+        "createdAt": "2026-11-10T05:24:16.214Z",
+        "updatedAt": "2026-11-10T05:24:16.214Z",
+        "id": 396915913523200,
+        "parentId": 396723346014208,
+        "title": "课表查询",
+        "tooltip": null,
+        "icon": "ClockCircleOutlined",
+        "schemaUid": "e3enf6pad6r",
+        "menuSchemaUid": "cvqv1xi24ae",
+        "tabSchemaName": null,
+        "type": "flowPage",
+        "options": {
+          "flowSurfaceMenuBindable": true
+        },
+        "sort": 1794288256214389,
+        "hideInMenu": false,
+        "enableTabs": false,
+        "enableHeader": null,
+        "displayTitle": true,
+        "hidden": null,
+        "createdById": null,
+        "updatedById": null,
+        "children": [
+          {
+            "createdAt": "2026-11-10T05:24:16.227Z",
+            "updatedAt": "2026-11-10T05:24:16.268Z",
+            "id": 396915913523201,
+            "parentId": 396915913523200,
+            "title": "课表查询",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "sbz1zza9hc4",
+            "menuSchemaUid": null,
+            "tabSchemaName": "lu4xpl078n0",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794288256214529,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": true,
+            "createdById": null,
+            "updatedById": null
+          }
+        ]
+      }
+    }
+  }
+}

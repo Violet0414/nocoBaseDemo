@@ -1,0 +1,32 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": "396723346014208"
+    },
+    "item": {
+      "title": "排课管理",
+      "icon": "LayoutOutlined"
+    }
+  },
+  "page": {
+    "title": "排课管理"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "排课管理",
+      "blocks": [
+        {
+          "key": "entryIframe",
+          "type": "jsBlock",
+          "settings": {
+            "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/board\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"排课管理\"\n    />\n  </div>\n);\n"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -81,3 +81,14 @@ TASKS 阶段5 清单第 1 项要求周视图课表含拖拽。原实现为纯查
 - **与排课画布的分工**：周课表只拖已有课程调课（无专题池）；新排课走排课画布拖专题。
 - **规则**：调课不改 `place`（教室跟班次走）；释放后刷新并提示「旧位置 → 新位置」；保存失败（如角色无 update 权限）提示「保存失败，请重试」并复位。
 - **座位表连带修复**：自动排座按钮不生效根因 = `applyAutoAssign` filter 误用 `klass`（REST 层应为 FK 列名 `class_id`），请求 400 被静默吞掉；同时把「全部学员往空位排」改为「只排未分配学员」，避免已排座学员一人占两座。无空位/无未分配时分别提示。
+
+## 座位 ACL 矩阵（D72 补充）
+
+| 角色 | nb_dx_seat 权限 |
+|---|---|
+| r_academic | create/update/destroy/export/view（全量 scope） |
+| r_organizer | create/view（全量 scope，D71 补授——建班组织员可在座位表自助排座） |
+| r_leader / r_teacher | view/export |
+| r_student | view（S2-本班 scope，只能看本班座位） |
+
+新增角色要操作座位时走 SQL 直插 `dataSourcesRolesResources` + `dataSourcesRolesResourcesActions`（fields 白名单照抄上表同行），改后重启应用生效。

@@ -17,4 +17,6 @@
 | 阶段4 | [s4-workflow.md](./s4-workflow.md) 审批流 4 条 + 审批待办/工作台待办两页 | ✅ |
 | 阶段5 | [s5-scheduling.md](./s5-scheduling.md) AI Portal 课表/排课/排座 React 页 | ✅ |
 | 阶段6 | [s6-mobile.md](./s6-mobile.md) 移动端学员核心 6 页（报名/请假/材料/学员录/作业/课表 Link） | ✅ |
-| 阶段7 | [s7-demo-data.md](./s7-demo-data.md) 演示数据全集（41 表）与数据约定 | ✅ || 补缺 | [s8-gapfill.md](./s8-gapfill.md) PLAN 缺失功能补齐（库存联动/管理端 6 页/站内提醒/学员社区） | ✅ |
+| 阶段7 | [s7-demo-data.md](./s7-demo-data.md) 演示数据全集（41 表）与数据约定 | ✅ |
+| 补缺 | [s8-gapfill.md](./s8-gapfill.md) PLAN 缺失功能补齐（库存联动/管理端 6 页/站内提醒/学员社区） | ✅ |
+| 门户归位 | [s9-portal-entry.md](./s9-portal-entry.md) admin 排课入口页（iframe 嵌 AI Portal 三页） | ✅ |

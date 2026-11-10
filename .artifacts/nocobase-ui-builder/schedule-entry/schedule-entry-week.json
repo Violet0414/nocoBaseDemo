@@ -1,0 +1,32 @@
+{
+  "version": "1",
+  "mode": "create",
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": "396723346014208"
+    },
+    "item": {
+      "title": "课表查询",
+      "icon": "ClockCircleOutlined"
+    }
+  },
+  "page": {
+    "title": "课表查询"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "课表查询",
+      "blocks": [
+        {
+          "key": "entryIframe",
+          "type": "jsBlock",
+          "settings": {
+            "code": "const { Spin } = ctx.libs.antd;\nctx.render(\n  <div style={{ margin: -24 }}>\n    <iframe\n      src=\"/x/main/schedule/week\"\n      style={{ width: '100%', height: 'calc(100vh - 64px)', border: 0, display: 'block' }}\n      title=\"课表查询\"\n    />\n  </div>\n);\n"
+          }
+        }
+      ]
+    }
+  ]
+}
