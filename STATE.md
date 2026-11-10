@@ -1,8 +1,12 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D72 组织员座位权限补授**；此前：D71 admin 排课入口归位（iframe 嵌 /x/main 三页），D70 超1/7提醒列显示是/否，D69 停用 plugin-ai 插件，D68 隐藏 main AI 悬浮按钮，D67 附件直链白字版+周课表隐藏 sidebar footer，D65+D66 品牌去 NocoBase 化，D64 需求对齐改名，D62 评估表单修复 + 服务器重发布）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D73 组织员 topic/change_log 权限补授**；此前：D72 组织员座位权限补授，D71 admin 排课入口归位（iframe 嵌 /x/main 三页），D70 超1/7提醒列显示是/否，D69 停用 plugin-ai 插件，D68 隐藏 main AI 悬浮按钮，D67 附件直链白字版+周课表隐藏 sidebar footer，D65+D66 品牌去 NocoBase 化，D64 需求对齐改名，D62 评估表单修复 + 服务器重发布）
 
 ## 当前位置
+
+**组织员教学专题库+调课流水权限补授（2026-11-10，D73）** — Violet 报「/api/nb_dx_topic:list 同样 No permissions」（`lit` 是 list 笔误）。连带排查 D71 排课 iframe 三页前端引用的 7 个集合，organizer 缺 topic + change_log 两个（seat 已在 D72 补）。补授：**topic view+export**（对齐 r_leader）、**change_log view+create**（拖拽调课写流水，不给 destroy），SQL 直插 2 资源行 + 4 action 行（fields 白名单照抄 r_academic，scopeId=All records），重启生效；organizer_test 实测两接口 200 ✓。备份 `backups/nocobase_20261110_pre_organizer_topic_changelog_acl.sql`；决策 D73；坑（多行 VALUES 内 max(id)+1 子查询重复取值撞主键，须拆独立语句）沉淀 docs/features/s5-scheduling.md。**D71 排课 iframe 的 ACL 连带补漏完成——至此 organizer 排课三页 7 集合授权齐备。**纯 DB 配置改动，随 fresh dump 同步服务器。
+
+**组织员座位权限补授（2026-11-10，D72）**
 
 **组织员座位权限补授（2026-11-10，D72）** — Violet 报「r_organizer 调 /api/nb_dx_seat:create 报 No permissions」。根因：ACL 矩阵里 r_organizer 对 nb_dx_seat **连资源行都没有**（r_academic 才有全套 CRUD+export）。修复：SQL 直插 `dataSourcesRolesResources`（usingActionsConfig=true）+ create/view 两条 action 行（fields 白名单照抄 r_academic 12 字段，scopeId=All records 396628275953665），重启应用生效；organizer_test 实测 view ✓ create ✓（空体垃圾行 id=147 已 SQL 清理，seat 回到 96 行）。授权矩阵沉淀 docs/features/s5-scheduling.md；备份 `backups/nocobase_20261110_pre_organizer_seat_acl.sql`；决策 D72。**坑：docker exec psql 接 heredoc 必须 -i，否则 stdin 不进容器、整段静默不执行且无报错。**纯 DB 配置改动，随下次 fresh dump 同步服务器（与 D70/D71 一起）。
 

@@ -92,3 +92,16 @@ TASKS 阶段5 清单第 1 项要求周视图课表含拖拽。原实现为纯查
 | r_student | view（S2-本班 scope，只能看本班座位） |
 
 新增角色要操作座位时走 SQL 直插 `dataSourcesRolesResources` + `dataSourcesRolesResourcesActions`（fields 白名单照抄上表同行），改后重启应用生效。
+
+## 排课三页集合 ACL（D73 补充，接上表）
+
+排课三页（board/week/seats）前端共引用 7 个集合，各角色需保证授权齐全，否则 iframe/Portal 内 403：
+
+| 集合 | r_organizer | r_academic | 备注 |
+|---|---|---|---|
+| nb_dx_course_schedule / nb_dx_class / nb_dx_student / nb_dx_teaching_plan | view(+organizer 对 class/student 全 CRUD) | 全套 | 既有 |
+| nb_dx_seat | create/view（D72 补） | 全套 | 座位表 |
+| nb_dx_topic | view/export（D73 补） | 全套 | 排课板显示专题名 |
+| nb_dx_change_log | view/create（D73 补） | 全套 | 拖拽调课写流水、调课记录页读 |
+
+**坑：INSERT ... VALUES 多行时 `(SELECT max(id)+1)` 会重复取同一值撞主键，多行必须拆独立语句。**
