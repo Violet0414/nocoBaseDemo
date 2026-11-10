@@ -49,6 +49,45 @@ describe("detectConflicts", () => {
     ];
     expect(detectConflicts(items)).toHaveLength(0);
   });
+
+  it("flags class-slot duplication even with different teachers and places", () => {
+    const items = [
+      schedule({ id: 1, week_no: 1, day_of_week: 1, start_time: "2026-01-05T08:30:00Z", teacher: { id: 1, name: "甲" }, place: "一教101" }),
+      schedule({ id: 2, week_no: 1, day_of_week: 1, start_time: "2026-01-05T08:30:00Z", teacher: { id: 2, name: "乙" }, place: "一教102" }),
+    ];
+    const conflicts = detectConflicts(items);
+    expect(conflicts).toHaveLength(1);
+    expect(conflicts[0].reason).toContain("班级同时段");
+    expect(conflicts[0].reason).toContain("2 节");
+  });
+
+  it("counts deduplicated courses for a 10-course same-slot pile", () => {
+    const items = Array.from({ length: 10 }, (_, k) =>
+      schedule({
+        id: k + 1,
+        week_no: 1,
+        day_of_week: 3,
+        start_time: "2026-01-07T08:30:00Z",
+        teacher: { id: k + 1, name: `师${k + 1}` },
+        place: `教室${k + 1}`,
+      })
+    );
+    const conflicts = detectConflicts(items);
+    expect(conflicts).toHaveLength(1);
+    expect(conflicts[0].reason).toContain("10 节");
+    expect(new Set(conflicts[0].ids).size).toBe(10);
+  });
+
+  it("keeps teacher reason priority when teacher collides inside a pile", () => {
+    const items = [
+      schedule({ id: 1, week_no: 1, day_of_week: 4, start_time: "2026-01-08T08:30:00Z", teacher: { id: 7, name: "李" }, place: "A" }),
+      schedule({ id: 2, week_no: 1, day_of_week: 4, start_time: "2026-01-08T08:30:00Z", teacher: { id: 8, name: "王" }, place: "B" }),
+      schedule({ id: 3, week_no: 1, day_of_week: 4, start_time: "2026-01-08T08:30:00Z", teacher: { id: 7, name: "李" }, place: "C" }),
+    ];
+    const conflicts = detectConflicts(items);
+    expect(conflicts).toHaveLength(1);
+    expect(conflicts[0].reason).toContain("同一教师");
+  });
 });
 
 describe("autoAssignSeats", () => {

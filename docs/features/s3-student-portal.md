@@ -45,8 +45,9 @@
 3. **rolesResourcesScopes 只能走 REST**:`nb api` 命令面没有 `data-sources:main:roles-resources-scopes`,创建 scope 用 `curl POST /api/dataSources/main/rolesResourcesScopes:create`(body 只传 name/resourceName/scope);绑定 action 必须用 `scopeId`(不能传 scope 对象);resource update 必须带 `--filter-by-tk`。
 4. 复用:student/class fieldGroups 三组方案(s3-textbook 定稿)继续有效,本次把 excellent 补进 stuWork 组。
 
-## 补充：各班次学员数图表口径（D56，2026-11-09）
+## 补充：各班次学员数图表口径（D56，2026-11-09；D77 补修培训记录，2026-11-10）
 
 - **规则**：综合门户与培训记录页的「各班次学员数」柱状图，计数口径 = 学员档案条数（含未挂班的，显示为「未分班」一栏），不是活跃学员数；数量来源 = raw visual 前端按 `klass.name` 分组计数。
 - **为什么前端计数**：`charts:queryData` 对关联维度（`klass.name`）不聚合，返回每学员一行明细且不含 measure 别名列，builder 模式拿不到数量（详见 decisions D56）。
+- **D77 补充（2026-11-10）**：D56 实际只改了综合门户的图表实例（arheyvzxnw1）；培训记录页是**独立的 ChartBlockModel 实例**（73fclpvn4nr），当时仍为 builder 模式图例显示英文 stuCount——已用同款 custom raw 方案补修（蓝本 `.artifacts/nocobase-ui-builder/fix-train-chart/`）。两页图表互不影响，改一处不等于改一类。
 - **数据现状**：18 名学员 class_id 为 NULL（多为历史导入/报名建档测试数据），仅第1期中青班 4 人挂班；演示若需柱状图好看，需先给学员补挂班次。

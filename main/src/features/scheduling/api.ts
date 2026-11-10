@@ -194,7 +194,7 @@ function overlaps(a: CourseSchedule, b: CourseSchedule): boolean {
 }
 
 export function detectConflicts(items: CourseSchedule[]): Conflict[] {
-  const conflicts = new Map<string, Conflict>();
+  const conflicts = new Map<string, Conflict & { classDup?: boolean }>();
   for (let i = 0; i < items.length; i++) {
     for (let j = i + 1; j < items.length; j++) {
       const a = items[i];
@@ -208,18 +208,36 @@ export function detectConflicts(items: CourseSchedule[]): Conflict[] {
       const placeA = a.place ?? "";
       const placeB = b.place ?? "";
       let reason = "";
+      let classDup = false;
       if (teacherA && teacherA === teacherB) reason = `同一教师同时段被重复安排（${(a.teacher as TeacherRef)?.name ?? ""}）`;
       else if (placeA && placeA === placeB) reason = `同一教室同时段冲突（${placeA}）`;
-      if (!reason) continue;
+      else {
+        // 单班课表里任何同时段多节都构成班级维度冲突（教师/教室各不相同也算）
+        reason = "班级同时段排课冲突";
+        classDup = true;
+      }
       const existing = conflicts.get(key);
       if (existing) {
         existing.ids.push(a.id, b.id);
+        if (existing.classDup && !classDup) {
+          // 具体（教师/教室）原因优先级高于班级占位原因
+          existing.reason = reason;
+          existing.classDup = false;
+        }
         continue;
       }
-      conflicts.set(key, { day, slot, reason, ids: [a.id, b.id] });
+      conflicts.set(key, { day, slot, reason, ids: [a.id, b.id], classDup });
     }
   }
-  return Array.from(conflicts.values());
+  // 班级同时段冲突在 reason 里附节数（ids 两两成对存入，需按 id 去重计数）
+  return Array.from(conflicts.values()).map((entry) => {
+    const c: Conflict = { day: entry.day, slot: entry.slot, reason: entry.reason, ids: entry.ids };
+    if (entry.classDup) {
+      const n = new Set(entry.ids).size;
+      c.reason = `班级同时段排课 ${n} 节`;
+    }
+    return c;
+  });
 }
 
 export type SeatOrder = "student_no" | "birth_date";

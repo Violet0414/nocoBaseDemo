@@ -358,8 +358,8 @@ for i, nm in enumerate(["李勇强", "郑雪梅", "何雨欣"], 1):
         publisher="浙江人民出版社", reason="实践性强，适合干部阅读", student_id=i + 2, class_id=1,
         date="2026-01-05"))
 for tname, ttype, chg, before, after, ref in [
-        (b1name, "in", 200, 0, 200, "CG-2025-001"), (b1name, "out", 16, 200, 184, "LL-2026-001"),
-        (b2name, "in", 500, 0, 500, "CG-2025-002"), (b2name, "out", 3, 500, 497, "TK-2025-003")]:
+        (b1name, "采购", 200, 0, 200, "CG-2025-001"), (b1name, "领用", 16, 200, 184, "LL-2026-001"),
+        (b2name, "采购", 500, 0, 500, "CG-2025-002"), (b2name, "退库", 3, 500, 497, "TK-2025-003")]:
     create("nb_dx_inventory_log", dict(textbook_name=tname, textbook_id=books[tname], type=ttype,
         qty_change=chg, before_qty=before, after_qty=after, ref_no=ref, operator_id=4,
         happened_at="2025-12-20 10:00:00"))

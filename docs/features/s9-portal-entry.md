@@ -25,8 +25,13 @@
 
 ## 改动影响面与坑
 
-- **零代码改动**：main Portal 源码不动，无需 build+deploy；纯 DB 配置，前端刷新即生效。
-- iframe 内保留 portal 自身侧栏（教学排课：周课表/排课画布/座位表），好处是**一个入口内可切三页**不用回 admin 菜单；代价是双层侧栏观感。若要去侧栏需改 main 源码支持 embed 模式（后置可选）。
+- **embed 模式（D75，2026-11-10 Violet 拍板方案一）**：main Portal `layout.tsx` 加 `?embed=1` 判断——带参时只渲染页面本体（h-svh 全幅，无侧栏/顶栏/内边距）。3 个入口页 iframe src 均已加 `?embed=1`，**已 build+deploy**（bundle index-BbSxP8n6.js）。直连 /x/main 不带参不受影响（侧栏仍在）。jsBlock 模型 uid：s96hi0xk166/ykhawbr91vm/6nia4y84u97，SQL 改法见 D75 坑（转义引号走 SQL 文件 + dollar-quote + docker exec -i）。
+- iframe 内不再有 portal 侧栏——**切三页回 admin 菜单**（这正是需求层级本意：三页本是三个独立菜单项）。
+- **蓝本校验器直接放行 iframe 代码**（无 API 调用/自定义 action，D56 的占位+SQL 绕过法这次不需要）。
+- 菜单顺序按 dx-requirements 需求层级插入（SQL 直改 `desktopRoutes.sort`，见 D59 排序规则），不是组末尾追加。
+- 授权：leader/organizer/academic/teacher 4 角色各授 5 条（教务管理组 + 2 新页 + 班务管理组 + 1 新页）。**页面本身不涉集合权限，但 iframe 内 Portal 页会调 7 个业务集合的 API**——organizer 曾因此连环报 403，已补齐（D72/D73/D74，矩阵见 s5-scheduling.md）；leader/academic/teacher 原有权限覆盖。
+- iframe 与 admin 同源（同 127.0.0.1:13000），cookie 会话互通，无二次登录。
+- 学员不用这三个入口（学员视角走 /v/mobile 我的课表直出）。
 - admin 菜单组默认折叠——无头验证时必须先点开组才能看到子项（脚本误判过一次）。
-- 产物：蓝本 `.artifacts/nocobase-ui-builder/schedule-entry/`（gen_schedule_entry.py + 3 个 JSON）；验证 `.artifacts/e2e-check/verify_schedule_entry.py`（菜单展开检查 + iframe 挂载/src/内页文本三重校验）。
-- 服务器同步：纯 DB 配置，随下次 fresh dump 重灌自动带走。
+- 产物：蓝本 `.artifacts/nocobase-ui-builder/schedule-entry/`（gen_schedule_entry.py + 3 个 JSON + embed-mode.sql）；验证 `.artifacts/e2e-check/verify_schedule_entry.py`（菜单展开 + iframe 挂载/src 带 embed=1 + 内页渲染且无侧栏 + 直连回归，全绿 pageerror=0）。
+- 服务器同步：**dump（3 条 jsBlock + sort）+ main Portal 重 build+deploy（embed 模式）**，两件都要。

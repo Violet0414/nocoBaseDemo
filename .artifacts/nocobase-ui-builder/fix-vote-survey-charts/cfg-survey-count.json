@@ -1,0 +1,11 @@
+{
+  "target": {
+    "uid": "vdx0vcdwurk"
+  },
+  "changes": {
+    "visual": {
+      "mode": "custom",
+      "raw": "const rows = (ctx.data && ctx.data.objects) || [];\nconst counter = {};\nconst order = [];\nrows.forEach(function (r) {\n  const raw = (r['survey.name'] !== undefined) ? r['survey.name'] : ((r['surveyName'] !== undefined) ? r['surveyName'] : (r.survey && r.survey.name));\n  const name = (raw === null || raw === undefined || raw === '') ? '未关联问卷' : String(raw);\n  const v = (r['answerCount'] !== undefined && r['answerCount'] !== null) ? Number(r['answerCount']) : 1;\n  if (!(name in counter)) { counter[name] = 0; order.push(name); }\n  counter[name] += v;\n});\norder.sort(function (a, b) { return counter[b] - counter[a]; });\nreturn {\n  tooltip: { trigger: 'axis' },\n  legend: { bottom: 0 },\n  grid: { left: 16, right: 16, top: 32, bottom: 48, containLabel: true },\n  xAxis: { type: 'category', data: order, axisLabel: { interval: 0 } },\n  yAxis: { type: 'value', minInterval: 1 },\n  series: [\n    {\n      type: 'bar',\n      name: '答卷数',\n      data: order.map(function (n) { return counter[n]; }),\n      barMaxWidth: 40,\n      label: { show: true, position: 'top' }\n    }\n  ]\n};"
+    }
+  }
+}

@@ -294,7 +294,7 @@ function WeekScheduleInner() {
       <Card>
         <CardHeader>
           <CardTitle className="text-base">冲突提示</CardTitle>
-          <CardDescription>同一教师或同一教室在同一时段被重复安排时给出提醒</CardDescription>
+          <CardDescription>同一教师、同一教室或班级同一时段被重复安排时给出提醒</CardDescription>
         </CardHeader>
         <CardContent>
           {conflicts.length === 0 ? (

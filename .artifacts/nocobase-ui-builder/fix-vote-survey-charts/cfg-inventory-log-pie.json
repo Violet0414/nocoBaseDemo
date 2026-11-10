@@ -1,0 +1,11 @@
+{
+  "target": {
+    "uid": "llxve6isxx6"
+  },
+  "changes": {
+    "visual": {
+      "mode": "custom",
+      "raw": "const rows = (ctx.data && ctx.data.objects) || [];\nconst data = rows.map(function (r) {\n  return { name: (r.type === null || r.type === undefined || r.type === '') ? '未填写' : String(r.type), value: Number(r.logCount) || 0 };\n});\ndata.sort(function (a, b) { return b.value - a.value; });\nreturn {\n  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },\n  legend: { bottom: 0 },\n  series: [\n    { type: 'pie', name: '流水数', radius: '62%', center: ['50%', '42%'], data: data, label: { show: true, formatter: '{b}: {c}' } }\n  ]\n};"
+    }
+  }
+}

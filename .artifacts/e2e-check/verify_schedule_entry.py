@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""方案A验证：admin 3 个排课入口页（jsBlock iframe 嵌 /x/main）。
-academic_test 登录 → 逐页访问 → 校验 iframe 挂载、src 正确、内页有内容；附菜单可见性检查。"""
+"""方案A验证（D75 embed 模式后）：admin 3 个排课入口页 iframe 嵌 /x/main。
+校验：菜单展开可见、iframe 挂载+src 带 ?embed=1、内页有内容且【无 portal 侧栏】、
+直连 /x/main（不带 embed）侧栏仍在。academic_test 登录。"""
 import pathlib
 from playwright.sync_api import sync_playwright
 
@@ -10,9 +11,9 @@ SHOTS = HERE / "shots"
 SHOTS.mkdir(exist_ok=True)
 
 PAGES = [
-    ("排课管理", "/admin/aj8s3d0rqul", "/x/main/schedule/board", "se_board.png"),
-    ("课表查询", "/admin/e3enf6pad6r", "/x/main/schedule/week", "se_week.png"),
-    ("排座管理", "/admin/hsp9fs7nrzq", "/x/main/schedule/seats", "se_seats.png"),
+    ("排课管理", "/admin/aj8s3d0rqul", "/x/main/schedule/board?embed=1", "se_board.png"),
+    ("课表查询", "/admin/e3enf6pad6r", "/x/main/schedule/week?embed=1", "se_week.png"),
+    ("排座管理", "/admin/hsp9fs7nrzq", "/x/main/schedule/seats?embed=1", "se_seats.png"),
 ]
 
 def login(page, account):
@@ -70,22 +71,33 @@ def main():
                     w: f.getBoundingClientRect().width,
                 };
             }""", expect_src)
-            # 同源 iframe 内页文本
+            # 同源 iframe 内页：有内容 + 无侧栏（embed 生效）
             inner_text = ""
             inner_ok = False
+            embed_ok = False
             if info.get("iframe"):
                 for fr in page.frames:
                     if expect_src in (fr.url or ""):
                         try:
-                            inner_text = fr.evaluate("() => document.body.innerText.slice(0, 300)")
+                            inner_text = fr.evaluate("() => document.body.innerText.slice(0, 400)")
                         except Exception as e:
                             inner_text = f"<取帧失败 {e}>"
                         break
                 inner_ok = len(inner_text.strip()) > 10 and "页面不存在" not in inner_text and "404" not in inner_text[:50]
-            passed = info.get("iframe") and info.get("srcOk") and inner_ok
+                # embed 生效标志：内层不再有 portal 侧栏菜单「教学排课」
+                embed_ok = "教学排课" not in inner_text
+            passed = info.get("iframe") and info.get("srcOk") and inner_ok and embed_ok
             print(("✓" if passed else "✗") + f" {label}: iframe={info.get('iframe')} srcOk={info.get('srcOk')} "
-                  f"尺寸={info.get('w', 0):.0f}x{info.get('h', 0):.0f} 内页文本={inner_text[:60]!r}")
+                  f"尺寸={info.get('w', 0):.0f}x{info.get('h', 0):.0f} embed无侧栏={embed_ok} 内页文本={inner_text[:50]!r}")
             ok = passed and ok
+
+        # 回归：直连 /x/main/schedule/week（不带 embed）侧栏仍在
+        page.goto(BASE + "/x/main/schedule/week", wait_until="networkidle")
+        page.wait_for_timeout(8000)
+        direct_text = page.evaluate("() => document.body.innerText.slice(0, 400)")
+        direct_ok = "教学排课" in direct_text
+        print(("✓" if direct_ok else "✗") + " 回归:直连 /x/main 侧栏仍在（非 embed 不受影响）")
+        ok = direct_ok and ok
 
         print(f"\npageerror 合计: {len(errors)}" + (f" -> {errors[:3]}" if errors else ""))
         print("总体:", "✓ 全部通过" if ok and not errors else "✗ 存在问题")

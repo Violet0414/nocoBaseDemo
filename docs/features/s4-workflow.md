@@ -131,3 +131,11 @@ manual 报名审核（教务，assignee academic）
 3. **存量待办标题回填**：SQL join `executions.context::jsonb->'data'->>'id'` → 申请表 → 学员表重写 `workflowManualTasks.title`（仅 status=0 且 title 为旧模板渲染结果的行）。
 
 **本次落地**：请假流新版本 id 396816229400576、退学流 396816562847744（同 key，均 enabled+current）；存量 3 条 pending 已回填；工作台 jsBlock（flowModel 72hgyrjlwza）ENABLED_WF/WF_TITLE/FALLBACK_ACTIONS 已补新 id 映射（新旧 workflowId 双兼容，迁移/重建时须保持 6 条 id 全集）。缴费流不动——payer_name 是录入手填字段，无同款问题。学员实测新待办标题「请假审批 - 张明远」✓，待办池 4 条演示数据全部带学员名。
+
+## 补充（2026-11-10，D76）：筛选表单「学员姓名」也要走 student.name（D55 规则的筛选层延伸）
+
+**问题**（Violet 报障）：审批待办-请假待审按「学员姓名 包含 张」筛选永远查不到——筛选表单提交的条件是裸字段 `student_name`（库内恒空），而列表列在 D55 已改 `student.name` 但筛选行没改。注意与"tab 固定过滤不生效"区分：tab 自带的 `status=pending` dataScope 一直正常（请求 filter 实抓确认），坏的是筛选交互层。
+
+**规则**：FilterActionModel 的筛选表单字段声明存在两层——`stepParams.filterSettings.defaultFilter.defaultFilter.items`（**权威，渲染筛选行**）与 `props.defaultFilterValue/filterValue.items`（筛选值结构），两层都必须用 `student.name`。修复用 SQL replace `'"path":"student_name"'→'"path":"student.name"'`，2026-11-10 已批量修 12 处（请假待审/请假管理/leave 移动端/退学×2/外出/考勤/评估×3/申报/材料回复，uid 清单见 decisions D76），与 D61 列统一同口径。
+
+**通用规则更新（覆盖 D55 的口径）**：凡涉及学员展示与筛选——表格列、详情项、筛选表单字段声明、待办标题模板——一律走 `student.name` 关联路径；`student_name` 只在学员无关联的脏数据场景有值。排查命令：`SELECT uid FROM "flowModels" WHERE options::text LIKE '%filterSettings%' AND options::text LIKE '%student_name%';`
