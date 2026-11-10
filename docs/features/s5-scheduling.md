@@ -99,8 +99,9 @@ TASKS 阶段5 清单第 1 项要求周视图课表含拖拽。原实现为纯查
 
 | 集合 | r_organizer | r_academic | 备注 |
 |---|---|---|---|
-| nb_dx_course_schedule / nb_dx_class / nb_dx_student / nb_dx_teaching_plan | view(+organizer 对 class/student 全 CRUD) | 全套 | 既有 |
-| nb_dx_seat | create/view（D72 补） | 全套 | 座位表 |
+| nb_dx_course_schedule | view/export/update（D74 补 update） | 全套 | 排课板拖拽调课改行 |
+| nb_dx_class / nb_dx_student / nb_dx_teaching_plan | view(+organizer 对 class/student 全 CRUD) | 全套 | 既有 |
+| nb_dx_seat | create/update/view（D72/D74 补） | 全套 | 座位表 |
 | nb_dx_topic | view/export（D73 补） | 全套 | 排课板显示专题名 |
 | nb_dx_change_log | view/create（D73 补） | 全套 | 拖拽调课写流水、调课记录页读 |
 
