@@ -1,0 +1,1716 @@
+{
+  "data": {
+    "version": "1",
+    "mode": "create",
+    "target": {
+      "pageSchemaUid": "3hfh2zfihov",
+      "pageUid": "jrw9jownmbe"
+    },
+    "surface": {
+      "target": {
+        "locator": {
+          "pageSchemaUid": "3hfh2zfihov"
+        },
+        "uid": "jrw9jownmbe",
+        "kind": "page"
+      },
+      "tree": {
+        "parentId": "3hfh2zfihov",
+        "subKey": "page",
+        "subType": "object",
+        "use": "RootPageModel",
+        "props": {
+          "routeId": 396903540916224,
+          "title": "领用报表",
+          "enableTabs": false,
+          "displayTitle": true,
+          "icon": "BarChartOutlined",
+          "enableHeader": null
+        },
+        "stepParams": {
+          "pageSettings": {
+            "general": {
+              "title": "领用报表",
+              "displayTitle": true,
+              "enableTabs": false,
+              "icon": "BarChartOutlined",
+              "enableHeader": null
+            }
+          }
+        },
+        "parent": "3hfh2zfihov",
+        "uid": "jrw9jownmbe",
+        "subModels": {
+          "tabs": [
+            {
+              "uid": "qfly6gv1x1r",
+              "use": "RootPageTabModel",
+              "props": {
+                "route": {
+                  "createdAt": "2026-11-10T03:45:56.470Z",
+                  "updatedAt": "2026-11-10T03:45:56.515Z",
+                  "id": 396903540916225,
+                  "parentId": 396903540916224,
+                  "title": "领用报表",
+                  "tooltip": null,
+                  "icon": null,
+                  "schemaUid": "qfly6gv1x1r",
+                  "menuSchemaUid": null,
+                  "tabSchemaName": "7iak05mewer",
+                  "type": "tabs",
+                  "options": {
+                    "flowRegistry": {}
+                  },
+                  "sort": 1794282356439231,
+                  "hideInMenu": null,
+                  "enableTabs": null,
+                  "enableHeader": null,
+                  "displayTitle": null,
+                  "hidden": true,
+                  "createdById": null,
+                  "updatedById": null,
+                  "children": []
+                },
+                "title": "领用报表",
+                "icon": null
+              },
+              "decoratorProps": {},
+              "flowRegistry": {},
+              "stepParams": {
+                "pageTabSettings": {
+                  "tab": {
+                    "title": "领用报表",
+                    "icon": null
+                  }
+                }
+              },
+              "subModels": {
+                "grid": {
+                  "parentId": "qfly6gv1x1r",
+                  "subKey": "grid",
+                  "subType": "object",
+                  "use": "BlockGridModel",
+                  "props": {
+                    "rows": {
+                      "row1": [
+                        [
+                          "if2zxw7cxu5"
+                        ],
+                        [
+                          "mexxhoplz9o"
+                        ]
+                      ]
+                    },
+                    "sizes": {
+                      "row1": [
+                        12,
+                        12
+                      ]
+                    },
+                    "rowOrder": [
+                      "row1"
+                    ]
+                  },
+                  "stepParams": {
+                    "gridSettings": {
+                      "grid": {
+                        "rows": {
+                          "row1": [
+                            [
+                              "if2zxw7cxu5"
+                            ],
+                            [
+                              "mexxhoplz9o"
+                            ]
+                          ]
+                        },
+                        "sizes": {
+                          "row1": [
+                            12,
+                            12
+                          ]
+                        },
+                        "rowOrder": [
+                          "row1"
+                        ]
+                      }
+                    }
+                  },
+                  "uid": "qehj8z0to01",
+                  "subModels": {
+                    "items": [
+                      {
+                        "parentId": "qehj8z0to01",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "ChartBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "chartSettings": {
+                            "configure": {
+                              "query": {
+                                "mode": "builder",
+                                "collectionPath": [
+                                  "main",
+                                  "nb_dx_requisition"
+                                ],
+                                "measures": [
+                                  {
+                                    "field": "quantity",
+                                    "aggregation": "sum",
+                                    "alias": "reqQty"
+                                  }
+                                ],
+                                "dimensions": [
+                                  {
+                                    "field": [
+                                      "textbook",
+                                      "name"
+                                    ],
+                                    "alias": "textbook.name"
+                                  }
+                                ]
+                              },
+                              "chart": {
+                                "option": {
+                                  "mode": "basic",
+                                  "builder": {
+                                    "type": "bar",
+                                    "xField": "textbook.name",
+                                    "yField": "reqQty"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "cardSettings": {
+                            "titleDescription": {
+                              "title": "各教材领用数量统计"
+                            }
+                          }
+                        },
+                        "uid": "if2zxw7cxu5",
+                        "parent": "qehj8z0to01",
+                        "sortIndex": 1,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      },
+                      {
+                        "parentId": "qehj8z0to01",
+                        "subKey": "items",
+                        "subType": "array",
+                        "use": "TableBlockModel",
+                        "props": {},
+                        "decoratorProps": {},
+                        "stepParams": {
+                          "resourceSettings": {
+                            "init": {
+                              "dataSourceKey": "main",
+                              "collectionName": "nb_dx_requisition"
+                            }
+                          }
+                        },
+                        "uid": "mexxhoplz9o",
+                        "subModels": {
+                          "columns": [
+                            {
+                              "use": "TableActionsColumnModel",
+                              "props": {},
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "tableColumnSettings": {
+                                  "title": {
+                                    "title": "{{t(\"Actions\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "subKey": "columns",
+                              "subType": "array",
+                              "uid": "bdq6lngeo8f",
+                              "subModels": {
+                                "actions": [
+                                  {
+                                    "parentId": "bdq6lngeo8f",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "ViewActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"View\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"View\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_requisition",
+                                          "title": "{{t(\"Details\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "n8vcr1iuybr",
+                                    "parent": "bdq6lngeo8f",
+                                    "sortIndex": 1,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "cxwphrq4zwg",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "bdq6lngeo8f",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "EditActionModel",
+                                    "props": {
+                                      "title": "{{t(\"Edit\")}}",
+                                      "icon": null,
+                                      "type": "link"
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Edit\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "popupSettings": {
+                                        "openView": {
+                                          "mode": "drawer",
+                                          "size": "medium",
+                                          "pageModelClass": "ChildPageModel",
+                                          "dataSourceKey": "main",
+                                          "collectionName": "nb_dx_requisition",
+                                          "title": "{{t(\"Edit\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "uekn3cqy3j9",
+                                    "parent": "bdq6lngeo8f",
+                                    "sortIndex": 2,
+                                    "popup": {
+                                      "template": {
+                                        "uid": "qa96sbajxqc",
+                                        "mode": "reference"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "parentId": "bdq6lngeo8f",
+                                    "subKey": "actions",
+                                    "subType": "array",
+                                    "use": "DeleteActionModel",
+                                    "props": {
+                                      "type": "link",
+                                      "title": "{{t(\"Delete\")}}",
+                                      "icon": null
+                                    },
+                                    "decoratorProps": {},
+                                    "stepParams": {
+                                      "buttonSettings": {
+                                        "general": {
+                                          "title": "{{t(\"Delete\")}}",
+                                          "icon": null,
+                                          "type": "link",
+                                          "iconOnly": false
+                                        }
+                                      },
+                                      "deleteSettings": {
+                                        "confirm": {
+                                          "enable": true,
+                                          "title": "{{t(\"Delete record\")}}",
+                                          "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                        }
+                                      }
+                                    },
+                                    "flowRegistry": {},
+                                    "uid": "3fymxfj25oh",
+                                    "parent": "bdq6lngeo8f",
+                                    "sortIndex": 3,
+                                    "popup": {
+                                      "mode": "local"
+                                    }
+                                  }
+                                ]
+                              },
+                              "parent": "mexxhoplz9o",
+                              "parentId": "mexxhoplz9o",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "textbook.name",
+                                    "associationPathName": "textbook"
+                                  }
+                                }
+                              },
+                              "uid": "2j85vz1ace5",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "textbook.name",
+                                        "associationPathName": "textbook"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_textbook",
+                                        "associationName": "nb_dx_requisition.textbook",
+                                        "filterByTk": "{{ctx.record.id}}"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "m3c89u6srop",
+                                  "parent": "2j85vz1ace5",
+                                  "parentId": "2j85vz1ace5",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "o30nyw45onk",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "klass.name",
+                                    "associationPathName": "klass"
+                                  }
+                                }
+                              },
+                              "uid": "7uxhsgx7apf",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "klass.name",
+                                        "associationPathName": "klass"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_class",
+                                        "associationName": "nb_dx_requisition.klass",
+                                        "filterByTk": "{{ctx.view.inputArgs.filterByTk}}"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "h7gyry15bwu",
+                                  "parent": "7uxhsgx7apf",
+                                  "parentId": "7uxhsgx7apf",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "xs0pimyuh34",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "batch_no"
+                                  }
+                                }
+                              },
+                              "uid": "y803qshpwzv",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "batch_no"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "ou747ctbdgt",
+                                  "parent": "y803qshpwzv",
+                                  "parentId": "y803qshpwzv",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 4,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "quantity"
+                                  }
+                                }
+                              },
+                              "uid": "oevbhlvaflr",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayNumberFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "quantity"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "mcxlptgo80w",
+                                  "parent": "oevbhlvaflr",
+                                  "parentId": "oevbhlvaflr",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 5,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "date"
+                                  }
+                                }
+                              },
+                              "uid": "m34dtj898q2",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayDateTimeFieldModel",
+                                  "props": {},
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "date"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "xb2yo8u3t9x",
+                                  "parent": "m34dtj898q2",
+                                  "parentId": "m34dtj898q2",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "mode": "local"
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 6,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "columns",
+                              "subType": "array",
+                              "use": "TableColumnModel",
+                              "props": {},
+                              "stepParams": {
+                                "fieldSettings": {
+                                  "init": {
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "fieldPath": "operator.nickname",
+                                    "associationPathName": "operator"
+                                  }
+                                }
+                              },
+                              "uid": "bjjxkrhadh7",
+                              "subModels": {
+                                "field": {
+                                  "use": "DisplayTextFieldModel",
+                                  "props": {
+                                    "clickToOpen": true
+                                  },
+                                  "stepParams": {
+                                    "fieldSettings": {
+                                      "init": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "nb_dx_requisition",
+                                        "fieldPath": "operator.nickname",
+                                        "associationPathName": "operator"
+                                      }
+                                    },
+                                    "displayFieldSettings": {
+                                      "clickToOpen": {
+                                        "clickToOpen": true
+                                      }
+                                    },
+                                    "popupSettings": {
+                                      "openView": {
+                                        "dataSourceKey": "main",
+                                        "collectionName": "users",
+                                        "associationName": "nb_dx_requisition.operator",
+                                        "filterByTk": "{{ctx.view.inputArgs.filterByTk}}"
+                                      }
+                                    }
+                                  },
+                                  "subKey": "field",
+                                  "subType": "object",
+                                  "uid": "5mqzaguwklv",
+                                  "parent": "bjjxkrhadh7",
+                                  "parentId": "bjjxkrhadh7",
+                                  "sortIndex": 1,
+                                  "popup": {
+                                    "template": {
+                                      "uid": "ulylwtjffit",
+                                      "mode": "reference"
+                                    }
+                                  }
+                                }
+                              },
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 7,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "FilterActionModel",
+                              "props": {
+                                "title": "{{t(\"Filter\")}}",
+                                "icon": "FilterOutlined",
+                                "defaultFilterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "textbook_name",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "status",
+                                      "operator": "$eq"
+                                    },
+                                    {
+                                      "path": "batch_no",
+                                      "operator": "$includes"
+                                    }
+                                  ]
+                                },
+                                "filterValue": {
+                                  "logic": "$and",
+                                  "items": [
+                                    {
+                                      "path": "textbook_name",
+                                      "operator": "$includes"
+                                    },
+                                    {
+                                      "path": "status",
+                                      "operator": "$eq"
+                                    },
+                                    {
+                                      "path": "batch_no",
+                                      "operator": "$includes"
+                                    }
+                                  ]
+                                }
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Filter\")}}",
+                                    "icon": "FilterOutlined"
+                                  }
+                                },
+                                "filterSettings": {
+                                  "defaultFilter": {
+                                    "defaultFilter": {
+                                      "logic": "$and",
+                                      "items": [
+                                        {
+                                          "path": "textbook_name",
+                                          "operator": "$includes"
+                                        },
+                                        {
+                                          "path": "status",
+                                          "operator": "$eq"
+                                        },
+                                        {
+                                          "path": "batch_no",
+                                          "operator": "$includes"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "m514zgahg65",
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 1,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "RefreshActionModel",
+                              "props": {
+                                "title": "{{t(\"Refresh\")}}",
+                                "icon": "ReloadOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Refresh\")}}",
+                                    "icon": "ReloadOutlined"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "zpch0lkt8fa",
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 2,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "BulkDeleteActionModel",
+                              "props": {
+                                "title": "",
+                                "tooltip": "{{t(\"Delete\")}}",
+                                "icon": "DeleteOutlined",
+                                "iconOnly": true,
+                                "position": "right"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "",
+                                    "tooltip": "{{t(\"Delete\")}}",
+                                    "icon": "DeleteOutlined",
+                                    "iconOnly": true
+                                  }
+                                },
+                                "deleteSettings": {
+                                  "confirm": {
+                                    "enable": true,
+                                    "title": "{{t(\"Delete record\")}}",
+                                    "content": "{{t(\"Are you sure you want to delete it?\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "r6nbi2n20zs",
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 3,
+                              "popup": {
+                                "mode": "local"
+                              }
+                            },
+                            {
+                              "parentId": "mexxhoplz9o",
+                              "subKey": "actions",
+                              "subType": "array",
+                              "use": "AddNewActionModel",
+                              "props": {
+                                "type": "primary",
+                                "title": "{{t(\"Add new\")}}",
+                                "icon": "PlusOutlined"
+                              },
+                              "decoratorProps": {},
+                              "stepParams": {
+                                "buttonSettings": {
+                                  "general": {
+                                    "title": "{{t(\"Add new\")}}",
+                                    "icon": "PlusOutlined",
+                                    "type": "primary"
+                                  }
+                                },
+                                "popupSettings": {
+                                  "openView": {
+                                    "mode": "drawer",
+                                    "size": "medium",
+                                    "pageModelClass": "ChildPageModel",
+                                    "dataSourceKey": "main",
+                                    "collectionName": "nb_dx_requisition",
+                                    "title": "{{t(\"Add new\")}}"
+                                  }
+                                }
+                              },
+                              "flowRegistry": {},
+                              "uid": "llicyarvl47",
+                              "parent": "mexxhoplz9o",
+                              "sortIndex": 4,
+                              "popup": {
+                                "template": {
+                                  "uid": "s43g6aa9kr9",
+                                  "mode": "reference"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "parent": "qehj8z0to01",
+                        "sortIndex": 2,
+                        "popup": {
+                          "mode": "local"
+                        }
+                      }
+                    ]
+                  },
+                  "parent": "qfly6gv1x1r",
+                  "sortIndex": 1,
+                  "popup": {
+                    "mode": "local"
+                  }
+                }
+              },
+              "popup": {
+                "mode": "local"
+              }
+            }
+          ]
+        },
+        "popup": {
+          "mode": "local"
+        }
+      },
+      "nodeMap": {
+        "jrw9jownmbe": {
+          "uid": "jrw9jownmbe",
+          "use": "RootPageModel",
+          "props": {
+            "routeId": 396903540916224,
+            "title": "领用报表",
+            "enableTabs": false,
+            "displayTitle": true,
+            "icon": "BarChartOutlined",
+            "enableHeader": null
+          },
+          "stepParams": {
+            "pageSettings": {
+              "general": {
+                "title": "领用报表",
+                "displayTitle": true,
+                "enableTabs": false,
+                "icon": "BarChartOutlined",
+                "enableHeader": null
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "qfly6gv1x1r": {
+          "uid": "qfly6gv1x1r",
+          "use": "RootPageTabModel",
+          "props": {
+            "route": {
+              "createdAt": "2026-11-10T03:45:56.470Z",
+              "updatedAt": "2026-11-10T03:45:56.515Z",
+              "id": 396903540916225,
+              "parentId": 396903540916224,
+              "title": "领用报表",
+              "tooltip": null,
+              "icon": null,
+              "schemaUid": "qfly6gv1x1r",
+              "menuSchemaUid": null,
+              "tabSchemaName": "7iak05mewer",
+              "type": "tabs",
+              "options": {
+                "flowRegistry": {}
+              },
+              "sort": 1794282356439231,
+              "hideInMenu": null,
+              "enableTabs": null,
+              "enableHeader": null,
+              "displayTitle": null,
+              "hidden": true,
+              "createdById": null,
+              "updatedById": null,
+              "children": []
+            },
+            "title": "领用报表",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "pageTabSettings": {
+              "tab": {
+                "title": "领用报表",
+                "icon": null
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "qehj8z0to01": {
+          "uid": "qehj8z0to01",
+          "use": "BlockGridModel",
+          "props": {
+            "rows": {
+              "row1": [
+                [
+                  "if2zxw7cxu5"
+                ],
+                [
+                  "mexxhoplz9o"
+                ]
+              ]
+            },
+            "sizes": {
+              "row1": [
+                12,
+                12
+              ]
+            },
+            "rowOrder": [
+              "row1"
+            ]
+          },
+          "stepParams": {
+            "gridSettings": {
+              "grid": {
+                "rows": {
+                  "row1": [
+                    [
+                      "if2zxw7cxu5"
+                    ],
+                    [
+                      "mexxhoplz9o"
+                    ]
+                  ]
+                },
+                "sizes": {
+                  "row1": [
+                    12,
+                    12
+                  ]
+                },
+                "rowOrder": [
+                  "row1"
+                ]
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "if2zxw7cxu5": {
+          "uid": "if2zxw7cxu5",
+          "use": "ChartBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "chartSettings": {
+              "configure": {
+                "query": {
+                  "mode": "builder",
+                  "collectionPath": [
+                    "main",
+                    "nb_dx_requisition"
+                  ],
+                  "measures": [
+                    {
+                      "field": "quantity",
+                      "aggregation": "sum",
+                      "alias": "reqQty"
+                    }
+                  ],
+                  "dimensions": [
+                    {
+                      "field": [
+                        "textbook",
+                        "name"
+                      ],
+                      "alias": "textbook.name"
+                    }
+                  ]
+                },
+                "chart": {
+                  "option": {
+                    "mode": "basic",
+                    "builder": {
+                      "type": "bar",
+                      "xField": "textbook.name",
+                      "yField": "reqQty"
+                    }
+                  }
+                }
+              }
+            },
+            "cardSettings": {
+              "titleDescription": {
+                "title": "各教材领用数量统计"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "mexxhoplz9o": {
+          "uid": "mexxhoplz9o",
+          "use": "TableBlockModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "resourceSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "bdq6lngeo8f": {
+          "uid": "bdq6lngeo8f",
+          "use": "TableActionsColumnModel",
+          "props": {},
+          "decoratorProps": {},
+          "stepParams": {
+            "tableColumnSettings": {
+              "title": {
+                "title": "{{t(\"Actions\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "n8vcr1iuybr": {
+          "uid": "n8vcr1iuybr",
+          "use": "ViewActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"View\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"View\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "title": "{{t(\"Details\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "cxwphrq4zwg",
+              "mode": "reference"
+            }
+          }
+        },
+        "uekn3cqy3j9": {
+          "uid": "uekn3cqy3j9",
+          "use": "EditActionModel",
+          "props": {
+            "title": "{{t(\"Edit\")}}",
+            "icon": null,
+            "type": "link"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Edit\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "title": "{{t(\"Edit\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "qa96sbajxqc",
+              "mode": "reference"
+            }
+          }
+        },
+        "3fymxfj25oh": {
+          "uid": "3fymxfj25oh",
+          "use": "DeleteActionModel",
+          "props": {
+            "type": "link",
+            "title": "{{t(\"Delete\")}}",
+            "icon": null
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Delete\")}}",
+                "icon": null,
+                "type": "link",
+                "iconOnly": false
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "2j85vz1ace5": {
+          "uid": "2j85vz1ace5",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "textbook.name",
+                "associationPathName": "textbook"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "m3c89u6srop": {
+          "uid": "m3c89u6srop",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "textbook.name",
+                "associationPathName": "textbook"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_textbook",
+                "associationName": "nb_dx_requisition.textbook",
+                "filterByTk": "{{ctx.record.id}}"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "o30nyw45onk",
+              "mode": "reference"
+            }
+          }
+        },
+        "7uxhsgx7apf": {
+          "uid": "7uxhsgx7apf",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "klass.name",
+                "associationPathName": "klass"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "h7gyry15bwu": {
+          "uid": "h7gyry15bwu",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "klass.name",
+                "associationPathName": "klass"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_class",
+                "associationName": "nb_dx_requisition.klass",
+                "filterByTk": "{{ctx.view.inputArgs.filterByTk}}"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "xs0pimyuh34",
+              "mode": "reference"
+            }
+          }
+        },
+        "y803qshpwzv": {
+          "uid": "y803qshpwzv",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "batch_no"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "ou747ctbdgt": {
+          "uid": "ou747ctbdgt",
+          "use": "DisplayTextFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "batch_no"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "oevbhlvaflr": {
+          "uid": "oevbhlvaflr",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "quantity"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "mcxlptgo80w": {
+          "uid": "mcxlptgo80w",
+          "use": "DisplayNumberFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "quantity"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "m34dtj898q2": {
+          "uid": "m34dtj898q2",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "date"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "xb2yo8u3t9x": {
+          "uid": "xb2yo8u3t9x",
+          "use": "DisplayDateTimeFieldModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "date"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "bjjxkrhadh7": {
+          "uid": "bjjxkrhadh7",
+          "use": "TableColumnModel",
+          "props": {},
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "operator.nickname",
+                "associationPathName": "operator"
+              }
+            }
+          },
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "5mqzaguwklv": {
+          "uid": "5mqzaguwklv",
+          "use": "DisplayTextFieldModel",
+          "props": {
+            "clickToOpen": true
+          },
+          "stepParams": {
+            "fieldSettings": {
+              "init": {
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "fieldPath": "operator.nickname",
+                "associationPathName": "operator"
+              }
+            },
+            "displayFieldSettings": {
+              "clickToOpen": {
+                "clickToOpen": true
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "dataSourceKey": "main",
+                "collectionName": "users",
+                "associationName": "nb_dx_requisition.operator",
+                "filterByTk": "{{ctx.view.inputArgs.filterByTk}}"
+              }
+            }
+          },
+          "popup": {
+            "template": {
+              "uid": "ulylwtjffit",
+              "mode": "reference"
+            }
+          }
+        },
+        "m514zgahg65": {
+          "uid": "m514zgahg65",
+          "use": "FilterActionModel",
+          "props": {
+            "title": "{{t(\"Filter\")}}",
+            "icon": "FilterOutlined",
+            "defaultFilterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "textbook_name",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "status",
+                  "operator": "$eq"
+                },
+                {
+                  "path": "batch_no",
+                  "operator": "$includes"
+                }
+              ]
+            },
+            "filterValue": {
+              "logic": "$and",
+              "items": [
+                {
+                  "path": "textbook_name",
+                  "operator": "$includes"
+                },
+                {
+                  "path": "status",
+                  "operator": "$eq"
+                },
+                {
+                  "path": "batch_no",
+                  "operator": "$includes"
+                }
+              ]
+            }
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Filter\")}}",
+                "icon": "FilterOutlined"
+              }
+            },
+            "filterSettings": {
+              "defaultFilter": {
+                "defaultFilter": {
+                  "logic": "$and",
+                  "items": [
+                    {
+                      "path": "textbook_name",
+                      "operator": "$includes"
+                    },
+                    {
+                      "path": "status",
+                      "operator": "$eq"
+                    },
+                    {
+                      "path": "batch_no",
+                      "operator": "$includes"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "zpch0lkt8fa": {
+          "uid": "zpch0lkt8fa",
+          "use": "RefreshActionModel",
+          "props": {
+            "title": "{{t(\"Refresh\")}}",
+            "icon": "ReloadOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Refresh\")}}",
+                "icon": "ReloadOutlined"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "r6nbi2n20zs": {
+          "uid": "r6nbi2n20zs",
+          "use": "BulkDeleteActionModel",
+          "props": {
+            "title": "",
+            "tooltip": "{{t(\"Delete\")}}",
+            "icon": "DeleteOutlined",
+            "iconOnly": true,
+            "position": "right"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "",
+                "tooltip": "{{t(\"Delete\")}}",
+                "icon": "DeleteOutlined",
+                "iconOnly": true
+              }
+            },
+            "deleteSettings": {
+              "confirm": {
+                "enable": true,
+                "title": "{{t(\"Delete record\")}}",
+                "content": "{{t(\"Are you sure you want to delete it?\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "mode": "local"
+          }
+        },
+        "llicyarvl47": {
+          "uid": "llicyarvl47",
+          "use": "AddNewActionModel",
+          "props": {
+            "type": "primary",
+            "title": "{{t(\"Add new\")}}",
+            "icon": "PlusOutlined"
+          },
+          "decoratorProps": {},
+          "stepParams": {
+            "buttonSettings": {
+              "general": {
+                "title": "{{t(\"Add new\")}}",
+                "icon": "PlusOutlined",
+                "type": "primary"
+              }
+            },
+            "popupSettings": {
+              "openView": {
+                "mode": "drawer",
+                "size": "medium",
+                "pageModelClass": "ChildPageModel",
+                "dataSourceKey": "main",
+                "collectionName": "nb_dx_requisition",
+                "title": "{{t(\"Add new\")}}"
+              }
+            }
+          },
+          "flowRegistry": {},
+          "popup": {
+            "template": {
+              "uid": "s43g6aa9kr9",
+              "mode": "reference"
+            }
+          }
+        }
+      },
+      "pageRoute": {
+        "createdAt": "2026-11-10T03:45:56.440Z",
+        "updatedAt": "2026-11-10T03:45:56.440Z",
+        "id": 396903540916224,
+        "parentId": 396714401660928,
+        "title": "领用报表",
+        "tooltip": null,
+        "icon": "BarChartOutlined",
+        "schemaUid": "3hfh2zfihov",
+        "menuSchemaUid": "oey51ijpf45",
+        "tabSchemaName": null,
+        "type": "flowPage",
+        "options": {
+          "flowSurfaceMenuBindable": true
+        },
+        "sort": 1794282356439737,
+        "hideInMenu": false,
+        "enableTabs": false,
+        "enableHeader": null,
+        "displayTitle": true,
+        "hidden": null,
+        "createdById": null,
+        "updatedById": null,
+        "children": [
+          {
+            "createdAt": "2026-11-10T03:45:56.470Z",
+            "updatedAt": "2026-11-10T03:45:56.515Z",
+            "id": 396903540916225,
+            "parentId": 396903540916224,
+            "title": "领用报表",
+            "tooltip": null,
+            "icon": null,
+            "schemaUid": "qfly6gv1x1r",
+            "menuSchemaUid": null,
+            "tabSchemaName": "7iak05mewer",
+            "type": "tabs",
+            "options": {
+              "flowRegistry": {}
+            },
+            "sort": 1794282356439231,
+            "hideInMenu": null,
+            "enableTabs": null,
+            "enableHeader": null,
+            "displayTitle": null,
+            "hidden": true,
+            "createdById": null,
+            "updatedById": null
+          }
+        ]
+      }
+    }
+  }
+}

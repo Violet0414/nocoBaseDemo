@@ -6887,7 +6887,6 @@ COPY public."flowModelTemplateUsages" ("createdAt", "updatedAt", uid, "templateU
 2026-11-09 04:56:12.38+00	2026-11-09 04:56:12.38+00	17aqrsa1dq2	uxw2cjyq0mm	rslj9k4jj1i
 2026-11-09 04:56:14.863+00	2026-11-09 04:56:14.863+00	qf8i3qg05mz	pkyeefyo9eb	nsaxdqbpzj8
 2026-11-09 04:56:14.967+00	2026-11-09 04:56:14.967+00	w1wchij9ej2	lvtujevijpf	7qh454yay9r
-2026-11-09 04:56:16.723+00	2026-11-09 04:56:16.723+00	gyzdxs8l11a	tfqylic8j8y	nmuvy18rm2o
 2026-11-09 04:56:23.767+00	2026-11-09 04:56:23.767+00	5uwtcwq57pg	5mmfwnwswmd	ct2zbpssvfa
 2026-11-09 04:56:29.899+00	2026-11-09 04:56:29.899+00	4yxh3cdg7pp	7c7vp77gn3d	64mgr9g06ma
 2026-11-09 04:56:33.321+00	2026-11-09 04:56:33.321+00	42vkbux7fpo	lvtujevijpf	8kcin2vmj8r
@@ -6942,12 +6941,10 @@ COPY public."flowModelTemplateUsages" ("createdAt", "updatedAt", uid, "templateU
 2026-11-09 06:04:37.855+00	2026-11-09 06:04:37.855+00	9r3wi5cl59t	lvtujevijpf	4ydhzeyzcbo
 2026-11-09 06:04:37.987+00	2026-11-09 06:04:37.987+00	f91u737sgt5	o55io4a5pu2	ccewxuhburz
 2026-11-09 06:04:38.12+00	2026-11-09 06:04:38.12+00	dbr1d8gyhxb	uwgsa8i8dr5	ot7b1yojefd
-2026-11-09 06:04:38.556+00	2026-11-09 06:04:38.556+00	bq7e56rqh54	tfqylic8j8y	ylqoul0tokr
 2026-11-09 06:04:38.792+00	2026-11-09 06:04:38.792+00	2kjzjddfhk4	dp9jkd15h08	1hyipxnluyy
 2026-11-09 06:04:39.046+00	2026-11-09 06:04:39.046+00	rqji1nqw6nj	pdgsxi4swh4	1n5scprgidh
 2026-11-09 06:04:41.207+00	2026-11-09 06:04:41.207+00	hyb19vx36bc	uxw2cjyq0mm	xb59upnytso
 2026-11-09 06:04:41.343+00	2026-11-09 06:04:41.343+00	7ob55dmjv3o	lvtujevijpf	8qu51qqz9eh
-2026-11-09 06:04:41.78+00	2026-11-09 06:04:41.78+00	ule7sp8zr6w	tfqylic8j8y	7a1nncqaw94
 2026-11-09 06:04:42.01+00	2026-11-09 06:04:42.01+00	u8cume3uuhn	dp9jkd15h08	tltjvqpi6n0
 2026-11-09 06:04:42.265+00	2026-11-09 06:04:42.265+00	bv1kquicnb7	pdgsxi4swh4	pgx01bu5113
 2026-11-09 06:04:44.345+00	2026-11-09 06:04:44.345+00	w1zin310v17	uxw2cjyq0mm	76p87ryjx98
@@ -32344,6 +32341,372 @@ nfindfgnrex	nfindfgnrex	0	f	grid	\N
 7woqmfjdem9	72hgyrjlwza	2	\N	\N	\N
 72hgyrjlwza	72hgyrjlwza	0	f	items	\N
 nfindfgnrex	72hgyrjlwza	1	\N	\N	1
+sb2ygwyh4fh	sb2ygwyh4fh	0	f	\N	\N
+nufeep9hrgq	nufeep9hrgq	0	f	page	\N
+sb2ygwyh4fh	nufeep9hrgq	1	\N	\N	1
+sb2ygwyh4fh	0tw17ogjjxh	2	\N	\N	\N
+0tw17ogjjxh	0tw17ogjjxh	0	f	tabs	\N
+nufeep9hrgq	0tw17ogjjxh	1	\N	\N	1
+sb2ygwyh4fh	tqfcb7ct8e3	3	\N	\N	\N
+nufeep9hrgq	tqfcb7ct8e3	2	\N	\N	\N
+tqfcb7ct8e3	tqfcb7ct8e3	0	f	grid	\N
+0tw17ogjjxh	tqfcb7ct8e3	1	\N	\N	1
+sb2ygwyh4fh	wg6hnccgxj7	4	\N	\N	\N
+nufeep9hrgq	wg6hnccgxj7	3	\N	\N	\N
+0tw17ogjjxh	wg6hnccgxj7	2	\N	\N	\N
+wg6hnccgxj7	wg6hnccgxj7	0	f	items	\N
+tqfcb7ct8e3	wg6hnccgxj7	1	\N	\N	1
+sb2ygwyh4fh	jpqx4cr62qu	5	\N	\N	\N
+nufeep9hrgq	jpqx4cr62qu	4	\N	\N	\N
+0tw17ogjjxh	jpqx4cr62qu	3	\N	\N	\N
+tqfcb7ct8e3	jpqx4cr62qu	2	\N	\N	\N
+jpqx4cr62qu	jpqx4cr62qu	0	f	grid	\N
+wg6hnccgxj7	jpqx4cr62qu	1	\N	\N	1
+sb2ygwyh4fh	8h0ew70dgym	6	\N	\N	\N
+nufeep9hrgq	8h0ew70dgym	5	\N	\N	\N
+0tw17ogjjxh	8h0ew70dgym	4	\N	\N	\N
+tqfcb7ct8e3	8h0ew70dgym	3	\N	\N	\N
+wg6hnccgxj7	8h0ew70dgym	2	\N	\N	\N
+8h0ew70dgym	8h0ew70dgym	0	f	items	\N
+jpqx4cr62qu	8h0ew70dgym	1	\N	\N	1
+sb2ygwyh4fh	wh0uup754vs	7	\N	\N	\N
+nufeep9hrgq	wh0uup754vs	6	\N	\N	\N
+0tw17ogjjxh	wh0uup754vs	5	\N	\N	\N
+tqfcb7ct8e3	wh0uup754vs	4	\N	\N	\N
+wg6hnccgxj7	wh0uup754vs	3	\N	\N	\N
+jpqx4cr62qu	wh0uup754vs	2	\N	\N	\N
+wh0uup754vs	wh0uup754vs	0	f	field	\N
+8h0ew70dgym	wh0uup754vs	1	\N	\N	1
+sb2ygwyh4fh	m23n7cr7p08	6	\N	\N	\N
+nufeep9hrgq	m23n7cr7p08	5	\N	\N	\N
+0tw17ogjjxh	m23n7cr7p08	4	\N	\N	\N
+tqfcb7ct8e3	m23n7cr7p08	3	\N	\N	\N
+wg6hnccgxj7	m23n7cr7p08	2	\N	\N	\N
+m23n7cr7p08	m23n7cr7p08	0	f	items	\N
+jpqx4cr62qu	m23n7cr7p08	1	\N	\N	2
+sb2ygwyh4fh	hsxuz5jor4j	7	\N	\N	\N
+nufeep9hrgq	hsxuz5jor4j	6	\N	\N	\N
+0tw17ogjjxh	hsxuz5jor4j	5	\N	\N	\N
+tqfcb7ct8e3	hsxuz5jor4j	4	\N	\N	\N
+wg6hnccgxj7	hsxuz5jor4j	3	\N	\N	\N
+jpqx4cr62qu	hsxuz5jor4j	2	\N	\N	\N
+hsxuz5jor4j	hsxuz5jor4j	0	f	field	\N
+m23n7cr7p08	hsxuz5jor4j	1	\N	\N	1
+sb2ygwyh4fh	bcmbz922jtf	6	\N	\N	\N
+nufeep9hrgq	bcmbz922jtf	5	\N	\N	\N
+0tw17ogjjxh	bcmbz922jtf	4	\N	\N	\N
+tqfcb7ct8e3	bcmbz922jtf	3	\N	\N	\N
+wg6hnccgxj7	bcmbz922jtf	2	\N	\N	\N
+bcmbz922jtf	bcmbz922jtf	0	f	items	\N
+jpqx4cr62qu	bcmbz922jtf	1	\N	\N	3
+sb2ygwyh4fh	35kdnhh90ur	7	\N	\N	\N
+nufeep9hrgq	35kdnhh90ur	6	\N	\N	\N
+0tw17ogjjxh	35kdnhh90ur	5	\N	\N	\N
+tqfcb7ct8e3	35kdnhh90ur	4	\N	\N	\N
+wg6hnccgxj7	35kdnhh90ur	3	\N	\N	\N
+jpqx4cr62qu	35kdnhh90ur	2	\N	\N	\N
+35kdnhh90ur	35kdnhh90ur	0	f	field	\N
+bcmbz922jtf	35kdnhh90ur	1	\N	\N	1
+sb2ygwyh4fh	4lpug1rswcc	6	\N	\N	\N
+nufeep9hrgq	4lpug1rswcc	5	\N	\N	\N
+0tw17ogjjxh	4lpug1rswcc	4	\N	\N	\N
+tqfcb7ct8e3	4lpug1rswcc	3	\N	\N	\N
+wg6hnccgxj7	4lpug1rswcc	2	\N	\N	\N
+4lpug1rswcc	4lpug1rswcc	0	f	items	\N
+jpqx4cr62qu	4lpug1rswcc	1	\N	\N	4
+sb2ygwyh4fh	yeqjyr47pou	7	\N	\N	\N
+nufeep9hrgq	yeqjyr47pou	6	\N	\N	\N
+0tw17ogjjxh	yeqjyr47pou	5	\N	\N	\N
+tqfcb7ct8e3	yeqjyr47pou	4	\N	\N	\N
+wg6hnccgxj7	yeqjyr47pou	3	\N	\N	\N
+jpqx4cr62qu	yeqjyr47pou	2	\N	\N	\N
+yeqjyr47pou	yeqjyr47pou	0	f	field	\N
+4lpug1rswcc	yeqjyr47pou	1	\N	\N	1
+sb2ygwyh4fh	cugs4m3a6bx	6	\N	\N	\N
+nufeep9hrgq	cugs4m3a6bx	5	\N	\N	\N
+0tw17ogjjxh	cugs4m3a6bx	4	\N	\N	\N
+tqfcb7ct8e3	cugs4m3a6bx	3	\N	\N	\N
+wg6hnccgxj7	cugs4m3a6bx	2	\N	\N	\N
+cugs4m3a6bx	cugs4m3a6bx	0	f	items	\N
+jpqx4cr62qu	cugs4m3a6bx	1	\N	\N	5
+sb2ygwyh4fh	8ydcb1zlo9b	7	\N	\N	\N
+nufeep9hrgq	8ydcb1zlo9b	6	\N	\N	\N
+0tw17ogjjxh	8ydcb1zlo9b	5	\N	\N	\N
+tqfcb7ct8e3	8ydcb1zlo9b	4	\N	\N	\N
+wg6hnccgxj7	8ydcb1zlo9b	3	\N	\N	\N
+jpqx4cr62qu	8ydcb1zlo9b	2	\N	\N	\N
+8ydcb1zlo9b	8ydcb1zlo9b	0	f	field	\N
+cugs4m3a6bx	8ydcb1zlo9b	1	\N	\N	1
+sb2ygwyh4fh	j8l3r1a8ts2	6	\N	\N	\N
+nufeep9hrgq	j8l3r1a8ts2	5	\N	\N	\N
+0tw17ogjjxh	j8l3r1a8ts2	4	\N	\N	\N
+tqfcb7ct8e3	j8l3r1a8ts2	3	\N	\N	\N
+wg6hnccgxj7	j8l3r1a8ts2	2	\N	\N	\N
+j8l3r1a8ts2	j8l3r1a8ts2	0	f	items	\N
+jpqx4cr62qu	j8l3r1a8ts2	1	\N	\N	6
+sb2ygwyh4fh	b1ilqms7osh	7	\N	\N	\N
+nufeep9hrgq	b1ilqms7osh	6	\N	\N	\N
+0tw17ogjjxh	b1ilqms7osh	5	\N	\N	\N
+tqfcb7ct8e3	b1ilqms7osh	4	\N	\N	\N
+wg6hnccgxj7	b1ilqms7osh	3	\N	\N	\N
+jpqx4cr62qu	b1ilqms7osh	2	\N	\N	\N
+b1ilqms7osh	b1ilqms7osh	0	f	field	\N
+j8l3r1a8ts2	b1ilqms7osh	1	\N	\N	1
+sb2ygwyh4fh	jsl89gu7p2j	6	\N	\N	\N
+nufeep9hrgq	jsl89gu7p2j	5	\N	\N	\N
+0tw17ogjjxh	jsl89gu7p2j	4	\N	\N	\N
+tqfcb7ct8e3	jsl89gu7p2j	3	\N	\N	\N
+wg6hnccgxj7	jsl89gu7p2j	2	\N	\N	\N
+jsl89gu7p2j	jsl89gu7p2j	0	f	items	\N
+jpqx4cr62qu	jsl89gu7p2j	1	\N	\N	7
+sb2ygwyh4fh	q25oj2pd6k6	7	\N	\N	\N
+nufeep9hrgq	q25oj2pd6k6	6	\N	\N	\N
+0tw17ogjjxh	q25oj2pd6k6	5	\N	\N	\N
+tqfcb7ct8e3	q25oj2pd6k6	4	\N	\N	\N
+wg6hnccgxj7	q25oj2pd6k6	3	\N	\N	\N
+jpqx4cr62qu	q25oj2pd6k6	2	\N	\N	\N
+q25oj2pd6k6	q25oj2pd6k6	0	f	field	\N
+jsl89gu7p2j	q25oj2pd6k6	1	\N	\N	1
+sb2ygwyh4fh	tfsldrwm5ix	6	\N	\N	\N
+nufeep9hrgq	tfsldrwm5ix	5	\N	\N	\N
+0tw17ogjjxh	tfsldrwm5ix	4	\N	\N	\N
+tqfcb7ct8e3	tfsldrwm5ix	3	\N	\N	\N
+wg6hnccgxj7	tfsldrwm5ix	2	\N	\N	\N
+tfsldrwm5ix	tfsldrwm5ix	0	f	items	\N
+jpqx4cr62qu	tfsldrwm5ix	1	\N	\N	8
+sb2ygwyh4fh	8wv3zkk4kwu	7	\N	\N	\N
+nufeep9hrgq	8wv3zkk4kwu	6	\N	\N	\N
+0tw17ogjjxh	8wv3zkk4kwu	5	\N	\N	\N
+tqfcb7ct8e3	8wv3zkk4kwu	4	\N	\N	\N
+wg6hnccgxj7	8wv3zkk4kwu	3	\N	\N	\N
+jpqx4cr62qu	8wv3zkk4kwu	2	\N	\N	\N
+8wv3zkk4kwu	8wv3zkk4kwu	0	f	field	\N
+tfsldrwm5ix	8wv3zkk4kwu	1	\N	\N	1
+sb2ygwyh4fh	e30atrazzy8	6	\N	\N	\N
+nufeep9hrgq	e30atrazzy8	5	\N	\N	\N
+0tw17ogjjxh	e30atrazzy8	4	\N	\N	\N
+tqfcb7ct8e3	e30atrazzy8	3	\N	\N	\N
+wg6hnccgxj7	e30atrazzy8	2	\N	\N	\N
+e30atrazzy8	e30atrazzy8	0	f	items	\N
+jpqx4cr62qu	e30atrazzy8	1	\N	\N	9
+sb2ygwyh4fh	ioxkjc5jpo7	7	\N	\N	\N
+nufeep9hrgq	ioxkjc5jpo7	6	\N	\N	\N
+0tw17ogjjxh	ioxkjc5jpo7	5	\N	\N	\N
+tqfcb7ct8e3	ioxkjc5jpo7	4	\N	\N	\N
+wg6hnccgxj7	ioxkjc5jpo7	3	\N	\N	\N
+jpqx4cr62qu	ioxkjc5jpo7	2	\N	\N	\N
+ioxkjc5jpo7	ioxkjc5jpo7	0	f	field	\N
+e30atrazzy8	ioxkjc5jpo7	1	\N	\N	1
+sb2ygwyh4fh	im0uy8xifrz	5	\N	\N	\N
+nufeep9hrgq	im0uy8xifrz	4	\N	\N	\N
+0tw17ogjjxh	im0uy8xifrz	3	\N	\N	\N
+tqfcb7ct8e3	im0uy8xifrz	2	\N	\N	\N
+im0uy8xifrz	im0uy8xifrz	0	f	actions	\N
+wg6hnccgxj7	im0uy8xifrz	1	\N	\N	1
+iq01y38zu9h	iq01y38zu9h	0	f	\N	\N
+448tu7gtewb	448tu7gtewb	0	f	page	\N
+iq01y38zu9h	448tu7gtewb	1	\N	\N	1
+iq01y38zu9h	sr7ikmexyql	2	\N	\N	\N
+sr7ikmexyql	sr7ikmexyql	0	f	tabs	\N
+448tu7gtewb	sr7ikmexyql	1	\N	\N	1
+iq01y38zu9h	xi8ks8s1o3f	3	\N	\N	\N
+448tu7gtewb	xi8ks8s1o3f	2	\N	\N	\N
+xi8ks8s1o3f	xi8ks8s1o3f	0	f	grid	\N
+sr7ikmexyql	xi8ks8s1o3f	1	\N	\N	1
+iq01y38zu9h	9wmvtp7rwcj	4	\N	\N	\N
+448tu7gtewb	9wmvtp7rwcj	3	\N	\N	\N
+sr7ikmexyql	9wmvtp7rwcj	2	\N	\N	\N
+9wmvtp7rwcj	9wmvtp7rwcj	0	f	items	\N
+xi8ks8s1o3f	9wmvtp7rwcj	1	\N	\N	1
+iq01y38zu9h	iwgr9bsjhz6	5	\N	\N	\N
+448tu7gtewb	iwgr9bsjhz6	4	\N	\N	\N
+sr7ikmexyql	iwgr9bsjhz6	3	\N	\N	\N
+xi8ks8s1o3f	iwgr9bsjhz6	2	\N	\N	\N
+iwgr9bsjhz6	iwgr9bsjhz6	0	f	grid	\N
+9wmvtp7rwcj	iwgr9bsjhz6	1	\N	\N	1
+iq01y38zu9h	6az8ry23dt9	6	\N	\N	\N
+448tu7gtewb	6az8ry23dt9	5	\N	\N	\N
+sr7ikmexyql	6az8ry23dt9	4	\N	\N	\N
+xi8ks8s1o3f	6az8ry23dt9	3	\N	\N	\N
+9wmvtp7rwcj	6az8ry23dt9	2	\N	\N	\N
+6az8ry23dt9	6az8ry23dt9	0	f	items	\N
+iwgr9bsjhz6	6az8ry23dt9	1	\N	\N	1
+iq01y38zu9h	051clw2ibtd	7	\N	\N	\N
+448tu7gtewb	051clw2ibtd	6	\N	\N	\N
+sr7ikmexyql	051clw2ibtd	5	\N	\N	\N
+xi8ks8s1o3f	051clw2ibtd	4	\N	\N	\N
+9wmvtp7rwcj	051clw2ibtd	3	\N	\N	\N
+iwgr9bsjhz6	051clw2ibtd	2	\N	\N	\N
+051clw2ibtd	051clw2ibtd	0	f	field	\N
+6az8ry23dt9	051clw2ibtd	1	\N	\N	1
+iq01y38zu9h	u6cum16oidl	6	\N	\N	\N
+448tu7gtewb	u6cum16oidl	5	\N	\N	\N
+sr7ikmexyql	u6cum16oidl	4	\N	\N	\N
+xi8ks8s1o3f	u6cum16oidl	3	\N	\N	\N
+9wmvtp7rwcj	u6cum16oidl	2	\N	\N	\N
+u6cum16oidl	u6cum16oidl	0	f	items	\N
+iwgr9bsjhz6	u6cum16oidl	1	\N	\N	2
+iq01y38zu9h	ripevkkxr4p	7	\N	\N	\N
+448tu7gtewb	ripevkkxr4p	6	\N	\N	\N
+sr7ikmexyql	ripevkkxr4p	5	\N	\N	\N
+xi8ks8s1o3f	ripevkkxr4p	4	\N	\N	\N
+9wmvtp7rwcj	ripevkkxr4p	3	\N	\N	\N
+iwgr9bsjhz6	ripevkkxr4p	2	\N	\N	\N
+ripevkkxr4p	ripevkkxr4p	0	f	field	\N
+u6cum16oidl	ripevkkxr4p	1	\N	\N	1
+iq01y38zu9h	10qapwtmqtc	6	\N	\N	\N
+448tu7gtewb	10qapwtmqtc	5	\N	\N	\N
+sr7ikmexyql	10qapwtmqtc	4	\N	\N	\N
+xi8ks8s1o3f	10qapwtmqtc	3	\N	\N	\N
+9wmvtp7rwcj	10qapwtmqtc	2	\N	\N	\N
+10qapwtmqtc	10qapwtmqtc	0	f	items	\N
+iwgr9bsjhz6	10qapwtmqtc	1	\N	\N	3
+iq01y38zu9h	trqyh972oyk	7	\N	\N	\N
+448tu7gtewb	trqyh972oyk	6	\N	\N	\N
+sr7ikmexyql	trqyh972oyk	5	\N	\N	\N
+xi8ks8s1o3f	trqyh972oyk	4	\N	\N	\N
+9wmvtp7rwcj	trqyh972oyk	3	\N	\N	\N
+iwgr9bsjhz6	trqyh972oyk	2	\N	\N	\N
+trqyh972oyk	trqyh972oyk	0	f	field	\N
+10qapwtmqtc	trqyh972oyk	1	\N	\N	1
+iq01y38zu9h	joxdr5vvs9c	6	\N	\N	\N
+448tu7gtewb	joxdr5vvs9c	5	\N	\N	\N
+sr7ikmexyql	joxdr5vvs9c	4	\N	\N	\N
+xi8ks8s1o3f	joxdr5vvs9c	3	\N	\N	\N
+9wmvtp7rwcj	joxdr5vvs9c	2	\N	\N	\N
+joxdr5vvs9c	joxdr5vvs9c	0	f	items	\N
+iwgr9bsjhz6	joxdr5vvs9c	1	\N	\N	4
+iq01y38zu9h	879azadt309	7	\N	\N	\N
+448tu7gtewb	879azadt309	6	\N	\N	\N
+sr7ikmexyql	879azadt309	5	\N	\N	\N
+xi8ks8s1o3f	879azadt309	4	\N	\N	\N
+9wmvtp7rwcj	879azadt309	3	\N	\N	\N
+iwgr9bsjhz6	879azadt309	2	\N	\N	\N
+879azadt309	879azadt309	0	f	field	\N
+joxdr5vvs9c	879azadt309	1	\N	\N	1
+iq01y38zu9h	4u9z0sefv0t	6	\N	\N	\N
+448tu7gtewb	4u9z0sefv0t	5	\N	\N	\N
+sr7ikmexyql	4u9z0sefv0t	4	\N	\N	\N
+xi8ks8s1o3f	4u9z0sefv0t	3	\N	\N	\N
+9wmvtp7rwcj	4u9z0sefv0t	2	\N	\N	\N
+4u9z0sefv0t	4u9z0sefv0t	0	f	items	\N
+iwgr9bsjhz6	4u9z0sefv0t	1	\N	\N	5
+iq01y38zu9h	texcust80sh	7	\N	\N	\N
+448tu7gtewb	texcust80sh	6	\N	\N	\N
+sr7ikmexyql	texcust80sh	5	\N	\N	\N
+xi8ks8s1o3f	texcust80sh	4	\N	\N	\N
+9wmvtp7rwcj	texcust80sh	3	\N	\N	\N
+iwgr9bsjhz6	texcust80sh	2	\N	\N	\N
+texcust80sh	texcust80sh	0	f	field	\N
+4u9z0sefv0t	texcust80sh	1	\N	\N	1
+iq01y38zu9h	ct7szluz86g	6	\N	\N	\N
+448tu7gtewb	ct7szluz86g	5	\N	\N	\N
+sr7ikmexyql	ct7szluz86g	4	\N	\N	\N
+xi8ks8s1o3f	ct7szluz86g	3	\N	\N	\N
+9wmvtp7rwcj	ct7szluz86g	2	\N	\N	\N
+ct7szluz86g	ct7szluz86g	0	f	items	\N
+iwgr9bsjhz6	ct7szluz86g	1	\N	\N	6
+iq01y38zu9h	t4crmr8dipe	7	\N	\N	\N
+448tu7gtewb	t4crmr8dipe	6	\N	\N	\N
+sr7ikmexyql	t4crmr8dipe	5	\N	\N	\N
+xi8ks8s1o3f	t4crmr8dipe	4	\N	\N	\N
+9wmvtp7rwcj	t4crmr8dipe	3	\N	\N	\N
+iwgr9bsjhz6	t4crmr8dipe	2	\N	\N	\N
+t4crmr8dipe	t4crmr8dipe	0	f	field	\N
+ct7szluz86g	t4crmr8dipe	1	\N	\N	1
+iq01y38zu9h	i5qo9tkmh11	6	\N	\N	\N
+448tu7gtewb	i5qo9tkmh11	5	\N	\N	\N
+sr7ikmexyql	i5qo9tkmh11	4	\N	\N	\N
+xi8ks8s1o3f	i5qo9tkmh11	3	\N	\N	\N
+9wmvtp7rwcj	i5qo9tkmh11	2	\N	\N	\N
+i5qo9tkmh11	i5qo9tkmh11	0	f	items	\N
+iwgr9bsjhz6	i5qo9tkmh11	1	\N	\N	7
+iq01y38zu9h	pbppptdtxiw	7	\N	\N	\N
+448tu7gtewb	pbppptdtxiw	6	\N	\N	\N
+sr7ikmexyql	pbppptdtxiw	5	\N	\N	\N
+xi8ks8s1o3f	pbppptdtxiw	4	\N	\N	\N
+9wmvtp7rwcj	pbppptdtxiw	3	\N	\N	\N
+iwgr9bsjhz6	pbppptdtxiw	2	\N	\N	\N
+pbppptdtxiw	pbppptdtxiw	0	f	field	\N
+i5qo9tkmh11	pbppptdtxiw	1	\N	\N	1
+iq01y38zu9h	8ei4cil1q2z	6	\N	\N	\N
+448tu7gtewb	8ei4cil1q2z	5	\N	\N	\N
+sr7ikmexyql	8ei4cil1q2z	4	\N	\N	\N
+xi8ks8s1o3f	8ei4cil1q2z	3	\N	\N	\N
+9wmvtp7rwcj	8ei4cil1q2z	2	\N	\N	\N
+8ei4cil1q2z	8ei4cil1q2z	0	f	items	\N
+iwgr9bsjhz6	8ei4cil1q2z	1	\N	\N	8
+iq01y38zu9h	es6pn09s1lb	7	\N	\N	\N
+448tu7gtewb	es6pn09s1lb	6	\N	\N	\N
+sr7ikmexyql	es6pn09s1lb	5	\N	\N	\N
+xi8ks8s1o3f	es6pn09s1lb	4	\N	\N	\N
+9wmvtp7rwcj	es6pn09s1lb	3	\N	\N	\N
+iwgr9bsjhz6	es6pn09s1lb	2	\N	\N	\N
+es6pn09s1lb	es6pn09s1lb	0	f	field	\N
+8ei4cil1q2z	es6pn09s1lb	1	\N	\N	1
+iq01y38zu9h	duxb4fyta3b	6	\N	\N	\N
+448tu7gtewb	duxb4fyta3b	5	\N	\N	\N
+sr7ikmexyql	duxb4fyta3b	4	\N	\N	\N
+xi8ks8s1o3f	duxb4fyta3b	3	\N	\N	\N
+9wmvtp7rwcj	duxb4fyta3b	2	\N	\N	\N
+duxb4fyta3b	duxb4fyta3b	0	f	items	\N
+iwgr9bsjhz6	duxb4fyta3b	1	\N	\N	9
+iq01y38zu9h	ughasacqada	7	\N	\N	\N
+448tu7gtewb	ughasacqada	6	\N	\N	\N
+sr7ikmexyql	ughasacqada	5	\N	\N	\N
+xi8ks8s1o3f	ughasacqada	4	\N	\N	\N
+9wmvtp7rwcj	ughasacqada	3	\N	\N	\N
+iwgr9bsjhz6	ughasacqada	2	\N	\N	\N
+ughasacqada	ughasacqada	0	f	field	\N
+duxb4fyta3b	ughasacqada	1	\N	\N	1
+iq01y38zu9h	8zmm58v9pzi	5	\N	\N	\N
+448tu7gtewb	8zmm58v9pzi	4	\N	\N	\N
+sr7ikmexyql	8zmm58v9pzi	3	\N	\N	\N
+xi8ks8s1o3f	8zmm58v9pzi	2	\N	\N	\N
+8zmm58v9pzi	8zmm58v9pzi	0	f	actions	\N
+9wmvtp7rwcj	8zmm58v9pzi	1	\N	\N	1
+w9zp48k1cti	w9zp48k1cti	0	f	\N	\N
+qdg7q0w9lg2	qdg7q0w9lg2	0	f	page	\N
+w9zp48k1cti	qdg7q0w9lg2	1	\N	\N	1
+w9zp48k1cti	tivpag8cevk	2	\N	\N	\N
+tivpag8cevk	tivpag8cevk	0	f	tabs	\N
+qdg7q0w9lg2	tivpag8cevk	1	\N	\N	1
+w9zp48k1cti	8xw8zore5fp	3	\N	\N	\N
+qdg7q0w9lg2	8xw8zore5fp	2	\N	\N	\N
+8xw8zore5fp	8xw8zore5fp	0	f	grid	\N
+tivpag8cevk	8xw8zore5fp	1	\N	\N	1
+w9zp48k1cti	k70l41sxnxd	4	\N	\N	\N
+qdg7q0w9lg2	k70l41sxnxd	3	\N	\N	\N
+tivpag8cevk	k70l41sxnxd	2	\N	\N	\N
+k70l41sxnxd	k70l41sxnxd	0	f	items	\N
+8xw8zore5fp	k70l41sxnxd	1	\N	\N	1
+w9zp48k1cti	bdn57zbgwbg	5	\N	\N	\N
+qdg7q0w9lg2	bdn57zbgwbg	4	\N	\N	\N
+tivpag8cevk	bdn57zbgwbg	3	\N	\N	\N
+8xw8zore5fp	bdn57zbgwbg	2	\N	\N	\N
+bdn57zbgwbg	bdn57zbgwbg	0	f	grid	\N
+k70l41sxnxd	bdn57zbgwbg	1	\N	\N	1
+w9zp48k1cti	infoo31hlpu	6	\N	\N	\N
+qdg7q0w9lg2	infoo31hlpu	5	\N	\N	\N
+tivpag8cevk	infoo31hlpu	4	\N	\N	\N
+8xw8zore5fp	infoo31hlpu	3	\N	\N	\N
+k70l41sxnxd	infoo31hlpu	2	\N	\N	\N
+infoo31hlpu	infoo31hlpu	0	f	items	\N
+bdn57zbgwbg	infoo31hlpu	1	\N	\N	1
+w9zp48k1cti	cbf7r1ijn6y	7	\N	\N	\N
+qdg7q0w9lg2	cbf7r1ijn6y	6	\N	\N	\N
+tivpag8cevk	cbf7r1ijn6y	5	\N	\N	\N
+8xw8zore5fp	cbf7r1ijn6y	4	\N	\N	\N
+k70l41sxnxd	cbf7r1ijn6y	3	\N	\N	\N
+bdn57zbgwbg	cbf7r1ijn6y	2	\N	\N	\N
+cbf7r1ijn6y	cbf7r1ijn6y	0	f	field	\N
+infoo31hlpu	cbf7r1ijn6y	1	\N	\N	1
+w9zp48k1cti	mssmwgap46c	6	\N	\N	\N
+qdg7q0w9lg2	mssmwgap46c	5	\N	\N	\N
+tivpag8cevk	mssmwgap46c	4	\N	\N	\N
+8xw8zore5fp	mssmwgap46c	3	\N	\N	\N
+k70l41sxnxd	mssmwgap46c	2	\N	\N	\N
+mssmwgap46c	mssmwgap46c	0	f	items	\N
 2evvl0meub2	2evvl0meub2	0	f	\N	\N
 orruc6ym34g	orruc6ym34g	0	f	page	\N
 2evvl0meub2	orruc6ym34g	1	\N	\N	1
@@ -32453,6 +32816,21 @@ pgmbgd8nucq	qfn25eouzyv	5	\N	\N	\N
 qfn25eouzyv	qfn25eouzyv	0	f	grid	\N
 9p6nkwjlq86	qfn25eouzyv	1	\N	\N	1
 pgmbgd8nucq	bf9bweat1qw	6	\N	\N	\N
+bdn57zbgwbg	mssmwgap46c	1	\N	\N	2
+w9zp48k1cti	1ssilvuycz7	7	\N	\N	\N
+qdg7q0w9lg2	1ssilvuycz7	6	\N	\N	\N
+tivpag8cevk	1ssilvuycz7	5	\N	\N	\N
+8xw8zore5fp	1ssilvuycz7	4	\N	\N	\N
+k70l41sxnxd	1ssilvuycz7	3	\N	\N	\N
+bdn57zbgwbg	1ssilvuycz7	2	\N	\N	\N
+1ssilvuycz7	1ssilvuycz7	0	f	field	\N
+mssmwgap46c	1ssilvuycz7	1	\N	\N	1
+w9zp48k1cti	hcvxc9hmhq0	6	\N	\N	\N
+qdg7q0w9lg2	hcvxc9hmhq0	5	\N	\N	\N
+tivpag8cevk	hcvxc9hmhq0	4	\N	\N	\N
+8xw8zore5fp	hcvxc9hmhq0	3	\N	\N	\N
+k70l41sxnxd	hcvxc9hmhq0	2	\N	\N	\N
+hcvxc9hmhq0	hcvxc9hmhq0	0	f	items	\N
 8f8ruifqqv5	bf9bweat1qw	5	\N	\N	\N
 1vyij0ms47l	bf9bweat1qw	4	\N	\N	\N
 0afklb8nny3	bf9bweat1qw	3	\N	\N	\N
@@ -32548,6 +32926,111 @@ pgmbgd8nucq	kto6bphybw8	5	\N	\N	\N
 0afklb8nny3	kto6bphybw8	2	\N	\N	\N
 kto6bphybw8	kto6bphybw8	0	f	actions	\N
 9p6nkwjlq86	kto6bphybw8	1	\N	\N	1
+bdn57zbgwbg	hcvxc9hmhq0	1	\N	\N	3
+w9zp48k1cti	snx5x86kkhz	7	\N	\N	\N
+qdg7q0w9lg2	snx5x86kkhz	6	\N	\N	\N
+tivpag8cevk	snx5x86kkhz	5	\N	\N	\N
+8xw8zore5fp	snx5x86kkhz	4	\N	\N	\N
+k70l41sxnxd	snx5x86kkhz	3	\N	\N	\N
+bdn57zbgwbg	snx5x86kkhz	2	\N	\N	\N
+snx5x86kkhz	snx5x86kkhz	0	f	field	\N
+hcvxc9hmhq0	snx5x86kkhz	1	\N	\N	1
+w9zp48k1cti	0s5ynhl7dxc	6	\N	\N	\N
+qdg7q0w9lg2	0s5ynhl7dxc	5	\N	\N	\N
+tivpag8cevk	0s5ynhl7dxc	4	\N	\N	\N
+8xw8zore5fp	0s5ynhl7dxc	3	\N	\N	\N
+k70l41sxnxd	0s5ynhl7dxc	2	\N	\N	\N
+0s5ynhl7dxc	0s5ynhl7dxc	0	f	items	\N
+bdn57zbgwbg	0s5ynhl7dxc	1	\N	\N	4
+w9zp48k1cti	dcltwec7c6m	7	\N	\N	\N
+qdg7q0w9lg2	dcltwec7c6m	6	\N	\N	\N
+tivpag8cevk	dcltwec7c6m	5	\N	\N	\N
+8xw8zore5fp	dcltwec7c6m	4	\N	\N	\N
+k70l41sxnxd	dcltwec7c6m	3	\N	\N	\N
+bdn57zbgwbg	dcltwec7c6m	2	\N	\N	\N
+dcltwec7c6m	dcltwec7c6m	0	f	field	\N
+0s5ynhl7dxc	dcltwec7c6m	1	\N	\N	1
+w9zp48k1cti	dufrhh3ioqc	6	\N	\N	\N
+qdg7q0w9lg2	dufrhh3ioqc	5	\N	\N	\N
+tivpag8cevk	dufrhh3ioqc	4	\N	\N	\N
+8xw8zore5fp	dufrhh3ioqc	3	\N	\N	\N
+k70l41sxnxd	dufrhh3ioqc	2	\N	\N	\N
+dufrhh3ioqc	dufrhh3ioqc	0	f	items	\N
+bdn57zbgwbg	dufrhh3ioqc	1	\N	\N	5
+w9zp48k1cti	jpr0j4xwxs5	7	\N	\N	\N
+qdg7q0w9lg2	jpr0j4xwxs5	6	\N	\N	\N
+tivpag8cevk	jpr0j4xwxs5	5	\N	\N	\N
+8xw8zore5fp	jpr0j4xwxs5	4	\N	\N	\N
+k70l41sxnxd	jpr0j4xwxs5	3	\N	\N	\N
+bdn57zbgwbg	jpr0j4xwxs5	2	\N	\N	\N
+jpr0j4xwxs5	jpr0j4xwxs5	0	f	field	\N
+dufrhh3ioqc	jpr0j4xwxs5	1	\N	\N	1
+w9zp48k1cti	wp1hxxr6w77	6	\N	\N	\N
+qdg7q0w9lg2	wp1hxxr6w77	5	\N	\N	\N
+tivpag8cevk	wp1hxxr6w77	4	\N	\N	\N
+8xw8zore5fp	wp1hxxr6w77	3	\N	\N	\N
+k70l41sxnxd	wp1hxxr6w77	2	\N	\N	\N
+wp1hxxr6w77	wp1hxxr6w77	0	f	items	\N
+bdn57zbgwbg	wp1hxxr6w77	1	\N	\N	6
+w9zp48k1cti	9do61503xiy	7	\N	\N	\N
+qdg7q0w9lg2	9do61503xiy	6	\N	\N	\N
+tivpag8cevk	9do61503xiy	5	\N	\N	\N
+8xw8zore5fp	9do61503xiy	4	\N	\N	\N
+k70l41sxnxd	9do61503xiy	3	\N	\N	\N
+bdn57zbgwbg	9do61503xiy	2	\N	\N	\N
+9do61503xiy	9do61503xiy	0	f	field	\N
+wp1hxxr6w77	9do61503xiy	1	\N	\N	1
+w9zp48k1cti	sxlukb31drb	6	\N	\N	\N
+qdg7q0w9lg2	sxlukb31drb	5	\N	\N	\N
+tivpag8cevk	sxlukb31drb	4	\N	\N	\N
+8xw8zore5fp	sxlukb31drb	3	\N	\N	\N
+k70l41sxnxd	sxlukb31drb	2	\N	\N	\N
+sxlukb31drb	sxlukb31drb	0	f	items	\N
+bdn57zbgwbg	sxlukb31drb	1	\N	\N	7
+w9zp48k1cti	6paycv7bray	7	\N	\N	\N
+qdg7q0w9lg2	6paycv7bray	6	\N	\N	\N
+tivpag8cevk	6paycv7bray	5	\N	\N	\N
+8xw8zore5fp	6paycv7bray	4	\N	\N	\N
+k70l41sxnxd	6paycv7bray	3	\N	\N	\N
+bdn57zbgwbg	6paycv7bray	2	\N	\N	\N
+6paycv7bray	6paycv7bray	0	f	field	\N
+sxlukb31drb	6paycv7bray	1	\N	\N	1
+w9zp48k1cti	cmmxqx3qtza	6	\N	\N	\N
+qdg7q0w9lg2	cmmxqx3qtza	5	\N	\N	\N
+tivpag8cevk	cmmxqx3qtza	4	\N	\N	\N
+8xw8zore5fp	cmmxqx3qtza	3	\N	\N	\N
+k70l41sxnxd	cmmxqx3qtza	2	\N	\N	\N
+cmmxqx3qtza	cmmxqx3qtza	0	f	items	\N
+bdn57zbgwbg	cmmxqx3qtza	1	\N	\N	8
+w9zp48k1cti	in7jpizz83l	7	\N	\N	\N
+qdg7q0w9lg2	in7jpizz83l	6	\N	\N	\N
+tivpag8cevk	in7jpizz83l	5	\N	\N	\N
+8xw8zore5fp	in7jpizz83l	4	\N	\N	\N
+k70l41sxnxd	in7jpizz83l	3	\N	\N	\N
+bdn57zbgwbg	in7jpizz83l	2	\N	\N	\N
+in7jpizz83l	in7jpizz83l	0	f	field	\N
+cmmxqx3qtza	in7jpizz83l	1	\N	\N	1
+w9zp48k1cti	i2ypwuq8fln	6	\N	\N	\N
+qdg7q0w9lg2	i2ypwuq8fln	5	\N	\N	\N
+tivpag8cevk	i2ypwuq8fln	4	\N	\N	\N
+8xw8zore5fp	i2ypwuq8fln	3	\N	\N	\N
+k70l41sxnxd	i2ypwuq8fln	2	\N	\N	\N
+i2ypwuq8fln	i2ypwuq8fln	0	f	items	\N
+bdn57zbgwbg	i2ypwuq8fln	1	\N	\N	9
+w9zp48k1cti	5l8uaig41dd	7	\N	\N	\N
+qdg7q0w9lg2	5l8uaig41dd	6	\N	\N	\N
+tivpag8cevk	5l8uaig41dd	5	\N	\N	\N
+8xw8zore5fp	5l8uaig41dd	4	\N	\N	\N
+k70l41sxnxd	5l8uaig41dd	3	\N	\N	\N
+bdn57zbgwbg	5l8uaig41dd	2	\N	\N	\N
+5l8uaig41dd	5l8uaig41dd	0	f	field	\N
+i2ypwuq8fln	5l8uaig41dd	1	\N	\N	1
+w9zp48k1cti	pwp3odxzhbx	5	\N	\N	\N
+qdg7q0w9lg2	pwp3odxzhbx	4	\N	\N	\N
+tivpag8cevk	pwp3odxzhbx	3	\N	\N	\N
+8xw8zore5fp	pwp3odxzhbx	2	\N	\N	\N
+pwp3odxzhbx	pwp3odxzhbx	0	f	actions	\N
+k70l41sxnxd	pwp3odxzhbx	1	\N	\N	1
 w7uqvxqmhgz	w7uqvxqmhgz	0	f	\N	\N
 j9fj1wps0xg	j9fj1wps0xg	0	f	page	\N
 w7uqvxqmhgz	j9fj1wps0xg	1	\N	\N	1
@@ -33121,8 +33604,8 @@ nz0oouxz1v5	nz0oouxz1v5	{"parentId":"wmhfairxbtr","subKey":"page","subType":"obj
 xxzg6f58xfr	xxzg6f58xfr	{"parentId":"ykzza8woztw","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_announcement","fieldPath":"klass.name","associationPathName":"klass"}}}}
 gmzz0tsmigv	gmzz0tsmigv	{"use":"DisplayTextFieldModel","props":{"clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_announcement","fieldPath":"klass.name","associationPathName":"klass"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_class","associationName":"nb_dx_announcement.klass","uid":"kksywntsj1w","filterByTk":"{{ctx.record.id}}","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"uxw2cjyq0mm"}},"__flowSurfaceMeta":{"declaredKey":"main.announcementTable.klass.name"}},"subKey":"field","subType":"object"}
 v3kk4af9ul4	v3kk4af9ul4	{"parentId":"e9pe36gfwsn","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_go_out"}},"tableSettings":{"defaultSorting":{"sort":[{"field":"createdAt","direction":"desc"}]}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable"}}}
+uqmw7nyo2u8	uqmw7nyo2u8	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "v3kk4af9ul4", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_go_out", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.gooutTable.student_name"}}}
 rurp5ym176s	rurp5ym176s	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"v3kk4af9ul4","parent":"v3kk4af9ul4"}
-uqmw7nyo2u8	uqmw7nyo2u8	{"parentId":"v3kk4af9ul4","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_go_out","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable.student_name"}}}
 afstwdrol17	afstwdrol17	{"parentId":"5hwnymo1dxd","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student"}},"__flowSurfaceMeta":{"declaredKey":"main.statusTable"}}}
 fv7pikcfaiv	fv7pikcfaiv	{"use":"ChildPageTabModel","props":{"title":"新增教学案例"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增教学案例"}}},"subKey":"tabs","subType":"array","parent":"nz0oouxz1v5","parentId":"nz0oouxz1v5","sortIndex":1}
 2j3iau014pd	2j3iau014pd	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["7iwixk7xszc"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["4hszd0bwyj5"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"fv7pikcfaiv","parentId":"fv7pikcfaiv","sortIndex":1}
@@ -33607,7 +34090,6 @@ eyqbqi73tdd	eyqbqi73tdd	{"parentId":"71pex7mglgk","subKey":"columns","subType":"
 h8pakrafmzr	h8pakrafmzr	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_go_out","fieldPath":"reason_place"}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable.reason_place.field"}},"subKey":"field","subType":"object"}
 d5z9but9c7z	d5z9but9c7z	{"parentId":"v3kk4af9ul4","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_go_out","fieldPath":"start_time"}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable.start_time"}}}
 31lqpdsetlr	31lqpdsetlr	{"use":"DisplayDateTimeFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_go_out","fieldPath":"start_time"}},"__flowSurfaceMeta":{"declaredKey":"main.gooutTable.start_time.field"}},"subKey":"field","subType":"object"}
-2gzr9uo8o2j	2gzr9uo8o2j	{"parentId":"t8e0g8ztvjp","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.student_name"}}}
 wq5ymchh90g	wq5ymchh90g	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.student_name.field"}},"subKey":"field","subType":"object"}
 0xm377k3f9s	0xm377k3f9s	{"parentId":"rem13p7l5h6","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.kind"}}}
 9y8aj14d5mk	9y8aj14d5mk	{"use":"DisplayDateTimeFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_class","fieldPath":"start_date"}},"__flowSurfaceMeta":{"declaredKey":"main.classTable.start_date.field"}},"subKey":"field","subType":"object"}
@@ -35063,7 +35545,6 @@ e1mxfp6w4qr	e1mxfp6w4qr	{"schema":{"use":"RouteModel"}}
 l55f2v550bu	l55f2v550bu	{"schema":{"use":"RouteModel"}}
 2mhfc8lnrwj	2mhfc8lnrwj	{"parentId":"e1mxfp6w4qr","subKey":"page","subType":"object","use":"RootPageModel","props":{"routeId":396730507788288,"title":"退学管理","enableTabs":false,"displayTitle":true},"stepParams":{"pageSettings":{"general":{"title":"退学管理","displayTitle":true,"enableTabs":false}}},"parent":"e1mxfp6w4qr"}
 o7wwgipc00f	o7wwgipc00f	{"use":"DetailsGridModel","subKey":"grid","subType":"object","stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["1i5oss8aopw"],["coy5h72gc5t"]],"row2":[["442h09cdszb"],["axmr8gk07k5"]],"row3":[["09lixdcv88n"],["rherkxxx308"]],"row4":[["8d1a7cmkw1p"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[24]},"rowOrder":["row1","row2","row3","row4"]}}},"props":{"rows":{"row1":[["rq5g7pa1w8m"],["y4gt1gd2fgn"]],"row2":[["29zhrgamfxr"],["ad2o6erj3zy"]],"row3":[["1pia7k83oo7"],["bkzr30s6ez1"]],"row4":[["9ow216wv8an"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[24]},"rowOrder":["row1","row2","row3","row4"]},"parent":"4wpy8at2qk6","parentId":"4wpy8at2qk6","sortIndex":1}
-rxn35e1nv2x	rxn35e1nv2x	{"parentId":"vr49jwdv5a8","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.dropoutTable.student_name"}}}
 uwp7mt5wl7h	uwp7mt5wl7h	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.dropoutTable.student_name.field"}},"subKey":"field","subType":"object"}
 1i5oss8aopw	1i5oss8aopw	{"parentId":"o7wwgipc00f","subKey":"items","subType":"array","use":"DetailsItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","fieldPath":"name"}}},"parent":"o7wwgipc00f","sortIndex":1}
 ja9oyb715gm	ja9oyb715gm	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","fieldPath":"name"}}},"subKey":"field","subType":"object","parent":"1i5oss8aopw","parentId":"1i5oss8aopw","sortIndex":1}
@@ -35435,8 +35916,8 @@ sn99ku1k8dk	sn99ku1k8dk	{"parentId":"r0eeyxi9k9q","subKey":"page","subType":"obj
 254fbmvfd60	254fbmvfd60	{"use":"ChildPageTabModel","props":{"title":"新增党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"7cgndaratj4","parentId":"7cgndaratj4","sortIndex":1}
 36vt6aqy163	36vt6aqy163	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["8y7odtwxuw3"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["3wk66o2koqj"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"254fbmvfd60","parentId":"254fbmvfd60","sortIndex":1}
 q5tsnfw7v2z	q5tsnfw7v2z	{"parentId":"6owze2w8qdk","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance"}},"__flowSurfaceMeta":{"declaredKey":"main.attTable"}}}
+quwrrxkspjc	quwrrxkspjc	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "q5tsnfw7v2z", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_attendance", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.attTable.student_name"}}}
 vqynw5sne5u	vqynw5sne5u	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.attTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"q5tsnfw7v2z","parent":"q5tsnfw7v2z"}
-quwrrxkspjc	quwrrxkspjc	{"parentId":"q5tsnfw7v2z","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.attTable.student_name"}}}
 ktuidhva5cb	ktuidhva5cb	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.attTable.student_name.field"}},"subKey":"field","subType":"object"}
 3wk66o2koqj	3wk66o2koqj	{"parentId":"36vt6aqy163","subKey":"items","subType":"array","use":"CreateFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}}},"parent":"36vt6aqy163","sortIndex":1}
 c2skl1m8bbq	c2skl1m8bbq	{"parentId":"q5tsnfw7v2z","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"klass.name","associationPathName":"klass"}}}}
@@ -35491,7 +35972,6 @@ as8fya4ide4	as8fya4ide4	{"parentId":"rwqka9w5at6","subKey":"actions","subType":"
 qufzslwvhsh	qufzslwvhsh	{"parentId":"8qjr9342140","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"political_status"}}},"parent":"8qjr9342140","sortIndex":6}
 rwqka9w5at6	rwqka9w5at6	{"parentId":"98jx84474z9","subKey":"items","subType":"array","use":"EditFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"users","filterByTk":"{{ctx.view.inputArgs.filterByTk}}","associationName":"nb_dx_teaching_material.uploader","sourceId":"{{ctx.view.inputArgs.sourceId}}"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}},"formSettings":{"dataScope":{"filter":{"logic":"$and","items":[]}}}},"parent":"98jx84474z9","sortIndex":1}
 ef423jsr21s	ef423jsr21s	{"parentId":"q5tsnfw7v2z","subKey":"actions","subType":"array","use":"BulkDeleteActionModel","props":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true,"position":"right"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.attTable.bulkDelete_default_3"}},"flowRegistry":{}}
-nmuvy18rm2o	nmuvy18rm2o	{"parentId":"t8e0g8ztvjp","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"新增党性考核记录","uid":"qry6alw2azg","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"tfqylic8j8y"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.addNew_default_4"}},"flowRegistry":{}}
 ghn3l9x4azt	ghn3l9x4azt	{"use":"DisplayTextFieldModel","props":{"clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"klass.name","associationPathName":"klass"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_class","associationName":"nb_dx_student.klass","uid":"kksywntsj1w","filterByTk":"{{ctx.record.id}}","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"uxw2cjyq0mm"}},"__flowSurfaceMeta":{"declaredKey":"main.trainTable.klass.name"}},"subKey":"field","subType":"object"}
 12hk7wey8a3	12hk7wey8a3	{"parentId":"6syn72iihsf","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"6syn72iihsf","sortIndex":1}
 ee2529iajjc	ee2529iajjc	{"use":"ChildPageTabModel","props":{"title":"{{t(\\"Details\\")}}"},"stepParams":{"pageTabSettings":{"tab":{"title":"{{t(\\"Details\\")}}"}}},"subKey":"tabs","subType":"array","parent":"12hk7wey8a3","parentId":"12hk7wey8a3","sortIndex":1}
@@ -35522,7 +36002,6 @@ k1ed8hb88x7	k1ed8hb88x7	{"parentId":"xzsfusjxj40","subKey":"columns","subType":"
 hzrhhl7spsj	hzrhhl7spsj	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"excellent"}},"__flowSurfaceMeta":{"declaredKey":"main.trainTable.excellent.field"}},"subKey":"field","subType":"object"}
 pukujs1iomt	pukujs1iomt	{"parentId":"rem13p7l5h6","subKey":"actions","subType":"array","use":"BulkDeleteActionModel","props":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true,"position":"right"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.bulkDelete_default_3"}},"flowRegistry":{}}
 s5372ysa2qo	s5372ysa2qo	{"parentId":"d84vmbh85ma","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}}}
-7a1nncqaw94	7a1nncqaw94	{"parentId":"rem13p7l5h6","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"{{t(\\"Add new\\")}}","uid":"qry6alw2azg","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"tfqylic8j8y"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.addNew_default_4"}},"flowRegistry":{}}
 dpyypk6lpla	dpyypk6lpla	{"use":"ChildPageTabModel","props":{"title":"{{t(\\"Details\\")}}"},"stepParams":{"pageTabSettings":{"tab":{"title":"{{t(\\"Details\\")}}"}}},"subKey":"tabs","subType":"array"}
 6cg7wbfap85	6cg7wbfap85	{"parentId":"xzsfusjxj40","subKey":"actions","subType":"array","use":"FilterActionModel","props":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined","defaultFilterValue":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"phone","operator":"$includes"},{"path":"student_no","operator":"$includes"}]},"filterValue":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"phone","operator":"$includes"},{"path":"student_no","operator":"$includes"}]}},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined"}},"filterSettings":{"defaultFilter":{"defaultFilter":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"phone","operator":"$includes"},{"path":"student_no","operator":"$includes"}]}}},"__flowSurfaceMeta":{"declaredKey":"main.trainTable.filter_default_1"}},"flowRegistry":{}}
 yy13nt0oi5u	yy13nt0oi5u	{"parentId":"xzsfusjxj40","subKey":"actions","subType":"array","use":"RefreshActionModel","props":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"}},"__flowSurfaceMeta":{"declaredKey":"main.trainTable.refresh_default_2"}},"flowRegistry":{}}
@@ -35648,7 +36127,6 @@ os85tj0uyg2	os85tj0uyg2	{"use":"TableActionsColumnModel","props":{},"decoratorPr
 n8gics5c9h7	n8gics5c9h7	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.lectureTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"u3ra3vnenk4","parent":"u3ra3vnenk4"}
 sguypy4ffpc	sguypy4ffpc	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.activityTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"uhtvfwtk4dk","parent":"uhtvfwtk4dk"}
 yn8gccyxhlh	yn8gccyxhlh	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.statusTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"afstwdrol17","parent":"afstwdrol17"}
-n67deltao4s	n67deltao4s	{"parentId":"bd4tdvd5dgh","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.student_name"}}}
 pr22rd6g4er	pr22rd6g4er	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.student_name.field"}},"subKey":"field","subType":"object"}
 g7lske4b545	g7lske4b545	{"parentId":"bd4tdvd5dgh","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"klass.name","associationPathName":"klass"}}}}
 czzpoo6kb6s	czzpoo6kb6s	{"use":"DisplayTextFieldModel","props":{"clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"klass.name","associationPathName":"klass"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_class","associationName":"nb_dx_leave.klass","uid":"kksywntsj1w","filterByTk":"{{ctx.record.id}}","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"uxw2cjyq0mm"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.klass.name"}},"subKey":"field","subType":"object"}
@@ -35662,6 +36140,7 @@ ppjst1go89x	ppjst1go89x	{"use":"TableActionsColumnModel","props":{},"decoratorPr
 sa8vu0ee1rq	sa8vu0ee1rq	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"bd4tdvd5dgh","parent":"bd4tdvd5dgh"}
 eaxcsix3v3k	eaxcsix3v3k	{"parentId":"13ilarledck","subKey":"actions","subType":"array","use":"FilterActionModel","props":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined","defaultFilterValue":{"logic":"$and","items":[{"path":"title","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"content","operator":"$includes"}]},"filterValue":{"logic":"$and","items":[{"path":"title","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"content","operator":"$includes"}]}},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined"}},"filterSettings":{"defaultFilter":{"defaultFilter":{"logic":"$and","items":[{"path":"title","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"content","operator":"$includes"}]}}},"__flowSurfaceMeta":{"declaredKey":"main.annTable.filter_default_1"}},"flowRegistry":{}}
 y2oek0xxapo	y2oek0xxapo	{"parentId":"13ilarledck","subKey":"actions","subType":"array","use":"RefreshActionModel","props":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"}},"__flowSurfaceMeta":{"declaredKey":"main.annTable.refresh_default_2"}},"flowRegistry":{}}
+n67deltao4s	n67deltao4s	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "bd4tdvd5dgh", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_leave", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.leaveTable.student_name"}}}
 mjfx96k0lv8	mjfx96k0lv8	{"parentId":"bd4tdvd5dgh","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"duration_days"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.duration_days"}}}
 uiijhs1c1m0	uiijhs1c1m0	{"use":"DisplayNumberFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"duration_days"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.duration_days.field"}},"subKey":"field","subType":"object"}
 g1bn9qbko6u	g1bn9qbko6u	{"parentId":"bd4tdvd5dgh","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_leave","fieldPath":"status"}},"__flowSurfaceMeta":{"declaredKey":"main.leaveTable.status"}}}
@@ -36130,6 +36609,8 @@ n4u2fbiefr8	n4u2fbiefr8	{"parentId":"3gc16ygcsma","subKey":"columns","subType":"
 yu71no9mh4b	yu71no9mh4b	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","fieldPath":"items_text"}},"__flowSurfaceMeta":{"declaredKey":"main.esTable.items_text.field"}},"subKey":"field","subType":"object"}
 45uourdyvrr	45uourdyvrr	{"parentId":"3gc16ygcsma","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","fieldPath":"remark"}},"__flowSurfaceMeta":{"declaredKey":"main.esTable.remark"}}}
 djj6hfzs7k4	djj6hfzs7k4	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","fieldPath":"remark"}},"__flowSurfaceMeta":{"declaredKey":"main.esTable.remark.field"}},"subKey":"field","subType":"object"}
+2gzr9uo8o2j	2gzr9uo8o2j	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "t8e0g8ztvjp", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.partyTable.student_name"}}}
+rxn35e1nv2x	rxn35e1nv2x	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "vr49jwdv5a8", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_dropout", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.dropoutTable.student_name"}}}
 3ykjht5chv7	3ykjht5chv7	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"unit_name"}}},"subKey":"field","subType":"object","parent":"2z0s1w47wuu","parentId":"2z0s1w47wuu","sortIndex":1}
 uzyutqdwf3a	uzyutqdwf3a	{"parentId":"rn4q27uy8re","subKey":"actions","subType":"array","use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_course_schedule","associationName":"nb_dx_attendance.schedule","sourceId":"{{ctx.view.inputArgs.sourceId}}","title":"编辑排课","uid":"gagdyucylvq","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":true,"popupTemplateMode":"reference","popupTemplateUid":"48e9vo5it2b"}}},"flowRegistry":{},"parent":"rn4q27uy8re","sortIndex":1}
 xw8t8ulnq7l	xw8t8ulnq7l	{"use":"DisplayTextFieldModel","props":{"titleField":"topic_name","clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"schedule"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","associationName":"nb_dx_attendance.schedule","title":"查看排课","filterByTk":"{{ctx.view.inputArgs.filterByTk}}"}}}}
@@ -36141,10 +36622,48 @@ te5oxiqmgzk	te5oxiqmgzk	{"parentId":"3gc16ygcsma","subKey":"actions","subType":"
 77bdoztrvye	77bdoztrvye	{"use":"DisplayEnumFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_vote","fieldPath":"status"}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.status.field"}},"subKey":"field","subType":"object"}
 c945hmei57n	c945hmei57n	{"parentId":"8o6sflqxk0m","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_vote","fieldPath":"end_time"}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.end_time"}}}
 z0wri448pm2	z0wri448pm2	{"use":"DisplayDateTimeFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_vote","fieldPath":"end_time"}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.end_time.field"}},"subKey":"field","subType":"object"}
+sb2ygwyh4fh	sb2ygwyh4fh	{"use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"新增党性考核记录"}}},"flowRegistry":{}}
+nufeep9hrgq	nufeep9hrgq	{"parentId":"sb2ygwyh4fh","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"sb2ygwyh4fh","sortIndex":1}
+0tw17ogjjxh	0tw17ogjjxh	{"use":"ChildPageTabModel","props":{"title":"新增党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"nufeep9hrgq","parentId":"nufeep9hrgq","sortIndex":1}
+tqfcb7ct8e3	tqfcb7ct8e3	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["8y7odtwxuw3"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["wg6hnccgxj7"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"0tw17ogjjxh","parentId":"0tw17ogjjxh","sortIndex":1}
+wg6hnccgxj7	wg6hnccgxj7	{"parentId":"tqfcb7ct8e3","subKey":"items","subType":"array","use":"CreateFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}}},"parent":"tqfcb7ct8e3","sortIndex":1}
+8h0ew70dgym	8h0ew70dgym	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"parent":"jpqx4cr62qu","sortIndex":1}
+wh0uup754vs	wh0uup754vs	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"subKey":"field","subType":"object","parent":"8h0ew70dgym","parentId":"8h0ew70dgym","sortIndex":1}
+m23n7cr7p08	m23n7cr7p08	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"parent":"jpqx4cr62qu","sortIndex":2}
+hsxuz5jor4j	hsxuz5jor4j	{"use":"SelectFieldModel","props":{"allowClear":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"subKey":"field","subType":"object","parent":"m23n7cr7p08","parentId":"m23n7cr7p08","sortIndex":1}
+bcmbz922jtf	bcmbz922jtf	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"parent":"jpqx4cr62qu","sortIndex":3}
+35kdnhh90ur	35kdnhh90ur	{"use":"NumberFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"subKey":"field","subType":"object","parent":"bcmbz922jtf","parentId":"bcmbz922jtf","sortIndex":1}
+4lpug1rswcc	4lpug1rswcc	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"parent":"jpqx4cr62qu","sortIndex":4}
+yeqjyr47pou	yeqjyr47pou	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"subKey":"field","subType":"object","parent":"4lpug1rswcc","parentId":"4lpug1rswcc","sortIndex":1}
+cugs4m3a6bx	cugs4m3a6bx	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"parent":"jpqx4cr62qu","sortIndex":5}
+8ydcb1zlo9b	8ydcb1zlo9b	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"subKey":"field","subType":"object","parent":"cugs4m3a6bx","parentId":"cugs4m3a6bx","sortIndex":1}
+j8l3r1a8ts2	j8l3r1a8ts2	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"jpqx4cr62qu","sortIndex":6}
+jsl89gu7p2j	jsl89gu7p2j	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"jpqx4cr62qu","sortIndex":7}
+q25oj2pd6k6	q25oj2pd6k6	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}}},"subKey":"field","subType":"object","parent":"jsl89gu7p2j","parentId":"jsl89gu7p2j","sortIndex":1}
+tfsldrwm5ix	tfsldrwm5ix	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}},"editItemSettings":{"titleField":{"label":"topic_name"}}},"parent":"jpqx4cr62qu","sortIndex":8}
+8wv3zkk4kwu	8wv3zkk4kwu	{"use":"RecordSelectFieldModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}}},"subKey":"field","subType":"object","parent":"tfsldrwm5ix","parentId":"tfsldrwm5ix","sortIndex":1}
+e30atrazzy8	e30atrazzy8	{"parentId":"jpqx4cr62qu","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"jpqx4cr62qu","sortIndex":9}
+ioxkjc5jpo7	ioxkjc5jpo7	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}}},"subKey":"field","subType":"object","parent":"e30atrazzy8","parentId":"e30atrazzy8","sortIndex":1}
+im0uy8xifrz	im0uy8xifrz	{"parentId":"wg6hnccgxj7","subKey":"actions","subType":"array","use":"FormSubmitActionModel","props":{"title":"{{t(\\"Submit\\")}}","type":"primary","htmlType":"submit"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Submit\\")}}","type":"primary"}},"submitSettings":{"confirm":{"enable":false,"title":"{{t(\\"Submit record\\")}}","content":"{{t(\\"Are you sure you want to save it?\\")}}"}}},"flowRegistry":{},"parent":"wg6hnccgxj7","sortIndex":1}
+b1ilqms7osh	b1ilqms7osh	{"use": "RecordSelectFieldModel", "props": {"titleField": "name"}, "parent": "j8l3r1a8ts2", "subKey": "field", "subType": "object", "parentId": "j8l3r1a8ts2", "sortIndex": 1, "stepParams": {"fieldSettings": {"init": {"fieldPath": "student", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record"}}, "editItemSettings": {"required": {"required": true}}}}
+iq01y38zu9h	iq01y38zu9h	{"use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"新增党性考核记录"}}},"flowRegistry":{}}
+448tu7gtewb	448tu7gtewb	{"parentId":"iq01y38zu9h","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"iq01y38zu9h","sortIndex":1}
+sr7ikmexyql	sr7ikmexyql	{"use":"ChildPageTabModel","props":{"title":"新增党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"448tu7gtewb","parentId":"448tu7gtewb","sortIndex":1}
+xi8ks8s1o3f	xi8ks8s1o3f	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["8y7odtwxuw3"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["9wmvtp7rwcj"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"sr7ikmexyql","parentId":"sr7ikmexyql","sortIndex":1}
+9wmvtp7rwcj	9wmvtp7rwcj	{"parentId":"xi8ks8s1o3f","subKey":"items","subType":"array","use":"CreateFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}}},"parent":"xi8ks8s1o3f","sortIndex":1}
+6az8ry23dt9	6az8ry23dt9	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"parent":"iwgr9bsjhz6","sortIndex":1}
 7li94iwvwjb	7li94iwvwjb	{"use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_course_schedule","associationName":"nb_dx_eval_record.schedule","sourceId":"{{ctx.view.inputArgs.sourceId}}","title":"编辑排课","filterByTk":"{{ctx.record.id}}"}}},"flowRegistry":{}}
 uo43zv4bq65	uo43zv4bq65	{"parentId":"7li94iwvwjb","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"7li94iwvwjb","sortIndex":1}
 oekppavyb72	oekppavyb72	{"use":"ChildPageTabModel","props":{"title":"编辑排课"},"stepParams":{"pageTabSettings":{"tab":{"title":"编辑排课"}}},"subKey":"tabs","subType":"array","parent":"uo43zv4bq65","parentId":"uo43zv4bq65","sortIndex":1}
 u6b1jpphstu	u6b1jpphstu	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["r9l3dzrq685"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["phpratx7y0e"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"oekppavyb72","parentId":"oekppavyb72","sortIndex":1}
+051clw2ibtd	051clw2ibtd	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"subKey":"field","subType":"object","parent":"6az8ry23dt9","parentId":"6az8ry23dt9","sortIndex":1}
+u6cum16oidl	u6cum16oidl	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"parent":"iwgr9bsjhz6","sortIndex":2}
+ripevkkxr4p	ripevkkxr4p	{"use":"SelectFieldModel","props":{"allowClear":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"subKey":"field","subType":"object","parent":"u6cum16oidl","parentId":"u6cum16oidl","sortIndex":1}
+10qapwtmqtc	10qapwtmqtc	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"parent":"iwgr9bsjhz6","sortIndex":3}
+trqyh972oyk	trqyh972oyk	{"use":"NumberFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"subKey":"field","subType":"object","parent":"10qapwtmqtc","parentId":"10qapwtmqtc","sortIndex":1}
+joxdr5vvs9c	joxdr5vvs9c	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"parent":"iwgr9bsjhz6","sortIndex":4}
+879azadt309	879azadt309	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"subKey":"field","subType":"object","parent":"joxdr5vvs9c","parentId":"joxdr5vvs9c","sortIndex":1}
+4u9z0sefv0t	4u9z0sefv0t	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"parent":"iwgr9bsjhz6","sortIndex":5}
 ydwto4vi69k	ydwto4vi69k	{"parentId":"u0s55dk9lbc","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"date"}}},"parent":"u0s55dk9lbc","sortIndex":2}
 g5rzaj8wk2f	g5rzaj8wk2f	{"use":"DateOnlyFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"date"}}},"subKey":"field","subType":"object","parent":"ydwto4vi69k","parentId":"ydwto4vi69k","sortIndex":1}
 dop1yabln4k	dop1yabln4k	{"parentId":"8o6sflqxk0m","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_vote","fieldPath":"creator.nickname","associationPathName":"creator"}}}}
@@ -36164,6 +36683,7 @@ oe5v4r4i0h1	oe5v4r4i0h1	{"parentId":"u0s55dk9lbc","subKey":"items","subType":"ar
 mcr3rrzmzw1	mcr3rrzmzw1	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"student_name"}}},"subKey":"field","subType":"object","parent":"oe5v4r4i0h1","parentId":"oe5v4r4i0h1","sortIndex":1}
 4x23imc2s9g	4x23imc2s9g	{"parentId":"1kmcxd9sq8x","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"week_no"}}},"parent":"1kmcxd9sq8x","sortIndex":4}
 2yrkboo2dpz	2yrkboo2dpz	{"use":"NumberFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"week_no"}}},"subKey":"field","subType":"object","parent":"4x23imc2s9g","parentId":"4x23imc2s9g","sortIndex":1}
+texcust80sh	texcust80sh	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"subKey":"field","subType":"object","parent":"4u9z0sefv0t","parentId":"4u9z0sefv0t","sortIndex":1}
 b85hroomwt1	b85hroomwt1	{"parentId":"u0s55dk9lbc","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"status"}}},"parent":"u0s55dk9lbc","sortIndex":3}
 fs7a350wdu3	fs7a350wdu3	{"use":"SelectFieldModel","props":{"allowClear":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"status"}}},"subKey":"field","subType":"object","parent":"b85hroomwt1","parentId":"b85hroomwt1","sortIndex":1}
 bzket5mi13j	bzket5mi13j	{"parentId":"u0s55dk9lbc","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_attendance","fieldPath":"checkin_time"}}},"parent":"u0s55dk9lbc","sortIndex":4}
@@ -36252,12 +36772,18 @@ ix8vy514cpc	ix8vy514cpc	{"use":"DisplayDateTimeFieldModel","props":{},"stepParam
 pg898ywxfxv	pg898ywxfxv	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"unit_name"}}},"subKey":"field","subType":"object","parent":"nlqxgykd7q5","parentId":"nlqxgykd7q5","sortIndex":1}
 79er8nurvqb	79er8nurvqb	{"parentId":"phpratx7y0e","subKey":"actions","subType":"array","use":"FormSubmitActionModel","props":{"title":"{{t(\\"Submit\\")}}","type":"primary","htmlType":"submit"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Submit\\")}}","type":"primary"}},"submitSettings":{"confirm":{"enable":false,"title":"{{t(\\"Submit record\\")}}","content":"{{t(\\"Are you sure you want to save it?\\")}}"}}},"flowRegistry":{},"parent":"phpratx7y0e","sortIndex":1}
 phpratx7y0e	phpratx7y0e	{"parentId":"u6b1jpphstu","subKey":"items","subType":"array","use":"EditFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","filterByTk":"{{ctx.view.inputArgs.filterByTk}}","associationName":"nb_dx_eval_record.schedule","sourceId":"{{ctx.view.inputArgs.sourceId}}"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}},"formSettings":{"dataScope":{"filter":{"logic":"$and","items":[]}}}},"parent":"u6b1jpphstu","sortIndex":1}
+ct7szluz86g	ct7szluz86g	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"iwgr9bsjhz6","sortIndex":6}
+i5qo9tkmh11	i5qo9tkmh11	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"iwgr9bsjhz6","sortIndex":7}
 26r327adoot	26r327adoot	{"parentId":"egfnugung7i","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"egfnugung7i","sortIndex":1}
 1x94frcurxi	1x94frcurxi	{"use":"ChildPageTabModel","props":{"title":"{{t(\\"Details\\")}}"},"stepParams":{"pageTabSettings":{"tab":{"title":"{{t(\\"Details\\")}}"}}},"subKey":"tabs","subType":"array","parent":"26r327adoot","parentId":"26r327adoot","sortIndex":1}
 i5d9z6wcwi2	i5d9z6wcwi2	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["8hsb0estq7j"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["mm8iic55pzy"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"1x94frcurxi","parentId":"1x94frcurxi","sortIndex":1}
+pbppptdtxiw	pbppptdtxiw	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}}},"subKey":"field","subType":"object","parent":"i5qo9tkmh11","parentId":"i5qo9tkmh11","sortIndex":1}
 zdgm5jmd919	zdgm5jmd919	{"use":"DetailsGridModel","subKey":"grid","subType":"object","stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["rsfrokh540n"]],"row2":[["2gj4qsdeuts"],["2htfvqam58l"]],"row3":[["6urfjyjxfkn"],["yzt893jps1u"]],"row4":[["7bczwm6vw57"],["56cd7gytu23"]],"row5":[["3xijgdpkolj"],["y9zpt1e3nwq"]],"row6":[["75hwtc1scz0"]],"row7":[["oibjw2thg5v"]]},"sizes":{"row1":[24],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12],"row6":[24],"row7":[24]},"rowOrder":["row1","row2","row3","row4","row5","row6","row7"]}}},"props":{"rows":{"row1":[["7zr34t66u37"]],"row2":[["vdy8yvxkuab"],["wzjhl8z0x8u"]],"row3":[["0jkurl61a3n"],["152fzjm9jeq"]],"row4":[["id4kbwatz2q"],["od2q8nfy8g3"]],"row5":[["p49zc68wjjk"],["8pjddl3qoui"]],"row6":[["9zpygk3p1qj"]],"row7":[["qbitj8np0ad"]]},"sizes":{"row1":[24],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12],"row6":[24],"row7":[24]},"rowOrder":["row1","row2","row3","row4","row5","row6","row7"]},"parent":"mm8iic55pzy","parentId":"mm8iic55pzy","sortIndex":1}
 rsfrokh540n	rsfrokh540n	{"parentId":"zdgm5jmd919","subKey":"items","subType":"array","use":"DividerItemModel","props":{"label":"课程安排","orientation":"left"},"decoratorProps":{},"stepParams":{"markdownItemSetting":{"title":{"label":"课程安排","orientation":"left"}}},"parent":"zdgm5jmd919","sortIndex":1}
 2gj4qsdeuts	2gj4qsdeuts	{"parentId":"zdgm5jmd919","subKey":"items","subType":"array","use":"DetailsItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"topic_name"}}},"parent":"zdgm5jmd919","sortIndex":2}
+8ei4cil1q2z	8ei4cil1q2z	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}},"editItemSettings":{"titleField":{"label":"topic_name"}}},"parent":"iwgr9bsjhz6","sortIndex":8}
+es6pn09s1lb	es6pn09s1lb	{"use":"RecordSelectFieldModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}}},"subKey":"field","subType":"object","parent":"8ei4cil1q2z","parentId":"8ei4cil1q2z","sortIndex":1}
+duxb4fyta3b	duxb4fyta3b	{"parentId":"iwgr9bsjhz6","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"iwgr9bsjhz6","sortIndex":9}
 pq6rd3800gn	pq6rd3800gn	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"topic_name"}}},"subKey":"field","subType":"object","parent":"2gj4qsdeuts","parentId":"2gj4qsdeuts","sortIndex":1}
 2htfvqam58l	2htfvqam58l	{"parentId":"zdgm5jmd919","subKey":"items","subType":"array","use":"DetailsItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"kind"}}},"parent":"zdgm5jmd919","sortIndex":3}
 z007h3j0ti4	z007h3j0ti4	{"use":"DisplayEnumFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","fieldPath":"kind"}}},"subKey":"field","subType":"object","parent":"2htfvqam58l","parentId":"2htfvqam58l","sortIndex":1}
@@ -36279,6 +36805,9 @@ e6lwixunc8e	e6lwixunc8e	{"use":"DisplayTextFieldModel","props":{},"stepParams":{
 64mgr9g06ma	64mgr9g06ma	{"parentId":"mm8iic55pzy","subKey":"actions","subType":"array","use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_course_schedule","associationName":"nb_dx_eval_record.schedule","sourceId":"{{ctx.view.inputArgs.sourceId}}","title":"编辑排课","uid":"7li94iwvwjb","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":true,"popupTemplateMode":"reference","popupTemplateUid":"7c7vp77gn3d"}}},"flowRegistry":{},"parent":"mm8iic55pzy","sortIndex":1}
 egfnugung7i	egfnugung7i	{"use":"DisplayTextFieldModel","props":{"titleField":"topic_name","clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","associationName":"nb_dx_eval_record.schedule","title":"查看排课","filterByTk":"{{ctx.view.inputArgs.filterByTk}}"}}}}
 mm8iic55pzy	mm8iic55pzy	{"parentId":"i5d9z6wcwi2","subKey":"items","subType":"array","use":"DetailsBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_course_schedule","filterByTk":"{{ctx.view.inputArgs.filterByTk}}","associationName":"nb_dx_eval_record.schedule","sourceId":"{{ctx.view.inputArgs.sourceId}}"}},"detailsSettings":{"layout":{"layout":"vertical","colon":true},"dataScope":{"filter":{"logic":"$and","items":[]}},"linkageRules":{"value":[]}}},"parent":"i5d9z6wcwi2","sortIndex":1}
+ughasacqada	ughasacqada	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}}},"subKey":"field","subType":"object","parent":"duxb4fyta3b","parentId":"duxb4fyta3b","sortIndex":1}
+8zmm58v9pzi	8zmm58v9pzi	{"parentId":"9wmvtp7rwcj","subKey":"actions","subType":"array","use":"FormSubmitActionModel","props":{"title":"{{t(\\"Submit\\")}}","type":"primary","htmlType":"submit"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Submit\\")}}","type":"primary"}},"submitSettings":{"confirm":{"enable":false,"title":"{{t(\\"Submit record\\")}}","content":"{{t(\\"Are you sure you want to save it?\\")}}"}}},"flowRegistry":{},"parent":"9wmvtp7rwcj","sortIndex":1}
+nmuvy18rm2o	nmuvy18rm2o	{"parentId":"t8e0g8ztvjp","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"新增党性考核记录","uid":"iq01y38zu9h","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"copy","popupTemplateUid":"tfqylic8j8y","popupTemplateContext":true}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.addNew_default_4"}},"flowRegistry":{}}
 02w8g8njt0a	02w8g8njt0a	{"use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_scheme","title":"新增评估方案"}}},"flowRegistry":{}}
 he0jodcxcyc	he0jodcxcyc	{"parentId":"02w8g8njt0a","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"02w8g8njt0a","sortIndex":1}
 jakdnp1hqbh	jakdnp1hqbh	{"use":"ChildPageTabModel","props":{"title":"新增评估方案"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增评估方案"}}},"subKey":"tabs","subType":"array","parent":"he0jodcxcyc","parentId":"he0jodcxcyc","sortIndex":1}
@@ -36342,6 +36871,33 @@ d9dihn4vf98	d9dihn4vf98	{"parentId":"3gc16ygcsma","subKey":"actions","subType":"
 msds9qtb7jr	msds9qtb7jr	{"parentId":"c56ndrlw6uy","subKey":"actions","subType":"array","use":"FilterActionModel","props":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined","defaultFilterValue":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"scope","operator":"$eq"},{"path":"question","operator":"$includes"}]},"filterValue":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"scope","operator":"$eq"},{"path":"question","operator":"$includes"}]}},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined"}},"filterSettings":{"defaultFilter":{"defaultFilter":{"logic":"$and","items":[{"path":"name","operator":"$includes"},{"path":"status","operator":"$eq"},{"path":"scope","operator":"$eq"},{"path":"question","operator":"$includes"}]}}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.filter_default_1"}},"flowRegistry":{}}
 yadca9o09kh	yadca9o09kh	{"parentId":"c56ndrlw6uy","subKey":"actions","subType":"array","use":"RefreshActionModel","props":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.refresh_default_2"}},"flowRegistry":{}}
 h8oatgwpmrf	h8oatgwpmrf	{"parentId":"c56ndrlw6uy","subKey":"actions","subType":"array","use":"BulkDeleteActionModel","props":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true,"position":"right"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.voteTable.bulkDelete_default_3"}},"flowRegistry":{}}
+w9zp48k1cti	w9zp48k1cti	{"use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"新增党性考核记录"}}},"flowRegistry":{}}
+qdg7q0w9lg2	qdg7q0w9lg2	{"parentId":"w9zp48k1cti","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"w9zp48k1cti","sortIndex":1}
+tivpag8cevk	tivpag8cevk	{"use":"ChildPageTabModel","props":{"title":"新增党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"新增党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"qdg7q0w9lg2","parentId":"qdg7q0w9lg2","sortIndex":1}
+8xw8zore5fp	8xw8zore5fp	{"use":"BlockGridModel","subKey":"grid","subType":"object","props":{"rows":{"row1":[["8y7odtwxuw3"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["k70l41sxnxd"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}},"parent":"tivpag8cevk","parentId":"tivpag8cevk","sortIndex":1}
+k70l41sxnxd	k70l41sxnxd	{"parentId":"8xw8zore5fp","subKey":"items","subType":"array","use":"CreateFormModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"formModelSettings":{"layout":{"layout":"vertical","colon":false},"assignRules":{"value":[]}}},"parent":"8xw8zore5fp","sortIndex":1}
+infoo31hlpu	infoo31hlpu	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"parent":"bdn57zbgwbg","sortIndex":1}
+cbf7r1ijn6y	cbf7r1ijn6y	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}}},"subKey":"field","subType":"object","parent":"infoo31hlpu","parentId":"infoo31hlpu","sortIndex":1}
+mssmwgap46c	mssmwgap46c	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"parent":"bdn57zbgwbg","sortIndex":2}
+1ssilvuycz7	1ssilvuycz7	{"use":"SelectFieldModel","props":{"allowClear":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"kind"}}},"subKey":"field","subType":"object","parent":"mssmwgap46c","parentId":"mssmwgap46c","sortIndex":1}
+hcvxc9hmhq0	hcvxc9hmhq0	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"parent":"bdn57zbgwbg","sortIndex":3}
+snx5x86kkhz	snx5x86kkhz	{"use":"NumberFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"score"}}},"subKey":"field","subType":"object","parent":"hcvxc9hmhq0","parentId":"hcvxc9hmhq0","sortIndex":1}
+0s5ynhl7dxc	0s5ynhl7dxc	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"parent":"bdn57zbgwbg","sortIndex":4}
+dcltwec7c6m	dcltwec7c6m	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"items_json"}}},"subKey":"field","subType":"object","parent":"0s5ynhl7dxc","parentId":"0s5ynhl7dxc","sortIndex":1}
+dufrhh3ioqc	dufrhh3ioqc	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"parent":"bdn57zbgwbg","sortIndex":5}
+jpr0j4xwxs5	jpr0j4xwxs5	{"use":"TextareaFieldModel","props":{"autoSize":{"maxRows":10,"minRows":3}},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}}},"subKey":"field","subType":"object","parent":"dufrhh3ioqc","parentId":"dufrhh3ioqc","sortIndex":1}
+wp1hxxr6w77	wp1hxxr6w77	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"bdn57zbgwbg","sortIndex":6}
+sxlukb31drb	sxlukb31drb	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"bdn57zbgwbg","sortIndex":7}
+6paycv7bray	6paycv7bray	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass"}}},"subKey":"field","subType":"object","parent":"sxlukb31drb","parentId":"sxlukb31drb","sortIndex":1}
+cmmxqx3qtza	cmmxqx3qtza	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}},"editItemSettings":{"titleField":{"label":"topic_name"}}},"parent":"bdn57zbgwbg","sortIndex":8}
+in7jpizz83l	in7jpizz83l	{"use":"RecordSelectFieldModel","props":{"titleField":"topic_name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"schedule"}}},"subKey":"field","subType":"object","parent":"cmmxqx3qtza","parentId":"cmmxqx3qtza","sortIndex":1}
+i2ypwuq8fln	i2ypwuq8fln	{"parentId":"bdn57zbgwbg","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"bdn57zbgwbg","sortIndex":9}
+5l8uaig41dd	5l8uaig41dd	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}}},"subKey":"field","subType":"object","parent":"i2ypwuq8fln","parentId":"i2ypwuq8fln","sortIndex":1}
+pwp3odxzhbx	pwp3odxzhbx	{"parentId":"k70l41sxnxd","subKey":"actions","subType":"array","use":"FormSubmitActionModel","props":{"title":"{{t(\\"Submit\\")}}","type":"primary","htmlType":"submit"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Submit\\")}}","type":"primary"}},"submitSettings":{"confirm":{"enable":false,"title":"{{t(\\"Submit record\\")}}","content":"{{t(\\"Are you sure you want to save it?\\")}}"}}},"flowRegistry":{},"parent":"k70l41sxnxd","sortIndex":1}
+7a1nncqaw94	7a1nncqaw94	{"parentId":"rem13p7l5h6","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"{{t(\\"Add new\\")}}","uid":"w9zp48k1cti","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"copy","popupTemplateUid":"tfqylic8j8y","popupTemplateContext":true}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.addNew_default_4"}},"flowRegistry":{}}
+9do61503xiy	9do61503xiy	{"use": "RecordSelectFieldModel", "props": {"titleField": "name"}, "parent": "wp1hxxr6w77", "subKey": "field", "subType": "object", "parentId": "wp1hxxr6w77", "sortIndex": 1, "stepParams": {"fieldSettings": {"init": {"fieldPath": "student", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record"}}, "editItemSettings": {"required": {"required": true}}}}
+jpqx4cr62qu	jpqx4cr62qu	{"use":"FormGridModel","props":{"rows":{"row1":[["4biarks8opg"],["4ajzf8269c2"]],"row2":[["diznsj8r74c"],["972p3l35euj"]],"row3":[["t546yloce2i"],["v6nmv3irihx"]],"row4":[["k9ddp1tvqwh"],["8w2ttael0tu"]],"row5":[["fuxg31srjxe"],["a3cdsmwssn7"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]},"parent":"wg6hnccgxj7","subKey":"grid","subType":"object","parentId":"wg6hnccgxj7","sortIndex":1,"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["8h0ew70dgym"],["m23n7cr7p08"]],"row2":[["bcmbz922jtf"],["4lpug1rswcc"]],"row3":[["cugs4m3a6bx"]],"row4":[["j8l3r1a8ts2"],["jsl89gu7p2j"]],"row5":[["tfsldrwm5ix"],["e30atrazzy8"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]}},"eventSettings":{"linkageRules":{"value":[]}},"formModelSettings":{"assignRules":{"value":[{"key":"defaultKindTopic","enable":true,"targetPath":"kind","mode":"assign","condition":{"logic":"$and","items":[]},"value":{"code":"return 'topic';","version":"v2"}}]}}}}
+iwgr9bsjhz6	iwgr9bsjhz6	{"use":"FormGridModel","props":{"rows":{"row1":[["4biarks8opg"],["4ajzf8269c2"]],"row2":[["diznsj8r74c"],["972p3l35euj"]],"row3":[["t546yloce2i"],["v6nmv3irihx"]],"row4":[["k9ddp1tvqwh"],["8w2ttael0tu"]],"row5":[["fuxg31srjxe"],["a3cdsmwssn7"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]},"parent":"9wmvtp7rwcj","subKey":"grid","subType":"object","parentId":"9wmvtp7rwcj","sortIndex":1,"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["6az8ry23dt9"],["u6cum16oidl"]],"row2":[["10qapwtmqtc"],["joxdr5vvs9c"]],"row3":[["4u9z0sefv0t"]],"row4":[["ct7szluz86g"],["i5qo9tkmh11"]],"row5":[["8ei4cil1q2z"],["duxb4fyta3b"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]}},"eventSettings":{"linkageRules":{"value":[]}},"formModelSettings":{"assignRules":{"value":[{"key":"defaultKindPartySelf","enable":true,"targetPath":"kind","mode":"assign","condition":{"logic":"$and","items":[]},"value":{"code":"return 'party_self';","version":"v2"}}]}}}}
 iudlwwpmjs5	iudlwwpmjs5	{"use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"编辑党性考核记录","filterByTk":"{{ctx.record.id}}"}}},"flowRegistry":{}}
 1cat900fait	1cat900fait	{"parentId":"iudlwwpmjs5","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"iudlwwpmjs5","sortIndex":1}
 58uaw6ogchq	58uaw6ogchq	{"use":"ChildPageTabModel","props":{"title":"编辑党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"编辑党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"1cat900fait","parentId":"1cat900fait","sortIndex":1}
@@ -36395,6 +36951,7 @@ lqu1hkpy0ra	lqu1hkpy0ra	{"use":"RecordSelectFieldModel","props":{"titleField":"t
 jpqxaywj1ed	jpqxaywj1ed	{"parentId":"20vmu05ldlc","subKey":"items","subType":"array","use":"FormItemModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}},"editItemSettings":{"titleField":{"label":"name"}}},"parent":"20vmu05ldlc","sortIndex":10}
 4jawzhyrggl	4jawzhyrggl	{"use":"RecordSelectFieldModel","props":{"titleField":"name"},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}}},"subKey":"field","subType":"object","parent":"jpqxaywj1ed","parentId":"jpqxaywj1ed","sortIndex":1}
 nt7wwj9u10w	nt7wwj9u10w	{"parentId":"irix94d48zc","subKey":"actions","subType":"array","use":"FormSubmitActionModel","props":{"title":"{{t(\\"Submit\\")}}","type":"primary","htmlType":"submit"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Submit\\")}}","type":"primary"}},"submitSettings":{"confirm":{"enable":false,"title":"{{t(\\"Submit record\\")}}","content":"{{t(\\"Are you sure you want to save it?\\")}}"}}},"flowRegistry":{},"parent":"irix94d48zc","sortIndex":1}
+bdn57zbgwbg	bdn57zbgwbg	{"use":"FormGridModel","props":{"rows":{"row1":[["4biarks8opg"],["4ajzf8269c2"]],"row2":[["diznsj8r74c"],["972p3l35euj"]],"row3":[["t546yloce2i"],["v6nmv3irihx"]],"row4":[["k9ddp1tvqwh"],["8w2ttael0tu"]],"row5":[["fuxg31srjxe"],["a3cdsmwssn7"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]},"parent":"k70l41sxnxd","subKey":"grid","subType":"object","parentId":"k70l41sxnxd","sortIndex":1,"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["infoo31hlpu"],["mssmwgap46c"]],"row2":[["hcvxc9hmhq0"],["0s5ynhl7dxc"]],"row3":[["dufrhh3ioqc"]],"row4":[["wp1hxxr6w77"],["sxlukb31drb"]],"row5":[["cmmxqx3qtza"],["i2ypwuq8fln"]]},"sizes":{"row1":[12,12],"row2":[12,12],"row3":[12,12],"row4":[12,12],"row5":[12,12]},"rowOrder":["row1","row2","row3","row4","row5"]}},"eventSettings":{"linkageRules":{"value":[]}},"formModelSettings":{"assignRules":{"value":[{"key":"defaultKindComprehensive","enable":true,"targetPath":"kind","mode":"assign","condition":{"logic":"$and","items":[]},"value":{"code":"return 'comprehensive';","version":"v2"}}]}}}}
 mnoe47p2xjh	mnoe47p2xjh	{"use":"ViewActionModel","props":{"type":"link","title":"{{t(\\"View\\")}}","icon":null},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"View\\")}}","icon":null,"type":"link","iconOnly":false}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"查看党性考核记录","filterByTk":"{{ctx.record.id}}"}}},"flowRegistry":{}}
 harfxyx8xzt	harfxyx8xzt	{"parentId":"mnoe47p2xjh","subKey":"page","subType":"object","use":"ChildPageModel","props":{"displayTitle":false,"enableTabs":true},"stepParams":{"pageSettings":{"general":{"displayTitle":false,"enableTabs":true}}},"parent":"mnoe47p2xjh","sortIndex":1}
 boi8sz0mt8k	boi8sz0mt8k	{"use":"ChildPageTabModel","props":{"title":"查看党性考核记录"},"stepParams":{"pageTabSettings":{"tab":{"title":"查看党性考核记录"}}},"subKey":"tabs","subType":"array","parent":"harfxyx8xzt","parentId":"harfxyx8xzt","sortIndex":1}
@@ -36423,6 +36980,7 @@ wg3phpsmn7z	wg3phpsmn7z	{"parentId":"1bsq75w1hdd","subKey":"items","subType":"ar
 r894endhn8s	r894endhn8s	{"use":"DisplayTextFieldModel","props":{"titleField":"name","clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"topic"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_topic","associationName":"nb_dx_eval_record.topic","uid":"z03uyffmkvh","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"o55io4a5pu2"}}},"subKey":"field","subType":"object","parent":"wg3phpsmn7z","parentId":"wg3phpsmn7z","sortIndex":1}
 9mrw7wp9qhw	9mrw7wp9qhw	{"parentId":"iyo17t8avb6","subKey":"actions","subType":"array","use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":"EditOutlined","type":"default"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"编辑党性考核记录","uid":"iudlwwpmjs5","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"pdgsxi4swh4"}}},"flowRegistry":{},"parent":"iyo17t8avb6","sortIndex":1}
 s0uv64y5i4c	s0uv64y5i4c	{"parentId":"3fi65hbisko","subKey":"actions","subType":"array","use":"ViewActionModel","props":{"type":"link","title":"{{t(\\"View\\")}}","icon":null},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"View\\")}}","icon":null,"type":"link","iconOnly":false}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"查看党性考核记录","uid":"mnoe47p2xjh","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"dp9jkd15h08"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.view_1"}},"flowRegistry":{}}
+t4crmr8dipe	t4crmr8dipe	{"use": "RecordSelectFieldModel", "props": {"titleField": "name"}, "parent": "ct7szluz86g", "subKey": "field", "subType": "object", "parentId": "ct7szluz86g", "sortIndex": 1, "stepParams": {"fieldSettings": {"init": {"fieldPath": "student", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record"}}, "editItemSettings": {"required": {"required": true}}}}
 n38dp9p4uwg	n38dp9p4uwg	{"parentId":"3fi65hbisko","subKey":"actions","subType":"array","use":"EditActionModel","props":{"title":"{{t(\\"Edit\\")}}","icon":null,"type":"link"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Edit\\")}}","icon":null,"type":"link","iconOnly":false}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"{{t(\\"Edit\\")}}","uid":"iudlwwpmjs5","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"pdgsxi4swh4"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.edit_2"}},"flowRegistry":{}}
 t7fnaaqyqo1	t7fnaaqyqo1	{"parentId":"3fi65hbisko","subKey":"actions","subType":"array","use":"DeleteActionModel","props":{"type":"link","title":"{{t(\\"Delete\\")}}","icon":null},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Delete\\")}}","icon":null,"type":"link","iconOnly":false}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.partyTable.delete_3"}},"flowRegistry":{}}
 jvymj5wbe1a	jvymj5wbe1a	{"parentId":"rlgi5rxpeb3","subKey":"grid","subType":"object","use":"BlockGridModel","props":{"rows":{"row1":[["t8e0g8ztvjp"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["t8e0g8ztvjp"]]},"sizes":{"row1":[24]},"rowOrder":["row1"]}}}}
@@ -36611,8 +37169,8 @@ va0hu7vulfu	va0hu7vulfu	{"schema":{"use":"RouteModel"}}
 uda7c8r7q4v	uda7c8r7q4v	{"schema":{"use":"RouteModel"}}
 d2vhkrx0121	d2vhkrx0121	{"parentId":"va0hu7vulfu","subKey":"page","subType":"object","use":"RootPageModel","props":{"routeId":396739798171648,"title":"专题评估","enableTabs":false,"displayTitle":true},"stepParams":{"pageSettings":{"general":{"title":"专题评估","displayTitle":true,"enableTabs":false}}},"parent":"va0hu7vulfu"}
 1dzssnlm7hr	1dzssnlm7hr	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"d71jolfiu8g","parent":"d71jolfiu8g"}
+nf8bj56tzcg	nf8bj56tzcg	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "d71jolfiu8g", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.topicEvalTable.student_name"}}}
 d71jolfiu8g	d71jolfiu8g	{"parentId":"6w27zzrkrk8","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable"},"tableSettings":{"dataScope":{"filter":{"logic":"$and","items":[{"path":"kind","operator":"$eq","value":"topic"}]}}}}}
-nf8bj56tzcg	nf8bj56tzcg	{"parentId":"d71jolfiu8g","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.student_name"}}}
 0m3dtd3vuno	0m3dtd3vuno	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.student_name.field"}},"subKey":"field","subType":"object"}
 uy4onmy7mjq	uy4onmy7mjq	{"parentId":"d71jolfiu8g","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass.name","associationPathName":"klass"}}}}
 vblvgu13bz1	vblvgu13bz1	{"use":"DisplayTextFieldModel","props":{"clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass.name","associationPathName":"klass"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_class","associationName":"nb_dx_eval_record.klass","uid":"kksywntsj1w","filterByTk":"{{ctx.record.id}}","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"uxw2cjyq0mm"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.klass.name"}},"subKey":"field","subType":"object"}
@@ -36632,10 +37190,10 @@ cp4nblg5zrn	cp4nblg5zrn	{"parentId":"d71jolfiu8g","subKey":"columns","subType":"
 5pnwg97zktx	5pnwg97zktx	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"opinion"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.opinion.field"}},"subKey":"field","subType":"object"}
 oq9j2ron1ll	oq9j2ron1ll	{"parentId":"d71jolfiu8g","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"anonymous"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.anonymous"}}}
 94agzkq9afb	94agzkq9afb	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"anonymous"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.anonymous.field"}},"subKey":"field","subType":"object"}
+ylqoul0tokr	ylqoul0tokr	{"parentId":"d71jolfiu8g","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"{{t(\\"Add new\\")}}","uid":"sb2ygwyh4fh","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"copy","popupTemplateUid":"tfqylic8j8y","popupTemplateContext":true}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.addNew_default_4"}},"flowRegistry":{}}
 bq9pisg8o3d	bq9pisg8o3d	{"parentId":"d71jolfiu8g","subKey":"actions","subType":"array","use":"FilterActionModel","props":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined","defaultFilterValue":{"logic":"$and","items":[{"path":"student_name","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"items_json","operator":"$includes"},{"path":"opinion","operator":"$includes"}]},"filterValue":{"logic":"$and","items":[{"path":"student_name","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"items_json","operator":"$includes"},{"path":"opinion","operator":"$includes"}]}},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Filter\\")}}","icon":"FilterOutlined"}},"filterSettings":{"defaultFilter":{"defaultFilter":{"logic":"$and","items":[{"path":"student_name","operator":"$includes"},{"path":"kind","operator":"$eq"},{"path":"items_json","operator":"$includes"},{"path":"opinion","operator":"$includes"}]}}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.filter_default_1"}},"flowRegistry":{}}
 d58kk9zpu9c	d58kk9zpu9c	{"parentId":"d71jolfiu8g","subKey":"actions","subType":"array","use":"RefreshActionModel","props":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Refresh\\")}}","icon":"ReloadOutlined"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.refresh_default_2"}},"flowRegistry":{}}
 quv4rcpsyxz	quv4rcpsyxz	{"parentId":"d71jolfiu8g","subKey":"actions","subType":"array","use":"BulkDeleteActionModel","props":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true,"position":"right"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.bulkDelete_default_3"}},"flowRegistry":{}}
-ylqoul0tokr	ylqoul0tokr	{"parentId":"d71jolfiu8g","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_eval_record","title":"{{t(\\"Add new\\")}}","uid":"qry6alw2azg","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"tfqylic8j8y"}},"__flowSurfaceMeta":{"declaredKey":"main.topicEvalTable.addNew_default_4"}},"flowRegistry":{}}
 292okta22z4	292okta22z4	{"use":"SelectFieldModel","props":{"allowClear":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"gender"}}},"subKey":"field","subType":"object","parent":"txv3f9x23i7","parentId":"txv3f9x23i7","sortIndex":1}
 fbz33teooib	fbz33teooib	{"parentId":"8qjr9342140","subKey":"items","subType":"array","use":"FormItemModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"birth_date"}}},"parent":"8qjr9342140","sortIndex":5}
 0jvrajkh642	0jvrajkh642	{"use":"DateOnlyFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_student","fieldPath":"birth_date"}}},"subKey":"field","subType":"object","parent":"fbz33teooib","parentId":"fbz33teooib","sortIndex":1}
@@ -36741,8 +37299,8 @@ dw3v3d6ko62	dw3v3d6ko62	{"parentId":"s8kz55kn42h","subKey":"actions","subType":"
 5ad42wwggml	5ad42wwggml	{"parentId":"s8kz55kn42h","subKey":"actions","subType":"array","use":"BulkDeleteActionModel","props":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true,"position":"right"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"","tooltip":"{{t(\\"Delete\\")}}","icon":"DeleteOutlined","iconOnly":true}},"deleteSettings":{"confirm":{"enable":true,"title":"{{t(\\"Delete record\\")}}","content":"{{t(\\"Are you sure you want to delete it?\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.albumTable.bulkDelete_default_3"}},"flowRegistry":{}}
 nmuy4ug1qxc	nmuy4ug1qxc	{"use":"TableActionsColumnModel","props":{},"decoratorProps":{},"stepParams":{"tableColumnSettings":{"title":{"title":"{{t(\\"Actions\\")}}"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.actionsColumn"}},"flowRegistry":{},"subKey":"columns","subType":"array","parentId":"rem13p7l5h6","parent":"rem13p7l5h6"}
 rem13p7l5h6	rem13p7l5h6	{"parentId":"dlmkyr7o4dk","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable"},"tableSettings":{"dataScope":{"filter":{"logic":"$and","items":[{"path":"kind","operator":"$eq","value":"comprehensive"}]}}}}}
-5obfsdo6epz	5obfsdo6epz	{"parentId":"rem13p7l5h6","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.student_name"}}}
 0jwprt4kfyi	0jwprt4kfyi	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"main.compEvalTable.student_name.field"}},"subKey":"field","subType":"object"}
+5obfsdo6epz	5obfsdo6epz	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "rem13p7l5h6", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_eval_record", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "main.compEvalTable.student_name"}}}
 yfs1mifdlzg	yfs1mifdlzg	{"parentId":"rem13p7l5h6","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_eval_record","fieldPath":"klass.name","associationPathName":"klass"}}}}
 mhii3nyq9am	mhii3nyq9am	{"parentId":"s8kz55kn42h","subKey":"actions","subType":"array","use":"AddNewActionModel","props":{"type":"primary","title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined"},"decoratorProps":{},"stepParams":{"buttonSettings":{"general":{"title":"{{t(\\"Add new\\")}}","icon":"PlusOutlined","type":"primary"}},"popupSettings":{"openView":{"mode":"drawer","size":"medium","pageModelClass":"ChildPageModel","dataSourceKey":"main","collectionName":"nb_dx_student","title":"{{t(\\"Add new\\")}}","uid":"yl3hgfgaci7","popupTemplateHasFilterByTk":false,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"6uqzl6k5fad"}},"__flowSurfaceMeta":{"declaredKey":"main.albumTable.addNew_default_4"}},"flowRegistry":{}}
 5hwnymo1dxd	5hwnymo1dxd	{"parentId":"0d4zok3qhug","subKey":"grid","subType":"object","use":"BlockGridModel","props":{"rows":{"row1":[["nzan9dg1i7c"],["afstwdrol17"]]},"sizes":{"row1":[12,12]},"rowOrder":["row1"]},"stepParams":{"gridSettings":{"grid":{"rows":{"row1":[["nzan9dg1i7c"],["afstwdrol17"]]},"sizes":{"row1":[12,12]},"rowOrder":["row1"]}}}}
@@ -36981,8 +37539,8 @@ kjkahkaw80z	kjkahkaw80z	{"parentId":"p5wuk5r9ssv","subKey":"actions","subType":"
 k0tz5h4movn	k0tz5h4movn	{"schema":{"use":"RouteModel"}}
 x9qz8dhvcai	x9qz8dhvcai	{"parentId":"iotgrd7wpsl","subKey":"items","subType":"array","use":"TableBlockModel","props":{},"decoratorProps":{},"stepParams":{"resourceSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout"}},"tableSettings":{"defaultSorting":{"sort":[{"field":"createdAt","direction":"desc"}]},"dataScope":{"filter":{"logic":"$and","items":[{"path":"status","operator":"$eq","value":"pending"}]}}},"__flowSurfaceMeta":{"declaredKey":"dropout.dropoutTodoTable"}}}
 of8bk0ssxac	of8bk0ssxac	{"use":"InputFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_registration","fieldPath":"name"}}},"subKey":"field","subType":"object","parent":"k2jm51ztxyd","parentId":"k2jm51ztxyd","sortIndex":1}
-ws88x0nqjf2	ws88x0nqjf2	{"parentId":"x9qz8dhvcai","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"dropout.dropoutTodoTable.student_name"}}}
 mjc3j8kpoir	mjc3j8kpoir	{"use":"DisplayTextFieldModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"student_name"}},"__flowSurfaceMeta":{"declaredKey":"dropout.dropoutTodoTable.student_name.field"}},"subKey":"field","subType":"object"}
+ws88x0nqjf2	ws88x0nqjf2	{"use": "TableColumnModel", "props": {}, "subKey": "columns", "subType": "array", "parentId": "x9qz8dhvcai", "stepParams": {"fieldSettings": {"init": {"fieldPath": "student.name", "dataSourceKey": "main", "collectionName": "nb_dx_dropout", "associationPathName": "student"}}, "__flowSurfaceMeta": {"declaredKey": "dropout.dropoutTodoTable.student_name"}}}
 miniyqwee7h	miniyqwee7h	{"parentId":"x9qz8dhvcai","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"klass.name","associationPathName":"klass"}}}}
 w8oewxzp3fk	w8oewxzp3fk	{"use":"DisplayTextFieldModel","props":{"clickToOpen":true},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"klass.name","associationPathName":"klass"}},"displayFieldSettings":{"clickToOpen":{"clickToOpen":true}},"popupSettings":{"openView":{"dataSourceKey":"main","collectionName":"nb_dx_class","associationName":"nb_dx_dropout.klass","uid":"kksywntsj1w","filterByTk":"{{ctx.record.id}}","popupTemplateHasFilterByTk":true,"popupTemplateHasSourceId":false,"popupTemplateMode":"reference","popupTemplateUid":"uxw2cjyq0mm"}},"__flowSurfaceMeta":{"declaredKey":"dropout.dropoutTodoTable.klass.name"}},"subKey":"field","subType":"object"}
 7exjet05myd	7exjet05myd	{"parentId":"x9qz8dhvcai","subKey":"columns","subType":"array","use":"TableColumnModel","props":{},"stepParams":{"fieldSettings":{"init":{"dataSourceKey":"main","collectionName":"nb_dx_dropout","fieldPath":"reason"}},"__flowSurfaceMeta":{"declaredKey":"dropout.dropoutTodoTable.reason"}}}
@@ -37751,6 +38309,9 @@ COPY public."issuedTokens" ("createdAt", "updatedAt", id, "signInTime", jti, "is
 2026-11-09 16:53:41.829+00	2026-11-09 16:53:41.829+00	fc3750af-2ac4-49f0-8107-1fe04b88c0b2	1794243221826	09af70bd-dbcd-452f-bc6a-a0944e5e7848	1794243221826	6	basic
 2026-11-09 16:54:07.346+00	2026-11-09 16:54:07.346+00	e04361f6-4df8-48b2-858c-d40a808accad	1794243247343	2e5b405b-ea31-41e7-ac4d-2443d7523fea	1794243247343	6	basic
 2026-11-09 16:55:25.421+00	2026-11-09 16:55:25.421+00	25ccdffa-8d3d-47c5-971b-1e0a3bd9de80	1794243325419	f06bf23b-3586-47e5-8b22-3dde3498b291	1794243325419	1	basic
+2026-11-09 17:21:28.369+00	2026-11-09 17:21:28.369+00	c4f3b915-a848-499f-9b8f-f8a7afdc7746	1794244888366	d9d61659-c006-4b84-8cdb-7b1757d8026e	1794244888366	3	basic
+2026-11-09 17:30:35.089+00	2026-11-09 17:30:35.089+00	8e81e00d-5e8b-41a0-8ac2-19cd98283677	1794245435086	864c9690-1bc1-49dd-959b-1a8164a33730	1794245435086	4	basic
+2026-11-09 17:30:57.776+00	2026-11-09 17:30:57.776+00	2c9594c3-5fd2-4a5a-8cff-687135be312e	1794245457773	228808ff-dc9c-4871-b2de-2fdfb4a57fae	1794245457773	4	basic
 \.
 
 
@@ -38475,20 +39036,11 @@ COPY public.nb_dx_inventory_log (id, "createdAt", "updatedAt", sort, textbook_na
 --
 
 COPY public.nb_dx_leave (id, "createdAt", "updatedAt", sort, "createdById", "updatedById", student_name, class_id, type, reason, start_time, end_time, duration_days, status, over_ratio, approved_remark, student_id) FROM stdin;
-2	2026-11-09 06:28:31.784+00	2026-11-09 06:28:31.784+00	1	1	1	test1	\N	personal	123321	2026-11-08 16:00:00+00	2026-11-12 16:00:00+00	5	pending	\N	123321	\N
-13	2026-11-09 16:13:35.018+00	2026-11-09 16:21:26.091+00	12	6	6	\N	\N	personal	标题验证-可驳回	2026-02-02 00:30:00+00	2026-02-02 02:10:00+00	1	rejected	\N	\N	\N
 14	2026-11-09 16:14:06.596+00	2026-11-09 16:21:49.75+00	13	6	6	\N	\N	personal	标题验证-可驳回	2026-02-02 00:30:00+00	2026-02-02 02:10:00+00	1	rejected	\N	\N	1
 12	2026-11-09 16:01:49.703+00	2026-11-09 16:22:38.269+00	11	12	12	\N	10	personal	测试	2026-11-09 16:00:00+00	2027-11-09 16:00:00+00	365	approved	\N	\N	43
-5	2026-11-09 09:55:00.52+00	2026-11-09 09:55:00.52+00	4	1	1	王丽娟	1	sick	感冒发烧，需居家休息	2026-01-06 00:30:00+00	2026-01-06 09:40:00+00	1	approved	false	注意休息，补齐课程	2
-3	2026-11-09 06:37:23.886+00	2026-11-09 10:00:22.634+00	2	1	1	张明远	1	sick	测试请假半天	2026-11-10 01:00:00+00	2026-11-10 05:00:00+00	0.5	approved	\N	情况属实，同意	1
-4	2026-11-09 06:38:56.415+00	2026-11-09 10:00:22.656+00	3	1	1	张明远	1	personal	家中有事	2026-11-12 01:00:00+00	2026-11-13 04:00:00+00	2.6	approved	true	同意	1
 15	2026-11-09 16:24:32.933+00	2026-11-09 16:24:32.939+00	14	12	12	\N	10	personal	\N	2026-11-09 16:00:00+00	2026-11-21 16:00:00+00	12	pending	\N	\N	43
-8	2026-11-09 10:43:03.006+00	2026-11-09 13:09:04.371+00	7	6	1	1213321	1	sick	移动端验证-测试请假	2026-11-10 01:00:00+00	2026-11-10 04:00:00+00	0.3	pending	\N	\N	1
-9	2026-11-09 13:24:03.439+00	2026-11-09 13:24:14.963+00	8	6	6	\N	8	\N	E2E链路测试请假	\N	\N	1	approved	\N	情况属实，同意	\N
 10	2026-11-09 13:24:45.766+00	2026-11-09 13:24:54.182+00	9	6	6	\N	8	\N	E2E链路测试请假2（带学员关联）	\N	\N	1	approved	true	同意（第2次，应触发1/7提醒）	1
 11	2026-11-09 14:48:00.307+00	2026-11-09 14:48:00.317+00	10	6	6	\N	1	personal	\N	2026-11-08 16:00:00+00	2027-11-08 16:00:00+00	\N	pending	\N	\N	1
-6	2026-11-09 09:55:00.529+00	2026-11-09 09:55:00.529+00	5	1	1	吴建军	1	duty	本单位有紧急公务需返回处理	2026-01-08 06:00:00+00	2026-01-09 09:40:00+00	2	pending	false	\N	26
-7	2026-11-09 09:55:00.546+00	2026-11-09 09:55:00.546+00	6	1	1	许文博	1	personal	家中有事	2026-01-10 00:30:00+00	2026-01-10 09:40:00+00	1	withdrawn	false	\N	29
 \.
 
 
@@ -40828,7 +41380,7 @@ SELECT pg_catalog.setval('public.nb_dx_elective_plan_id_seq', 2, true);
 -- Name: nb_dx_eval_record_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nocobase
 --
 
-SELECT pg_catalog.setval('public.nb_dx_eval_record_id_seq', 32, true);
+SELECT pg_catalog.setval('public.nb_dx_eval_record_id_seq', 34, true);
 
 
 --

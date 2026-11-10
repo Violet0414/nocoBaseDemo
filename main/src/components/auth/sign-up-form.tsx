@@ -191,7 +191,7 @@ function BasicSignUpForm({ authenticator }: { authenticator: Authenticator }) {
     if (missingField) {
       open?.({
         type: "error",
-        message: `Please enter ${getFieldLabel(missingField)}`,
+        message: `请输入${getFieldLabel(missingField)}`,
       });
       return;
     }
@@ -199,8 +199,8 @@ function BasicSignUpForm({ authenticator }: { authenticator: Authenticator }) {
     if (password !== confirmPassword) {
       open?.({
         type: "error",
-        message: "Passwords don't match",
-        description: "Please make sure both password fields match.",
+        message: "两次输入的密码不一致",
+        description: "请确认两次输入的密码相同后再提交。",
       });
       return;
     }
@@ -226,7 +226,7 @@ function BasicSignUpForm({ authenticator }: { authenticator: Authenticator }) {
       ))}
 
       <div className="space-y-2">
-        <Label htmlFor={`${authenticator.name}-password`}>Password</Label>
+        <Label htmlFor={`${authenticator.name}-password`}>密码</Label>
         <InputPassword
           id={`${authenticator.name}-password`}
           value={password}
@@ -238,7 +238,7 @@ function BasicSignUpForm({ authenticator }: { authenticator: Authenticator }) {
 
       <div className="space-y-2">
         <Label htmlFor={`${authenticator.name}-confirm-password`}>
-          Confirm password
+          确认密码
         </Label>
         <InputPassword
           id={`${authenticator.name}-confirm-password`}
@@ -250,16 +250,16 @@ function BasicSignUpForm({ authenticator }: { authenticator: Authenticator }) {
       </div>
 
       <Button type="submit" className="w-full" disabled={isPending}>
-        {isPending ? "Creating account…" : "Sign up"}
+        {isPending ? "创建中…" : "注 册"}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        Have an account?{" "}
+        已有账号？{" "}
         <Link
           to="/login"
           className="font-semibold text-foreground underline underline-offset-4"
         >
-          Sign in
+          登录
         </Link>
       </p>
     </form>
@@ -277,8 +277,8 @@ export const SignUpForm = () => {
 
   return (
     <AuthLayout
-      title="Create your account"
-      description="Create your NocoBase account."
+      title="创建账号"
+      description="注册党校智慧管理平台账号。"
     >
       {isPending ? (
         <div className="flex min-h-64 items-center justify-center">
@@ -287,11 +287,11 @@ export const SignUpForm = () => {
       ) : error ? (
         <Alert variant="destructive">
           <AlertCircle />
-          <AlertTitle>Unable to load the sign-up method</AlertTitle>
+          <AlertTitle>无法加载注册方式</AlertTitle>
           <AlertDescription>
             {import.meta.env.DEV && error instanceof Error
               ? error.message
-              : "Please try again or contact your administrator."}
+              : "请稍后重试或联系管理员。"}
           </AlertDescription>
         </Alert>
       ) : !authenticator || authenticator.authType !== "Email/Password" ? (
@@ -300,10 +300,9 @@ export const SignUpForm = () => {
             <EmptyMedia variant="icon">
               <KeyRound />
             </EmptyMedia>
-            <EmptyTitle>No sign-up method available</EmptyTitle>
+            <EmptyTitle>暂无可用注册方式</EmptyTitle>
             <EmptyDescription>
-              This sign-up link is invalid or the authentication method does
-              not support account registration.
+              注册链接无效，或该认证方式不支持账号注册。
             </EmptyDescription>
           </EmptyHeader>
         </Empty>
@@ -313,9 +312,9 @@ export const SignUpForm = () => {
             <EmptyMedia variant="icon">
               <KeyRound />
             </EmptyMedia>
-            <EmptyTitle>Account registration is disabled</EmptyTitle>
+            <EmptyTitle>账号注册已关闭</EmptyTitle>
             <EmptyDescription>
-              Contact your administrator if you need an account.
+              如需账号，请联系管理员开通。
             </EmptyDescription>
           </EmptyHeader>
         </Empty>

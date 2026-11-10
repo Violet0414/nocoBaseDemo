@@ -26,21 +26,21 @@ export const ForgotPasswordForm = () => {
 
   return (
     <AuthLayout
-      title="Forgot password"
-      description="Enter your email to reset your password."
+      title="重置密码"
+      description="输入邮箱，我们将向您发送密码重置链接。"
       footer={
         <Link
           to="/login"
           className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" />
-          Back to sign in
+          返回登录
         </Link>
       }
     >
       <form onSubmit={handleForgotPassword} className="space-y-5">
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">邮箱</Label>
           <Input
             id="email"
             type="email"
@@ -56,7 +56,7 @@ export const ForgotPasswordForm = () => {
           className="w-full"
           disabled={isPending}
         >
-          {isPending ? "Sending…" : "Send reset link"}
+          {isPending ? "发送中…" : "发送重置链接"}
         </Button>
       </form>
     </AuthLayout>

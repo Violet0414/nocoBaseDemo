@@ -35,7 +35,7 @@ export function BasicSignInForm({
     <form onSubmit={handleSignIn} className="space-y-5">
       <div className="space-y-2">
         <Label htmlFor={`${authenticator.name}-account`}>
-          Username or email
+          用户名或邮箱
         </Label>
         <Input
           id={`${authenticator.name}-account`}
@@ -49,7 +49,7 @@ export function BasicSignInForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor={`${authenticator.name}-password`}>Password</Label>
+        <Label htmlFor={`${authenticator.name}-password`}>密码</Label>
         <InputPassword
           id={`${authenticator.name}-password`}
           value={password}
@@ -64,7 +64,7 @@ export function BasicSignInForm({
         className="w-full"
         disabled={isPending}
       >
-        {isPending ? "Signing in…" : "Sign in"}
+        {isPending ? "登录中…" : "登 录"}
       </Button>
 
       {(allowSignUp || enableResetPassword) && (
@@ -76,19 +76,19 @@ export function BasicSignInForm({
               )}`}
               className="transition-colors hover:text-foreground hover:underline hover:underline-offset-4"
             >
-              Forgot password?
+              忘记密码？
             </Link>
           ) : (
             <span />
           )}
           {allowSignUp && (
             <span>
-              No account?{" "}
+              没有账号？{" "}
               <Link
                 to={`/register?name=${encodeURIComponent(authenticator.name)}`}
                 className="font-semibold text-foreground underline underline-offset-4"
               >
-                Sign up
+                注册
               </Link>
             </span>
           )}

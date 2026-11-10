@@ -20,25 +20,25 @@ export function PageErrorBoundary({ children }: PropsWithChildren) {
       labels={{
         title: translate(
           "runtimeError.title",
-          "Something went wrong"
+          "页面出错了"
         ),
         description: translate(
           "runtimeError.description",
-          "This page could not be displayed. Copy the diagnostic information if you need help."
+          "该页面无法正常显示，如需反馈问题可复制诊断信息。"
         ),
         details: translate(
           "runtimeError.details",
-          "Diagnostic information"
+          "诊断信息"
         ),
         copyDetails: translate(
           "runtimeError.copyDetails",
-          "Copy diagnostic information"
+          "复制诊断信息"
         ),
-        copied: translate("runtimeError.copied", "Copied"),
-        copyFailed: translate("runtimeError.copyFailed", "Copy failed"),
-        retry: translate("runtimeError.retry", "Try again"),
-        reload: translate("runtimeError.reload", "Reload page"),
-        backHome: translate("runtimeError.backHome", "Back to homepage"),
+        copied: translate("runtimeError.copied", "已复制"),
+        copyFailed: translate("runtimeError.copyFailed", "复制失败"),
+        retry: translate("runtimeError.retry", "重试"),
+        reload: translate("runtimeError.reload", "刷新页面"),
+        backHome: translate("runtimeError.backHome", "返回首页"),
       }}
       onBackHome={() => navigate("/")}
     >

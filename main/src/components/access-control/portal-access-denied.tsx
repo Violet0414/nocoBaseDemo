@@ -35,7 +35,7 @@ export function PortalAccessDeniedView({
   const translate = useTranslate();
   const switchRoleTitle = translate(
     "acl.roleSwitcher.switchRole",
-    "Switch role"
+    "切换角色"
   );
 
   return (
@@ -66,7 +66,7 @@ export function PortalAccessDeniedView({
                 <span className="text-sm text-muted-foreground">
                   {translate(
                     "acl.roleSwitcher.currentRole",
-                    "Current role"
+                    "当前角色"
                   )}
                 </span>
                 <Badge className="font-normal" variant="secondary">
@@ -76,13 +76,13 @@ export function PortalAccessDeniedView({
             </CardHeader>
             <CardContent className="space-y-2">
               <p className="text-sm">
-                {translate("acl.roleSwitcher.selectRole", "Select role")}
+                {translate("acl.roleSwitcher.selectRole", "选择角色")}
               </p>
               {roleSwitcher}
               <p className="text-sm leading-6 text-muted-foreground">
                 {translate(
                   "acl.roleSwitcher.recheckPortalAccess",
-                  "Portal access will be checked again after switching."
+                  "切换后将重新校验门户访问权限。"
                 )}
               </p>
             </CardContent>

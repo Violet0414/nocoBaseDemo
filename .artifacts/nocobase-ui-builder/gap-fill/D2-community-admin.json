@@ -1,0 +1,214 @@
+{
+ "version": "1",
+ "mode": "create",
+ "assets": {
+  "charts": {
+   "actByAuthor": {
+    "query": {
+     "mode": "builder",
+     "resource": {
+      "dataSourceKey": "main",
+      "collectionName": "nb_dx_comment"
+     },
+     "measures": [
+      {
+       "field": "id",
+       "aggregation": "count",
+       "alias": "actCount"
+      }
+     ],
+     "dimensions": [
+      {
+       "field": "author.nickname"
+      }
+     ]
+    },
+    "visual": {
+     "mode": "basic",
+     "type": "bar",
+     "mappings": {
+      "x": "author.nickname",
+      "y": "actCount"
+     }
+    }
+   }
+  }
+ },
+ "defaults": {
+  "collections": {
+   "nb_dx_comment": {
+    "popups": {
+     "view": {
+      "name": "查看帖子",
+      "description": "查看一条帖子或跟帖详情"
+     },
+     "edit": {
+      "name": "编辑帖子",
+      "description": "编辑一条帖子或跟帖"
+     }
+    }
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "查看用户",
+      "description": "查看用户详情"
+     }
+    }
+   },
+   "nb_dx_class": {
+    "popups": {
+     "view": {
+      "name": "查看班次",
+      "description": "查看一条班次记录详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "classBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "code",
+       "category",
+       "train_type",
+       "status",
+       "organizer"
+      ]
+     },
+     {
+      "key": "classPeriod",
+      "title": "报名与学习周期",
+      "fields": [
+       "enroll_start",
+       "enroll_end",
+       "start_date",
+       "end_date",
+       "total_days",
+       "total_hours"
+      ]
+     },
+     {
+      "key": "classOther",
+      "title": "其他信息",
+      "fields": [
+       "default_room",
+       "qr_token",
+       "description"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "navigation": {
+  "portalUid": "__default_admin__",
+  "group": {
+   "routeId": "396734674829312"
+  },
+  "item": {
+   "title": "学员社区",
+   "icon": "TeamOutlined"
+  }
+ },
+ "page": {
+  "title": "学员社区"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "学员社区",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "actChart",
+       "span": 12
+      },
+      {
+       "key": "postTable",
+       "span": 12
+      }
+     ],
+     [
+      {
+       "key": "replyTable",
+       "span": 24
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "actChart",
+     "type": "chart",
+     "title": "社区活跃度（发帖与回复排名）",
+     "chart": "actByAuthor"
+    },
+    {
+     "key": "postTable",
+     "type": "table",
+     "title": "帖子列表",
+     "collection": "nb_dx_comment",
+     "fields": [
+      "title",
+      "content",
+      "author.nickname",
+      "klass.name",
+      "hot"
+     ],
+     "recordActions": [
+      "view",
+      "edit",
+      "delete"
+     ],
+     "settings": {
+      "dataScope": {
+       "filter": {
+        "logic": "$and",
+        "items": [
+         {
+          "path": "kind",
+          "operator": "$eq",
+          "value": "post"
+         }
+        ]
+       }
+      }
+     }
+    },
+    {
+     "key": "replyTable",
+     "type": "table",
+     "title": "跟帖列表",
+     "collection": "nb_dx_comment",
+     "fields": [
+      "content",
+      "author.nickname",
+      "parent.title",
+      "hot"
+     ],
+     "recordActions": [
+      "view",
+      "edit",
+      "delete"
+     ],
+     "settings": {
+      "dataScope": {
+       "filter": {
+        "logic": "$and",
+        "items": [
+         {
+          "path": "kind",
+          "operator": "$eq",
+          "value": "reply"
+         }
+        ]
+       }
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

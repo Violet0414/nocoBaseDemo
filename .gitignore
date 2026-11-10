@@ -17,3 +17,6 @@ __pycache__/
 
 # 服务器部署包内嵌真实 API key 的公开页（与 backups/ 同口径不入库）
 .artifacts/server-deploy/pkg/server-extra/
+
+# 部署打包临时产物（可随时重打，源在 .artifacts/server-deploy/）
+dx-demo-deploy.tar.gz

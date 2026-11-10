@@ -1,0 +1,11 @@
+{
+  "target": {
+    "uid": "if2zxw7cxu5"
+  },
+  "changes": {
+    "visual": {
+      "mode": "custom",
+      "raw": "const rows = (ctx.data && ctx.data.objects) || [];\nconst counter = {};\nconst order = [];\nrows.forEach(function (r) {\n  const raw = r['textbook.name'];\n  const name = (raw === null || raw === undefined || raw === '') ? '未关联教材' : String(raw);\n  if (!(name in counter)) { counter[name] = 0; order.push(name); }\n  const v = r['reqQty'] != null ? Number(r['reqQty']) : Number(r['quantity'] || 0);\n  counter[name] += isNaN(v) ? 0 : v;\n});\norder.sort(function (a, b) { return counter[b] - counter[a]; });\nreturn {\n  tooltip: { trigger: 'axis' },\n  legend: { bottom: 0 },\n  grid: { left: 16, right: 16, top: 32, bottom: 48, containLabel: true },\n  xAxis: { type: 'category', data: order, axisLabel: { rotate: 20, interval: 0 } },\n  yAxis: { type: 'value' },\n  series: [\n    {\n      type: 'bar',\n      name: '领用数量',\n      data: order.map(function (n) { return counter[n]; }),\n      barMaxWidth: 40,\n      label: { show: true, position: 'top' }\n    }\n  ]\n};"
+    }
+  }
+}

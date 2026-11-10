@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 export function AccessDenied({
   className,
-  title = "Access denied",
-  description = "You don't have permission to view this content.",
+  title = "无权访问",
+  description = "您没有权限查看此内容。",
 }: {
   className?: string;
   title?: string;

@@ -1,0 +1,108 @@
+{
+  "version": "1",
+  "mode": "create",
+  "assets": {
+    "charts": {
+      "logByType": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_inventory_log"
+          },
+          "measures": [
+            {
+              "field": "id",
+              "aggregation": "count",
+              "alias": "logCount"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "type"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "pie",
+          "mappings": {
+            "category": "type",
+            "value": "logCount"
+          }
+        }
+      }
+    }
+  },
+  "defaults": {
+    "collections": {
+      "nb_dx_inventory_log": {
+        "popups": {
+          "view": {
+            "name": "查看库存流水",
+            "description": "查看一条库存流水详情"
+          }
+        }
+      }
+    }
+  },
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": "396714401660928"
+    },
+    "item": {
+      "title": "库存流水",
+      "icon": "SwapOutlined"
+    }
+  },
+  "page": {
+    "title": "库存流水"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "库存流水",
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "typePie",
+              "span": 12
+            },
+            {
+              "key": "logTable",
+              "span": 12
+            }
+          ]
+        ]
+      },
+      "blocks": [
+        {
+          "key": "typePie",
+          "type": "chart",
+          "title": "流水类型分布",
+          "chart": "logByType"
+        },
+        {
+          "key": "logTable",
+          "type": "table",
+          "title": "流水明细",
+          "collection": "nb_dx_inventory_log",
+          "fields": [
+            "textbook_name",
+            "type",
+            "qty_change",
+            "before_qty",
+            "after_qty",
+            "ref_no",
+            "happened_at"
+          ],
+          "recordActions": [
+            "view"
+          ]
+        }
+      ]
+    }
+  ]
+}

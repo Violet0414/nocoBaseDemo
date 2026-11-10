@@ -1,0 +1,258 @@
+{
+ "version": "1",
+ "mode": "create",
+ "assets": {
+  "charts": {
+   "subByStatus": {
+    "query": {
+     "mode": "builder",
+     "resource": {
+      "dataSourceKey": "main",
+      "collectionName": "nb_dx_submission"
+     },
+     "measures": [
+      {
+       "field": "id",
+       "aggregation": "count",
+       "alias": "subCount"
+      }
+     ],
+     "dimensions": [
+      {
+       "field": "status"
+      }
+     ]
+    },
+    "visual": {
+     "mode": "basic",
+     "type": "pie",
+     "mappings": {
+      "category": "status",
+      "value": "subCount"
+     }
+    }
+   }
+  }
+ },
+ "defaults": {
+  "collections": {
+   "nb_dx_assignment": {
+    "popups": {
+     "view": {
+      "name": "查看作业",
+      "description": "查看一条作业详情"
+     },
+     "edit": {
+      "name": "编辑作业",
+      "description": "编辑一条作业记录"
+     }
+    }
+   },
+   "nb_dx_submission": {
+    "popups": {
+     "view": {
+      "name": "查看作业提交",
+      "description": "查看一条作业提交详情"
+     },
+     "edit": {
+      "name": "编辑作业提交",
+      "description": "编辑一条作业提交记录"
+     }
+    }
+   },
+   "nb_dx_topic": {
+    "popups": {
+     "view": {
+      "name": "查看专题",
+      "description": "查看一条教学专题详情"
+     },
+     "associations": {
+      "teacher": {
+       "view": {
+        "name": "查看教师",
+        "description": "查看教师详情"
+       }
+      }
+     }
+    }
+   },
+   "nb_dx_class": {
+    "popups": {
+     "view": {
+      "name": "查看班次",
+      "description": "查看一条班次记录详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "classBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "code",
+       "category",
+       "train_type",
+       "status",
+       "organizer"
+      ]
+     },
+     {
+      "key": "classPeriod",
+      "title": "报名与学习周期",
+      "fields": [
+       "enroll_start",
+       "enroll_end",
+       "start_date",
+       "end_date",
+       "total_days",
+       "total_hours"
+      ]
+     },
+     {
+      "key": "classOther",
+      "title": "其他信息",
+      "fields": [
+       "default_room",
+       "qr_token",
+       "description"
+      ]
+     }
+    ]
+   },
+   "nb_dx_student": {
+    "popups": {
+     "view": {
+      "name": "查看学员",
+      "description": "查看一条学员详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "studentBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "student_no",
+       "gender",
+       "birth_date",
+       "political_status",
+       "phone",
+       "photo"
+      ]
+     },
+     {
+      "key": "studentWork",
+      "title": "单位与班级",
+      "fields": [
+       "work_unit",
+       "duty",
+       "group_no",
+       "klass",
+       "user"
+      ]
+     },
+     {
+      "key": "studentStatus",
+      "title": "学籍状态",
+      "fields": [
+       "status",
+       "enroll_status",
+       "excellent",
+       "remark"
+      ]
+     }
+    ]
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "用户",
+      "description": "查看一条用户详情"
+     }
+    }
+   }
+  }
+ },
+ "navigation": {
+  "portalUid": "__default_admin__",
+  "group": {
+   "routeId": "396723346014208"
+  },
+  "item": {
+   "title": "作业管理",
+   "icon": "FileDoneOutlined"
+  }
+ },
+ "page": {
+  "title": "作业管理"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "作业管理",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "assignmentTable",
+       "span": 24
+      }
+     ],
+     [
+      {
+       "key": "subChart",
+       "span": 12
+      },
+      {
+       "key": "submissionTable",
+       "span": 12
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "assignmentTable",
+     "type": "table",
+     "collection": "nb_dx_assignment",
+     "fields": [
+      "name",
+      "topic.name",
+      "klass.name",
+      "teacher.nickname",
+      "due_date",
+      "review_mode",
+      "status"
+     ],
+     "recordActions": [
+      "view",
+      "edit"
+     ]
+    },
+    {
+     "key": "subChart",
+     "type": "chart",
+     "title": "作业提交情况统计",
+     "chart": "subByStatus"
+    },
+    {
+     "key": "submissionTable",
+     "type": "table",
+     "collection": "nb_dx_submission",
+     "fields": [
+      "assignment.name",
+      "student.name",
+      "submitted_at",
+      "score",
+      "review",
+      "status"
+     ],
+     "recordActions": [
+      "view",
+      "edit"
+     ]
+    }
+   ]
+  }
+ ]
+}

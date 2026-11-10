@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useLocation } from "react-router";
 import { filterMenuItemsByAcl, useAclState } from "@nocobase/portal-sdk/acl";
 import {
   useMenu,
@@ -293,7 +294,12 @@ function SidebarHeader() {
 
 function SidebarFooter() {
   const { open } = useShadcnSidebar();
-  const translate = useTranslate();
+  const location = useLocation();
+
+  // 周课表页（/schedule/week）隐藏侧边栏底部信息条
+  if (location.pathname.includes("/schedule/week")) {
+    return null;
+  }
 
   return (
     <ShadcnSidebarFooter className="border-t border-sidebar-border/70 p-0">
@@ -308,24 +314,13 @@ function SidebarFooter() {
         {open && (
           <div className="min-w-0 text-xs leading-4">
             <div className="font-semibold text-sidebar-foreground">
-              {translate("shell.footer.freedom", "AI builds freely.")}
+              党校智慧管理平台
             </div>
             <div className="text-muted-foreground">
-              <a
-                href="https://nocobase.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-sidebar-foreground hover:underline"
-              >
-                NocoBase
-              </a>{" "}
-              {translate(
-                "shell.footer.reliabilitySuffix",
-                "keeps it reliable."
-              )}
+              教学、学员、教务一体化管理
             </div>
             <div className="mt-1 font-mono text-[10px] text-muted-foreground/70">
-              {__PORTAL_TEMPLATE_NAME__} v{__PORTAL_TEMPLATE_VERSION__}
+              v{__PORTAL_TEMPLATE_VERSION__}
             </div>
           </div>
         )}

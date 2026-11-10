@@ -1,0 +1,166 @@
+{
+  "version": "1",
+  "mode": "create",
+  "assets": {
+    "charts": {
+      "reqByBook": {
+        "query": {
+          "mode": "builder",
+          "resource": {
+            "dataSourceKey": "main",
+            "collectionName": "nb_dx_requisition"
+          },
+          "measures": [
+            {
+              "field": "quantity",
+              "aggregation": "sum",
+              "alias": "reqQty"
+            }
+          ],
+          "dimensions": [
+            {
+              "field": "textbook.name"
+            }
+          ]
+        },
+        "visual": {
+          "mode": "basic",
+          "type": "bar",
+          "mappings": {
+            "x": "textbook.name",
+            "y": "reqQty"
+          }
+        }
+      }
+    }
+  },
+  "defaults": {
+    "collections": {
+      "nb_dx_requisition": {
+        "popups": {
+          "view": {
+            "name": "查看领用记录",
+            "description": "查看一条教材领用记录详情"
+          }
+        }
+      },
+      "nb_dx_textbook": {
+        "popups": {
+          "view": {
+            "name": "查看教材",
+            "description": "查看一条教材信息详情"
+          }
+        }
+      },
+      "users": {
+        "popups": {
+          "view": {
+            "name": "查看经办人",
+            "description": "查看经办人信息"
+          }
+        }
+      },
+      "nb_dx_class": {
+        "popups": {
+          "view": {
+            "name": "查看班次",
+            "description": "查看一条班次记录详情"
+          }
+        },
+        "fieldGroups": [
+          {
+            "key": "classBasic",
+            "title": "基本信息",
+            "fields": [
+              "name",
+              "code",
+              "category",
+              "train_type",
+              "status",
+              "organizer"
+            ]
+          },
+          {
+            "key": "classPeriod",
+            "title": "报名与学习周期",
+            "fields": [
+              "enroll_start",
+              "enroll_end",
+              "start_date",
+              "end_date",
+              "total_days",
+              "total_hours"
+            ]
+          },
+          {
+            "key": "classOther",
+            "title": "其他信息",
+            "fields": [
+              "default_room",
+              "qr_token",
+              "description"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "navigation": {
+    "portalUid": "__default_admin__",
+    "group": {
+      "routeId": "396714401660928"
+    },
+    "item": {
+      "title": "领用报表",
+      "icon": "BarChartOutlined"
+    }
+  },
+  "page": {
+    "title": "领用报表"
+  },
+  "tabs": [
+    {
+      "key": "main",
+      "title": "领用报表",
+      "layout": {
+        "rows": [
+          [
+            {
+              "key": "reqChart",
+              "span": 12
+            },
+            {
+              "key": "reqTable",
+              "span": 12
+            }
+          ]
+        ]
+      },
+      "blocks": [
+        {
+          "key": "reqChart",
+          "type": "chart",
+          "title": "各教材领用数量统计",
+          "chart": "reqByBook"
+        },
+        {
+          "key": "reqTable",
+          "type": "table",
+          "title": "领用明细",
+          "collection": "nb_dx_requisition",
+          "fields": [
+            "textbook.name",
+            "klass.name",
+            "batch_no",
+            "quantity",
+            "date",
+            "operator.nickname"
+          ],
+          "recordActions": [
+            "view"
+          ]
+        }
+      ]
+    }
+  ]
+}

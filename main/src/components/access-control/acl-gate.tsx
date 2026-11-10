@@ -20,11 +20,11 @@ export function AclGate({ children }: PropsWithChildren) {
         <PortalAccessDenied
           title={translate(
             "acl.portalAccessDenied.title",
-            "You do not have access to this Portal"
+            "无权访问此门户"
           )}
           description={translate(
             "acl.portalAccessDenied.description",
-            "Your current role cannot access this Portal. Select another role to try again."
+            "当前角色无法访问此门户，请切换角色后重试。"
           )}
         />
       );
@@ -36,7 +36,7 @@ export function AclGate({ children }: PropsWithChildren) {
         ? errorMessage
         : translate(
             "acl.permissionsLoad.description",
-            "Permissions for the current role could not be loaded."
+            "当前角色的权限信息无法加载。"
           );
 
     return (
@@ -45,7 +45,7 @@ export function AclGate({ children }: PropsWithChildren) {
           <h1 className="text-xl font-semibold">
             {translate(
               "acl.permissionsLoad.title",
-              "Unable to load permissions"
+              "权限加载失败"
             )}
           </h1>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
@@ -57,7 +57,7 @@ export function AclGate({ children }: PropsWithChildren) {
             onClick={() => store.retry()}
           >
             <RotateCcw />
-            {translate("acl.permissionsLoad.retry", "Retry")}
+            {translate("acl.permissionsLoad.retry", "重试")}
           </Button>
         </div>
       </div>

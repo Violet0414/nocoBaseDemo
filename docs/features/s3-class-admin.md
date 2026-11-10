@@ -41,3 +41,10 @@
 1. **块级 `defaultFilter` 强制 `{logic, items}` 结构且至少 3 个 filterable 字段**：`{"$and":[...]}` 包装直接被拒（defaultFilter-logic-required/items-required），单字段条件被拒（defaultFilter-minimum-fields，"must include at least 3 filterable fields"）。**单字段过滤改用 `settings.dataScope.filter`**（`{"logic":"$and","items":[{"path":"kind","operator":"$in","value":[...]}]}`），一次通过且读回确认保留。dataScope 不受 3 字段物化校验约束。
 2. **chart 块必须显式 `assets.charts.<key>`**：块里写 `"chart": "attByStatus"` 而 assets 未定义 → `chart-block-asset-reference-missing`。补 `assets.charts.attByStatus.query`（measure `count id` alias + dimension status）+ `visual`（pie，mappings category/value）即过。count 聚合写法 `{"field":"id","aggregation":"count","alias":"..."}` 有效。
 3. 复用既有经验：关联目标 >10 字段给 fieldGroups（student/class/topic 已验证方案 + 新构造 course_schedule 分组）；表格关联列用点路径（`klass.name`/`creator.nickname`，users 必须 `.nickname`）。
+
+## 列单元格渲染规则（D70 补充）
+
+- 表格列的单元格渲染由 **TableColumnModel 下的 field 子模型**（subKey=field，如 `9f4vkck3k1e`）决定，不是列模型本身：select 类字段默认 `DisplayEnumFieldModel`（显示枚举 label），input/number 等默认 `DisplayTextFieldModel`（显示原始值）。boolean 字段想显示"是/否"，把 field 子模型换成 `DisplayEnumFieldModel` 并在 `props.options` 显式映射，**不动集合定义**（boolean 字段还要参与工作流判断）。
+- **value 必须混配字符串与布尔两种**：`[{"value":"true","label":"是"},{"value":true,"label":"是"},{"value":"false","label":"否"},{"value":false,"label":"否"}]`——boolean 字段值经 API 序列化到前端是字符串 `"true"`，纯布尔映射匹配不上会 fallback 显示原值；两种 value 同一值只会命中一项，不重复渲染。
+- NULL 值显示空白（isEmptyEnumValue 短路），属预期。
+- 坑：`docker exec psql -c` 直写中文 JSON 会编码乱码——中文改动后必须验 UTF-8 字节（是=e698af/否=e590a6），或改用 Unicode 转义/文件管道。

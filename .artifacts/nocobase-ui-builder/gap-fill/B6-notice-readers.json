@@ -1,0 +1,113 @@
+{
+ "version": "1",
+ "mode": "create",
+ "defaults": {
+  "collections": {
+   "nb_dx_announcement": {
+    "popups": {
+     "view": {
+      "name": "教学通知",
+      "description": "查看一条教学通知详情"
+     }
+    }
+   },
+   "nb_dx_class": {
+    "popups": {
+     "view": {
+      "name": "查看班次",
+      "description": "查看一条班次记录详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "classBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "code",
+       "category",
+       "train_type",
+       "status",
+       "organizer"
+      ]
+     },
+     {
+      "key": "classPeriod",
+      "title": "报名与学习周期",
+      "fields": [
+       "enroll_start",
+       "enroll_end",
+       "start_date",
+       "end_date",
+       "total_days",
+       "total_hours"
+      ]
+     },
+     {
+      "key": "classOther",
+      "title": "其他信息",
+      "fields": [
+       "default_room",
+       "qr_token",
+       "description"
+      ]
+     }
+    ]
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "阅读人",
+      "description": "查看一条阅读人详情"
+     }
+    }
+   }
+  }
+ },
+ "navigation": {
+  "portalUid": "__default_admin__",
+  "group": {
+   "routeId": "396723346014208"
+  },
+  "item": {
+   "title": "通知阅读统计",
+   "icon": "ReadOutlined"
+  }
+ },
+ "page": {
+  "title": "通知阅读统计"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "通知阅读统计",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "readTable",
+       "span": 24
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "readTable",
+     "type": "table",
+     "collection": "nb_dx_announcement",
+     "fields": [
+      "title",
+      "kind",
+      "publisher.nickname",
+      "published_at",
+      "readers.nickname"
+     ],
+     "recordActions": [
+      "view"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "version": "1",
+ "mode": "create",
+ "defaults": {
+  "collections": {
+   "nb_dx_change_log": {
+    "popups": {
+     "view": {
+      "name": "调课记录",
+      "description": "查看一条调课记录详情"
+     }
+    }
+   },
+   "nb_dx_course_schedule": {
+    "popups": {
+     "view": {
+      "name": "查看课节",
+      "description": "查看一条课节详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "csBasic",
+      "title": "课程信息",
+      "fields": [
+       "topic_name",
+       "klass",
+       "topic",
+       "activity",
+       "kind",
+       "week_no",
+       "day_of_week"
+      ]
+     },
+     {
+      "key": "csTime",
+      "title": "时间与地点",
+      "fields": [
+       "start_time",
+       "end_time",
+       "place",
+       "unit_name"
+      ]
+     },
+     {
+      "key": "csOther",
+      "title": "其他",
+      "fields": [
+       "teacher",
+       "merged",
+       "eval_enabled",
+       "status"
+      ]
+     }
+    ]
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "经办人",
+      "description": "查看一条经办人详情"
+     }
+    }
+   }
+  }
+ },
+ "navigation": {
+  "portalUid": "__default_admin__",
+  "group": {
+   "routeId": "396723346014208"
+  },
+  "item": {
+   "title": "调课记录",
+   "icon": "HistoryOutlined"
+  }
+ },
+ "page": {
+  "title": "调课记录"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "调课记录",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "changeTable",
+       "span": 24
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "changeTable",
+     "type": "table",
+     "collection": "nb_dx_change_log",
+     "fields": [
+      "summary",
+      "old_values",
+      "new_values",
+      "reason",
+      "notified",
+      "operator.nickname"
+     ],
+     "recordActions": [
+      "view"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,6 +1,10 @@
 # STATE.md — 当前进度快照
 
-> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D62 评估表单修复 + 服务器重发布**：三页新增弹窗拆模板副本+kind 默认值+学员必填；fresh dump 20261110 重灌 10.10.40.44；此前：D60/D61 超限提醒断链+姓名列统一，D59 移动端调整，D58 待办标题）
+> 新会话/换电脑续做入口。每完成任务更新本文件。最后更新：2026-11-10（**D70 请假管理超1/7提醒列显示是/否**；此前：D69 停用 plugin-ai 插件，D68 隐藏 main AI 悬浮按钮，D67 附件直链白字版+周课表隐藏 sidebar footer，D65+D66 品牌去 NocoBase 化，D64 需求对齐改名，D62 评估表单修复 + 服务器重发布）
+
+## 当前位置
+
+**请假管理「超1/7提醒」列显示是/否（2026-11-10，D70）** — Violet 走查要求 over_ratio 列由 true/false 改显示"是/否"。改动 = flowModels 单条：列 kgmbd2wuaer 的 field 渲染子模型 **9f4vkck3k1e** 由 DisplayTextFieldModel 改 **DisplayEnumFieldModel**，props.options 显式映射（**value 混配字符串 "true"/"false" 与布尔 true/false 双形式**——boolean 字段值经 API 序列化到前端是字符串，纯布尔匹配不上）。三个坑沉淀 decisions D70：①列单元格渲染走 field 子模型（对照实验证实）；②docker exec psql 传中文会乱码，改后须验 UTF-8 字节；③value 字符串化坑。NULL 显示空白正常（库内 1 条 true、1 条 NULL）。备份 `backups/nocobase_20261110_pre_overratio_label.sql`；验证 `.artifacts/e2e-check/verify_overratio_label.py`（登录时序：/sign-in 重定向 /signin?redirect=，固定等待 4s 再找 input；organizer_test 登录偶发失败重试即可）。e2e HAS_SHI ✓ + Violet 浏览器强刷确认 ✓。**纯 DB 配置改动，待下次 fresh dump 随重灌同步 10.10.40.44（未随本次 git 发布执行）。**
 
 ## 跨电脑续做流程（换电脑时按序执行）
 
@@ -12,9 +16,21 @@
 
 > 2026-11-09 已在新电脑（Windows 用户 Violet，路径 `E:\贵州顺拓\demo`）完成整套重建并验证：nb init + 恢复 stage1 备份 + push 幂等全通过。
 
-## 当前位置
+**停用 plugin-ai 插件（2026-11-10，D69）** — Violet 给出 admin 端 plugin-ai 官方资产 SVG（f0053e745af0ad03.svg），要求隐藏 admin 的 AI 交互按钮。定位：admin 悬浮球是 **plugin-ai 客户端硬编码渲染**（无 flowModel 实例、无配置开关），条件 = aiEmployees 非空 + pathname 在 /admin 或 portal 前缀 + 非 v1 页面版本 + 非移动布局——8 个 builtIn AI 员工使其恒显示。修复：**`nb pm disable ai`**（WSL nb CLI）+ `nb app restart`（重建容器），applicationPlugins.ai enabled=false（installed 保留、数据无损）。验证：根路径/admin/main门户/移动端全 200，业务 API 200，aiEmployees API 403（路由已摘）；main 门户 nocobase-ai 扩展有错误状态机（拉取失败→status error→不渲染，无白屏风险）。恢复方式：`nb pm enable ai`。**服务器同步：enabled=false 在 applicationPlugins 表里，随下次 fresh dump 重灌自动生效，无需单独操作。**备份 `backups/nocobase_20261110_pre_disable_ai_plugin.sql`。
 
-**评估新增表单修复 + 服务器重发布完成（2026-11-10，D62）** — Violet 线上报障「/api/nb_dx_eval_record:create 提交了但数据没新增」。取证（服务器日志 status=200 + 落库 6 条 kind 空）：党性考核/专题评估/综合评估三页「新增」弹窗**共用表单模板** tfqylic8j8y，kind 等上下文字段无默认值非必填 → 落库 kind 空被列表过滤吞掉。修复：三处 `convert-template-to-copy` 拆副本（sb2ygwyh4fh/iq01y38zu9h/w9zp48k1cti）+ 各副本 set-field-value-rules kind 静态默认（topic/party_self/comprehensive，runjs 形态）+ 学员字段 SQL 直改 editItemSettings.required（configure 不支持 settings，400 实证）。**服务器已重灌**：fresh dump `nocobase_20261110_server_deploy.sql`（含 D55-D62 全量）→ 10.10.40.44 drop+recreate+restore+signup.html/logo docker cp，验证 HTTP 200 + 新工作流启用 + 移动端新菜单 + 扫码报名页已删。服务器上 6 条 kind 空垃圾记录（Violet 测试，id 33-38）随重灌清除。备份 `backups/flowmodels_eval_student_required_backup_20261110.txt`；决策 D62。**遗留：待办池 1 条 D58 验证残留「请假审批 - 」（leave 13）待 UI 驳回；本地 admin 密码不在手上，评估表单 UI 闭环由 Violet 线上复验。**
+**隐藏 AI 悬浮对话按钮（2026-11-10，D68）** — Violet 指示隐藏「打开 AI 对话」悬浮按钮（nocobase-ai-chat.svg 图标，aria-label t('surface.openChat')）。机制：`extensions/nocobase-ai/global-ai-chat.tsx` 的 StarterGlobalAIChat 在 `ready=ai.configurationStatus==='ready'&&ai.employees.length>0` 时渲染 AIChatFloatingTrigger——库里 aiEmployees 有 8 个 builtIn 员工（nathan/dara/dex/ellis/lexi/vera/viz/atlas）恒 ready，且 D39 已取消 AI 交互，按钮成孤入口。修复：移除该处渲染 + 清 import（生产唯一渲染点；demo/floating.tsx 的引用是 DEV 演示页不进生产路由，bundle 里留有死代码无害）。build+deploy 完成（bundle index-D4Vmz5cz.js）。AIChatWindow 侧面板保留但无入口（不可达）；aiEmployees 数据未动。**服务器同步：portal 需重新 build+deploy。**
+
+**附件直链白字版 + 周课表隐藏 sidebar footer（2026-11-10，D67）** — Violet 两项。①**`/files/main/main/attachments/1.png` 没显示新图**根因 = **Violet 走查在服务器（10.10.40.44），D66 只替换了本地容器**，服务器 uploads 两份 logo 还是旧 NocoBase 图（md5 取证确认）；另注意 `/storage/uploads/*` 走 nginx auth_request，未登录访问 401 也显示不出。修复：uploads（logo-0ilulu/logo-ouub0e）**本地 + 服务器**均替换为**透明底白字版**（logo-dark.png，Violet 指定）；服务器 nginx public /logo.png 同步换黑字版（白卡片背景上白字会隐形，登录页保持黑字）；WSL 侧 ssh/scp 通路（Windows 侧无密钥）。带 token 验证服务器 200 + md5 一致 ✓。②**周课表页隐藏 sidebar footer**：sidebar.tsx SidebarFooter 加 useLocation 判断 `/schedule/week` 返回 null；顺带把 footer 内容去 NocoBase 化（删 nocobase.com 链接，改「党校智慧管理平台 / 教学、学员、教务一体化管理 / v版本」，locale key 不再引用）。build+deploy 完成（bundle index-D3-gREZo.js；残留 grep 命中的 "AI builds freely." 是 en-US 语言包字符串，本系统固定中文，无害）。**logo 三链路现状：nginx public=黑字版、/x/main/dist=黑字版、uploads 附件直链=透明白字版。**
+
+**登录页淡蓝背景 + uploads 底层 logo 替换（2026-11-10，D66）** — Violet 两项追加。①**`/x/main/login` 右侧背景黑→淡蓝**：auth-layout section `bg-neutral-950 text-white` → `bg-blue-50 text-blue-950`（kicker blue-800/80、正文 blue-900/70、白卡片 border-blue-200/70、底部 pill blue-100/70，网格纹理 currentColor 自适应）；②**`/files/main/main/attachments/1.png` 仍显示旧 NocoBase logo**：根因 = 该 URL 是附件记录 id=1 直链，**重定向到底层存储文件 `/storage/uploads/logo-0ilulu.png`**（D65 只换了 nginx public 的 /logo.png，uploads 原图没动）；修复：uploads 下 `logo-0ilulu.png` + 孤儿副本 `logo-ouub0e.png` 均 docker cp 替换为新 wordmark（旧图留底 `.artifacts/branding/backup_uploads_logo.png`），md5 三方一致，带 token 验证 200 新图 ✓。build+deploy 完成（bundle index-2kGFBzZR.js，hash 一致，bg-blue-50 在 bundle 中 grep 确认）。**服务器同步三件套更新：除 dump+portal 部署外，nginx public logo.png 与 uploads 两份 logo 文件都需替换。**
+
+**品牌去 NocoBase 化 + 全站中文化完成（2026-11-10，D65）** — Violet 确认三项：①文字版 logo；②登录页右侧文案按芒果怪默认中文介绍；③英文展示文案全部中文化。实施：**图片**——Pillow 生成文字版 wordmark（`F:/Python/python.exe`，微软雅黑 Bold，亮 #18181b/暗 #fafafa 透明底 774×146）+ favicon（红底圆角方块白字「党」256px），脚本 `.artifacts/branding/gen_logo.py`，产物同步 `main/public/`；容器 nginx public `/logo.png` 已 docker cp 替换（admin 登录页 logo，旧图留底 `.artifacts/branding/backup_nocobase_logo.png`），attachments id=1 title 改「党校智慧管理平台-logo」。**源码 15 文件**——brand.tsx 文字化（BrandLogo=红底「党」圆角块 + BrandWordmark=文字，不再依赖图片）；index.html（title/description/favicon.png/noscript）；App.tsx + document-title-handler（appName + 动作前缀中文）；auth-layout 右侧营销区中文化（教学教务/学员服务两卡片）；登录/注册/忘记密码表单全中文；404/错误边界/ACL 无权限文案中文化。**注意坑：acl-gate.tsx 的 `errorMessage !== "Unable to load permissions"` 是与 SDK 英文报错的比对哨兵，非展示文案，不能翻译。** build+deploy 完成（bundle index-CxrucOB0.js，线上 hash 一致，新名 3 处/旧英文 0 处已 grep 验证）。admin favicon（NocoBase 图标，位于 dist 内）未替换（可选项，低价值）。备份 `backups/nocobase_20261110_branding.sql`（改后）。**服务器同步提醒：10.10.40.44 重灌时需①fresh dump；②新 logo.png docker cp 进 nginx public；③main Portal 重 build+deploy（或随 storage/portals 同迁）。**
+
+**PLAN 缺失功能补齐完成（2026-11-10，D65）** — Violet 确认清单（拍板：三维排课不做/导入导出不做/库存联动提交即触发；约束：不影响现有功能、全中文）后补齐 PLAN.md 声明缺失的 4 组功能。**A 教材库存闭环**：采购/领用/退库 3 条联动流（提交即触发：query 库存→calculation→update stock→写 inventory_log 流水，id 396902662209536/396902681083904/396902702055424）+「领用报表」「库存流水」2 页（教材管理组，396903540916224/396903549304832）；实测采购 200→205/领用 205→202/退库 202→204 全链 ✓。**B 管理端 6 页**：作业管理（批阅+转批走 edit 弹窗，transferred_to_id 已预留）/材料回复/申报信息/纪律承诺/调课记录（change_log 只读）/通知阅读统计（announcement+readers m2m 列，灌 14 条已读演示数据），routeId 见 features/s8-gapfill.md；授权 leader/academic 全部+organizer 5 页+teacher 作业。**C 站内提醒**：notificationChannels 建 in-app 通道 + 4 条流 revision 接 notification 节点（新 id：请假 396908352176128/退学 396908373147648/报名 396908392022016/缴费 396908412993536，ignoreFail 兜底）+ jsBlock ENABLED_WF/WF_TITLE/FALLBACK_ACTIONS 补新 id（备份 flowmodels_jsblock_wf_20261110.txt）；实测学员提交请假→organizer 审批→「请假审批结果…」送达学员 ✓。**D 学员社区**：零建模复用 comment 表（kind=post/reply、parent_id 自关联、hot 精华）——admin「学员社区」页（学员管理组 396909230882816，活跃度 chart custom+帖子/跟帖管理）+ 移动端页（396909314768896，发帖表单 kind 默认规则 defaultKindPost+帖子广场）+ r_student comment create 权限（SQL 直插 dataSourcesRolesResourcesActions）+ 演示数据 4 帖 4 跟帖。**统一无头回归全绿**：9 新页渲染 ✓ 既有页（库存报表/请假管理/工作台待办新流待办标题正常）✓ 移动端社区入口 ✓ pageerror=0；脚本 verify_gapfill_all.py。备份：执行前 nocobase_20261110_pre_gap_fill.sql / 完成后 nocobase_20261110_gapfill_done.sql。逻辑档案 docs/features/s8-gapfill.md；决策 D65/D65a/D65b/D65c（蓝本校验器 5 新坑）。**注意：①ACL create 权限是 SQL 直插，已重启应用生效；②线上 10.10.40.44 待下次 fresh dump 重灌统一带走（本轮全为 DB 配置无文件随迁）；③backups 里 pre_overratio_label/pre_disable_ai_plugin/branding 三个备份来自并行会话，非本轮产物。**
+
+**需求对齐改名完成（2026-11-10，D64）** — Violet 要求对照 docs/dx-requirements.md（dx.xlsx 转录）核对系统/菜单名称。改 12 处纯文案（SQL 直改 desktopRoutes，各页 hidden tabs 子行同步改）：①**站点标题 systemSettings.title `NocoBase`→`党校智慧管理平台`**（浏览器标签页/登录页，前端刷新生效）；②教务管理组「通知公告」→「教学通知」（396723947896832）；③教学资源组 6 库补"库"字对齐需求术语：教学专题库/教学活动库/教学基地库/教学案例库/校外宣讲库/拟开发专题库；④教学评估组：专题评估→专题评估状况、综合评估→综合评估状况、投票管理→投票；⑤移动端「课程表」→「我的课表」（396774655524864，底栏+页头同步）。备份 `backups/nocobase_20261110_pre_rename_menus.sql`。**已知缺口清单（未做，属新增工作量，2026-11-10 对比结论）**：admin 端作业管理/材料回复页缺失（移动端有提交无管理闭环）、调课记录页（change_log 有数据无展示页）、需求其余页（报到信息/纪律承诺/学业证书/活动风采/申报信息/综合门户消息等）；教材"统计报表"需求含领用报表+库存流水，现只有库存报表。**注意：线上 10.10.40.44 需下次重灌 fresh dump 时一并带走（或直接在服务器执行同款 UPDATE）。**
+
+**评估新增表单修复 + 服务器重发布完成（2026-11-10，D62）** — Violet 线上报障「/api/nb_dx_eval_record:create 提交了但数据没新增」。取证（服务器日志 status=200 + 落库 6 条 kind 空）：党性考核/专题评估/综合评估三页「新增」弹窗**共用表单模板** tfqylic8j8y，kind 等上下文字段无默认值非必填 → 落库 kind 空被列表过滤吞掉。修复：三处 `convert-template-to-copy` 拆副本（sb2ygwyh4fh/iq01y38zu9h/w9zp48k1cti）+ 各副本 set-field-value-rules kind 静态默认（topic/party_self/comprehensive，runjs 形态）+ 学员字段 SQL 直改 editItemSettings.required（configure 不支持 settings，400 实证）。**服务器已重灌**：fresh dump `nocobase_20261110_server_deploy.sql`（含 D55-D62 全量）→ 10.10.40.44 drop+recreate+restore+signup.html/logo docker cp，验证 HTTP 200 + 新工作流启用 + 移动端新菜单 + 扫码报名页已删。服务器上 6 条 kind 空垃圾记录（Violet 测试，id 33-38）随重灌清除。备份 `backups/flowmodels_eval_student_required_backup_20261110.txt`；决策 D62。**遗留已清（2026-11-10 复核）：D58 残留待办（leave 13）已不存在——本地库与 fresh dump 均无 leave 13 记录及空标题 pending 待办（仅剩 3 条空标题已办历史记录，无害），线上随重灌同步干净；本地 admin 密码不在手上，评估表单 UI 闭环由 Violet 线上复验。**
 
 **超1/7提醒断链修复 + 学员姓名列批量统一（2026-11-10，D60/D61）** — Violet 问「total_days 不填是不是就不触发提醒」→ 实证比预想更糟：calculation 节点 math.js 对 null 除法直接 TypeError，**整条审批流 execution -2 中断**（leave 12 卡死实证）。修复三件套：①total_days/leave.klass YAML 补 required + 存量空值补数；②22 处表单项 configure `settings.required`（请假表单 klass/事由/起止/天数 + 班次表单 total_days）。**关键坑：表单校验只认 flowModel 层 settings.required**——集合元数据 options.required / uiSchema.required 都不驱动 Formily 校验，YAML required 对已存在字段 reconciler push 也会跳过。移动端请假表单空提交 6 项必填红框拦截已无头实测 ✓。②连带：Violet 走查请假管理页姓名列空（D55 同款）→ 8 个 TableColumnModel 批量改 `student.name`（请假/外出/退学×2/考勤/评估×3），遗留销账；超1/7 提醒链路 Violet UI 实测 over_ratio=true ✓（leave 10）。备份 `backups/flowmodels_student_name_cols_backup_20261110.txt`；验证脚本 `.artifacts/e2e-check/verify_required_b2.py`、`verify_leave_mgmt_names.py`。
 
@@ -57,7 +73,7 @@
 
 **服务器部署完成（2026-11-09，D42）** — 内网机 `10.10.40.44`（Ubuntu 24.04，ops 用户）整体迁移：compose 双容器（nocobase 2.4.0-alpha.17-full + postgres:16）+ fresh dump + storage（portals/uploads/apps）随迁，`APP_KEY` 原样保留。验证全过：HTTP 200、Portal `/x/main/` hash 一致（index-Bcd5rqc0.js）、leader_test 登录 OK、班次 4/学员 21 数据无损。访问地址 **http://10.10.40.44:13000/**（账号密码与本机完全一致）。部署目录 `/home/ops/dx-demo/pkg`，步骤沉淀 SETUP.md 第 8 节，迁移包 `.artifacts/server-deploy/`。注意：服务器另有他人业务容器（5173/8080/28080），勿动。**阶段6 六页只在本机，服务器尚未同步（重部署时随 fresh dump 一并带走）。**
 
-**并行待走查**：阶段5 三页（周课表 /schedule/week、排课画布 /schedule/board、座位表 /schedule/seats）已部署 http://127.0.0.1:13000/x/main/ ，拖拽走查待 Violet。**AI 交互未落地**：LLM 服务 0 配置，需 Violet 提供 key（D39）。
+**并行待走查**：阶段5 三页（周课表 /schedule/week、排课画布 /schedule/board、座位表 /schedule/seats）已部署 http://127.0.0.1:13000/x/main/ ，拖拽走查待 Violet。
 
 ## 已完成
 
@@ -89,7 +105,7 @@
 
 - [x] **部署内网服务器（2026-11-09，D42）**：10.10.40.44 compose 双容器整体迁移，全量验证通过；地址 http://10.10.40.44:13000/ ；步骤见 SETUP.md 第 8 节
 
-- [x] **阶段5 课表/排课/排座三页代码完成（2026-11-09）**：Portal main「教学排课」组（/schedule）——周课表（7×5 表格+冲突高亮+冲突提示卡）、排课画布（拖专题排课、拖课调课写 nb_dx_change_log、智能排课贪心版）、座位表（6×8 初始化、拖拽换座/清座、按学号/年龄自动排座 diff 保存）；`registryRoutesEnabled=false` 关模板 demo 路由。纯逻辑（detectConflicts/autoAssignSeats）与 UI 分离，单测 7 用例全过 + typecheck + eslint 通过；API 形态对齐 D37（body 平铺/filterByTk/class_id+class 关联名）。已 deploy（页面 hash 读回确认）；逻辑档案 `docs/features/s5-scheduling.md`；备份 `nocobase_20261109_stage5_scheduling.sql`。遗留：①浏览器拖拽走查待 Violet；②AI 交互未落地（无 LLM key，D39）；③服务端冲突校验 workflow 后置
+- [x] **阶段5 课表/排课/排座三页代码完成（2026-11-09）**：Portal main「教学排课」组（/schedule）——周课表（7×5 表格+冲突高亮+冲突提示卡）、排课画布（拖专题排课、拖课调课写 nb_dx_change_log、智能排课贪心版）、座位表（6×8 初始化、拖拽换座/清座、按学号/年龄自动排座 diff 保存）；`registryRoutesEnabled=false` 关模板 demo 路由。纯逻辑（detectConflicts/autoAssignSeats）与 UI 分离，单测 7 用例全过 + typecheck + eslint 通过；API 形态对齐 D37（body 平铺/filterByTk/class_id+class 关联名）。已 deploy（页面 hash 读回确认）；逻辑档案 `docs/features/s5-scheduling.md`；备份 `nocobase_20261109_stage5_scheduling.sql`。遗留：①浏览器拖拽走查待 Violet；②服务端冲突校验 workflow 后置（AI 交互已取消，2026-11-10 Violet 确认）
 
 ## 实际安装方式与原计划的差异（重要）
 
@@ -108,8 +124,7 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 1. **Violet 浏览器走查**（三项一起）：①阶段6 移动端 6 页（手机浏览器开 http://127.0.0.1:13000/v/mobile 或 /mobile，学员 student_test 登录，逐页点；**课程表页已改直出本班课表（D57），不再是跳转按钮**）；②阶段5 三页拖拽（冲突演示对在第1周周三第1节）；③演示脚本走查（组织员建班→学员扫码报名→审核→请假→排课→评估→统计，测试账号见 D27，密码 dx123456）。发现问题回报芒果怪修
 2. **决策：nb_dx_course_schedule 存量 end_time 脏数据是否修**（D57 发现，展示层已规避；修则按 start_time+节次时长 100min 重算）
 3. **服务器同步阶段6**：走查通过后按 SETUP.md 第 8 节重打包（fresh dump 含阶段6 页面）
-4. AI 交互（D39）：Violet 提供 LLM key（任意 OpenAI 兼容/Anthropic 服务）后，用 `nb api ai llm-services` 配置，再给排课画布加"冲突智能解读"类交互
-5. （可选后置）公开扫码报名：public forms 未登录报名链接（班次 qr_token 已备）
+4. （可选后置）公开扫码报名：public forms 未登录报名链接（班次 qr_token 已备）
 
 ### 阶段7 速查（续做直接用）
 
@@ -192,6 +207,7 @@ Violet 在 nb init 向导中实际选择了 **Docker 源 + 内置数据库**（�
 | 2 ACL | ✅ | nocobase_20261109_stage2_acl.sql |
 | 3 PC 管理端 | ✅ 38 页全完成（教学资源 7 + 教材 6 + 教务 5 + 班务 6 + 学员 5 + 门户 3 + 评估问卷统计 6） | nocobase_20261109_stage3_eval_survey.sql |
 | 4 workflow | ✅ 4 条审批流 + 待办 2 页（请假/退学/报名/缴费 + 审批待办 + 工作台待办） | nocobase_20261109_stage4_workflow.sql |
-| 5 AI Portal | 🔄 代码完成待浏览器走查（三页已部署 /x/main/；AI 交互待 LLM key） | nocobase_20261109_stage5_scheduling.sql |
+| 5 AI Portal | 🔄 代码完成待浏览器走查（三页已部署 /x/main/；AI 交互已取消，2026-11-10 Violet 确认） | nocobase_20261109_stage5_scheduling.sql |
 | 6 移动端 | ✅ 学员核心 6 页完成（手机浏览器走查待 Violet；公开扫码后置） | nocobase_20261109_stage6_mobile.sql |
 | 7 收尾 | 🔄 演示数据 ✅（41 表全覆盖 + D26 关闭）；演示脚本走查待 Violet | nocobase_20261109_stage7_demo_data.sql |
+| 8 补缺 | ✅ PLAN 缺失功能补齐（库存联动/管理端 6 页/站内提醒/学员社区，D65） | nocobase_20261110_gapfill_done.sql |

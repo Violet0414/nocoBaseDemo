@@ -1,0 +1,207 @@
+{
+ "version": "1",
+ "mode": "create",
+ "assets": {
+  "charts": {
+   "matByKind": {
+    "query": {
+     "mode": "builder",
+     "resource": {
+      "dataSourceKey": "main",
+      "collectionName": "nb_dx_material"
+     },
+     "measures": [
+      {
+       "field": "id",
+       "aggregation": "count",
+       "alias": "matCount"
+      }
+     ],
+     "dimensions": [
+      {
+       "field": "kind"
+      }
+     ]
+    },
+    "visual": {
+     "mode": "basic",
+     "type": "pie",
+     "mappings": {
+      "category": "kind",
+      "value": "matCount"
+     }
+    }
+   }
+  }
+ },
+ "defaults": {
+  "collections": {
+   "nb_dx_material": {
+    "popups": {
+     "view": {
+      "name": "查看材料",
+      "description": "查看一条材料详情"
+     },
+     "edit": {
+      "name": "编辑材料",
+      "description": "编辑一条材料记录"
+     }
+    }
+   },
+   "nb_dx_class": {
+    "popups": {
+     "view": {
+      "name": "查看班次",
+      "description": "查看一条班次记录详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "classBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "code",
+       "category",
+       "train_type",
+       "status",
+       "organizer"
+      ]
+     },
+     {
+      "key": "classPeriod",
+      "title": "报名与学习周期",
+      "fields": [
+       "enroll_start",
+       "enroll_end",
+       "start_date",
+       "end_date",
+       "total_days",
+       "total_hours"
+      ]
+     },
+     {
+      "key": "classOther",
+      "title": "其他信息",
+      "fields": [
+       "default_room",
+       "qr_token",
+       "description"
+      ]
+     }
+    ]
+   },
+   "nb_dx_student": {
+    "popups": {
+     "view": {
+      "name": "查看学员",
+      "description": "查看一条学员详情"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "studentBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "student_no",
+       "gender",
+       "birth_date",
+       "political_status",
+       "phone",
+       "photo"
+      ]
+     },
+     {
+      "key": "studentWork",
+      "title": "单位与班级",
+      "fields": [
+       "work_unit",
+       "duty",
+       "group_no",
+       "klass",
+       "user"
+      ]
+     },
+     {
+      "key": "studentStatus",
+      "title": "学籍状态",
+      "fields": [
+       "status",
+       "enroll_status",
+       "excellent",
+       "remark"
+      ]
+     }
+    ]
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "用户",
+      "description": "查看一条用户详情"
+     }
+    }
+   }
+  }
+ },
+ "navigation": {
+  "portalUid": "__default_admin__",
+  "group": {
+   "routeId": "396723346014208"
+  },
+  "item": {
+   "title": "材料回复",
+   "icon": "MessageOutlined"
+  }
+ },
+ "page": {
+  "title": "材料回复"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "材料回复",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "matChart",
+       "span": 12
+      },
+      {
+       "key": "matTable",
+       "span": 12
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "matChart",
+     "type": "chart",
+     "title": "材料类型分布",
+     "chart": "matByKind"
+    },
+    {
+     "key": "matTable",
+     "type": "table",
+     "collection": "nb_dx_material",
+     "fields": [
+      "student.name",
+      "klass.name",
+      "kind",
+      "question",
+      "content",
+      "status",
+      "reply"
+     ],
+     "recordActions": [
+      "view",
+      "edit"
+     ]
+    }
+   ]
+  }
+ ]
+}

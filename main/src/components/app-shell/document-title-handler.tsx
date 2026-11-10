@@ -33,11 +33,11 @@ export type DocumentTitleHandlerProps = {
 };
 
 const defaultActionPrefixes = {
-  clone: ({ id }: ActionPrefixContext) => `#${id ?? ""} Clone `,
-  create: "Create new ",
-  edit: ({ id }: ActionPrefixContext) => `#${id ?? ""} Edit `,
+  clone: ({ id }: ActionPrefixContext) => `#${id ?? ""} 克隆 `,
+  create: "新建 ",
+  edit: ({ id }: ActionPrefixContext) => `#${id ?? ""} 编辑 `,
   list: "",
-  show: ({ id }: ActionPrefixContext) => `#${id ?? ""} Show `,
+  show: ({ id }: ActionPrefixContext) => `#${id ?? ""} 查看 `,
 } satisfies Partial<Record<Action, ActionPrefix>>;
 
 const safeTranslate = (
@@ -72,7 +72,7 @@ const resolveActionPrefix = (
 
 export function DocumentTitleHandler({
   actionPrefixes,
-  appName = "NocoBase",
+  appName = "党校智慧管理平台",
   defaultTitle = appName,
   formatTitle,
   separator = " | ",

@@ -107,11 +107,11 @@ export function DynamicSignIn({
     return (
       <Alert variant="destructive">
         <AlertCircle />
-        <AlertTitle>Unable to load sign-in methods</AlertTitle>
+        <AlertTitle>无法加载登录方式</AlertTitle>
         <AlertDescription>
           {import.meta.env.DEV && error instanceof Error
             ? error.message
-            : "Please try again or contact your administrator."}
+            : "请稍后重试或联系管理员。"}
         </AlertDescription>
       </Alert>
     );
@@ -127,10 +127,9 @@ export function DynamicSignIn({
           <EmptyMedia variant="icon">
             <KeyRound />
           </EmptyMedia>
-          <EmptyTitle>No supported sign-in methods</EmptyTitle>
+          <EmptyTitle>暂无可用登录方式</EmptyTitle>
           <EmptyDescription>
-            No sign-in method is currently available. Contact your
-            administrator for access.
+            当前没有可用的登录方式，请联系管理员开通。
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

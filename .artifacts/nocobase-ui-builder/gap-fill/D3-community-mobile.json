@@ -1,0 +1,166 @@
+{
+ "version": "1",
+ "mode": "create",
+ "navigation": {
+  "portalUid": "__default_mobile__",
+  "item": {
+   "title": "学员社区",
+   "icon": "TeamOutlined"
+  }
+ },
+ "page": {
+  "title": "学员社区"
+ },
+ "tabs": [
+  {
+   "key": "main",
+   "title": "学员社区",
+   "layout": {
+    "rows": [
+     [
+      {
+       "key": "postForm",
+       "span": 12
+      },
+      {
+       "key": "postList",
+       "span": 12
+      }
+     ]
+    ]
+   },
+   "blocks": [
+    {
+     "key": "postForm",
+     "type": "createForm",
+     "title": "发表帖子",
+     "collection": "nb_dx_comment",
+     "fields": [
+      {
+       "field": "author",
+       "titleField": "nickname"
+      },
+      "title",
+      "content",
+      {
+       "field": "klass",
+       "titleField": "name"
+      }
+     ]
+    },
+    {
+     "key": "postList",
+     "type": "table",
+     "title": "帖子广场",
+     "collection": "nb_dx_comment",
+     "fields": [
+      "title",
+      "content",
+      "author.nickname",
+      "hot"
+     ],
+     "recordActions": [
+      "view"
+     ],
+     "settings": {
+      "dataScope": {
+       "filter": {
+        "logic": "$and",
+        "items": [
+         {
+          "path": "kind",
+          "operator": "$eq",
+          "value": "post"
+         }
+        ]
+       }
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "defaults": {
+  "collections": {
+   "nb_dx_comment": {
+    "popups": {
+     "view": {
+      "name": "帖子详情",
+      "description": "查看帖子详情"
+     },
+     "addNew": {
+      "name": "发表帖子",
+      "description": "发表一条新帖子"
+     }
+    }
+   },
+   "users": {
+    "popups": {
+     "view": {
+      "name": "用户详情",
+      "description": "查看用户详情"
+     },
+     "addNew": {
+      "name": "新增用户",
+      "description": "新增用户"
+     },
+     "edit": {
+      "name": "编辑用户",
+      "description": "编辑用户"
+     }
+    }
+   },
+   "nb_dx_class": {
+    "popups": {
+     "view": {
+      "name": "班次详情",
+      "description": "查看班次详情"
+     },
+     "addNew": {
+      "name": "新增班次",
+      "description": "新增班次"
+     },
+     "edit": {
+      "name": "编辑班次",
+      "description": "编辑班次"
+     }
+    },
+    "fieldGroups": [
+     {
+      "key": "classBasic",
+      "title": "基本信息",
+      "fields": [
+       "name",
+       "code",
+       "category",
+       "train_type",
+       "status",
+       "organizer"
+      ]
+     },
+     {
+      "key": "classPeriod",
+      "title": "报名与学习周期",
+      "fields": [
+       "enroll_start",
+       "enroll_end",
+       "start_date",
+       "end_date",
+       "total_days",
+       "total_hours"
+      ]
+     },
+     {
+      "key": "classOther",
+      "title": "其他信息",
+      "fields": [
+       "default_room",
+       "qr_token",
+       "description"
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
